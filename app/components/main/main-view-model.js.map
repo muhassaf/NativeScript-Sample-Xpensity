@@ -1,0 +1,1 @@
+{"version":3,"file":"main-view-model.js","sourceRoot":"","sources":["main-view-model.ts"],"names":["MainViewModel","MainViewModel.constructor"],"mappings":";;;;;;AAEA,IAAO,mBAAmB,WAAW,oBAAoB,CAAC,CAAC;AAG3D,IAAa,aAAa;IAASA,UAAtBA,aAAaA,UAA0CA;IAChEA,SADSA,aAAaA;QAElBC,iBAAOA,CAACA;IACZA,CAACA;IACLD,oBAACA;AAADA,CAACA,AAJD,EAAmC,mBAAmB,CAAC,aAAa,EAInE;AAJY,qBAAa,GAAb,aAIZ,CAAA"}

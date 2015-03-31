@@ -1,0 +1,9 @@
+ActivityIndicator {
+    horizontal-align: center;
+    vertical-align: center;
+}
+
+.header {
+    font-size: 24;
+    margin: 10;
+}
