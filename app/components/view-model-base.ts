@@ -1,19 +1,16 @@
 ﻿import platformModule = require("platform");
 import observableModule = require("data/observable");
 import enumsModule = require("ui/enums");
-
-import serviceModule = require("../utils/service");
+import dialogsModule = require("ui/dialogs");
 
 export class ViewModelBase extends observableModule.Observable {
     private _loadingCount: number;
     private _isLoading: boolean;
-    private _service: serviceModule.IService;
 
     constructor() {
         super();
 
         this._loadingCount = 0;
-        this._service = serviceModule.service;
     }
 
     get isLoading(): boolean {
@@ -25,10 +22,6 @@ export class ViewModelBase extends observableModule.Observable {
             this._isLoading = value;
             this.notifyPropertyChanged("isLoading", value);
         }
-    }
-
-    get service(): serviceModule.IService {
-        return this._service;
     }
 
     get androidVisibility(): string {
@@ -62,6 +55,10 @@ export class ViewModelBase extends observableModule.Observable {
                 this.isLoading = false;
             }
         }
+    }
+
+    notifyOnError(error: string) {
+        dialogsModule.alert({ title: "Error", message: error, okButtonText: "Close" });
     }
 
     notifyPropertyChanged(propertyName: string, value: any) {

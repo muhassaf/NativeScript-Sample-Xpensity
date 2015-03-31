@@ -1,4 +1,4 @@
-﻿<Page xmlns="http://www.nativescript.org/tns.xsd" navigatedTo="navigatedTo" loaded="pageLoaded">
+﻿<Page xmlns="http://www.nativescript.org/tns.xsd" loaded="pageLoaded">
   <GridLayout>
     <ScrollView>
       <StackLayout>
@@ -6,8 +6,8 @@
 
         <Label text="Login" cssClass="header"/>
         
-        <TextField id="username" text="{{ username }}" hint="username" />
-        <TextField id="password" text="{{ password }}" secure="true" hint="password" />
+        <TextField text="{{ username }}" hint="username" />
+        <TextField text="{{ password }}" secure="true" hint="password" />
 
         <Button text="LOGIN" tap="{{ login }}" cssClass="primaryActionButton" />
         <Button text="SIGN UP" tap="{{ signUp }}" cssClass="secondaryActionButton" />

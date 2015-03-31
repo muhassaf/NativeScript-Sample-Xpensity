@@ -12,3 +12,5 @@
 /platforms/
 /external/
 /lib/
+*.tgz
+*.map

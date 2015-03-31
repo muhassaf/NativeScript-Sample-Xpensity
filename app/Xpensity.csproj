@@ -91,6 +91,9 @@
     <Content Include="components\login\login.css" />
     <Content Include="components\login\login.xml" />
     <Content Include="components\main\main.xml" />
+    <Content Include="components\signUp\signUp.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="lib\everlive.js" />
     <Content Include="res\login_logo.png" />
     <Content Include="tns_modules\application\application-common.js" />
@@ -334,6 +337,8 @@
     <TypeScriptCompile Include="components\login\login.ts" />
     <TypeScriptCompile Include="components\main\main-view-model.ts" />
     <TypeScriptCompile Include="components\main\main.ts" />
+    <TypeScriptCompile Include="components\signUp\signUp-view-model.ts" />
+    <TypeScriptCompile Include="components\signUp\signUp.ts" />
     <TypeScriptCompile Include="components\view-model-base.ts" />
     <TypeScriptCompile Include="tns_modules\android17.d.ts" />
     <TypeScriptCompile Include="tns_modules\application\application.d.ts" />
