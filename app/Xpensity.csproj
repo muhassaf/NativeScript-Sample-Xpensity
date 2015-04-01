@@ -91,7 +91,7 @@
     <Content Include="components\login\login.css" />
     <Content Include="components\login\login.xml" />
     <Content Include="components\main\main.xml" />
-    <Content Include="components\signUp\signUp.xml">
+    <Content Include="components\sign-up\sign-up.xml">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="lib\everlive.js" />
@@ -333,12 +333,17 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="app.ts" />
+    <TypeScriptCompile Include="components\items-view\items-view.d.ts" />
+    <TypeScriptCompile Include="components\items-view\items-view.ts" />
+    <TypeScriptCompile Include="components\pie-chart\pie-chart.d.ts" />
+    <TypeScriptCompile Include="components\pie-chart\pie-chart.android.ts" />
+    <TypeScriptCompile Include="components\pie-chart\pie-chart-common.ts" />
     <TypeScriptCompile Include="components\login\login-view-model.ts" />
     <TypeScriptCompile Include="components\login\login.ts" />
     <TypeScriptCompile Include="components\main\main-view-model.ts" />
     <TypeScriptCompile Include="components\main\main.ts" />
-    <TypeScriptCompile Include="components\signUp\signUp-view-model.ts" />
-    <TypeScriptCompile Include="components\signUp\signUp.ts" />
+    <TypeScriptCompile Include="components\sign-up\sign-up-view-model.ts" />
+    <TypeScriptCompile Include="components\sign-up\sign-up.ts" />
     <TypeScriptCompile Include="components\view-model-base.ts" />
     <TypeScriptCompile Include="tns_modules\android17.d.ts" />
     <TypeScriptCompile Include="tns_modules\application\application.d.ts" />
@@ -423,5 +428,8 @@
     <TypeScriptCompile Include="utils\navigation.ts" />
     <TypeScriptCompile Include="utils\service.ts" />
     <TypeScriptCompile Include="utils\views.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="components\pie-chart\package.json" />
   </ItemGroup>
 </Project>

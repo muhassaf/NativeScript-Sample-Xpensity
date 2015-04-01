@@ -2,7 +2,7 @@
 
 import pagesModule = require("ui/page");
 
-import signUpViewModelModule = require("./signUp-view-model");
+import signUpViewModelModule = require("./sign-up-view-model");
 
 export function pageLoaded(args: any) {
     var page = <pagesModule.Page>args.object;

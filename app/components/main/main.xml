@@ -1,4 +1,7 @@
-<Page xmlns="http://www.nativescript.org/tns.xsd" loaded="pageLoaded">
+<Page xmlns="http://www.nativescript.org/tns.xsd" 
+      xmlns:pc="components/pie-chart/pie-chart"
+      loaded="pageLoaded">
   <StackLayout>
+    <pc:PieChart />
   </StackLayout>
 </Page>
