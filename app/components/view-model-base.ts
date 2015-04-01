@@ -25,7 +25,7 @@ export class ViewModelBase extends observableModule.Observable {
     }
 
     get androidVisibility(): string {
-        if (platformModule.device.os === "Android") {
+        if (platformModule.device.os === platformModule.platformNames.android) {
             return enumsModule.Visibility.visible;
         }
 
@@ -33,7 +33,7 @@ export class ViewModelBase extends observableModule.Observable {
     }
 
     get iosVisibility(): string {
-        if (platformModule.device.os === "iOS") {
+        if (platformModule.device.os === platformModule.platformNames.ios) {
             return enumsModule.Visibility.visible;
         }
 

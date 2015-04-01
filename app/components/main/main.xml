@@ -2,6 +2,6 @@
       xmlns:pc="components/pie-chart/pie-chart"
       loaded="pageLoaded">
   <StackLayout>
-    <pc:PieChart />
+    <pc:PieChart items="{{ data }}" valueProperty="Data" />
   </StackLayout>
 </Page>

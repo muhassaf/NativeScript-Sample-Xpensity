@@ -2,6 +2,7 @@
 
 export class PieChart extends pieChartCommon.PieChart {
     private _android: any;
+    private _pieSeries: any;
 
     constructor() {
         super();
@@ -12,17 +13,45 @@ export class PieChart extends pieChartCommon.PieChart {
     }
 
     _createUI() {
-        var data = new java.util.ArrayList<java.lang.Integer>(); 
-        data.add(java.lang.Integer.valueOf(12));
-        data.add(java.lang.Integer.valueOf(5));
-        data.add(java.lang.Integer.valueOf(10));
-        data.add(java.lang.Integer.valueOf(7));
+        this._android = new (<any>com).telerik.widget.chart.visualization.pieChart.RadPieChartView(this._context);
+        this._pieSeries = new (<any>com).telerik.widget.chart.visualization.pieChart.PieSeries();
+        this._android.getSeries().add(this._pieSeries);
 
-        var pieChartView = new (<any>com).telerik.widget.chart.visualization.pieChart.RadPieChartView(this._context);
-        var pieSeries = new (<any>com).telerik.widget.chart.visualization.pieChart.PieSeries();
-        pieSeries.setData(data);
-        pieChartView.getSeries().add(pieSeries);
+        this.refresh();
+    }
 
-        this._android = pieChartView;
+    public refresh() {
+        if (this._pieSeries && this.items) {
+            super.refresh();
+            this._pieSeries.setData(PieChart.wrapItems(this.items, this.valueProperty));
+        }
+    }
+
+    private static wrapItems(items: any, valueProperty: string): any {
+        var data = new java.util.ArrayList();
+        if (items) {
+            for (var i = 0; i < items.length; i++) {
+                var item = items[i];
+                var value = item;
+                if (item) {
+                    if (valueProperty) {
+                        if (item.getValue) {
+                            value = item.getValue(valueProperty);
+                        }
+                        else {
+                            value = item[valueProperty];
+                        }
+                    }
+                }
+
+                data.add(PieChart.convert(value));
+            }
+        }
+
+        return data;
+    }
+
+    private static convert(value: any): any {
+        return java.lang.Double.valueOf(value);
     }
 }
