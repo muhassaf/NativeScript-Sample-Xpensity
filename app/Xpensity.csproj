@@ -97,6 +97,7 @@
     </Content>
     <Content Include="lib\everlive.js" />
     <Content Include="res\approved-gray.png" />
+    <Content Include="res\FAB_add.png" />
     <Content Include="res\login_logo.png" />
     <Content Include="tns_modules\application\application-common.js" />
     <Content Include="tns_modules\application\application.android.js" />

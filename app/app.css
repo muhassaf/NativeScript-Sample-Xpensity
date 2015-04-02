@@ -26,3 +26,16 @@ Page {
     color: #828282;
     margin: 0 5 5 5;
 }
+
+.fab
+{
+    width: 60;
+    height: 60;
+    margin: 10;
+}
+
+.fabContainer
+{
+    vertical-align: bottom;
+    horizontal-align: right;
+}

@@ -25,6 +25,8 @@ export class ViewModelBase extends observableModule.Observable {
     }
 
     get androidVisibility(): string {
+        console.log("AndroidVisibility: " + platformModule.device.os);
+
         if (platformModule.device.os === platformModule.platformNames.android) {
             return enumsModule.Visibility.visible;
         }

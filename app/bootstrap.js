@@ -1,5 +1,5 @@
 var trace = require("trace");
 //trace.enable();
-trace.setCategories(trace.categories.All);
+trace.setCategories(trace.categories.Layout);
 
 require("./");

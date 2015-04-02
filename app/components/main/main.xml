@@ -1,9 +1,10 @@
 <Page xmlns="http://www.nativescript.org/tns.xsd"
       xmlns:g="components/grid-view/grid-view"
       loaded="pageLoaded">
-  <StackLayout>
+  <GridLayout rows="auto, *">
     <Label text="MY REPORTS" cssClass="header" />
-    <ScrollView>
+    
+    <ScrollView row="1" >
       <g:GridView items="{{ reports }}" gridColumns="2" cssClass="reportsGrid">
         <g:GridView.itemTemplate>
           <Border borderWidth="2" borderColor="#DEDDDD" cssClass="tile">
@@ -17,5 +18,11 @@
         </g:GridView.itemTemplate>
       </g:GridView>
     </ScrollView>
-  </StackLayout>
+
+    <AbsoluteLayout row="1" cssClass="fabContainer" style.visibility="{{ androidVisibility }}" >
+      <Image src="~/res/FAB_add.png" tap="{{ addReport }}" stretch="fill" cssClass="fab" />
+    </AbsoluteLayout>
+
+    <ActivityIndicator rowSpan="2" busy="{{ isLoading }}" />
+  </GridLayout>
 </Page>
