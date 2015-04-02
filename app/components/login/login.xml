@@ -2,8 +2,6 @@
   <GridLayout>
     <ScrollView>
       <StackLayout>
-        <Image src="~/res/login_logo.png" cssClass="loginLogo" stretch="fill" />
-
         <Label text="Login" cssClass="header"/>
         
         <TextField text="{{ username }}" hint="username" />

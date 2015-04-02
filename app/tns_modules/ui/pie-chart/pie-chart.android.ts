@@ -1,4 +1,7 @@
-﻿import pieChartCommon = require("./pie-chart-common");
+﻿import pieChartCommon = require("ui/pie-chart/pie-chart-common");
+
+declare var exports;
+require("utils/module-merge").merge(pieChartCommon, exports);
 
 export class PieChart extends pieChartCommon.PieChart {
     private _android: any;
@@ -20,7 +23,7 @@ export class PieChart extends pieChartCommon.PieChart {
         this.refresh();
     }
 
-    public refresh() {
+    refresh() {
         if (this._pieSeries && this.items) {
             super.refresh();
             this._pieSeries.setData(PieChart.wrapItems(this.items, this.valueProperty));

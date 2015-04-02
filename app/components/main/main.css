@@ -1,0 +1,14 @@
+﻿.tile {
+    margin: 8;
+    background-color: #FFFFFF;
+}
+
+.reportsGrid {
+    margin-left: 8;
+    margin-right: 8;
+}
+
+.pieChart {
+    margin-left: 25;
+    margin-right: 25;
+}

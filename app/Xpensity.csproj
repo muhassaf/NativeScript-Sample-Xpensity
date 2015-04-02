@@ -91,10 +91,12 @@
     <Content Include="components\login\login.css" />
     <Content Include="components\login\login.xml" />
     <Content Include="components\main\main.xml" />
+    <Content Include="components\main\main.css" />
     <Content Include="components\sign-up\sign-up.xml">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="lib\everlive.js" />
+    <Content Include="res\approved-gray.png" />
     <Content Include="res\login_logo.png" />
     <Content Include="tns_modules\application\application-common.js" />
     <Content Include="tns_modules\application\application.android.js" />
@@ -333,11 +335,11 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="app.ts" />
-    <TypeScriptCompile Include="components\items-view\items-view.d.ts" />
-    <TypeScriptCompile Include="components\items-view\items-view.ts" />
-    <TypeScriptCompile Include="components\pie-chart\pie-chart.d.ts" />
-    <TypeScriptCompile Include="components\pie-chart\pie-chart.android.ts" />
-    <TypeScriptCompile Include="components\pie-chart\pie-chart-common.ts" />
+    <TypeScriptCompile Include="tns_modules\ui\items-view\items-view.d.ts" />
+    <TypeScriptCompile Include="tns_modules\ui\items-view\items-view.ts" />
+    <TypeScriptCompile Include="tns_modules\ui\pie-chart\pie-chart.d.ts" />
+    <TypeScriptCompile Include="tns_modules\ui\pie-chart\pie-chart.android.ts" />
+    <TypeScriptCompile Include="tns_modules\ui\pie-chart\pie-chart-common.ts" />
     <TypeScriptCompile Include="components\login\login-view-model.ts" />
     <TypeScriptCompile Include="components\login\login.ts" />
     <TypeScriptCompile Include="components\main\main-view-model.ts" />
@@ -345,6 +347,8 @@
     <TypeScriptCompile Include="components\sign-up\sign-up-view-model.ts" />
     <TypeScriptCompile Include="components\sign-up\sign-up.ts" />
     <TypeScriptCompile Include="components\view-model-base.ts" />
+    <TypeScriptCompile Include="components\grid-view\grid-view.d.ts" />
+    <TypeScriptCompile Include="components\grid-view\grid-view.ts" />
     <TypeScriptCompile Include="tns_modules\android17.d.ts" />
     <TypeScriptCompile Include="tns_modules\application\application.d.ts" />
     <TypeScriptCompile Include="tns_modules\camera\camera.d.ts" />
@@ -377,6 +381,7 @@
     <TypeScriptCompile Include="tns_modules\trace\trace.d.ts" />
     <TypeScriptCompile Include="tns_modules\ui\activity-indicator\activity-indicator.d.ts" />
     <TypeScriptCompile Include="tns_modules\ui\border\border.d.ts" />
+    <TypeScriptCompile Include="tns_modules\ui\builder\builder.d.ts" />
     <TypeScriptCompile Include="tns_modules\ui\button\button.d.ts" />
     <TypeScriptCompile Include="tns_modules\ui\content-view\content-view.d.ts" />
     <TypeScriptCompile Include="tns_modules\ui\core\bindable.d.ts" />
@@ -430,6 +435,12 @@
     <TypeScriptCompile Include="utils\views.ts" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="components\pie-chart\package.json" />
+    <Content Include="tns_modules\ui\pie-chart\package.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="tns_modules\ui\items-view\package.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="components\grid-view\package.json" />
   </ItemGroup>
 </Project>

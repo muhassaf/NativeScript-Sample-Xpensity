@@ -1,4 +1,4 @@
-﻿declare module "pie-chart" {
+﻿declare module "ui/pie-chart" {
     class PieChart {
         valueProperty: string;
     }

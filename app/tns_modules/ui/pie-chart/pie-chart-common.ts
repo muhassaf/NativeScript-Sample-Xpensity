@@ -1,5 +1,6 @@
-﻿import itemsViewModule = require("../items-view/items-view");
-import definitionModule = require("pie-chart");
+﻿import itemsViewModule = require("ui/items-view");
+import definitionModule = require("ui/pie-chart");
+import utilsModule = require("utils/utils");
 
 export class PieChart extends itemsViewModule.ItemsView implements definitionModule.PieChart {
     private _valueProperty: string;
@@ -19,5 +20,9 @@ export class PieChart extends itemsViewModule.ItemsView implements definitionMod
             this._valueProperty = value;
             this.refresh();
         }
+    }
+
+    onMeasure(widthMeasureSpec: number, heightMeasureSpec: number): void {
+        super.onMeasure(widthMeasureSpec, widthMeasureSpec);
     }
 }
