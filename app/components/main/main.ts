@@ -6,18 +6,25 @@ import pagesModule = require("ui/page");
 import gridViewModule = require("grid-view");
 
 import mainViewModelModule = require("./main-view-model");
+import editReportViewModelModule = require("../edit-report/edit-report-view-model");
+import navigationModule = require("../../utils/navigation");
+import viewsModule = require("../../utils/views");
 
-var viewModel: mainViewModelModule.MainViewModel;
 export function pageLoaded(args: observableModule.EventData) {
     var page = <pagesModule.Page>args.object;
-    viewModel = new mainViewModelModule.MainViewModel();
-    page.bindingContext = viewModel;
+    page.bindingContext = new mainViewModelModule.MainViewModel();
 }
 
 export function reportTap(args: gridViewModule.ItemEventData) {
-    viewModel.viewReport(args.item);
+    navigationModule.navigate({
+        moduleName: viewsModule.Views.viewReport,
+        context: args.item
+    });
 }
 
 export function addReportTap(args: observableModule.EventData) {
-    viewModel.addReport();
+    navigationModule.navigate({
+        moduleName: viewsModule.Views.editReport,
+        context: new editReportViewModelModule.EditReportViewModel({ Title: "", BusinessPurpose: "", CostCenter: "" })
+    });
 }

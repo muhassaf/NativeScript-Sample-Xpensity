@@ -2,13 +2,10 @@
   <GridLayout>
     <ScrollView>
       <StackLayout>
-        <Label text="Login" cssClass="header"/>
-        
-        <TextField text="{{ username }}" hint="username" />
+        <TextField text="{{ username }}" hint="username" cssClass="firstTextField" />
         <TextField text="{{ password }}" secure="true" hint="password" />
 
-        <Button text="LOGIN" tap="{{ login }}" cssClass="primaryActionButton" />
-        <Button text="SIGN UP" tap="{{ signUp }}" cssClass="secondaryActionButton" />
+        <Button text="LOGIN" tap="{{ login }}" cssClass="primaryButton" />
       </StackLayout>
     </ScrollView>
 

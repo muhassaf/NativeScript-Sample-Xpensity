@@ -1,7 +1,7 @@
 ﻿import observableModule = require("data/observable");
 
-import viewModelBaseModule = require("./view-model-base");
-import serviceModule = require("../utils/service");
+import viewModelBaseModule = require("../view-model-base");
+import serviceModule = require("../../utils/service");
 
 export class ReportViewModel extends viewModelBaseModule.ViewModelBase {
     private _report: any;

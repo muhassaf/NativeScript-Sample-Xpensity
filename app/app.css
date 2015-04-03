@@ -7,10 +7,17 @@ Page {
     background-color: #EEEEEE;
 }
 
+TextField, TextView, Label {
+    margin: 0 16 0 16;
+}
+
+.firstTextField {
+    margin: 16 16 0 16;
+}
+
 .icon {
     width: 24;
     height: 24;
-    margin: 5;
 }
 
 .header {
@@ -35,15 +42,33 @@ Page {
     margin: 0 5 5 5;
 }
 
-.fab
-{
+.fab {
     width: 60;
     height: 60;
     margin: 12 12 18 12;
 }
 
-.fabContainer
-{
+.fabContainer {
     vertical-align: bottom;
     horizontal-align: right;
+}
+
+.primaryButton {
+    background-color: #0079FF;
+    color: #FFFFFF;
+    margin: 32 16 16 16;
+}
+
+.secondaryButton {
+    background-color: #FFFFFF;
+    color: #0079FF;
+    margin: 32 16 16 16;
+}
+
+.infoLabel {
+    font-size: 10;
+}
+
+.imageButtonContainer {
+    margin: 16;
 }

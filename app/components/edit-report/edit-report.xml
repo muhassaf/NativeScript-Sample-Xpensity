@@ -1,0 +1,17 @@
+<Page xmlns="http://www.nativescript.org/tns.xsd" 
+      loaded="pageLoaded" 
+      navigatedTo="navigatedTo" >
+  <GridLayout>
+    <ScrollView>
+      <StackLayout>
+        <TextField text="{{ report.Title }}" hint="Title" cssClass="firstTextField" />
+        <TextField text="{{ report.BusinessPurpose  }}" hint="Business Purpose" />
+        <TextField text="{{ report.CostCenter }}" hint="Cost Center" />
+
+        <Button text="DELETE REPORT" tap="{{ deleteReport }}" color="#FF0000" cssClass="secondaryButton" />
+      </StackLayout>
+    </ScrollView>
+
+    <ActivityIndicator busy="{{ isLoading }}" />
+  </GridLayout>
+</Page>

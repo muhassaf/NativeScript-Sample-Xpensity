@@ -88,10 +88,16 @@
     <Content Include="App_Resources\iOS\Icon-Small.png" />
     <Content Include="App_Resources\iOS\icon.png" />
     <Content Include="bootstrap.js" />
-    <Content Include="components\login\login.css" />
+    <Content Include="components\edit-expense\edit-expense.css" />
+    <Content Include="components\edit-expense\edit-expense.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="components\login\login.xml" />
     <Content Include="components\main\main.xml" />
     <Content Include="components\main\main.css" />
+    <Content Include="components\edit-report\edit-report.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="components\sign-up\sign-up.xml">
       <SubType>Designer</SubType>
     </Content>
@@ -337,7 +343,11 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="app.ts" />
-    <TypeScriptCompile Include="components\report-view-model.ts" />
+    <TypeScriptCompile Include="components\edit-expense\edit-expense-view-model.ts" />
+    <TypeScriptCompile Include="components\edit-expense\edit-expense.ts" />
+    <TypeScriptCompile Include="components\sign-up\sign-up-view-model.ts" />
+    <TypeScriptCompile Include="components\sign-up\sign-up.ts" />
+    <TypeScriptCompile Include="components\view-report\view-report-view-model.ts" />
     <Content Include="components\view-report\view-report.xml" />
     <TypeScriptCompile Include="components\view-report\view-report.ts" />
     <TypeScriptCompile Include="tns_modules\ui\items-view\items-view.d.ts" />
@@ -349,8 +359,8 @@
     <TypeScriptCompile Include="components\login\login.ts" />
     <TypeScriptCompile Include="components\main\main-view-model.ts" />
     <TypeScriptCompile Include="components\main\main.ts" />
-    <TypeScriptCompile Include="components\sign-up\sign-up-view-model.ts" />
-    <TypeScriptCompile Include="components\sign-up\sign-up.ts" />
+    <TypeScriptCompile Include="components\edit-report\edit-report-view-model.ts" />
+    <TypeScriptCompile Include="components\edit-report\edit-report.ts" />
     <TypeScriptCompile Include="components\view-model-base.ts" />
     <TypeScriptCompile Include="components\grid-view\grid-view.d.ts" />
     <TypeScriptCompile Include="components\grid-view\grid-view.ts" />
