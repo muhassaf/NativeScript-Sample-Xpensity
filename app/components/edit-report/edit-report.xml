@@ -8,7 +8,7 @@
         <TextField text="{{ report.BusinessPurpose  }}" hint="Business Purpose" />
         <TextField text="{{ report.CostCenter }}" hint="Cost Center" />
 
-        <Button text="DELETE REPORT" tap="{{ deleteReport }}" color="#FF0000" cssClass="secondaryButton" />
+        <Button text="DELETE REPORT" tap="{{ deleteReport }}" color="#FF0000" cssClass="secondaryButton" style.visibility="{{ editVisibility }}" />
       </StackLayout>
     </ScrollView>
 

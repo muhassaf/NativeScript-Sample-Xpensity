@@ -1,0 +1,28 @@
+<Page xmlns="http://www.nativescript.org/tns.xsd" 
+      loaded="pageLoaded" >
+  <GridLayout rows="auto, *">
+    <Label text="SETTINGS" cssClass="header" />
+    
+    <ScrollView row="1">
+      <StackLayout>
+        <Border cssClass="userContainer">
+          <Label text="{{ name }}" />
+        </Border>
+        
+        <GridLayout columns="*, auto">
+          <Label text="Offline Mode" />
+          <Switch checked="{{ offlineMode }}"/>
+        </GridLayout>
+        
+        <GridLayout columns="*, auto">
+          <Label text="Notifications" />
+          <Switch checked="{{ notifications }}"/>
+        </GridLayout>
+        
+        <Button text="LOGOUT" tap="{{ logout }}" cssClass="secondaryButton" />
+      </StackLayout>
+    </ScrollView>
+
+    <ActivityIndicator busy="{{ isLoading }}" />
+  </GridLayout>
+</Page>

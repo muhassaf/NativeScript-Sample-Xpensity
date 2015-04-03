@@ -6,13 +6,15 @@
       <StackLayout>
         <TextField text="{{ expense.Title }}" hint="Title" cssClass="firstTextField" />
         <TextField text="{{ expense.Cost  }}" hint="Cost" />
+       
         <GridLayout columns="auto, *" cssClass="imageButtonContainer">
           <Image src="~/res/photo.png" cssClass="icon" stretch="fill" />
           <Label col="1" text="ADD PHOTO" cssClass="addPhoto" />
         </GridLayout>
+        
         <TextView text="{{ expense.Notes }}" hint="Notes" />
 
-        <Button text="DELETE EXPENSE" tap="{{ deleteReport }}" color="#FF0000" cssClass="secondaryButton" />
+        <Button text="DELETE EXPENSE" tap="{{ deleteReport }}" color="#FF0000" cssClass="secondaryButton" style.visibility="{{ editVisibility }}" />
       </StackLayout>
     </ScrollView>
 

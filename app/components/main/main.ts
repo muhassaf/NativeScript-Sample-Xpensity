@@ -25,6 +25,6 @@ export function reportTap(args: gridViewModule.ItemEventData) {
 export function addReportTap(args: observableModule.EventData) {
     navigationModule.navigate({
         moduleName: viewsModule.Views.editReport,
-        context: new editReportViewModelModule.EditReportViewModel({ Title: "", BusinessPurpose: "", CostCenter: "" })
+        context: new editReportViewModelModule.EditReportViewModel()
     });
 }

@@ -98,6 +98,10 @@
     <Content Include="components\edit-report\edit-report.xml">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="components\settings\settings.css" />
+    <Content Include="components\settings\settings.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="components\sign-up\sign-up.xml">
       <SubType>Designer</SubType>
     </Content>
@@ -345,6 +349,9 @@
     <TypeScriptCompile Include="app.ts" />
     <TypeScriptCompile Include="components\edit-expense\edit-expense-view-model.ts" />
     <TypeScriptCompile Include="components\edit-expense\edit-expense.ts" />
+    <TypeScriptCompile Include="components\edit-view-model-base.ts" />
+    <TypeScriptCompile Include="components\settings\settings-view-model.ts" />
+    <TypeScriptCompile Include="components\settings\settings.ts" />
     <TypeScriptCompile Include="components\sign-up\sign-up-view-model.ts" />
     <TypeScriptCompile Include="components\sign-up\sign-up.ts" />
     <TypeScriptCompile Include="components\view-report\view-report-view-model.ts" />

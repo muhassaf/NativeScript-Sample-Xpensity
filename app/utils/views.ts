@@ -5,4 +5,5 @@
     export var viewReport = "components/view-report/view-report";
     export var editReport = "components/edit-report/edit-report";
     export var editExpense = "components/edit-expense/edit-expense";
+    export var settings = "components/settings/settings";
 } 

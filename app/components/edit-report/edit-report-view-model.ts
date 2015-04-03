@@ -2,20 +2,25 @@
 import observableModule = require("data/observable");
 import dialogsModule = require("ui/dialogs");
 
-import viewModelBaseModule = require("../view-model-base");
+import editViewModelBaseModule = require("../edit-view-model-base");
 
 import constantsModule = require("../../utils/constants");
 import serviceModule = require("../../utils/service");
 import navigationModule = require("../../utils/navigation");
 import viewsModule = require("../../utils/views");
 
-export class EditReportViewModel extends viewModelBaseModule.ViewModelBase {
-    private _report: string;
+export class EditReportViewModel extends editViewModelBaseModule.EditViewModelBase {
+    private _report: any;
 
-    constructor(report: any) {
-        super();
-
-        this.report = report;
+    constructor(report?: any) {
+        if (report) {
+            super(false);
+            this.report = report;
+        }
+        else {
+            super(true);
+            this.report = {};
+        }
     }
 
     get report(): any {

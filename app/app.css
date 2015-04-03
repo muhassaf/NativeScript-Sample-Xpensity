@@ -7,8 +7,12 @@ Page {
     background-color: #EEEEEE;
 }
 
-TextField, TextView, Label {
+TextField, TextView {
     margin: 0 16 0 16;
+}
+
+Switch, Label {
+    margin: 8 16 8 16;
 }
 
 .firstTextField {
