@@ -6,8 +6,17 @@ import viewModule = require("ui/core/view");
 import gridLayoutModule = require("ui/layouts/grid-layout");
 import builderModule = require("ui/builder");
 import labelModule = require("ui/label");
+import gesturesModule = require("ui/gestures");
 
 import definitionModule = require("grid-view");
+
+export module knownTemplates {
+    export var itemTemplate = ITEM_TEMPLATE;
+}
+
+export module knownEvents {
+    export var itemTap = "itemTap";
+}
 
 var CHANGE = "change";
 var ITEMS = "items";
@@ -15,11 +24,6 @@ var ITEM_TEMPLATE = "itemTemplate";
 var GRID_COLUMNS = "gridColumns";
 var GRID_VIEW = "GridView";
 var ITEMS_CHANGED = "_itemsChanged";
-
-
-export module knownTemplates {
-    export var itemTemplate = ITEM_TEMPLATE;
-}
 
 export class GridView extends gridLayoutModule.GridLayout implements definitionModule.GridView {
     public static itemsProperty = new dependencyObservableModule.Property(
@@ -139,7 +143,7 @@ export class GridView extends gridLayoutModule.GridLayout implements definitionM
     }
 
     private getItemTemplateContent(index: number): viewModule.View {
-        var templateView;
+        var templateView : viewModule.View;
 
         if (this.itemTemplate && this.items) {
             templateView = builderModule.parse(this.itemTemplate, getExports(this));
@@ -148,6 +152,11 @@ export class GridView extends gridLayoutModule.GridLayout implements definitionM
         else {
             templateView = this.getDefaultItemContent(index);
         }
+
+        var that = new WeakRef(this);
+        templateView.observe(gesturesModule.GestureTypes.Tap, function (args: gesturesModule.GestureEventData) {
+            that.get().onItemTap(index, templateView);
+        });
 
         return templateView;
     }
@@ -183,6 +192,10 @@ export class GridView extends gridLayoutModule.GridLayout implements definitionM
         for (var i = 0; i < rows.length; i++) {
             this.removeRow(rows[i]);
         }
+    }
+
+    private onItemTap(index: number, view: viewModule.View) {
+        this.notify({ eventName: knownEvents.itemTap, object: this, item: this.getDataItem(index), view: view });
     }
 }
 

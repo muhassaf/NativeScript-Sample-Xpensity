@@ -1,0 +1,8 @@
+﻿<Page xmlns="http://www.nativescript.org/tns.xsd"
+      xmlns:g="components/grid-view/grid-view"
+      loaded="pageLoaded">
+  <GridLayout rows="auto, auto, auto, auto, *">
+    <Label text="{{ report.Title }}" cssClass="header" />
+    <ActivityIndicator rowSpan="2" busy="{{ isLoading }}" />
+  </GridLayout>
+</Page>

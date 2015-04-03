@@ -5,14 +5,14 @@
     <Label text="MY REPORTS" cssClass="header" />
     
     <ScrollView row="1" >
-      <g:GridView items="{{ reports }}" gridColumns="2" cssClass="reportsGrid">
+      <g:GridView items="{{ reports }}" gridColumns="2" cssClass="reportsGrid" itemTap="reportTap">
         <g:GridView.itemTemplate>
-          <Border borderWidth="2" borderColor="#DEDDDD" cssClass="tile">
+          <Border borderWidth="2" borderColor="#DEDDDD" cssClass="tile" >
             <StackLayout orientation="vertical">
               <Image src="~/res/approved-gray.png" cssClass="icon" stretch="fill" style="horizontal-align: right;" />
-              <PieChart items="{{ Expenses }}" cssClass="pieChart" />
-              <Label text="{{ Title }}" cssClass="itemHeader" />
-              <Label text="{{ CreatedOn }}" cssClass="itemSubHeader" />
+              <PieChart items="{{ expensesByCategory }}" valueProperty="Total" cssClass="pieChart" />
+              <Label text="{{ report.Title }}" cssClass="itemHeader" />
+              <Label text="{{ report.CreatedOn }}" cssClass="itemSubHeader" />
             </StackLayout>
           </Border>
         </g:GridView.itemTemplate>
@@ -20,7 +20,7 @@
     </ScrollView>
 
     <AbsoluteLayout row="1" cssClass="fabContainer" style.visibility="{{ androidVisibility }}" >
-      <Image src="~/res/FAB_add.png" tap="{{ addReport }}" stretch="fill" cssClass="fab" />
+      <Image src="~/res/FAB_add.png" tap="addReportTap" stretch="fill" cssClass="fab" />
     </AbsoluteLayout>
 
     <ActivityIndicator rowSpan="2" busy="{{ isLoading }}" />

@@ -336,6 +336,9 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="app.ts" />
+    <TypeScriptCompile Include="components\report-view-model.ts" />
+    <Content Include="components\view-report\view-report.xml" />
+    <TypeScriptCompile Include="components\view-report\view-report.ts" />
     <TypeScriptCompile Include="tns_modules\ui\items-view\items-view.d.ts" />
     <TypeScriptCompile Include="tns_modules\ui\items-view\items-view.ts" />
     <TypeScriptCompile Include="tns_modules\ui\pie-chart\pie-chart.d.ts" />
@@ -444,4 +447,5 @@
   <ItemGroup>
     <Content Include="components\grid-view\package.json" />
   </ItemGroup>
+  <ItemGroup />
 </Project>

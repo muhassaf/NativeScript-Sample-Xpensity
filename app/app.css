@@ -10,6 +10,7 @@ Page {
 .icon {
     width: 24;
     height: 24;
+    margin: 5;
 }
 
 .header {
@@ -31,7 +32,7 @@ Page {
 {
     width: 60;
     height: 60;
-    margin: 10;
+    margin: 12 12 18 12;
 }
 
 .fabContainer
