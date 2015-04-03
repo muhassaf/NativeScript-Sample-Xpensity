@@ -95,6 +95,7 @@
     <Content Include="components\sign-up\sign-up.xml">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="components\view-report\view-report.css" />
     <Content Include="lib\everlive.js" />
     <Content Include="res\approved-gray.png" />
     <Content Include="res\FAB_add.png" />

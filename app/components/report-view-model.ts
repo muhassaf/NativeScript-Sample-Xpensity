@@ -32,4 +32,16 @@ export class ReportViewModel extends viewModelBaseModule.ViewModelBase {
             { Category: "Auto & Transport", Total: 25 }
         ];
     }
+
+    get expenses(): any[]{
+        return [
+            { Title: "Dinner", Cost: 132.33, Date: "May 02, 2015", Location: "Panera Bread, Boston" },
+            { Title: "Taxi", Cost: 15.33, Date: "May 02, 2015", Location: "Uber, Boston" },
+            { Title: "Hotel", Cost: 340.54, Date: "May 02, 2015", Location: "Grand Hotel Boston, Boston" },
+        ];
+    }
+
+    get total(): number {
+        return 1500;
+    }
 }

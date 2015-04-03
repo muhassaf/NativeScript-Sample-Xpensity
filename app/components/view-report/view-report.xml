@@ -1,8 +1,33 @@
 ﻿<Page xmlns="http://www.nativescript.org/tns.xsd"
       xmlns:g="components/grid-view/grid-view"
-      loaded="pageLoaded">
+      loaded="pageLoaded"
+      navigatedTo="navigatedTo">
   <GridLayout rows="auto, auto, auto, auto, *">
-    <Label text="{{ report.Title }}" cssClass="header" />
-    <ActivityIndicator rowSpan="2" busy="{{ isLoading }}" />
+    <Label text="{{ report.Title }}" cssClass="title" />
+    <Label text="{{ total }}" cssClass="total" />
+    <Label row="1" text="{{ report.BussinessPurpose }}" cssClass="subTitle" />
+    <Label row="2" text="{{ report.Date }}" cssClass="subTitle" />
+    
+    <PieChart row="3" items="{{ expensesByCategory }}" valueProperty="Total" cssClass="categoriesChart" />
+    
+    <ListView row="4" items="{{ expenses }}" cssClass="expensesListView">
+      <ListView.itemTemplate>
+        <GridLayout columns="auto, *, auto">
+          <Border backgroundColor="#0000FF" cssClass="category" />
+          <StackLayout col="1">
+            <Label text="{{ Title }}" cssClass="itemTitle" />
+            <Label text="{{ Date }}" cssClass="itemSubTitle" />
+            <Label text="{{ Location }}" cssClass="itemSubTitleLast" />
+          </StackLayout>
+          <Label col="2" text="{{ Cost }}" cssClass="itemCost" />
+        </GridLayout>
+      </ListView.itemTemplate>
+    </ListView>
+
+    <AbsoluteLayout rowSpan="5" cssClass="fabContainer" style.visibility="{{ androidVisibility }}" >
+      <Image src="~/res/FAB_add.png" tap="addExpenseTap" stretch="fill" cssClass="fab" />
+    </AbsoluteLayout>
+    
+    <ActivityIndicator rowSpan="5" busy="{{ isLoading }}" />
   </GridLayout>
 </Page>

@@ -11,12 +11,12 @@ export class MainViewModel extends viewModelBaseModule.ViewModelBase {
 
     get reports(): reportViewModelModule.ReportViewModel[] {
         return [
-            new reportViewModelModule.ReportViewModel({ Title: "Dinner with Daniel Smith", CreatedOn: "Apr 13, 2015" }),
-            new reportViewModelModule.ReportViewModel({ Title: "Lunch with clients", CreatedOn: "Apr 13, 2015" }),
-            new reportViewModelModule.ReportViewModel({ Title: "Boston Trip", CreatedOn: "Mar 14, 2015" }),
-            new reportViewModelModule.ReportViewModel({ Title: "Boston Trip", CreatedOn: "Jan 18, 2015" }),
-            new reportViewModelModule.ReportViewModel({ Title: "Boston Trip", CreatedOn: "Apr 21, 2015" }),
-            new reportViewModelModule.ReportViewModel({ Title: "Boston Trip", CreatedOn: "Apr 23, 2015" })
+            new reportViewModelModule.ReportViewModel({ Title: "Dinner with Daniel Smith", BussinessPurpose: "Clients visit", Date: "Apr 13, 2015" }),
+            new reportViewModelModule.ReportViewModel({ Title: "Lunch with clients", BussinessPurpose: "Clients visit", Date: "Apr 13, 2015" }),
+            new reportViewModelModule.ReportViewModel({ Title: "Boston Trip", BussinessPurpose: "Clients visit", Date: "Mar 14, 2015" }),
+            new reportViewModelModule.ReportViewModel({ Title: "Boston Trip", BussinessPurpose: "Clients visit", Date: "Jan 18, 2015" }),
+            new reportViewModelModule.ReportViewModel({ Title: "Boston Trip", BussinessPurpose: "Clients visit", Date: "Apr 21, 2015" }),
+            new reportViewModelModule.ReportViewModel({ Title: "Boston Trip", BussinessPurpose: "Clients visit", Date: "Apr 23, 2015" })
         ];
     }
 
