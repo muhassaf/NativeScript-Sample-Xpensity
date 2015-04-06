@@ -6,6 +6,24 @@
       <StackLayout>
         <TextField text="{{ expense.Title }}" hint="Title" cssClass="firstTextField" />
         <TextField text="{{ expense.Cost  }}" hint="Cost" />
+
+        <StackLayout cssClass="pickerContainer" tap="datePickerTap">
+          <Label text="Date" cssClass="pickerLabel" />
+          <GridLayout columns="*, auto">
+            <Label text="{{ expense.Date | formatDate }}" cssClass="pickerValue" />
+            <Image col="1" src="~/res/picker.png" cssClass="pickerIcon" stretch="fill" />
+          </GridLayout>
+          <Border cssClass="pickerBorder" />
+        </StackLayout>
+
+        <StackLayout cssClass="pickerContainer" tap="categoryPickerTap">
+          <Label text="Category" cssClass="pickerLabel" />
+          <GridLayout columns="*, auto">
+            <Label text="{{ expense.Category }}" cssClass="pickerValue" />
+            <Image col="1" src="~/res/picker.png" cssClass="pickerIcon" stretch="fill" />
+          </GridLayout>
+          <Border cssClass="pickerBorder" />
+        </StackLayout>
        
         <GridLayout columns="auto, *" cssClass="imageButtonContainer">
           <Image src="~/res/photo.png" cssClass="icon" stretch="fill" />

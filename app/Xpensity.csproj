@@ -357,7 +357,6 @@
     <TypeScriptCompile Include="app.ts" />
     <TypeScriptCompile Include="components\date-picker\date-picker-view-model.ts" />
     <TypeScriptCompile Include="components\date-picker\date-picker.ts" />
-    <TypeScriptCompile Include="components\dialog-result-view-model.ts" />
     <TypeScriptCompile Include="components\edit-expense\edit-expense-view-model.ts" />
     <TypeScriptCompile Include="components\edit-expense\edit-expense.ts" />
     <TypeScriptCompile Include="components\edit-view-model-base.ts" />

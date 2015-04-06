@@ -74,5 +74,30 @@ Switch, Label {
 }
 
 .imageButtonContainer {
-    margin: 16;
+    margin: 0 16 16 16;
+}
+
+.pickerContainer {
+    margin: 0 16 16 16;
+}
+
+.pickerLabel {
+    color: #8F8F8F;
+    font-size: 10;
+    margin: 0;
+}
+
+.pickerValue {
+    margin: 0;
+}
+
+.pickerIcon {
+    width: 16;
+    height: 8;
+    vertical-align: center;
+}
+
+.pickerBorder {
+    background-color: #D1D1D1;
+    height: 1;
 }

@@ -1,5 +1,4 @@
 <Page xmlns="http://www.nativescript.org/tns.xsd"
-      loaded="pageLoaded"
       navigatedTo="navigatedTo" >
     <DatePicker cssClass="datePickerControl" day="{{ day }}" month="{{ month }}" year="{{ year }}"/>
 </Page>

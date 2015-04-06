@@ -1,12 +1,13 @@
 ﻿import observableModule = require("data/observable");
 
-import dialogResultViewModel = require("../dialog-result-view-model");
+import viewModelBaseModule = require("../view-model-base");
 
-export class ListPickerViewModel extends dialogResultViewModel.DialogResultViewModel{
+export class ListPickerViewModel extends viewModelBaseModule.ViewModelBase{
     private _items: any[];
     private _selectedItem: ListItem;
+    private _selectedCallback: (selectedItem: any) => void;
 
-    constructor(items: any[], selectedItem: any) {
+    constructor(items: any[], selectedItem: any, selectedCallback: (selectedItem: any) => void) {
         super();
 
         var listItems = new Array<ListItem>();
@@ -20,6 +21,8 @@ export class ListPickerViewModel extends dialogResultViewModel.DialogResultViewM
         }
 
         this.items = listItems;
+
+        this._selectedCallback = selectedCallback;
     }
 
     get items(): ListItem[] {
@@ -33,10 +36,6 @@ export class ListPickerViewModel extends dialogResultViewModel.DialogResultViewM
         }
     }
 
-    get selectedItem(): any {
-        return this._selectedItem.data;
-    }
-
     selectItem(item: ListItem) {
         if (this._selectedItem) {
             this._selectedItem.isSelected = false;
@@ -46,6 +45,10 @@ export class ListPickerViewModel extends dialogResultViewModel.DialogResultViewM
         if (this._selectedItem) {
             this._selectedItem.isSelected = true;
         }
+    }
+
+    done() {
+        this._selectedCallback(this._selectedItem.data);
     }
 }
 

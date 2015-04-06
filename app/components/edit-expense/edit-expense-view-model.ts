@@ -9,7 +9,9 @@ import serviceModule = require("../../utils/service");
 import navigationModule = require("../../utils/navigation");
 import viewsModule = require("../../utils/views");
 
-export class EditExpenseViewModel extends editViewModelBaseModule.EditViewModelBase{
+export class EditExpenseViewModel extends editViewModelBaseModule.EditViewModelBase {
+    private static _months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
     private _expense: any;
 
     constructor(expense?: any) {
@@ -32,6 +34,10 @@ export class EditExpenseViewModel extends editViewModelBaseModule.EditViewModelB
             this._expense = value;
             this.notifyPropertyChanged("expense", value);
         }
+    }
+
+    formatDate(date: Date): string {
+        return date.getDay() + " " + EditExpenseViewModel._months[date.getMonth()] + " " + date.getFullYear();
     }
 
     deleteExpense() {
