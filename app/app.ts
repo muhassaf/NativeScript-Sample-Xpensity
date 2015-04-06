@@ -3,6 +3,6 @@
 import serviceModule = require("./utils/service");
 import viewsModule = require("./utils/views");
 
-applicationModule.mainModule = viewsModule.Views.main;
+applicationModule.mainModule = viewsModule.Views.listPicker;
 
 applicationModule.start();

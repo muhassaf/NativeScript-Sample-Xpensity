@@ -6,4 +6,6 @@
     export var editReport = "components/edit-report/edit-report";
     export var editExpense = "components/edit-expense/edit-expense";
     export var settings = "components/settings/settings";
+    export var datePicker = "components/date-picker/date-picker";
+    export var listPicker = "components/list-picker/list-picker";
 } 

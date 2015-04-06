@@ -88,8 +88,16 @@
     <Content Include="App_Resources\iOS\Icon-Small.png" />
     <Content Include="App_Resources\iOS\icon.png" />
     <Content Include="bootstrap.js" />
+    <Content Include="components\date-picker\date-picker.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="components\date-picker\date-picker.css" />
     <Content Include="components\edit-expense\edit-expense.css" />
     <Content Include="components\edit-expense\edit-expense.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="components\list-picker\list-picker.css" />
+    <Content Include="components\list-picker\list-picker.xml">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="components\login\login.xml" />
@@ -347,9 +355,14 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="app.ts" />
+    <TypeScriptCompile Include="components\date-picker\date-picker-view-model.ts" />
+    <TypeScriptCompile Include="components\date-picker\date-picker.ts" />
+    <TypeScriptCompile Include="components\dialog-result-view-model.ts" />
     <TypeScriptCompile Include="components\edit-expense\edit-expense-view-model.ts" />
     <TypeScriptCompile Include="components\edit-expense\edit-expense.ts" />
     <TypeScriptCompile Include="components\edit-view-model-base.ts" />
+    <TypeScriptCompile Include="components\list-picker\list-picker-view-model.ts" />
+    <TypeScriptCompile Include="components\list-picker\list-picker.ts" />
     <TypeScriptCompile Include="components\settings\settings-view-model.ts" />
     <TypeScriptCompile Include="components\settings\settings.ts" />
     <TypeScriptCompile Include="components\sign-up\sign-up-view-model.ts" />
