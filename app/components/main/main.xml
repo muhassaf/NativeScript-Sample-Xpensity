@@ -44,9 +44,9 @@
           </GridLayout>
         </TabViewItem.view>
       </TabViewItem >
-      <TabViewItem iconSource="res://ic_settings" bindingContext="{{ settingsViewModel }}">
+      <TabViewItem iconSource="res://ic_settings" bindingContext="{{ settingsViewModel }}" >
         <TabViewItem.view>
-          <GridLayout rows="auto, *">
+          <GridLayout rows="auto, *" loaded="settingsViewLoaded">
             <Label text="SETTINGS" cssClass="header" />
 
             <ScrollView row="1">

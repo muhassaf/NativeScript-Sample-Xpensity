@@ -2,14 +2,15 @@
       xmlns:g="components/grid-view/grid-view"
       loaded="pageLoaded"
       navigatedTo="navigatedTo" >
+
   <GridLayout rows="auto, auto, auto, auto, *">
     <Label text="{{ report.Title }}" cssClass="title" />
     <Label text="{{ total }}" cssClass="total" />
     <Label row="1" text="{{ report.BussinessPurpose }}" cssClass="subTitle" />
     <Label row="2" text="{{ report.Date }}" cssClass="subTitle" />
-    
+
     <PieChart row="3" items="{{ expensesByCategory }}" valueProperty="Total" cssClass="categoriesChart" />
-    
+
     <ListView row="4" items="{{ expenses }}" cssClass="expensesListView">
       <ListView.itemTemplate>
         <GridLayout columns="auto, *, auto">
@@ -25,9 +26,9 @@
     </ListView>
 
     <AbsoluteLayout rowSpan="5" cssClass="fabContainer" style.visibility="{{ androidVisibility }}" >
-      <Image src="~/res/FAB_add.png" tap="addExpenseTap" stretch="fill" cssClass="fab" />
+      <Image src="res://fab" tap="addExpenseTap" stretch="none" cssClass="fab" />
     </AbsoluteLayout>
-    
+
     <ActivityIndicator rowSpan="5" busy="{{ isLoading }}" />
   </GridLayout>
 </Page>

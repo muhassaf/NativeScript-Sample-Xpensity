@@ -7,6 +7,7 @@ import gridViewModule = require("grid-view");
 
 import mainViewModelModule = require("./main-view-model");
 import reportsViewModelModule = require("./reports-view-model");
+import settingsViewModelModule = require("./settings-view-model");
 import editReportViewModelModule = require("../edit-report/edit-report-view-model");
 import navigationModule = require("../../utils/navigation");
 import viewsModule = require("../../utils/views");
@@ -35,4 +36,9 @@ export function addReportTap(args: observableModule.EventData) {
 export function reportsViewLoaded(args: observableModule.EventData) {
     var tabItem = <viewModule.View>args.object;
     tabItem.bindingContext = new reportsViewModelModule.ReportsViewModel();
+}
+
+export function settingsViewLoaded(args: observableModule.EventData) {
+    var tabItem = <viewModule.View>args.object;
+    tabItem.bindingContext = new settingsViewModelModule.SettingsViewModel();
 }

@@ -5,6 +5,7 @@ import serviceModule = require("../../utils/service");
 
 export class ReportViewModel extends viewModelBaseModule.ViewModelBase {
     private _report: any;
+    private _status: string;
 
     constructor(report: any) {
         super();
@@ -44,4 +45,11 @@ export class ReportViewModel extends viewModelBaseModule.ViewModelBase {
     get total(): number {
         return 1500;
     }
+}
+
+export module ReportStatus {
+    export var New = "New";
+    export var Returned = "Returned";
+    export var Approved = "Approved";
+    export var ForApproval = "For Approval";
 }
