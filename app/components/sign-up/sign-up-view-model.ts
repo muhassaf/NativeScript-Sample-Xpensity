@@ -90,7 +90,7 @@ export class SignUpViewModel extends viewModelBaseModule.ViewModelBase {
             },(error: any) => {
                     this.endLoading();
                     this.clearPassword();
-                    this.notifyOnError(error.message);
+                    this.showError(error.message);
                 });
         }
         else {
@@ -104,27 +104,27 @@ export class SignUpViewModel extends viewModelBaseModule.ViewModelBase {
 
     private validate(): boolean {
         if (this.name === "") {
-            this.notifyOnError("Please enter your name.");
+            this.showError("Please enter your name.");
             return false;
         }
 
         if (this.email == "") {
-            this.notifyOnError("Please enter your email.");
+            this.showError("Please enter your email.");
             return false;
         }
 
         if (this.username == "") {
-            this.notifyOnError("Please enter username.");
+            this.showError("Please enter username.");
             return false;
         }
 
         if (this.password == "") {
-            this.notifyOnError("Please enter password.");
+            this.showError("Please enter password.");
             return false;
         }
 
         if (this.confirmPassword != this.password) {
-            this.notifyOnError("Passwords did not match.");
+            this.showError("Passwords did not match.");
             return false;
         }
 

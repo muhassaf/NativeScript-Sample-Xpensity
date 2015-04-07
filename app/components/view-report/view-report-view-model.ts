@@ -1,7 +1,12 @@
 ﻿import observableModule = require("data/observable");
 
+import editExpenseViewModelModule = require("../edit-expense/edit-expense-view-model");
+import editReportViewModelModule = require("../edit-report/edit-report-view-model");
+
 import viewModelBaseModule = require("../view-model-base");
 import serviceModule = require("../../utils/service");
+import navigationModule = require("../../utils/navigation");
+import viewsModule = require("../../utils/views");
 
 export class ReportViewModel extends viewModelBaseModule.ViewModelBase {
     private _report: any;
@@ -44,6 +49,28 @@ export class ReportViewModel extends viewModelBaseModule.ViewModelBase {
 
     get total(): number {
         return 1500;
+    }
+
+    addExpense() {
+        navigationModule.navigate({
+            moduleName: viewsModule.Views.editExpense,
+            context: new editExpenseViewModelModule.EditExpenseViewModel()
+        });
+    }
+
+    showReportInfo() {
+        this.showInfo(this.report.Info);
+    }
+
+    submit() {
+        this.report.Status = ReportStatus.ForApproval;
+    }
+
+    edit() {
+        navigationModule.navigate({
+            moduleName: viewsModule.Views.editReport,
+            context: new editReportViewModelModule.EditReportViewModel(this.report)
+        });
     }
 }
 

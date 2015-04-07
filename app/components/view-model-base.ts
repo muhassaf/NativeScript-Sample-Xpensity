@@ -59,8 +59,12 @@ export class ViewModelBase extends observableModule.Observable {
         }
     }
 
-    notifyOnError(error: string) {
+    showError(error: string) {
         dialogsModule.alert({ title: "Error", message: error, okButtonText: "Close" });
+    }
+
+    showInfo(message: string) {
+        dialogsModule.alert({ title: "Info", message: message, okButtonText: "OK" });
     }
 
     notifyPropertyChanged(propertyName: string, value: any) {

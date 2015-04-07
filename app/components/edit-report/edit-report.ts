@@ -9,7 +9,17 @@ export function pageLoaded(args: any) {
     actionBarModule.showBackNavigation();
 }
 
+var viewModel: editReportViewModelModule.EditReportViewModel;
 export function navigatedTo(args: observableModule.EventData) {
     var page = <pagesModule.Page>args.object;
-    page.bindingContext = page.navigationContext;
+    viewModel = <editReportViewModelModule.EditReportViewModel>page.navigationContext;
+    page.bindingContext = viewModel;
+}
+
+export function doneMenuItemTap(args: observableModule.EventData) {
+    viewModel.saveReport();
+}
+
+export function deleteReportButtonTap(args: observableModule.EventData) {
+    viewModel.deleteReport();
 }

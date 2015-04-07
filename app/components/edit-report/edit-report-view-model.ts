@@ -34,6 +34,11 @@ export class EditReportViewModel extends editViewModelBaseModule.EditViewModelBa
         }
     }
 
+    saveReport() {
+        alert("Saved");
+        navigationModule.goBack();
+    }
+
     deleteReport() {
         dialogsModule.confirm({
             title: "Delete Report",

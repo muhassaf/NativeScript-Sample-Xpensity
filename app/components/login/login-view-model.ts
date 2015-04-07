@@ -50,7 +50,7 @@ export class LoginViewModel extends viewModelBaseModule.ViewModelBase {
             },(error: any) => {
                     this.clearPassword();
                     this.endLoading();
-                    this.notifyOnError(error.message);
+                    this.showError(error.message);
                 });
         }
         else {
@@ -64,12 +64,12 @@ export class LoginViewModel extends viewModelBaseModule.ViewModelBase {
 
     private validate(): boolean {
         if (this.username === "") {
-            this.notifyOnError("Please enter username.");
+            this.showError("Please enter username.");
             return false;
         }
 
         if (this.password === "") {
-            this.notifyOnError("Please enter password.");
+            this.showError("Please enter password.");
             return false;
         }
 
