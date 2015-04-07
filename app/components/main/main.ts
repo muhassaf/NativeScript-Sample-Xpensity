@@ -1,17 +1,20 @@
 ﻿import observableModule = require("data/observable");
 
 import viewModule = require("ui/core/view");
-import pagesModule = require("ui/page");
+import pageModule = require("ui/page");
 
 import gridViewModule = require("grid-view");
 
 import mainViewModelModule = require("./main-view-model");
+import reportsViewModelModule = require("./reports-view-model");
 import editReportViewModelModule = require("../edit-report/edit-report-view-model");
 import navigationModule = require("../../utils/navigation");
 import viewsModule = require("../../utils/views");
+import actionBarModule = require("../../utils/action-bar");
 
 export function pageLoaded(args: observableModule.EventData) {
-    var page = <pagesModule.Page>args.object;
+    actionBarModule.hideBackNavigation();
+    var page = <pageModule.Page>args.object;
     page.bindingContext = new mainViewModelModule.MainViewModel();
 }
 
@@ -27,4 +30,9 @@ export function addReportTap(args: observableModule.EventData) {
         moduleName: viewsModule.Views.editReport,
         context: new editReportViewModelModule.EditReportViewModel()
     });
+}
+
+export function reportsViewLoaded(args: observableModule.EventData) {
+    var tabItem = <viewModule.View>args.object;
+    tabItem.bindingContext = new reportsViewModelModule.ReportsViewModel();
 }

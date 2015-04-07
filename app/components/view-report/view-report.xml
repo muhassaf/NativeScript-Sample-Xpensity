@@ -1,5 +1,6 @@
 ﻿<Page xmlns="http://www.nativescript.org/tns.xsd"
       xmlns:g="components/grid-view/grid-view"
+      loaded="pageLoaded"
       navigatedTo="navigatedTo" >
   <GridLayout rows="auto, auto, auto, auto, *">
     <Label text="{{ report.Title }}" cssClass="title" />

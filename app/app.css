@@ -20,12 +20,11 @@ Switch, Label {
 }
 
 .icon {
-    width: 24;
-    height: 24;
+    margin: 8 8 0 0;
 }
 
 .header {
-    font-size: 18;
+    font-size: 16;
     margin: 16 16 8 16;
 }
 
@@ -47,9 +46,7 @@ Switch, Label {
 }
 
 .fab {
-    width: 60;
-    height: 60;
-    margin: 12 12 18 12;
+    margin: 0 16 28 0;
 }
 
 .fabContainer {

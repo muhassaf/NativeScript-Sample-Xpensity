@@ -7,6 +7,11 @@ import gridViewModule = require("grid-view");
 import editExpenseViewModelModule = require("../edit-expense/edit-expense-view-model");
 import navigationModule = require("../../utils/navigation");
 import viewsModule = require("../../utils/views");
+import actionBarModule = require("../../utils/action-bar");
+
+export function pageLoaded(args: observableModule.EventData) {
+    actionBarModule.showBackNavigation();
+}
 
 export function navigatedTo(args: observableModule.EventData) {
     var page = <pagesModule.Page>args.object;

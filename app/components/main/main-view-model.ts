@@ -1,22 +1,32 @@
 ﻿import observableModule = require("data/observable");
 
 import viewModelBaseModule = require("../view-model-base");
-import viewReportViewModelModule = require("../view-report/view-report-view-model");
-import serviceModule = require("../../utils/service");
+import reportsViewModelModule = require("./reports-view-model");
+import settingsViewModelModule = require("./settings-view-model");
 
 export class MainViewModel extends viewModelBaseModule.ViewModelBase {
+    private _reportsViewModel: reportsViewModelModule.ReportsViewModel;
+    private _settingsViewModel: settingsViewModelModule.SettingsViewModel;
+
     constructor() {
         super();
     }
 
-    get reports(): viewReportViewModelModule.ReportViewModel[] {
-        return [
-            new viewReportViewModelModule.ReportViewModel({ Title: "Dinner with Daniel Smith", BussinessPurpose: "Clients visit", Date: "Apr 13, 2015" }),
-            new viewReportViewModelModule.ReportViewModel({ Title: "Lunch with clients", BussinessPurpose: "Clients visit", Date: "Apr 13, 2015" }),
-            new viewReportViewModelModule.ReportViewModel({ Title: "Boston Trip", BussinessPurpose: "Clients visit", Date: "Mar 14, 2015" }),
-            new viewReportViewModelModule.ReportViewModel({ Title: "Boston Trip", BussinessPurpose: "Clients visit", Date: "Jan 18, 2015" }),
-            new viewReportViewModelModule.ReportViewModel({ Title: "Boston Trip", BussinessPurpose: "Clients visit", Date: "Apr 21, 2015" }),
-            new viewReportViewModelModule.ReportViewModel({ Title: "Boston Trip", BussinessPurpose: "Clients visit", Date: "Apr 23, 2015" })
-        ];
+    get reportsViewModel(): reportsViewModelModule.ReportsViewModel {
+        console.log("GET REPORTS VM:");
+        if (!this._reportsViewModel) {
+            this._reportsViewModel = new reportsViewModelModule.ReportsViewModel();
+            console.log("CREATE REPORTS VM:");
+        }
+
+        return this._reportsViewModel;
+    }
+
+    get settingsViewModel(): settingsViewModelModule.SettingsViewModel {
+        if (!this._settingsViewModel) {
+            this._settingsViewModel = new settingsViewModelModule.SettingsViewModel();
+        }
+
+        return this._settingsViewModel;
     }
 }

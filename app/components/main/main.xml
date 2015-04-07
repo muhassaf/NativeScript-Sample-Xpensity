@@ -1,28 +1,78 @@
 <Page xmlns="http://www.nativescript.org/tns.xsd"
       xmlns:g="components/grid-view/grid-view"
       loaded="pageLoaded">
-  <GridLayout rows="auto, *">
-    <Label text="MY REPORTS" cssClass="header" />
-    
-    <ScrollView row="1" >
-      <g:GridView items="{{ reports }}" gridColumns="2" cssClass="reportsGrid" itemTap="reportTap">
-        <g:GridView.itemTemplate>
-          <Border borderWidth="2" borderColor="#DEDDDD" cssClass="tile" >
-            <StackLayout orientation="vertical">
-              <Image src="~/res/approved-gray.png" cssClass="icon" stretch="fill" style="horizontal-align: right;" />
-              <PieChart items="{{ expensesByCategory }}" valueProperty="Total" cssClass="categoriesChart" />
-              <Label text="{{ report.Title }}" cssClass="itemTitle" />
-              <Label text="{{ report.Date }}" cssClass="itemSubTitleLast" />
-            </StackLayout>
-          </Border>
-        </g:GridView.itemTemplate>
-      </g:GridView>
-    </ScrollView>
+  <TabView>
+    <TabView.items>
+      <TabViewItem iconSource="res://ic_reports" >
+        <TabViewItem.view>
+          <GridLayout rows="auto, *" loaded="reportsViewLoaded" >
+            <Label text="MY REPORTS" cssClass="header" />
 
-    <AbsoluteLayout rowSpan="2" cssClass="fabContainer" style.visibility="{{ androidVisibility }}" >
-      <Image src="~/res/FAB_add.png" tap="addReportTap" stretch="fill" cssClass="fab" />
-    </AbsoluteLayout>
+            <ScrollView row="1" >
+              <g:GridView items="{{ reports }}" gridColumns="2" cssClass="reportsGrid" itemTap="reportTap">
+                <g:GridView.itemTemplate>
+                  <Border borderWidth="2" borderColor="#DEDDDD" cssClass="tile" >
+                    <StackLayout orientation="vertical">
+                      <Image src="res://ic_approved" cssClass="icon" stretch="none" style="horizontal-align: right;" />
+                      <PieChart items="{{ expensesByCategory }}" valueProperty="Total" cssClass="categoriesChart" />
+                      <Label text="{{ report.Title }}" cssClass="itemTitle" />
+                      <Label text="{{ report.Date }}" cssClass="itemSubTitleLast" />
+                    </StackLayout>
+                  </Border>
+                </g:GridView.itemTemplate>
+              </g:GridView>
+            </ScrollView>
 
-    <ActivityIndicator rowSpan="2" busy="{{ isLoading }}" />
-  </GridLayout>
+            <AbsoluteLayout rowSpan="2" cssClass="fabContainer" style.visibility="{{ androidVisibility }}" >
+              <Image src="res://fab" tap="addReportTap" stretch="none" cssClass="fab" />
+            </AbsoluteLayout>
+
+            <ActivityIndicator rowSpan="2" busy="{{ isLoading }}" />
+          </GridLayout>
+        </TabViewItem.view>
+      </TabViewItem >
+      <TabViewItem iconSource="res://ic_notifications" bindingContext="{{ notificationsViewModel }}">
+        <TabViewItem.view>
+          <GridLayout rows="auto, auto, *">
+            <Label text="NOTIFICATIONS" cssClass="header" />
+
+            <Border row="1" cssClass="blockContainer">
+              <Label text="3 REPORTS WAITING FOR APPROVAL" cssClass="blockLabel" color="#0079FF" />
+            </Border>
+
+            <ActivityIndicator rowSpan="3" busy="{{ isLoading }}" />
+          </GridLayout>
+        </TabViewItem.view>
+      </TabViewItem >
+      <TabViewItem iconSource="res://ic_settings" bindingContext="{{ settingsViewModel }}">
+        <TabViewItem.view>
+          <GridLayout rows="auto, *">
+            <Label text="SETTINGS" cssClass="header" />
+
+            <ScrollView row="1">
+              <StackLayout>
+                <Border cssClass="blockContainer">
+                  <Label text="{{ name }}" cssClass="blockLabel" />
+                </Border>
+
+                <GridLayout columns="*, auto">
+                  <Label text="Offline Mode" />
+                  <Switch checked="{{ offlineMode }}"/>
+                </GridLayout>
+
+                <GridLayout columns="*, auto">
+                  <Label text="Notifications" />
+                  <Switch checked="{{ notifications }}"/>
+                </GridLayout>
+
+                <Button text="LOGOUT" tap="{{ logout }}" cssClass="secondaryButton" />
+              </StackLayout>
+            </ScrollView>
+
+            <ActivityIndicator rowSpan="2" busy="{{ isLoading }}" />
+          </GridLayout>
+        </TabViewItem.view>
+      </TabViewItem >
+    </TabView.items>
+  </TabView>
 </Page>

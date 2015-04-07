@@ -12,3 +12,12 @@
     margin-left: 25;
     margin-right: 25;
 }
+
+.blockContainer {
+    background-color: #FFFFFF;
+    margin: 8 0 8 0;
+}
+
+.blockLabel {
+    margin: 16;
+}
