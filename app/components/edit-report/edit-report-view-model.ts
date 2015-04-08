@@ -8,35 +8,24 @@ import constantsModule = require("../../utils/constants");
 import serviceModule = require("../../utils/service");
 import navigationModule = require("../../utils/navigation");
 import viewsModule = require("../../utils/views");
+import reportStatusModule = require("../../utils/report-status");
 
 export class EditReportViewModel extends editViewModelBaseModule.EditViewModelBase {
-    private _report: any;
-
     constructor(report?: any) {
-        if (report) {
-            super(false);
-            this.report = report;
-        }
-        else {
-            super(true);
-            this.report = {};
-        }
+        super(report);
     }
 
-    get report(): any {
-        return this._report;
-    }
+    get createMethod(): (report: any) => Promise<any> {
+        return (r) => {
+            r.Status = reportStatusModule.New;
+            r.Date = new Date();
 
-    set report(value: any) {
-        if (this._report !== value) {
-            this._report = value;
-            this.notifyPropertyChanged("report", value);
+            return serviceModule.service.createReport(r);
         }
     }
 
-    saveReport() {
-        alert("Saved");
-        navigationModule.goBack();
+    get updateMethod(): (report: any) => Promise<any> {
+        return serviceModule.service.updateReport;
     }
 
     deleteReport() {
@@ -47,8 +36,13 @@ export class EditReportViewModel extends editViewModelBaseModule.EditViewModelBa
             cancelButtonText: "NO"
         }).then((value: boolean) => {
             if (value) {
-                alert("deleted");
-                navigationModule.goBack();
+                this.beginLoading();
+                serviceModule.service.deleteReport(this.item).then((data) => {
+                    this.endLoading();
+                    navigationModule.navigateWitouthHistory(viewsModule.Views.main);
+                },(error) => {
+                        this.endLoading();
+                    });
             }
         });
     }

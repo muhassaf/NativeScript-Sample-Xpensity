@@ -11,29 +11,20 @@ import navigationModule = require("../../utils/navigation");
 import viewsModule = require("../../utils/views");
 
 export class EditExpenseViewModel extends editViewModelBaseModule.EditViewModelBase {
-    private _expense: any;
     private _viewReportViewModel: viewReportViewModelModule.ViewReportViewModel;
 
     constructor(viewReportViewModel: viewReportViewModelModule.ViewReportViewModel, expense?: any) {
-        if (expense) {
-            super(false);
-            this.expense = expense;
-        }
-        else {
-            super(true);
-            this.expense = {};
-        }
-
+        super(expense);
         this._viewReportViewModel = viewReportViewModel;
     }
 
     get expense(): any {
-        return this._expense;
+        return this.item;
     }
 
     set expense(value: any) {
-        if (this._expense !== value) {
-            this._expense = value;
+        if (this.item !== value) {
+            this.item = value;
             this.notifyPropertyChanged("expense", value);
         }
     }

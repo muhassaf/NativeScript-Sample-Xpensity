@@ -7,13 +7,13 @@
   <GridLayout>
     <ScrollView>
       <StackLayout>
-        <TextField text="{{ expense.Title }}" hint="Title" cssClass="firstTextField" />
-        <TextField text="{{ expense.Cost  }}" hint="Cost" />
+        <TextField text="{{ item.Title }}" hint="Title" cssClass="firstTextField" />
+        <TextField text="{{ item.Cost  }}" hint="Cost" />
 
         <StackLayout cssClass="pickerContainer" tap="datePickerTap">
           <Label text="Date" cssClass="pickerLabel" />
           <GridLayout columns="*, auto">
-            <Label text="{{ expense.Date }}" cssClass="pickerValue" />
+            <Label text="{{ item.Date }}" cssClass="pickerValue" />
             <Image col="1" src="res://ic_arrow_drop_down" cssClass="pickerIcon" stretch="none" />
           </GridLayout>
           <Border cssClass="pickerBorder" />
@@ -22,13 +22,13 @@
         <StackLayout cssClass="pickerContainer" tap="categoryPickerTap">
           <Label text="Category" cssClass="pickerLabel" />
           <GridLayout columns="*, auto">
-            <Label text="{{ expense.Category }}" cssClass="pickerValue" />
+            <Label text="{{ item.Category }}" cssClass="pickerValue" />
             <Image col="1" src="res://ic_arrow_drop_down" cssClass="pickerIcon" stretch="none" />
           </GridLayout>
           <Border cssClass="pickerBorder" />
         </StackLayout>
        
-        <TextView text="{{ expense.Notes }}" hint="Notes" />
+        <TextView text="{{ item.Notes }}" hint="Notes" />
 
         <Button text="DELETE EXPENSE" tap="deleteExpenseButtonTap" color="#FF0000" cssClass="secondaryButton" style.visibility="{{ editVisibility }}" />
       </StackLayout>

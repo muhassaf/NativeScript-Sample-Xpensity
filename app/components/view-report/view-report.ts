@@ -7,6 +7,7 @@ import enumsModule = require("ui/enums");
 
 import viewReportViewModelModule = require("./view-report-view-model");
 import actionBarModule = require("../../utils/action-bar");
+import reportStatusModule = require("../../utils/report-status");
 
 export function pageLoaded(args: observableModule.EventData) {
     actionBarModule.showBackNavigation();
@@ -31,9 +32,9 @@ export function expenseTap(args: listViewModule.ItemEventData) {
 function buildMenu(page: pageModule.Page) {
     clearMenu(page);
     switch (viewModel.report.Status) {
-        case viewReportViewModelModule.ReportStatus.Returned:
-        case viewReportViewModelModule.ReportStatus.New:
-            if (viewModel.report.Status === viewReportViewModelModule.ReportStatus.Returned) {
+        case reportStatusModule.Returned:
+        case reportStatusModule.New:
+            if (viewModel.report.Status === reportStatusModule.Returned) {
                 var infoMenuItem = new pageModule.MenuItem();
                 infoMenuItem.icon = "ic_info";
                 infoMenuItem.android.position = enumsModule.MenuItemPosition.actionBar;
@@ -48,7 +49,9 @@ function buildMenu(page: pageModule.Page) {
             submitMenuItem.icon = "ic_submit";
             submitMenuItem.android.position = enumsModule.MenuItemPosition.actionBar;
             submitMenuItem.on(pageModule.knownEvents.tap,(args: observableModule.EventData) => {
-                viewModel.submit();
+                viewModel.submit().then((data) => {
+                    buildMenu(page);
+                });
             });
 
             page.optionsMenu.addItem(submitMenuItem);

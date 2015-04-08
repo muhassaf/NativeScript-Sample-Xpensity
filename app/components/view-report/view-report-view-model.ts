@@ -1,4 +1,5 @@
 ﻿import observableModule = require("data/observable");
+import enumsModule = require("ui/enums");
 
 import editExpenseViewModelModule = require("../edit-expense/edit-expense-view-model");
 import editReportViewModelModule = require("../edit-report/edit-report-view-model");
@@ -8,6 +9,7 @@ import serviceModule = require("../../utils/service");
 import navigationModule = require("../../utils/navigation");
 import viewsModule = require("../../utils/views");
 import notificationsModule = require("../../utils/notifications");
+import reportStatusModule = require("../../utils/report-status");
 
 export class ViewReportViewModel extends viewModelBaseModule.ViewModelBase {
     private _report: any;
@@ -52,12 +54,28 @@ export class ViewReportViewModel extends viewModelBaseModule.ViewModelBase {
         return 1500;
     }
 
+    get fapVisibility() {
+        if (this.report.status === reportStatusModule.ForApproval ||
+            this.report.status === reportStatusModule.Approved) {
+            return enumsModule.Visibility.collapsed;
+        }
+    }
+
     showReportInfo() {
         notificationsModule.showInfo(this.report.Info);
     }
 
-    submit() {
-        this.report.Status = ReportStatus.ForApproval;
+    submit(): Promise<any> {
+        return new Promise<any>((resolve) => {
+            this.beginLoading();
+            this.report.Status = reportStatusModule.ForApproval;
+            serviceModule.service.updateReport(this.report).then((data) => {
+                this.endLoading();
+                resolve(data)
+            }, error => {
+                    this.endLoading();
+                });
+        });
     }
 
     edit() {
@@ -80,11 +98,4 @@ export class ViewReportViewModel extends viewModelBaseModule.ViewModelBase {
             context: new editExpenseViewModelModule.EditExpenseViewModel(this, expense)
         });
     }
-}
-
-export module ReportStatus {
-    export var New = "New";
-    export var Returned = "Returned";
-    export var Approved = "Approved";
-    export var ForApproval = "For Approval";
 }

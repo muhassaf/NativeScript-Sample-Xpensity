@@ -25,7 +25,7 @@
       </ListView.itemTemplate>
     </ListView>
 
-    <AbsoluteLayout rowSpan="5" cssClass="fabContainer" style.visibility="{{ androidVisibility }}" >
+    <AbsoluteLayout rowSpan="5" cssClass="fabContainer" style.visibility="{{ fapVisibility }}" >
       <Image src="res://fab" tap="addExpenseTap" stretch="none" cssClass="fab" />
     </AbsoluteLayout>
 

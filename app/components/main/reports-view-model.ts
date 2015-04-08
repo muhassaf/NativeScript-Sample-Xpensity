@@ -26,11 +26,13 @@ export class ReportsViewModel extends viewModelBaseModule.ViewModelBase {
     refresh() {
         this.beginLoading();
         serviceModule.service.getReports().then((data: any[]) => {
+            console.log("ITEMS: " + data.length);
             var reports: viewReportViewModelModule.ViewReportViewModel[] = [];
             for (var i = 0; i < data.length; i++) {
                 reports.push(new viewReportViewModelModule.ViewReportViewModel(data[i]));
             }
 
+            this.reports = reports;
             this.endLoading();
         },(error: any) => {
                 this.endLoading();

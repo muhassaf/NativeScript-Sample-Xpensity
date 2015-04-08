@@ -27,6 +27,10 @@ export function pageLoaded(args: observableModule.EventData) {
     }
 }
 
+export function navigatedTo(args: observableModule.EventData) {
+    viewModel.refresh();
+}
+
 export function reportTap(args: gridViewModule.ItemEventData) {
     navigationModule.navigate({
         moduleName: viewsModule.Views.viewReport,

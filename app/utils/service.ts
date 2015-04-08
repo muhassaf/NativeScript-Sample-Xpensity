@@ -5,12 +5,14 @@ import notificationsModule = require("./notifications");
 
 var everliveModule = require("../lib/everlive");
 
+var REPORT = "Report";
+
 export class Service {
     get isAuthenticated(): boolean {
         return localSettingsModule.hasKey(constantsModule.authenticationTokenKey);
     }
 
-    login(username: string, password: string) {
+    login(username: string, password: string): Promise<any> {
         return new Promise<any>((resolve, reject) => {
             var everlive = new everliveModule(constantsModule.telerikApiKey);
             everlive.Users.login(username, password,(data: any) => {
@@ -27,23 +29,60 @@ export class Service {
         this.clearLocalSettings();
     }
 
-    signUp(username: string, password: string, additionalData: any) {
+    signUp(username: string, password: string, additionalData: any): Promise<any> {
         return new Promise<any>((resolve, reject) => {
             var everlive = new everliveModule(constantsModule.telerikApiKey);
             everlive.Users.register(username, password, additionalData, resolve, error => {
-                notificationsModule.showError(error.message);
-                reject(error);
+                Service.showErrorAndReject(error, reject);
             })
         });
     }
 
-    getReports() {
+    getReports(): Promise<any> {
         return new Promise<any[]>((resolve, reject) => {
-            everliveModule.data("Report").get().then(data => { resolve(<any[]>data); }, error => {
-                notificationsModule.showError(error.message);
-                reject(error);
+            var everlive = Service.createEverlive();
+            everlive.data(REPORT).get().then(data => {
+                resolve(<any[]>data.result);
+            }, error => {
+                    Service.showErrorAndReject(error, reject);
+                })
+        });
+    }
+
+    createReport(report: any): Promise<any> {
+        return new Promise<any>((resolve, reject) => {
+            var everlive = Service.createEverlive();
+            everlive.data(REPORT).create(report, resolve, error => {
+                Service.showErrorAndReject(error, reject);
             })
         });
+    }
+
+    updateReport(report: any): Promise<any> {
+        return new Promise<any>((resolve, reject) => {
+            var everlive = Service.createEverlive();
+            everlive.data(REPORT).updateSingle(report, resolve, error => {
+                Service.showErrorAndReject(error, reject);
+            })
+        });
+    }
+
+    deleteReport(report: any): Promise<any> {
+        return new Promise<any>((resolve, reject) => {
+            var everlive = Service.createEverlive();
+            everlive.data(REPORT).destroySingle({ Id: report.Id }, resolve, error => {
+                Service.showErrorAndReject(error, reject);
+            })
+        });
+    }
+
+    private static createEverlive(): any {
+        return new everliveModule({ apiKey: constantsModule.telerikApiKey, token: localSettingsModule.getString(constantsModule.authenticationTokenKey) })
+    }
+
+    private static showErrorAndReject(error: any, reject: (e: any) => void) {
+        notificationsModule.showError(error.message);
+        reject(error);
     }
 
     private setupLocalSettings(name: string, authenticationTokenKey: string) {

@@ -17,7 +17,7 @@ export function navigatedTo(args: observableModule.EventData) {
 }
 
 export function doneMenuItemTap(args: observableModule.EventData) {
-    viewModel.saveReport();
+    viewModel.save();
 }
 
 export function deleteReportButtonTap(args: observableModule.EventData) {
