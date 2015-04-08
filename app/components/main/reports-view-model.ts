@@ -5,18 +5,35 @@ import viewReportViewModelModule = require("../view-report/view-report-view-mode
 import serviceModule = require("../../utils/service");
 
 export class ReportsViewModel extends viewModelBaseModule.ViewModelBase {
+    private _reports: viewReportViewModelModule.ViewReportViewModel[];
     constructor() {
         super();
+
+        this.refresh();
     }
 
     get reports(): viewReportViewModelModule.ViewReportViewModel[] {
-        return [
-            new viewReportViewModelModule.ViewReportViewModel({ Title: "Dinner with Daniel Smith", BussinessPurpose: "Clients visit", Date: new Date(Date.now()), Status: "New" }),
-            new viewReportViewModelModule.ViewReportViewModel({ Title: "Lunch with clients", BussinessPurpose: "Clients visit", Date: new Date(Date.now()), Status: "Returned", Info: "Limit exceeded!" }),
-            new viewReportViewModelModule.ViewReportViewModel({ Title: "Boston Trip", BussinessPurpose: "Clients visit", Date: new Date(Date.now()) }),
-            new viewReportViewModelModule.ViewReportViewModel({ Title: "Boston Trip", BussinessPurpose: "Clients visit", Date: new Date(Date.now()) }),
-            new viewReportViewModelModule.ViewReportViewModel({ Title: "Boston Trip", BussinessPurpose: "Clients visit", Date: new Date(Date.now()) }),
-            new viewReportViewModelModule.ViewReportViewModel({ Title: "Boston Trip", BussinessPurpose: "Clients visit", Date: new Date(Date.now()) })
-        ];
+        return this._reports;
+    }
+
+    set reports(value: viewReportViewModelModule.ViewReportViewModel[]) {
+        if (this._reports !== value) {
+            this._reports = value;
+            this.notifyPropertyChanged("reports", value);
+        }
+    }
+
+    refresh() {
+        this.beginLoading();
+        serviceModule.service.getReports().then((data: any[]) => {
+            var reports: viewReportViewModelModule.ViewReportViewModel[] = [];
+            for (var i = 0; i < data.length; i++) {
+                reports.push(new viewReportViewModelModule.ViewReportViewModel(data[i]));
+            }
+
+            this.endLoading();
+        },(error: any) => {
+                this.endLoading();
+            });
     }
 }

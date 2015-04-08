@@ -3,7 +3,7 @@
     <ScrollView>
       <StackLayout>
         <TextField text="{{ name }}" hint="name" cssClass="firstTextField" />
-        <TextField text="{{ username }}" hint="username" />
+        <TextField text="{{ email }}" keyboardType="email" autocorrect="false" autocapitalizationType="none" hint="username" />
         <TextField text="{{ password }}" secure="true" hint="password" />
         <TextField text="{{ confirmPassword }}" secure="true" hint="confirm password" />
 

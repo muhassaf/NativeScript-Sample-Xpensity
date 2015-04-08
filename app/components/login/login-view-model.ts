@@ -7,6 +7,7 @@ import constantsModule = require("../../utils/constants");
 import serviceModule = require("../../utils/service");
 import navigationModule = require("../../utils/navigation");
 import viewsModule = require("../../utils/views");
+import notificationsModule = require("../../utils/notifications");
 
 export class LoginViewModel extends viewModelBaseModule.ViewModelBase {
     private _username: string;
@@ -44,13 +45,13 @@ export class LoginViewModel extends viewModelBaseModule.ViewModelBase {
     login() {
         if (this.validate()) {
             this.beginLoading();
-            serviceModule.service.login(this.username, this.password,(data: any) => {
+            serviceModule.service.login(this.username, this.password).then((data: any) => {
                 this.endLoading();
-                navigationModule.navigateWitouthHistory(viewsModule.Views.main);
+                navigationModule.goBack();
             },(error: any) => {
                     this.clearPassword();
                     this.endLoading();
-                    this.showError(error.message);
+                    notificationsModule.showError(error.message);
                 });
         }
         else {
@@ -58,18 +59,14 @@ export class LoginViewModel extends viewModelBaseModule.ViewModelBase {
         }
     }
 
-    signUp() {
-        navigationModule.navigate(viewsModule.Views.signUp);
-    }
-
     private validate(): boolean {
         if (this.username === "") {
-            this.showError("Please enter username.");
+            notificationsModule.showError("Please enter username.");
             return false;
         }
 
         if (this.password === "") {
-            this.showError("Please enter password.");
+            notificationsModule.showError("Please enter password.");
             return false;
         }
 

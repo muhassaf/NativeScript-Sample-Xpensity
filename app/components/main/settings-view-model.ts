@@ -9,10 +9,6 @@ import serviceModule = require("../../utils/service");
 import navigationModule = require("../../utils/navigation");
 import viewsModule = require("../../utils/views");
 
-var NAME = "name";
-var OFFLINE_MODE = "offlineMode";
-var NOTIFICATIONS = "notifications";
-
 export class SettingsViewModel extends viewModelBaseModule.ViewModelBase {
     private _name: string;
     private _offlineMode: boolean;
@@ -23,32 +19,33 @@ export class SettingsViewModel extends viewModelBaseModule.ViewModelBase {
     }
 
     get name(): string {
-        return localSettingsModule.getString(NAME, "");
+        return localSettingsModule.getString(constantsModule.name);
     }
 
     get offlineMode(): boolean {
-        return localSettingsModule.getBoolean(OFFLINE_MODE, false);
+        return localSettingsModule.getBoolean(constantsModule.offlineMode);
     }
 
     set offlineMode(value: boolean) {
-        if (localSettingsModule.getBoolean(OFFLINE_MODE) !== value) {
-            localSettingsModule.setBoolean(OFFLINE_MODE, value);
+        if (localSettingsModule.getBoolean(constantsModule.offlineMode) !== value) {
+            localSettingsModule.setBoolean(constantsModule.offlineMode, value);
             this.notifyPropertyChanged("offlineMode", value);
         }
     }
 
     get notifications(): boolean {
-        return localSettingsModule.getBoolean(NOTIFICATIONS, false);
+        return localSettingsModule.getBoolean(constantsModule.notifications);
     }
 
     set notifications(value: boolean) {
-        if (localSettingsModule.getBoolean(NOTIFICATIONS) !== value) {
-            localSettingsModule.setBoolean(NOTIFICATIONS, value);
+        if (localSettingsModule.getBoolean(constantsModule.notifications) !== value) {
+            localSettingsModule.setBoolean(constantsModule.notifications, value);
             this.notifyPropertyChanged("notifications", value);
         }
     }
 
     logout() {
-        alert("logout");
+        serviceModule.service.logout();
+        navigationModule.navigateWitouthHistory(viewsModule.Views.login);
     }
 }

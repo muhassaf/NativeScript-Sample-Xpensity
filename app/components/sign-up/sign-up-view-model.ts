@@ -8,6 +8,7 @@ import constantsModule = require("../../utils/constants");
 import serviceModule = require("../../utils/service");
 import navigationModule = require("../../utils/navigation");
 import viewsModule = require("../../utils/views");
+import notificationsModule = require("../../utils/notifications");
 
 export class SignUpViewModel extends viewModelBaseModule.ViewModelBase {
     private _name: string;
@@ -83,14 +84,13 @@ export class SignUpViewModel extends viewModelBaseModule.ViewModelBase {
 
     signUp() {
         if (this.validate()) {
-            serviceModule.service.signUp(this.username, this.password, { Email: this.email, DisplayName: this.name },(data: any) => {
+            serviceModule.service.signUp(this.username, this.password, { Email: this.email, DisplayName: this.name }).then((data: any) => {
                 this.endLoading();
                 dialogsModule.alert({ title: "Success", message: "Please login with your credentials now.", okButtonText: "Close" });
-                navigationModule.navigateWitouthHistory(viewsModule.Views.login);
+                navigationModule.goBack();
             },(error: any) => {
                     this.endLoading();
                     this.clearPassword();
-                    this.showError(error.message);
                 });
         }
         else {
@@ -104,27 +104,27 @@ export class SignUpViewModel extends viewModelBaseModule.ViewModelBase {
 
     private validate(): boolean {
         if (this.name === "") {
-            this.showError("Please enter your name.");
+            notificationsModule.showError("Please enter your name.");
             return false;
         }
 
         if (this.email == "") {
-            this.showError("Please enter your email.");
+            notificationsModule.showError("Please enter your email.");
             return false;
         }
 
         if (this.username == "") {
-            this.showError("Please enter username.");
+            notificationsModule.showError("Please enter username.");
             return false;
         }
 
         if (this.password == "") {
-            this.showError("Please enter password.");
+            notificationsModule.showError("Please enter password.");
             return false;
         }
 
         if (this.confirmPassword != this.password) {
-            this.showError("Passwords did not match.");
+            notificationsModule.showError("Passwords did not match.");
             return false;
         }
 

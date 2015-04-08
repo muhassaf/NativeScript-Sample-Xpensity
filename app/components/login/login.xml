@@ -1,8 +1,11 @@
 ﻿<Page xmlns="http://www.nativescript.org/tns.xsd" loaded="pageLoaded">
+  <Page.optionsMenu>
+    <MenuItem text="SIGN UP" tap="signUpMenuItemTap" android.position="actionBar" />
+  </Page.optionsMenu>
   <GridLayout>
     <ScrollView>
       <StackLayout>
-        <TextField text="{{ username }}" hint="username" cssClass="firstTextField" />
+        <TextField text="{{ username }}" autocorrect="false" autocapitalizationType="none" hint="email" cssClass="firstTextField" />
         <TextField text="{{ password }}" secure="true" hint="password" />
 
         <Button text="LOGIN" tap="{{ login }}" cssClass="primaryButton" />

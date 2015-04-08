@@ -7,6 +7,7 @@ import viewModelBaseModule = require("../view-model-base");
 import serviceModule = require("../../utils/service");
 import navigationModule = require("../../utils/navigation");
 import viewsModule = require("../../utils/views");
+import notificationsModule = require("../../utils/notifications");
 
 export class ViewReportViewModel extends viewModelBaseModule.ViewModelBase {
     private _report: any;
@@ -52,7 +53,7 @@ export class ViewReportViewModel extends viewModelBaseModule.ViewModelBase {
     }
 
     showReportInfo() {
-        this.showInfo(this.report.Info);
+        notificationsModule.showInfo(this.report.Info);
     }
 
     submit() {

@@ -559,7 +559,9 @@
     <TypeScriptCompile Include="tns_modules\xml\xml.d.ts" />
     <TypeScriptCompile Include="utils\action-bar.ts" />
     <TypeScriptCompile Include="utils\constants.ts" />
+    <TypeScriptCompile Include="utils\conversion.d.ts" />
     <TypeScriptCompile Include="utils\navigation.ts" />
+    <TypeScriptCompile Include="utils\notifications.ts" />
     <TypeScriptCompile Include="utils\service.ts" />
     <TypeScriptCompile Include="utils\views.ts" />
   </ItemGroup>

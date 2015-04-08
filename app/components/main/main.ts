@@ -12,13 +12,19 @@ import editReportViewModelModule = require("../edit-report/edit-report-view-mode
 import navigationModule = require("../../utils/navigation");
 import viewsModule = require("../../utils/views");
 import actionBarModule = require("../../utils/action-bar");
+import serviceModule = require("../../utils/service");
 
 var viewModel: mainViewModelModule.MainViewModel;
 export function pageLoaded(args: observableModule.EventData) {
     actionBarModule.hideBackNavigation();
-    var page = <pageModule.Page>args.object;
-    viewModel = new mainViewModelModule.MainViewModel();
-    page.bindingContext = viewModel;
+    if (!serviceModule.service.isAuthenticated) {
+        navigationModule.navigateWitouthHistory(viewsModule.Views.login);
+    }
+    else {
+        var page = <pageModule.Page>args.object;
+        viewModel = new mainViewModelModule.MainViewModel();
+        page.bindingContext = viewModel;
+    }
 }
 
 export function reportTap(args: gridViewModule.ItemEventData) {
