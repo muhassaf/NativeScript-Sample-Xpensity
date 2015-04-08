@@ -48,6 +48,7 @@ export class EditReportViewModel extends editViewModelBaseModule.EditViewModelBa
         }).then((value: boolean) => {
             if (value) {
                 alert("deleted");
+                navigationModule.goBack();
             }
         });
     }

@@ -1,6 +1,9 @@
 <Page xmlns="http://www.nativescript.org/tns.xsd"
       loaded="pageLoaded"
       navigatedTo="navigatedTo" >
+  <Page.optionsMenu>
+    <MenuItem text="DONE" tap="doneMenuItemTap" android.position="actionBar" />
+  </Page.optionsMenu>
   <GridLayout>
     <ScrollView>
       <StackLayout>
@@ -10,8 +13,8 @@
         <StackLayout cssClass="pickerContainer" tap="datePickerTap">
           <Label text="Date" cssClass="pickerLabel" />
           <GridLayout columns="*, auto">
-            <Label text="{{ expense.Date | formatDate }}" cssClass="pickerValue" />
-            <Image col="1" src="~/res/picker.png" cssClass="pickerIcon" stretch="fill" />
+            <Label text="{{ expense.Date }}" cssClass="pickerValue" />
+            <Image col="1" src="res://ic_arrow_drop_down" cssClass="pickerIcon" stretch="none" />
           </GridLayout>
           <Border cssClass="pickerBorder" />
         </StackLayout>
@@ -20,19 +23,14 @@
           <Label text="Category" cssClass="pickerLabel" />
           <GridLayout columns="*, auto">
             <Label text="{{ expense.Category }}" cssClass="pickerValue" />
-            <Image col="1" src="~/res/picker.png" cssClass="pickerIcon" stretch="fill" />
+            <Image col="1" src="res://ic_arrow_drop_down" cssClass="pickerIcon" stretch="none" />
           </GridLayout>
           <Border cssClass="pickerBorder" />
         </StackLayout>
        
-        <GridLayout columns="auto, *" cssClass="imageButtonContainer">
-          <Image src="~/res/photo.png" cssClass="icon" stretch="fill" />
-          <Label col="1" text="ADD PHOTO" cssClass="addPhoto" />
-        </GridLayout>
-        
         <TextView text="{{ expense.Notes }}" hint="Notes" />
 
-        <Button text="DELETE EXPENSE" tap="{{ deleteReport }}" color="#FF0000" cssClass="secondaryButton" style.visibility="{{ editVisibility }}" />
+        <Button text="DELETE EXPENSE" tap="deleteExpenseButtonTap" color="#FF0000" cssClass="secondaryButton" style.visibility="{{ editVisibility }}" />
       </StackLayout>
     </ScrollView>
 

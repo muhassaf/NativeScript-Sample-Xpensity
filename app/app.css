@@ -19,8 +19,12 @@ Switch, Label {
     margin: 16 16 0 16;
 }
 
-.icon {
+.statusIcon {
     margin: 8 8 0 0;
+}
+
+.icon {
+    margin: 0;
 }
 
 .header {
@@ -71,11 +75,11 @@ Switch, Label {
 }
 
 .imageButtonContainer {
-    margin: 0 16 16 16;
+    margin: 8 16 8 16;
 }
 
 .pickerContainer {
-    margin: 0 16 16 16;
+    margin: 8 16 8 16;
 }
 
 .pickerLabel {
@@ -89,8 +93,6 @@ Switch, Label {
 }
 
 .pickerIcon {
-    width: 16;
-    height: 8;
     vertical-align: center;
 }
 

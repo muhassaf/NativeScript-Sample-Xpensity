@@ -8,6 +8,11 @@ import listPickerViewModelModule = require("../list-picker/list-picker-view-mode
 
 import navigationModule = require("../../utils/navigation");
 import viewsModule = require("../../utils/views");
+import actionBarModule = require("../../utils/action-bar");
+
+export function pageLoaded(args: any) {
+    actionBarModule.showBackNavigation();
+}
 
 var viewModel: editExpenseViewModelModule.EditExpenseViewModel;
 export function navigatedTo(args: observableModule.EventData) {
@@ -17,6 +22,7 @@ export function navigatedTo(args: observableModule.EventData) {
 }
 
 export function datePickerTap(args: observableModule.EventData) {
+    console.log("EXPENSE DATE: " + viewModel.expense.Date);
     navigationModule.navigate({
         moduleName: viewsModule.Views.datePicker,
         context: new datePickerViewModelModule.DatePickerViewModel(viewModel.expense.Date,(selectedDate: Date) => {
@@ -32,4 +38,12 @@ export function categoryPickerTap(args: observableModule.EventData) {
             viewModel.expense.Category = selectedItem;
         })
     });
+}
+
+export function doneMenuItemTap(args: observableModule.EventData) {
+    viewModel.saveExpense();
+}
+
+export function deleteExpenseButtonTap(args: observableModule.EventData) {
+    viewModel.deleteExpense();
 }

@@ -1,4 +1,5 @@
 ﻿import viewModelBaseModule = require("../view-model-base");
+import navigationModule = require("../../utils/navigation");
 
 export class DatePickerViewModel extends viewModelBaseModule.ViewModelBase {
     private _day: number;
@@ -51,5 +52,6 @@ export class DatePickerViewModel extends viewModelBaseModule.ViewModelBase {
 
     done() {
         this._selectedCallback(new Date(this.year, this.month, this.day));
+        navigationModule.goBack();
     }
 }

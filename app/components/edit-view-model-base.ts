@@ -28,4 +28,17 @@ export class EditViewModelBase extends viewModelBaseModule.ViewModelBase{
 
         return enumsModule.Visibility.visible;
     }
+
+    get mode(): string {
+        if (this._isAdd) {
+            return EditModes.Add;
+        }
+
+        return EditModes.Edit;
+    }
 } 
+
+export module EditModes {
+    export var Add = "Add";
+    export var Edit = "Edit";
+}

@@ -17,3 +17,7 @@ export function itemTap(args: listViewModule.ItemEventData) {
     var view = <viewModule.View>args.view;
     viewModel.selectItem(<listPickerViewModelModule.ListItem>view.bindingContext);
 }
+
+export function doneMenuItemTap(args: observableModule.EventData) {
+    viewModel.done();
+}

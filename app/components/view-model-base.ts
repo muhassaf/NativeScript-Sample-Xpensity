@@ -4,6 +4,8 @@ import enumsModule = require("ui/enums");
 import dialogsModule = require("ui/dialogs");
 
 export class ViewModelBase extends observableModule.Observable {
+    private static _months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
     private _loadingCount: number;
     private _isLoading: boolean;
 
@@ -69,5 +71,13 @@ export class ViewModelBase extends observableModule.Observable {
 
     notifyPropertyChanged(propertyName: string, value: any) {
         this.notify({ object: this, eventName: observableModule.knownEvents.propertyChange, propertyName: propertyName, value: value });
+    }
+
+    formatDate(date: Date): string {
+        return date.getDay() + " " + ViewModelBase._months[date.getMonth()] + ", " + date.getFullYear();
+    }
+
+    formatCurrency(currency: number) {
+        return "$" + (Math.round(currency * 100) / 100).toFixed(2);
     }
 }

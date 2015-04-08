@@ -1,6 +1,9 @@
 <Page xmlns="http://www.nativescript.org/tns.xsd"
       loaded="pageLoaded"
       navigatedTo="navigatedTo" >
+  <Page.optionsMenu>
+    <MenuItem text="DONE" tap="doneMenuItemTap" android.position="actionBar" />
+  </Page.optionsMenu>
   <ListView items="{{ items }}" itemTap="itemTap" >
     <ListView.itemTemplate>
       <Label text="{{ data }}" cssClass="{{ isSelected ? 'item-selected' : 'item' }}" />

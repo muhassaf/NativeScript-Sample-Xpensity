@@ -1,6 +1,7 @@
 ﻿import observableModule = require("data/observable");
 
 import viewModelBaseModule = require("../view-model-base");
+import navigationModule = require("../../utils/navigation");
 
 export class ListPickerViewModel extends viewModelBaseModule.ViewModelBase{
     private _items: any[];
@@ -49,6 +50,7 @@ export class ListPickerViewModel extends viewModelBaseModule.ViewModelBase{
 
     done() {
         this._selectedCallback(this._selectedItem.data);
+        navigationModule.goBack();
     }
 }
 

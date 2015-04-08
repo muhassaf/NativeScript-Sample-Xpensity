@@ -13,10 +13,8 @@ export class MainViewModel extends viewModelBaseModule.ViewModelBase {
     }
 
     get reportsViewModel(): reportsViewModelModule.ReportsViewModel {
-        console.log("GET REPORTS VM:");
         if (!this._reportsViewModel) {
             this._reportsViewModel = new reportsViewModelModule.ReportsViewModel();
-            console.log("CREATE REPORTS VM:");
         }
 
         return this._reportsViewModel;

@@ -9,14 +9,14 @@ export class ReportsViewModel extends viewModelBaseModule.ViewModelBase {
         super();
     }
 
-    get reports(): viewReportViewModelModule.ReportViewModel[] {
+    get reports(): viewReportViewModelModule.ViewReportViewModel[] {
         return [
-            new viewReportViewModelModule.ReportViewModel({ Title: "Dinner with Daniel Smith", BussinessPurpose: "Clients visit", Date: "Apr 13, 2015", Status: "New" }),
-            new viewReportViewModelModule.ReportViewModel({ Title: "Lunch with clients", BussinessPurpose: "Clients visit", Date: "Apr 13, 2015", Status: "Returned", Info: "Limit exceeded!" }),
-            new viewReportViewModelModule.ReportViewModel({ Title: "Boston Trip", BussinessPurpose: "Clients visit", Date: "Mar 14, 2015" }),
-            new viewReportViewModelModule.ReportViewModel({ Title: "Boston Trip", BussinessPurpose: "Clients visit", Date: "Jan 18, 2015" }),
-            new viewReportViewModelModule.ReportViewModel({ Title: "Boston Trip", BussinessPurpose: "Clients visit", Date: "Apr 21, 2015" }),
-            new viewReportViewModelModule.ReportViewModel({ Title: "Boston Trip", BussinessPurpose: "Clients visit", Date: "Apr 23, 2015" })
+            new viewReportViewModelModule.ViewReportViewModel({ Title: "Dinner with Daniel Smith", BussinessPurpose: "Clients visit", Date: new Date(Date.now()), Status: "New" }),
+            new viewReportViewModelModule.ViewReportViewModel({ Title: "Lunch with clients", BussinessPurpose: "Clients visit", Date: new Date(Date.now()), Status: "Returned", Info: "Limit exceeded!" }),
+            new viewReportViewModelModule.ViewReportViewModel({ Title: "Boston Trip", BussinessPurpose: "Clients visit", Date: new Date(Date.now()) }),
+            new viewReportViewModelModule.ViewReportViewModel({ Title: "Boston Trip", BussinessPurpose: "Clients visit", Date: new Date(Date.now()) }),
+            new viewReportViewModelModule.ViewReportViewModel({ Title: "Boston Trip", BussinessPurpose: "Clients visit", Date: new Date(Date.now()) }),
+            new viewReportViewModelModule.ViewReportViewModel({ Title: "Boston Trip", BussinessPurpose: "Clients visit", Date: new Date(Date.now()) })
         ];
     }
 }

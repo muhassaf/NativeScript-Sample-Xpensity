@@ -4,7 +4,13 @@ import pagesModule = require("ui/page");
 
 import datePickerViewModelModule = require("./date-picker-view-model");
 
+var viewModel: datePickerViewModelModule.DatePickerViewModel;
 export function navigatedTo(args: observableModule.EventData) {
     var page = <pagesModule.Page>args.object;
-    page.bindingContext = page.navigationContext;
+    viewModel = <datePickerViewModelModule.DatePickerViewModel>page.navigationContext;
+    page.bindingContext = viewModel;
+}
+
+export function doneMenuItemTap(args: observableModule.EventData) {
+    viewModel.done();
 }

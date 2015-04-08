@@ -1,9 +1,9 @@
 ﻿import observableModule = require("data/observable");
 
+import viewModule = require("ui/core/view");
 import pageModule = require("ui/page");
+import listViewModule = require("ui/list-view");
 import enumsModule = require("ui/enums");
-
-import gridViewModule = require("grid-view");
 
 import viewReportViewModelModule = require("./view-report-view-model");
 import actionBarModule = require("../../utils/action-bar");
@@ -12,10 +12,10 @@ export function pageLoaded(args: observableModule.EventData) {
     actionBarModule.showBackNavigation();
 }
 
-var viewModel: viewReportViewModelModule.ReportViewModel;
+var viewModel: viewReportViewModelModule.ViewReportViewModel;
 export function navigatedTo(args: observableModule.EventData) {
     var page = <pageModule.Page>args.object;
-    viewModel = <viewReportViewModelModule.ReportViewModel>page.navigationContext;
+    viewModel = <viewReportViewModelModule.ViewReportViewModel>page.navigationContext;
     buildMenu(page);
     page.bindingContext = viewModel;
 }
@@ -24,8 +24,12 @@ export function addExpenseTap(args: observableModule.EventData) {
     viewModel.addExpense();
 }
 
+export function expenseTap(args: listViewModule.ItemEventData) {
+    viewModel.editExpense(args.view.bindingContext);
+}
+
 function buildMenu(page: pageModule.Page) {
-    clearMenu(page); 
+    clearMenu(page);
     switch (viewModel.report.Status) {
         case viewReportViewModelModule.ReportStatus.Returned:
         case viewReportViewModelModule.ReportStatus.New:

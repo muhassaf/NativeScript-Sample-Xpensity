@@ -13,7 +13,7 @@
                 <g:GridView.itemTemplate>
                   <Border borderWidth="2" borderColor="#DEDDDD" cssClass="tile" >
                     <StackLayout orientation="vertical">
-                      <Image src="res://ic_approved" cssClass="icon" stretch="none" style="horizontal-align: right;" />
+                      <Image src="res://ic_approved" cssClass="statusIcon" stretch="none" style="horizontal-align: right;" />
                       <PieChart items="{{ expensesByCategory }}" valueProperty="Total" cssClass="categoriesChart" />
                       <Label text="{{ report.Title }}" cssClass="itemTitle" />
                       <Label text="{{ report.Date }}" cssClass="itemSubTitleLast" />
@@ -44,7 +44,7 @@
           </GridLayout>
         </TabViewItem.view>
       </TabViewItem >
-      <TabViewItem iconSource="res://ic_settings" bindingContext="{{ settingsViewModel }}" >
+      <TabViewItem iconSource="res://ic_settings" >
         <TabViewItem.view>
           <GridLayout rows="auto, *" loaded="settingsViewLoaded">
             <Label text="SETTINGS" cssClass="header" />
@@ -65,7 +65,7 @@
                   <Switch checked="{{ notifications }}"/>
                 </GridLayout>
 
-                <Button text="LOGOUT" tap="{{ logout }}" cssClass="secondaryButton" />
+                <Button text="LOGOUT" tap="logoutButtonTap" cssClass="secondaryButton" />
               </StackLayout>
             </ScrollView>
 

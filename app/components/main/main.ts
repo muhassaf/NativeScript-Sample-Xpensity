@@ -13,10 +13,12 @@ import navigationModule = require("../../utils/navigation");
 import viewsModule = require("../../utils/views");
 import actionBarModule = require("../../utils/action-bar");
 
+var viewModel: mainViewModelModule.MainViewModel;
 export function pageLoaded(args: observableModule.EventData) {
     actionBarModule.hideBackNavigation();
     var page = <pageModule.Page>args.object;
-    page.bindingContext = new mainViewModelModule.MainViewModel();
+    viewModel = new mainViewModelModule.MainViewModel();
+    page.bindingContext = viewModel;
 }
 
 export function reportTap(args: gridViewModule.ItemEventData) {
@@ -35,10 +37,14 @@ export function addReportTap(args: observableModule.EventData) {
 
 export function reportsViewLoaded(args: observableModule.EventData) {
     var tabItem = <viewModule.View>args.object;
-    tabItem.bindingContext = new reportsViewModelModule.ReportsViewModel();
+    tabItem.bindingContext = viewModel.reportsViewModel;
 }
 
 export function settingsViewLoaded(args: observableModule.EventData) {
     var tabItem = <viewModule.View>args.object;
-    tabItem.bindingContext = new settingsViewModelModule.SettingsViewModel();
+    tabItem.bindingContext = viewModel.settingsViewModel;
+}
+
+export function logoutButtonTap(args: observableModule.EventData) {
+    viewModel.settingsViewModel.logout();
 }

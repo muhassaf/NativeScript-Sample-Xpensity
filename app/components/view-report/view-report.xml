@@ -11,7 +11,7 @@
 
     <PieChart row="3" items="{{ expensesByCategory }}" valueProperty="Total" cssClass="categoriesChart" />
 
-    <ListView row="4" items="{{ expenses }}" cssClass="expensesListView">
+    <ListView row="4" items="{{ expenses }}" itemTap="expenseTap" cssClass="expensesListView">
       <ListView.itemTemplate>
         <GridLayout columns="auto, *, auto">
           <Border backgroundColor="#0000FF" cssClass="category" />

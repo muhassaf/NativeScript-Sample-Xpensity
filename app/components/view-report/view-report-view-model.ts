@@ -8,7 +8,7 @@ import serviceModule = require("../../utils/service");
 import navigationModule = require("../../utils/navigation");
 import viewsModule = require("../../utils/views");
 
-export class ReportViewModel extends viewModelBaseModule.ViewModelBase {
+export class ViewReportViewModel extends viewModelBaseModule.ViewModelBase {
     private _report: any;
     private _status: string;
 
@@ -41,21 +41,14 @@ export class ReportViewModel extends viewModelBaseModule.ViewModelBase {
 
     get expenses(): any[]{
         return [
-            { Title: "Dinner", Cost: 132.33, Date: "May 02, 2015", Location: "Panera Bread, Boston" },
-            { Title: "Taxi", Cost: 15.33, Date: "May 02, 2015", Location: "Uber, Boston" },
-            { Title: "Hotel", Cost: 340.54, Date: "May 02, 2015", Location: "Grand Hotel Boston, Boston" },
+            { Title: "Dinner", Cost: 132.33, Date: new Date(Date.now()), Location: "Panera Bread, Boston", Category: "Auto & Transport" },
+            { Title: "Taxi", Cost: 15.33, Date: new Date(Date.now()), Location: "Uber, Boston", Category: "Auto & Transport" },
+            { Title: "Hotel", Cost: 340.54, Date: new Date(Date.now()), Location: "Grand Hotel Boston, Boston", Category: "Auto & Transport" },
         ];
     }
 
     get total(): number {
         return 1500;
-    }
-
-    addExpense() {
-        navigationModule.navigate({
-            moduleName: viewsModule.Views.editExpense,
-            context: new editExpenseViewModelModule.EditExpenseViewModel()
-        });
     }
 
     showReportInfo() {
@@ -70,6 +63,20 @@ export class ReportViewModel extends viewModelBaseModule.ViewModelBase {
         navigationModule.navigate({
             moduleName: viewsModule.Views.editReport,
             context: new editReportViewModelModule.EditReportViewModel(this.report)
+        });
+    }
+
+    addExpense() {
+        navigationModule.navigate({
+            moduleName: viewsModule.Views.editExpense,
+            context: new editExpenseViewModelModule.EditExpenseViewModel(this)
+        });
+    }
+
+    editExpense(expense: any) {
+        navigationModule.navigate({
+            moduleName: viewsModule.Views.editExpense,
+            context: new editExpenseViewModelModule.EditExpenseViewModel(this, expense)
         });
     }
 }

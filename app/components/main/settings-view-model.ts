@@ -9,6 +9,10 @@ import serviceModule = require("../../utils/service");
 import navigationModule = require("../../utils/navigation");
 import viewsModule = require("../../utils/views");
 
+var NAME = "name";
+var OFFLINE_MODE = "offlineMode";
+var NOTIFICATIONS = "notifications";
+
 export class SettingsViewModel extends viewModelBaseModule.ViewModelBase {
     private _name: string;
     private _offlineMode: boolean;
@@ -16,40 +20,30 @@ export class SettingsViewModel extends viewModelBaseModule.ViewModelBase {
 
     constructor() {
         super();
-
-        this.offlineMode = true;
-        this.name = "Darren Chriss";
     }
 
-    get name(): any {
-        return this._name;
+    get name(): string {
+        return localSettingsModule.getString(NAME, "");
     }
 
-    set name(value: any) {
-        if (this._name !== value) {
-            this._name = value;
-            this.notifyPropertyChanged("name", value);
-        }
+    get offlineMode(): boolean {
+        return localSettingsModule.getBoolean(OFFLINE_MODE, false);
     }
 
-    get offlineMode(): any {
-        return this._offlineMode;
-    }
-
-    set offlineMode(value: any) {
-        if (this._offlineMode !== value) {
-            this._offlineMode = value;
+    set offlineMode(value: boolean) {
+        if (localSettingsModule.getBoolean(OFFLINE_MODE) !== value) {
+            localSettingsModule.setBoolean(OFFLINE_MODE, value);
             this.notifyPropertyChanged("offlineMode", value);
         }
     }
 
-    get notifications(): any {
-        return this._notifications;
+    get notifications(): boolean {
+        return localSettingsModule.getBoolean(NOTIFICATIONS, false);
     }
 
-    set notifications(value: any) {
-        if (this._notifications !== value) {
-            this._notifications = value;
+    set notifications(value: boolean) {
+        if (localSettingsModule.getBoolean(NOTIFICATIONS) !== value) {
+            localSettingsModule.setBoolean(NOTIFICATIONS, value);
             this.notifyPropertyChanged("notifications", value);
         }
     }
