@@ -11,27 +11,42 @@ import navigationModule = require("../../utils/navigation");
 import viewsModule = require("../../utils/views");
 
 export class EditExpenseViewModel extends editViewModelBaseModule.EditViewModelBase {
-    private _viewReportViewModel: viewReportViewModelModule.ViewReportViewModel;
+    private _report: any;
+    private _category: any;
 
-    constructor(viewReportViewModel: viewReportViewModelModule.ViewReportViewModel, expense?: any) {
+    constructor(report: any, expense?: any) {
         super(expense);
-        this._viewReportViewModel = viewReportViewModel;
+
+        this._report = report;
+        this.refresh();
     }
 
-    get expense(): any {
-        return this.item;
+    get createMethod(): (expense: any) => Promise<any> {
+        return serviceModule.service.createExpense;
     }
 
-    set expense(value: any) {
-        if (this.item !== value) {
-            this.item = value;
-            this.notifyPropertyChanged("expense", value);
+    get updateMethod(): (expense: any) => Promise<any> {
+        return serviceModule.service.updateExpense;
+    }
+
+    get expenseCategory(): any {
+        return this._category;
+    }
+
+    set category(value: any) {
+        if (this._category !== value) {
+            this._category = value;
+            this.item.CategoryId = this._category.Id;
+            this.notifyPropertyChanged("category", value);
         }
     }
 
-    saveExpense() {
-        alert("saved");
-        navigationModule.goBack();
+    createItem(): any {
+        var item = super.createItem();
+        item.Date = new Date();
+        item.ExpenseCategoryId = constantsModule.defaultExpenseCategoryId;
+
+        return item;
     }
 
     deleteExpense() {
@@ -42,9 +57,28 @@ export class EditExpenseViewModel extends editViewModelBaseModule.EditViewModelB
             cancelButtonText: "NO"
         }).then((value: boolean) => {
             if (value) {
-                alert("deleted");
-                navigationModule.goBack();
+                this.beginLoading();
+                serviceModule.service.deleteExpense(this.item).then((data) => {
+                    this.endLoading();
+                    navigationModule.goBack();
+                },(error) => {
+                        this.endLoading();
+                    });
             }
         });
+    }
+
+    refresh() {
+        this.loadExpenseCategory();
+    }
+
+    private loadExpenseCategory() {
+        this.beginLoading();
+        serviceModule.service.getExpenseCategory(this.item.ExpenseCategoryId).then((category) => {
+            this.expenseCategory = category;
+            this.endLoading();
+        },(error) => {
+                this.endLoading();
+            });
     }
 }

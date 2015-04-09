@@ -4,9 +4,13 @@
   <Page.optionsMenu>
     <MenuItem text="DONE" tap="doneMenuItemTap" android.position="actionBar" />
   </Page.optionsMenu>
-  <ListView items="{{ items }}" itemTap="itemTap" >
-    <ListView.itemTemplate>
-      <Label text="{{ data }}" cssClass="{{ isSelected ? 'item-selected' : 'item' }}" />
-    </ListView.itemTemplate>
-  </ListView>
+  <GridLayout>
+    <ListView items="{{ items }}" itemTap="itemTap" >
+      <ListView.itemTemplate>
+        <Label text="{{ data.Title }}" cssClass="{{ isSelected ? 'item-selected' : 'item' }}" />
+      </ListView.itemTemplate>
+    </ListView>
+
+    <ActivityIndicator busy="{{ isLoading }}" />
+  </GridLayout>
 </Page>

@@ -2,28 +2,38 @@
 
 import viewModelBaseModule = require("../view-model-base");
 import navigationModule = require("../../utils/navigation");
+import serviceModule = require("../../utils/service");
 
 export class ListPickerViewModel extends viewModelBaseModule.ViewModelBase{
     private _items: any[];
     private _selectedItem: ListItem;
     private _selectedCallback: (selectedItem: any) => void;
 
-    constructor(items: any[], selectedItem: any, selectedCallback: (selectedItem: any) => void) {
+    constructor(getItemsFunction: () => Promise<any[]>, selectedItem: any, selectedCallback: (selectedItem: any) => void) {
         super();
 
-        var listItems = new Array<ListItem>();
-        for (var i = 0; i < items.length; i++) {
-            var listItem = new ListItem(items[i]);
-            if (items[i] === selectedItem) {
-                this.selectItem(listItem);
+        this.beginLoading();
+        serviceModule.service.getExpenseCategories().then((items) => {
+            var listItems = new Array<ListItem>();
+            for (var i = 0; i < items.length; i++) {
+                var listItem = new ListItem(items[i]);
+                if (items[i] === selectedItem) {
+                    this.selectItem(listItem);
+                }
+
+                listItems.push(listItem);
             }
 
-            listItems.push(listItem);
-        }
+            console.log("ITEMS: " + JSON.stringify(listItems));
 
-        this.items = listItems;
+            this.items = [new ListItem({ Title: "Alabala" }), new ListItem({ Title: "Item2" })];
+            this.endLoading();
+        },(error) => {
+                this.endLoading();
+            });
 
         this._selectedCallback = selectedCallback;
+        this.items = [];
     }
 
     get items(): ListItem[] {

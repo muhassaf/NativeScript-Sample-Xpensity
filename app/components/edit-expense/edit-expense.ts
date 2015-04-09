@@ -9,6 +9,7 @@ import listPickerViewModelModule = require("../list-picker/list-picker-view-mode
 import navigationModule = require("../../utils/navigation");
 import viewsModule = require("../../utils/views");
 import actionBarModule = require("../../utils/action-bar");
+import serviceModule = require("../../utils/service");
 
 export function pageLoaded(args: any) {
     actionBarModule.showBackNavigation();
@@ -22,11 +23,11 @@ export function navigatedTo(args: observableModule.EventData) {
 }
 
 export function datePickerTap(args: observableModule.EventData) {
-    console.log("EXPENSE DATE: " + viewModel.expense.Date);
+    console.log("EXPENSE DATE: " + viewModel.item.Date);
     navigationModule.navigate({
         moduleName: viewsModule.Views.datePicker,
-        context: new datePickerViewModelModule.DatePickerViewModel(viewModel.expense.Date,(selectedDate: Date) => {
-            viewModel.expense.Date = selectedDate;
+        context: new datePickerViewModelModule.DatePickerViewModel(viewModel.item.Date,(selectedDate: Date) => {
+            viewModel.item.Date = selectedDate;
         })
     });
 }
@@ -34,14 +35,14 @@ export function datePickerTap(args: observableModule.EventData) {
 export function categoryPickerTap(args: observableModule.EventData) {
     navigationModule.navigate({
         moduleName: viewsModule.Views.listPicker,
-        context: new listPickerViewModelModule.ListPickerViewModel(["Auto & Transport", "Ala", "Bala", "Other"], viewModel.expense.Category, (selectedItem: any) => {
-            viewModel.expense.Category = selectedItem;
+        context: new listPickerViewModelModule.ListPickerViewModel(serviceModule.service.getExpenseCategories, viewModel.category, (selectedItem: any) => {
+            viewModel.category = selectedItem;
         })
     });
 }
 
 export function doneMenuItemTap(args: observableModule.EventData) {
-    viewModel.saveExpense();
+    viewModel.save();
 }
 
 export function deleteExpenseButtonTap(args: observableModule.EventData) {

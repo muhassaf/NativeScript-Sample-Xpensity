@@ -21,8 +21,8 @@
 
         <StackLayout cssClass="pickerContainer" tap="categoryPickerTap">
           <Label text="Category" cssClass="pickerLabel" />
-          <GridLayout columns="*, auto">
-            <Label text="{{ item.Category }}" cssClass="pickerValue" />
+          <GridLayout columns="*, auto" bindingContext="{{ category }}">
+            <Label text="{{ Title }}" cssClass="pickerValue" />
             <Image col="1" src="res://ic_arrow_drop_down" cssClass="pickerIcon" stretch="none" />
           </GridLayout>
           <Border cssClass="pickerBorder" />

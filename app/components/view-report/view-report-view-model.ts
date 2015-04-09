@@ -14,11 +14,14 @@ import reportStatusModule = require("../../utils/report-status");
 export class ViewReportViewModel extends viewModelBaseModule.ViewModelBase {
     private _report: any;
     private _status: string;
+    private _expenses: any[];
+    private _expensesLoaded: boolean;
 
     constructor(report: any) {
         super();
 
         this.report = report;
+        this._expensesLoaded = false;
     }
 
     get report(): any {
@@ -43,11 +46,16 @@ export class ViewReportViewModel extends viewModelBaseModule.ViewModelBase {
     }
 
     get expenses(): any[]{
-        return [
-            { Title: "Dinner", Cost: 132.33, Date: new Date(Date.now()), Location: "Panera Bread, Boston", Category: "Auto & Transport" },
-            { Title: "Taxi", Cost: 15.33, Date: new Date(Date.now()), Location: "Uber, Boston", Category: "Auto & Transport" },
-            { Title: "Hotel", Cost: 340.54, Date: new Date(Date.now()), Location: "Grand Hotel Boston, Boston", Category: "Auto & Transport" },
-        ];
+        this.loadExpenses();
+
+        return this._expenses;
+    }
+
+    set expenses(value: any[]) {
+        if (this._expenses !== value) {
+            this._expenses = value;
+            this.notifyPropertyChanged("expenses", value);
+        }
     }
 
     get total(): number {
@@ -97,5 +105,26 @@ export class ViewReportViewModel extends viewModelBaseModule.ViewModelBase {
             moduleName: viewsModule.Views.editExpense,
             context: new editExpenseViewModelModule.EditExpenseViewModel(this, expense)
         });
+    }
+
+    refresh() {
+        this.reloadExpenses();
+    }
+
+    private loadExpenses() {
+        if (!this._expensesLoaded) {
+            this.reloadExpenses();
+        }
+    }
+
+    private reloadExpenses() {
+        this.beginLoading();
+        serviceModule.service.getExpenses(this.report).then((data) => {
+            this.expenses = data;
+            this._expensesLoaded = true;
+            this.endLoading();
+        },(error) => {
+                this.endLoading();
+            });
     }
 }

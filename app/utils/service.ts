@@ -3,11 +3,16 @@
 import constantsModule = require("./constants");
 import notificationsModule = require("./notifications");
 
-var everliveModule = require("../lib/everlive");
+var everliveModule = require("../lib/everlive.all.map");
 
 var REPORT = "Report";
+var EXPENSE = "Expense";
+var EXPENSE_CATEGORY = "ExpenseCategory";
 
 export class Service {
+    private _defaultExpenseCategory: any;
+    private _everlive: any;
+
     get isAuthenticated(): boolean {
         return localSettingsModule.hasKey(constantsModule.authenticationTokenKey);
     }
@@ -38,9 +43,9 @@ export class Service {
         });
     }
 
-    getReports(): Promise<any> {
+    getReports(): Promise<any[]> {
         return new Promise<any[]>((resolve, reject) => {
-            var everlive = Service.createEverlive();
+            var everlive = this.createEverlive();
             everlive.data(REPORT).get().then(data => {
                 resolve(<any[]>data.result);
             }, error => {
@@ -51,7 +56,7 @@ export class Service {
 
     createReport(report: any): Promise<any> {
         return new Promise<any>((resolve, reject) => {
-            var everlive = Service.createEverlive();
+            var everlive = this.createEverlive();
             everlive.data(REPORT).create(report, resolve, error => {
                 Service.showErrorAndReject(error, reject);
             })
@@ -60,7 +65,7 @@ export class Service {
 
     updateReport(report: any): Promise<any> {
         return new Promise<any>((resolve, reject) => {
-            var everlive = Service.createEverlive();
+            var everlive = this.createEverlive();
             everlive.data(REPORT).updateSingle(report, resolve, error => {
                 Service.showErrorAndReject(error, reject);
             })
@@ -69,15 +74,96 @@ export class Service {
 
     deleteReport(report: any): Promise<any> {
         return new Promise<any>((resolve, reject) => {
-            var everlive = Service.createEverlive();
+            var everlive = this.createEverlive();
             everlive.data(REPORT).destroySingle({ Id: report.Id }, resolve, error => {
                 Service.showErrorAndReject(error, reject);
             })
         });
     }
 
-    private static createEverlive(): any {
-        return new everliveModule({ apiKey: constantsModule.telerikApiKey, token: localSettingsModule.getString(constantsModule.authenticationTokenKey) })
+    getExpenses(report: any): Promise<any[]> {
+        return new Promise<any[]>((resolve, reject) => {
+            var everlive = this.createEverlive();
+            everlive.data(EXPENSE).get().then(data => {
+                resolve(<any[]>data.result);
+            }, error => {
+                    Service.showErrorAndReject(error, reject);
+                })
+        });
+    }
+
+    getExpensesByCategory(report: any): Promise<any> {
+        return new Promise<any[]>((resolve, reject) => {
+            var everlive = this.createEverlive();
+            everlive.data(EXPENSE).get().then(data => {
+                resolve(<any[]>data.result);
+            }, error => {
+                    Service.showErrorAndReject(error, reject);
+                })
+        });
+    }
+
+    createExpense(expense: any): Promise<any> {
+        return new Promise<any>((resolve, reject) => {
+            var everlive = this.createEverlive();
+            everlive.data(EXPENSE).create(expense, resolve, error => {
+                Service.showErrorAndReject(error, reject);
+            })
+        });
+    }
+
+    updateExpense(expense: any): Promise<any> {
+        return new Promise<any>((resolve, reject) => {
+            var everlive = this.createEverlive();
+            everlive.data(EXPENSE).updateSingle(expense, resolve, error => {
+                Service.showErrorAndReject(error, reject);
+            })
+        });
+    }
+
+    deleteExpense(expense: any): Promise<any> {
+        return new Promise<any>((resolve, reject) => {
+            var everlive = this.createEverlive();
+            everlive.data(EXPENSE).destroySingle({ Id: expense.Id }, resolve, error => {
+                Service.showErrorAndReject(error, reject);
+            })
+        });
+    }
+
+    getExpenseCategories(): Promise<any[]> {
+        return new Promise<any[]>((resolve, reject) => {
+            console.log("GetCategories");
+            var everlive = this.createEverlive();
+            everlive.data(EXPENSE_CATEGORY).get().then(data => {
+                console.log("DATA: " + JSON.stringify(data.result));
+                resolve(<any[]>data.result);
+            }, error => {
+                    console.log("ERROR");
+                    Service.showErrorAndReject(error, reject);
+                })
+        });
+    }
+
+    getExpenseCategory(categoryId: number): Promise<any> {
+        return new Promise<any>((resolve, reject) => {
+            console.log("GetCategory");
+            var everlive = this.createEverlive();
+            everlive.data(EXPENSE_CATEGORY).getById(categoryId).then(data => {
+                console.log("DATA: " + JSON.stringify(data.result));
+                resolve(<any>data.result);
+            }, error => {
+                    console.log("ERROR");
+                    Service.showErrorAndReject(error, reject);
+                })
+        });
+    }
+
+    private createEverlive(): any {
+        if (!this._everlive) {
+            this._everlive = new everliveModule({ apiKey: constantsModule.telerikApiKey, token: localSettingsModule.getString(constantsModule.authenticationTokenKey) }); // offlineStorage: true
+        }
+
+        return this._everlive;
     }
 
     private static showErrorAndReject(error: any, reject: (e: any) => void) {

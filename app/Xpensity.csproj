@@ -211,7 +211,7 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="components\view-report\view-report.css" />
-    <Content Include="lib\everlive.js" />
+    <Content Include="lib\everlive.all.map.js" />
     <Content Include="tns_modules\application\application-common.js" />
     <Content Include="tns_modules\application\application.android.js" />
     <Content Include="tns_modules\application\application.ios.js" />

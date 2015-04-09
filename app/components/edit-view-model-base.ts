@@ -17,7 +17,7 @@ export class EditViewModelBase extends viewModelBaseModule.ViewModelBase {
         }
         else {
             this._isAdd = true;
-            this.item = {};
+            this.item = this.createItem();
         }
     }
 
@@ -57,6 +57,9 @@ export class EditViewModelBase extends viewModelBaseModule.ViewModelBase {
         return null;
     }
 
+    createItem(): any {
+        return {};
+    }
 
     save() {
         this.beginLoading();

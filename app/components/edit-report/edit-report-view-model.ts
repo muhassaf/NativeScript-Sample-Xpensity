@@ -16,16 +16,19 @@ export class EditReportViewModel extends editViewModelBaseModule.EditViewModelBa
     }
 
     get createMethod(): (report: any) => Promise<any> {
-        return (r) => {
-            r.Status = reportStatusModule.New;
-            r.Date = new Date();
-
-            return serviceModule.service.createReport(r);
-        }
+        return serviceModule.service.createReport;
     }
 
     get updateMethod(): (report: any) => Promise<any> {
         return serviceModule.service.updateReport;
+    }
+
+    createItem(): any {
+        var item = super.createItem();
+        item.Status = reportStatusModule.New;
+        item.Date = new Date();
+
+        return item;
     }
 
     deleteReport() {
@@ -39,7 +42,8 @@ export class EditReportViewModel extends editViewModelBaseModule.EditViewModelBa
                 this.beginLoading();
                 serviceModule.service.deleteReport(this.item).then((data) => {
                     this.endLoading();
-                    navigationModule.navigateWitouthHistory(viewsModule.Views.main);
+                    navigationModule.goBack();
+                    navigationModule.goBack();
                 },(error) => {
                         this.endLoading();
                     });
