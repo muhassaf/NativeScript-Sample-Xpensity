@@ -29,7 +29,7 @@ export class EditExpenseViewModel extends editViewModelBaseModule.EditViewModelB
         return serviceModule.service.updateExpense;
     }
 
-    get expenseCategory(): any {
+    get category(): any {
         return this._category;
     }
 
@@ -44,7 +44,7 @@ export class EditExpenseViewModel extends editViewModelBaseModule.EditViewModelB
     createItem(): any {
         var item = super.createItem();
         item.Date = new Date();
-        item.ExpenseCategoryId = constantsModule.defaultExpenseCategoryId;
+        item.CategoryId = constantsModule.defaultExpenseCategoryId;
 
         return item;
     }
@@ -69,13 +69,13 @@ export class EditExpenseViewModel extends editViewModelBaseModule.EditViewModelB
     }
 
     refresh() {
-        this.loadExpenseCategory();
+        this.loadCategory();
     }
 
-    private loadExpenseCategory() {
+    private loadCategory() {
         this.beginLoading();
-        serviceModule.service.getExpenseCategory(this.item.ExpenseCategoryId).then((category) => {
-            this.expenseCategory = category;
+        serviceModule.service.getExpenseCategory(this.item.CategoryId).then((category) => {
+            this.category = category;
             this.endLoading();
         },(error) => {
                 this.endLoading();

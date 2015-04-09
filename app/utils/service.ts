@@ -22,11 +22,11 @@ export class Service {
             var everlive = new everliveModule(constantsModule.telerikApiKey);
             everlive.Users.login(username, password,(data: any) => {
                 localSettingsModule.setString(constantsModule.authenticationTokenKey, data.result.access_token);
-                // TODO: Get DisplayName
                 this.setupLocalSettings("Kamen Velikov", data.result.access_token);
-                // TODO: Setup everlive offline mode.
                 resolve(data);
-            }, reject)
+            }, error => {
+                    Service.showErrorAndReject(error, reject);
+                })
         });
     }
 
@@ -105,6 +105,7 @@ export class Service {
 
     createExpense(expense: any): Promise<any> {
         return new Promise<any>((resolve, reject) => {
+            console.log("CreateExpense");
             var everlive = this.createEverlive();
             everlive.data(EXPENSE).create(expense, resolve, error => {
                 Service.showErrorAndReject(error, reject);
@@ -132,13 +133,10 @@ export class Service {
 
     getExpenseCategories(): Promise<any[]> {
         return new Promise<any[]>((resolve, reject) => {
-            console.log("GetCategories");
             var everlive = this.createEverlive();
             everlive.data(EXPENSE_CATEGORY).get().then(data => {
-                console.log("DATA: " + JSON.stringify(data.result));
                 resolve(<any[]>data.result);
             }, error => {
-                    console.log("ERROR");
                     Service.showErrorAndReject(error, reject);
                 })
         });
@@ -146,13 +144,10 @@ export class Service {
 
     getExpenseCategory(categoryId: number): Promise<any> {
         return new Promise<any>((resolve, reject) => {
-            console.log("GetCategory");
             var everlive = this.createEverlive();
             everlive.data(EXPENSE_CATEGORY).getById(categoryId).then(data => {
-                console.log("DATA: " + JSON.stringify(data.result));
                 resolve(<any>data.result);
             }, error => {
-                    console.log("ERROR");
                     Service.showErrorAndReject(error, reject);
                 })
         });

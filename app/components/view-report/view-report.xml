@@ -5,9 +5,9 @@
 
   <GridLayout rows="auto, auto, auto, auto, *">
     <Label text="{{ report.Title }}" cssClass="title" />
-    <Label text="{{ total }}" cssClass="total" />
+    <Label text="{{ total | formatCurrency }}" cssClass="total" />
     <Label row="1" text="{{ report.BussinessPurpose }}" cssClass="subTitle" />
-    <Label row="2" text="{{ report.Date }}" cssClass="subTitle" />
+    <Label row="2" text="{{ report.Date | formatDate }}" cssClass="subTitle" />
 
     <PieChart row="3" items="{{ expensesByCategory }}" valueProperty="Total" cssClass="categoriesChart" />
 
@@ -17,10 +17,10 @@
           <Border backgroundColor="#0000FF" cssClass="category" />
           <StackLayout col="1">
             <Label text="{{ Title }}" cssClass="itemTitle" />
-            <Label text="{{ Date }}" cssClass="itemSubTitle" />
+            <Label text="{{ Date | formatDate }}" cssClass="itemSubTitle" />
             <Label text="{{ Location }}" cssClass="itemSubTitleLast" />
           </StackLayout>
-          <Label col="2" text="{{ Cost }}" cssClass="itemCost" />
+          <Label col="2" text="{{ Cost | formatCurrency }}" cssClass="itemCost" />
         </GridLayout>
       </ListView.itemTemplate>
     </ListView>

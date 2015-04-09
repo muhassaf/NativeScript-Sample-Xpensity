@@ -51,7 +51,6 @@ export class LoginViewModel extends viewModelBaseModule.ViewModelBase {
             },(error: any) => {
                     this.clearPassword();
                     this.endLoading();
-                    notificationsModule.showError(error.message);
                 });
         }
         else {

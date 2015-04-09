@@ -35,13 +35,14 @@ export function datePickerTap(args: observableModule.EventData) {
 export function categoryPickerTap(args: observableModule.EventData) {
     navigationModule.navigate({
         moduleName: viewsModule.Views.listPicker,
-        context: new listPickerViewModelModule.ListPickerViewModel(serviceModule.service.getExpenseCategories, viewModel.category, (selectedItem: any) => {
+        context: new listPickerViewModelModule.ListPickerViewModel(() => { return serviceModule.service.getExpenseCategories(); }, viewModel.category, (selectedItem: any) => {
             viewModel.category = selectedItem;
         })
     });
 }
 
 export function doneMenuItemTap(args: observableModule.EventData) {
+    console.log("DONE");
     viewModel.save();
 }
 

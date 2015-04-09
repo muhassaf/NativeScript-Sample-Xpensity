@@ -13,7 +13,7 @@
         <StackLayout cssClass="pickerContainer" tap="datePickerTap">
           <Label text="Date" cssClass="pickerLabel" />
           <GridLayout columns="*, auto">
-            <Label text="{{ item.Date }}" cssClass="pickerValue" />
+            <Label text="{{ item.Date | formatDate }}" cssClass="pickerValue" />
             <Image col="1" src="res://ic_arrow_drop_down" cssClass="pickerIcon" stretch="none" />
           </GridLayout>
           <Border cssClass="pickerBorder" />

@@ -13,11 +13,11 @@ export class ListPickerViewModel extends viewModelBaseModule.ViewModelBase{
         super();
 
         this.beginLoading();
-        serviceModule.service.getExpenseCategories().then((items) => {
+        getItemsFunction().then((items) => {
             var listItems = new Array<ListItem>();
             for (var i = 0; i < items.length; i++) {
                 var listItem = new ListItem(items[i]);
-                if (items[i] === selectedItem) {
+                if (items[i].Id === selectedItem.Id) {
                     this.selectItem(listItem);
                 }
 
@@ -26,7 +26,7 @@ export class ListPickerViewModel extends viewModelBaseModule.ViewModelBase{
 
             console.log("ITEMS: " + JSON.stringify(listItems));
 
-            this.items = [new ListItem({ Title: "Alabala" }), new ListItem({ Title: "Item2" })];
+            this.items = listItems;
             this.endLoading();
         },(error) => {
                 this.endLoading();
