@@ -5,18 +5,19 @@ import viewReportViewModelModule = require("../view-report/view-report-view-mode
 import serviceModule = require("../../utils/service");
 
 export class ReportsViewModel extends viewModelBaseModule.ViewModelBase {
-    private _reports: viewReportViewModelModule.ViewReportViewModel[];
+    private _reports: Array<viewReportViewModelModule.ViewReportViewModel>;
+
     constructor() {
         super();
 
         this.refresh();
     }
 
-    get reports(): viewReportViewModelModule.ViewReportViewModel[] {
+    get reports(): Array<viewReportViewModelModule.ViewReportViewModel> {
         return this._reports;
     }
 
-    set reports(value: viewReportViewModelModule.ViewReportViewModel[]) {
+    set reports(value: Array<viewReportViewModelModule.ViewReportViewModel>) {
         if (this._reports !== value) {
             this._reports = value;
             this.notifyPropertyChanged("reports", value);
@@ -26,8 +27,7 @@ export class ReportsViewModel extends viewModelBaseModule.ViewModelBase {
     refresh() {
         this.beginLoading();
         serviceModule.service.getReports().then((data: any[]) => {
-            console.log("ITEMS: " + data.length);
-            var reports: viewReportViewModelModule.ViewReportViewModel[] = [];
+            var reports = new Array<viewReportViewModelModule.ViewReportViewModel>();
             for (var i = 0; i < data.length; i++) {
                 reports.push(new viewReportViewModelModule.ViewReportViewModel(data[i]));
             }

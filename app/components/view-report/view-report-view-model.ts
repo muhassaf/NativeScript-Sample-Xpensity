@@ -62,7 +62,7 @@ export class ViewReportViewModel extends viewModelBaseModule.ViewModelBase {
         return 1500;
     }
 
-    get fapVisibility() {
+    get fabVisibility() {
         if (this.report.status === reportStatusModule.ForApproval ||
             this.report.status === reportStatusModule.Approved) {
             return enumsModule.Visibility.collapsed;
@@ -78,6 +78,7 @@ export class ViewReportViewModel extends viewModelBaseModule.ViewModelBase {
             this.beginLoading();
             this.report.Status = reportStatusModule.ForApproval;
             serviceModule.service.updateReport(this.report).then((data) => {
+                this.notifyPropertyChanged("fapVisibility", false);
                 this.endLoading();
                 resolve(data)
             }, error => {
@@ -94,16 +95,17 @@ export class ViewReportViewModel extends viewModelBaseModule.ViewModelBase {
     }
 
     addExpense() {
+        console.log("OUTER REPORT: " + JSON.stringify(this.report));
         navigationModule.navigate({
             moduleName: viewsModule.Views.editExpense,
-            context: new editExpenseViewModelModule.EditExpenseViewModel(this)
+            context: new editExpenseViewModelModule.EditExpenseViewModel(this.report)
         });
     }
 
     editExpense(expense: any) {
         navigationModule.navigate({
             moduleName: viewsModule.Views.editExpense,
-            context: new editExpenseViewModelModule.EditExpenseViewModel(this, expense)
+            context: new editExpenseViewModelModule.EditExpenseViewModel(this.report, expense)
         });
     }
 

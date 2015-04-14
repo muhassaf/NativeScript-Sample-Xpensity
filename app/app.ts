@@ -7,7 +7,7 @@ applicationModule.mainModule = viewsModule.Views.main;
 var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 applicationModule.resources = {
     formatDate: function (date: Date): string {
-        return date.getDay() + " " + months[date.getMonth() - 1] + ", " + date.getFullYear();
+        return (date.getDate()) + " " + months[date.getMonth()] + ", " + date.getFullYear();
     },
 
     formatCurrency: function (currency: number) {

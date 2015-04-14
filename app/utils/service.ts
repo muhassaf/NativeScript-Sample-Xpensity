@@ -85,6 +85,7 @@ export class Service {
         return new Promise<any[]>((resolve, reject) => {
             var everlive = this.createEverlive();
             everlive.data(EXPENSE).get().then(data => {
+                console.log("EXPENSES: " + JSON.stringify(data.result));
                 resolve(<any[]>data.result);
             }, error => {
                     Service.showErrorAndReject(error, reject);
@@ -105,7 +106,7 @@ export class Service {
 
     createExpense(expense: any): Promise<any> {
         return new Promise<any>((resolve, reject) => {
-            console.log("CreateExpense");
+            console.log("CreateExpense: " + JSON.stringify(expense));
             var everlive = this.createEverlive();
             everlive.data(EXPENSE).create(expense, resolve, error => {
                 Service.showErrorAndReject(error, reject);

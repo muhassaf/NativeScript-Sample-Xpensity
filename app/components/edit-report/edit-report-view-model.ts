@@ -15,12 +15,13 @@ export class EditReportViewModel extends editViewModelBaseModule.EditViewModelBa
         super(report);
     }
 
-    get createMethod(): (report: any) => Promise<any> {
-        return serviceModule.service.createReport;
+    addItem(item: any): Promise<any> {
+        console.log("Adding");
+        return serviceModule.service.createReport(item);
     }
 
-    get updateMethod(): (report: any) => Promise<any> {
-        return serviceModule.service.updateReport;
+    updateItem(item: any): Promise<any> {
+        return serviceModule.service.updateReport(item);
     }
 
     createItem(): any {

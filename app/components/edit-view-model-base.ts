@@ -49,30 +49,25 @@ export class EditViewModelBase extends viewModelBaseModule.ViewModelBase {
         return enumsModule.Visibility.visible;
     }
 
-    get createMethod(): (item: any) => Promise<any> {
-        return null;
-    }
-
-    get updateMethod(): (item: any) => Promise<any> {
-        return null;
-    }
-
     createItem(): any {
         return {};
     }
 
     save() {
+        console.log("LOADING");
         this.beginLoading();
         if (this._isAdd) {
-            this.create();
+            this.add();
         }
         else {
             this.update();
         }
     }
 
-    create() {
-        this.createMethod(this.item).then((data) => {
+    add() {
+        console.log("CREATE");
+        this.addItem(this.item).then((data) => {
+            console.log("CREATED");
             this.endLoading();
             navigationModule.goBack();
         }, error => {
@@ -81,11 +76,19 @@ export class EditViewModelBase extends viewModelBaseModule.ViewModelBase {
     }
 
     update() {
-        this.updateMethod(this.item).then((data) => {
+        this.updateItem(this.item).then((data) => {
             this.endLoading();
             navigationModule.goBack();
         }, error => {
                 this.endLoading();
             });
+    }
+
+    addItem(item: any): Promise<any> {
+        return null;
+    }
+
+    updateItem(item: any): Promise<any> {
+        return null;
     }
 } 

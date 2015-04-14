@@ -15,18 +15,9 @@ export class EditExpenseViewModel extends editViewModelBaseModule.EditViewModelB
     private _category: any;
 
     constructor(report: any, expense?: any) {
-        super(expense);
-
         this._report = report;
+        super(expense);
         this.refresh();
-    }
-
-    get createMethod(): (expense: any) => Promise<any> {
-        return serviceModule.service.createExpense;
-    }
-
-    get updateMethod(): (expense: any) => Promise<any> {
-        return serviceModule.service.updateExpense;
     }
 
     get category(): any {
@@ -36,7 +27,7 @@ export class EditExpenseViewModel extends editViewModelBaseModule.EditViewModelB
     set category(value: any) {
         if (this._category !== value) {
             this._category = value;
-            this.item.CategoryId = this._category.Id;
+            this.item.Category = this._category.Id;
             this.notifyPropertyChanged("category", value);
         }
     }
@@ -44,9 +35,18 @@ export class EditExpenseViewModel extends editViewModelBaseModule.EditViewModelB
     createItem(): any {
         var item = super.createItem();
         item.Date = new Date();
-        item.CategoryId = constantsModule.defaultExpenseCategoryId;
+        item.Category = constantsModule.defaultExpenseCategoryId;
+        item.Report = this._report.Id;
 
         return item;
+    }
+
+    addItem(item: any): Promise<any> {
+        return serviceModule.service.createExpense(item);
+    }
+
+    updateItem(item: any): Promise<any> {
+        return serviceModule.service.updateExpense(item);
     }
 
     deleteExpense() {
@@ -74,7 +74,7 @@ export class EditExpenseViewModel extends editViewModelBaseModule.EditViewModelB
 
     private loadCategory() {
         this.beginLoading();
-        serviceModule.service.getExpenseCategory(this.item.CategoryId).then((category) => {
+        serviceModule.service.getExpenseCategory(this.item.Category).then((category) => {
             this.category = category;
             this.endLoading();
         },(error) => {

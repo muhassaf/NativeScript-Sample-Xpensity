@@ -10,7 +10,7 @@ export class DatePickerViewModel extends viewModelBaseModule.ViewModelBase {
     constructor(selectedDate: Date, selectedCallback: (selectedDate: Date) => void) {
         super();
 
-        this.day = selectedDate.getDay();
+        this.day = selectedDate.getDate();
         this.month = selectedDate.getMonth();
         this.year = selectedDate.getFullYear();
 
