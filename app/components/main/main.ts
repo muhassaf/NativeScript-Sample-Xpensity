@@ -14,7 +14,7 @@ import viewsModule = require("../../utils/views");
 import actionBarModule = require("../../utils/action-bar");
 import serviceModule = require("../../utils/service");
 
-var viewModel: mainViewModelModule.MainViewModel;
+var viewModel = new mainViewModelModule.MainViewModel();
 export function pageLoaded(args: observableModule.EventData) {
     actionBarModule.hideBackNavigation();
     if (!serviceModule.service.isAuthenticated) {
@@ -22,13 +22,12 @@ export function pageLoaded(args: observableModule.EventData) {
     }
     else {
         var page = <pageModule.Page>args.object;
-        viewModel = new mainViewModelModule.MainViewModel();
         page.bindingContext = viewModel;
+        viewModel.refresh();
     }
 }
 
 export function navigatedTo(args: observableModule.EventData) {
-    viewModel.refresh();
 }
 
 export function reportTap(args: gridViewModule.ItemEventData) {
@@ -39,6 +38,7 @@ export function reportTap(args: gridViewModule.ItemEventData) {
 }
 
 export function addReportTap(args: observableModule.EventData) {
+    console.log("REP: " + viewModel.reportsViewModel.reports);
     navigationModule.navigate({
         moduleName: viewsModule.Views.editReport,
         context: new editReportViewModelModule.EditReportViewModel()

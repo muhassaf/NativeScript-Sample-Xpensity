@@ -1,5 +1,7 @@
 ﻿import platformModule = require("platform");
+
 import observableModule = require("data/observable");
+
 import enumsModule = require("ui/enums");
 import dialogsModule = require("ui/dialogs");
 

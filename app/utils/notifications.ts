@@ -7,3 +7,12 @@ export function showError(error: string) {
 export function showInfo(message: string) {
     dialogsModule.alert({ title: "Info", message: message, okButtonText: "OK" });
 }
+
+export function confirm(title: string, message: string): Promise<boolean> {
+    return dialogsModule.confirm({
+        title: title,
+        message: message,
+        okButtonText: "YES",
+        cancelButtonText: "NO"
+    });
+}

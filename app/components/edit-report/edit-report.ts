@@ -21,5 +21,5 @@ export function doneMenuItemTap(args: observableModule.EventData) {
 }
 
 export function deleteReportButtonTap(args: observableModule.EventData) {
-    viewModel.deleteReport();
+    viewModel.del();
 }

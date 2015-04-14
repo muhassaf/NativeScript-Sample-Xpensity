@@ -60,6 +60,8 @@ export class GridView extends gridLayoutModule.GridLayout implements definitionM
 
     constructor() {
         super();
+
+        this._itemsChanged = (args: observableModule.EventData) => { this.refresh(); };
     }
 
     get items(): any {
@@ -119,17 +121,16 @@ export class GridView extends gridLayoutModule.GridLayout implements definitionM
     }
 
     private static onItemsPropertyChanged(data: dependencyObservableModule.PropertyChangeData) {
-        var wrapListView = <GridView>data.object;
-
+        var gridView = <GridView>data.object;
         if (data.oldValue instanceof observableModule.Observable) {
-            (<observableModule.Observable>data.oldValue).off(CHANGE, wrapListView._itemsChanged);
+            (<observableModule.Observable>data.oldValue).off(CHANGE, gridView._itemsChanged);
         }
 
         if (data.newValue instanceof observableModule.Observable) {
-            (<observableModule.Observable>data.newValue).on(CHANGE, wrapListView._itemsChanged);
+            (<observableModule.Observable>data.newValue).on(CHANGE, gridView._itemsChanged);
         }
 
-        wrapListView.refresh();
+        gridView.refresh();
     }
 
     private static onItemTemplatePropertyChanged(data: dependencyObservableModule.PropertyChangeData) {

@@ -48,4 +48,7 @@ export class SettingsViewModel extends viewModelBaseModule.ViewModelBase {
         serviceModule.service.logout();
         navigationModule.navigateWitouthHistory(viewsModule.Views.login);
     }
+
+    refresh() {
+    }
 }

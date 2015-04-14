@@ -467,6 +467,7 @@
     <TypeScriptCompile Include="components\list-picker\list-picker.ts" />
     <TypeScriptCompile Include="components\main\main-view-model.ts" />
     <TypeScriptCompile Include="components\main\settings-view-model.ts" />
+    <TypeScriptCompile Include="components\model.ts" />
     <TypeScriptCompile Include="components\sign-up\sign-up-view-model.ts" />
     <TypeScriptCompile Include="components\sign-up\sign-up.ts" />
     <TypeScriptCompile Include="components\view-report\view-report-view-model.ts" />

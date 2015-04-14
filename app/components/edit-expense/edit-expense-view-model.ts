@@ -49,23 +49,8 @@ export class EditExpenseViewModel extends editViewModelBaseModule.EditViewModelB
         return serviceModule.service.updateExpense(item);
     }
 
-    deleteExpense() {
-        dialogsModule.confirm({
-            title: "Delete Expense",
-            message: "Do you want to delete the expense?",
-            okButtonText: "YES",
-            cancelButtonText: "NO"
-        }).then((value: boolean) => {
-            if (value) {
-                this.beginLoading();
-                serviceModule.service.deleteExpense(this.item).then((data) => {
-                    this.endLoading();
-                    navigationModule.goBack();
-                },(error) => {
-                        this.endLoading();
-                    });
-            }
-        });
+    deleteItem(item: any): Promise<any> {
+        return serviceModule.service.deleteExpense(item);
     }
 
     refresh() {

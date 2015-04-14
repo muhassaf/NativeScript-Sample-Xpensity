@@ -30,5 +30,6 @@ export class MainViewModel extends viewModelBaseModule.ViewModelBase {
 
     refresh() {
         this.reportsViewModel.refresh();
+        this.settingsViewModel.refresh();
     }
 }

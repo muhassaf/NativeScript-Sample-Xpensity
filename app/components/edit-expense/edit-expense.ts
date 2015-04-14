@@ -47,5 +47,5 @@ export function doneMenuItemTap(args: observableModule.EventData) {
 }
 
 export function deleteExpenseButtonTap(args: observableModule.EventData) {
-    viewModel.deleteExpense();
+    viewModel.del();
 }

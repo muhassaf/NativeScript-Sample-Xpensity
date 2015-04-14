@@ -1,8 +1,12 @@
 ﻿import localSettingsModule = require("local-settings");
+
 import observableModule = require("data/observable");
+import observableArrayModule = require("data/observable-array");
+
 import dialogsModule = require("ui/dialogs");
 
 import editViewModelBaseModule = require("../edit-view-model-base");
+import viewReportViewModelModule = require("../view-report/view-report-view-model");
 
 import constantsModule = require("../../utils/constants");
 import serviceModule = require("../../utils/service");
@@ -15,15 +19,6 @@ export class EditReportViewModel extends editViewModelBaseModule.EditViewModelBa
         super(report);
     }
 
-    addItem(item: any): Promise<any> {
-        console.log("Adding");
-        return serviceModule.service.createReport(item);
-    }
-
-    updateItem(item: any): Promise<any> {
-        return serviceModule.service.updateReport(item);
-    }
-
     createItem(): any {
         var item = super.createItem();
         item.Status = reportStatusModule.New;
@@ -32,23 +27,20 @@ export class EditReportViewModel extends editViewModelBaseModule.EditViewModelBa
         return item;
     }
 
-    deleteReport() {
-        dialogsModule.confirm({
-            title: "Delete Report",
-            message: "Do you want to delete the report?",
-            okButtonText: "YES",
-            cancelButtonText: "NO"
-        }).then((value: boolean) => {
-            if (value) {
-                this.beginLoading();
-                serviceModule.service.deleteReport(this.item).then((data) => {
-                    this.endLoading();
-                    navigationModule.goBack();
-                    navigationModule.goBack();
-                },(error) => {
-                        this.endLoading();
-                    });
-            }
+    addItem(item: any): Promise<any> {
+        return serviceModule.service.createReport(item);
+    }
+
+    updateItem(item: any): Promise<any> {
+        return serviceModule.service.updateReport(item);
+    }
+
+    deleteItem(item: any): Promise<any> {
+        return new Promise<any>((resolve, reject) => {
+            serviceModule.service.deleteReport(item).then((data) => {
+                resolve(data);
+                navigationModule.goBack();
+            }, reject);
         });
     }
 }

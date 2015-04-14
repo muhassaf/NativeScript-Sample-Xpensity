@@ -3,6 +3,7 @@ import enumsModule = require("ui/enums");
 
 import viewModelBaseModule = require("./view-model-base");
 import navigationModule = require("../utils/navigation");
+import notificationsModule = require("../utils/notifications");
 
 export class EditViewModelBase extends viewModelBaseModule.ViewModelBase {
     private _item: any;
@@ -54,7 +55,6 @@ export class EditViewModelBase extends viewModelBaseModule.ViewModelBase {
     }
 
     save() {
-        console.log("LOADING");
         this.beginLoading();
         if (this._isAdd) {
             this.add();
@@ -65,9 +65,7 @@ export class EditViewModelBase extends viewModelBaseModule.ViewModelBase {
     }
 
     add() {
-        console.log("CREATE");
         this.addItem(this.item).then((data) => {
-            console.log("CREATED");
             this.endLoading();
             navigationModule.goBack();
         }, error => {
@@ -84,11 +82,29 @@ export class EditViewModelBase extends viewModelBaseModule.ViewModelBase {
             });
     }
 
+    del() {
+        notificationsModule.confirm("Delete Item", "Do you want to delete the item?").then((value: boolean) => {
+            if (value) {
+                this.beginLoading();
+                this.deleteItem(this.item).then((data) => {
+                    this.endLoading();
+                    navigationModule.goBack();
+                },(error) => {
+                        this.endLoading();
+                    });
+            }
+        });
+    }
+
     addItem(item: any): Promise<any> {
         return null;
     }
 
     updateItem(item: any): Promise<any> {
+        return null;
+    }
+
+    deleteItem(item: any): Promise<any> {
         return null;
     }
 } 

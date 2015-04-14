@@ -1,4 +1,5 @@
 ﻿import observableModule = require("data/observable");
+
 import enumsModule = require("ui/enums");
 
 import editExpenseViewModelModule = require("../edit-expense/edit-expense-view-model");
