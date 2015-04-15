@@ -135,37 +135,29 @@ export class ViewReportViewModel extends viewModelBaseModule.ViewModelBase {
     private loadExpensesByCategory() {
         if (this.expenses) {
             this.beginLoading();
-            console.log("GET CATEGORIES");
             serviceModule.service.getExpenseCategories().then(categories => {
-                console.log("CATEGORIES: " + JSON.stringify(categories));
                 var expenses = {};
                 var totalCost = 0;
                 for (var i = 0; i < this.expenses.length; i++) {
                     var expense = this.expenses[i];
                     if (expense.Cost && !isNaN(expense.Cost)) {
-                        console.log("EXPENSE: " + JSON.stringify(expense));
                         if (!expenses[expense.Category]) {
                             expenses[expense.Category] = 0;
                         }
 
                         expenses[expense.Category] += (+expense.Cost)
-                        console.log("EXPENSES: " + JSON.stringify(expenses[expense.Category]));
                         totalCost += (+expense.Cost);
-                        console.log("TOTAL COST: " + totalCost);
                     }
                 }
 
-                console.log("EXPENSES: " + JSON.stringify(expenses[expense.Category]));
                 var expensesByCategory = [];
                 for (var i = 0; i < categories.length; i++) {
                     var category = categories[i];
-                    console.log("CATEGORY: " + JSON.stringify(category));
                     if (expenses[category.Id]) {
                         expensesByCategory.push({ Category: category.Title, TotalCost: expenses[category.Id] });
                     }
                 }
 
-                console.log("EXPENSES BY CATEGORY: " + JSON.stringify(expensesByCategory));
                 this.expensesByCategory = expensesByCategory;
                 this.totalCost = totalCost;
 

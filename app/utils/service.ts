@@ -12,6 +12,7 @@ var EXPENSE_CATEGORY = "ExpenseCategory";
 export class Service {
     private _defaultExpenseCategory: any;
     private _everlive: any;
+    private _categories: any[];
 
     get isAuthenticated(): boolean {
         return localSettingsModule.hasKey(constantsModule.authenticationTokenKey);
@@ -133,12 +134,18 @@ export class Service {
 
     getExpenseCategories(): Promise<any[]> {
         return new Promise<any[]>((resolve, reject) => {
-            var everlive = this.createEverlive();
-            everlive.data(EXPENSE_CATEGORY).get().then(data => {
-                resolve(<any[]>data.result);
-            }, error => {
-                    Service.showErrorAndReject(error, reject);
-                })
+            if (!this._categories) {
+                var everlive = this.createEverlive();
+                everlive.data(EXPENSE_CATEGORY).get().then(data => {
+                    this._categories = <any[]>data.result;
+                    resolve(this._categories);
+                }, error => {
+                        Service.showErrorAndReject(error, reject);
+                    })
+            }
+            else {
+                resolve(this._categories);
+            }
         });
     }
 
