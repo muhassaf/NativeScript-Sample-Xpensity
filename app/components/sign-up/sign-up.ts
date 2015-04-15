@@ -5,8 +5,9 @@ import pagesModule = require("ui/page");
 
 import signUpViewModelModule = require("./sign-up-view-model");
 
+var viewModel = new signUpViewModelModule.SignUpViewModel();
 export function pageLoaded(args: any) {
     actionBarModule.showBackNavigation();
     var page = <pagesModule.Page>args.object;
-    page.bindingContext = new signUpViewModelModule.SignUpViewModel();
+    page.bindingContext = viewModel;
 }

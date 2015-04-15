@@ -7,10 +7,9 @@ import navigationModule = require("../../utils/navigation");
 import viewsModule = require("../../utils/views");
 import actionBarModule = require("../../utils/action-bar");
 
-var viewModel: loginViewModelModule.LoginViewModel;
+var viewModel = new loginViewModelModule.LoginViewModel();
 export function pageLoaded(args: observableModule.EventData) {
     actionBarModule.hideBackNavigation();
-    viewModel = new loginViewModelModule.LoginViewModel();
     var page = <pagesModule.Page>args.object;
     page.bindingContext = viewModel;
 }
