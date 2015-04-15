@@ -70,7 +70,7 @@ export class ViewModelBase extends observableModule.Observable {
         dialogsModule.alert({ title: "Info", message: message, okButtonText: "OK" });
     }
 
-    notifyPropertyChanged(propertyName: string, value: any) {
+    notifyPropertyChanged(propertyName: string, value?: any) {
         this.notify({ object: this, eventName: observableModule.knownEvents.propertyChange, propertyName: propertyName, value: value });
     }
 }

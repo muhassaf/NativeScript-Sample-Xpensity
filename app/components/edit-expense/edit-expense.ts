@@ -42,7 +42,6 @@ export function categoryPickerTap(args: observableModule.EventData) {
 }
 
 export function doneMenuItemTap(args: observableModule.EventData) {
-    console.log("DONE");
     viewModel.save();
 }
 

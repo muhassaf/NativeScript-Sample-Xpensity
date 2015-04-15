@@ -13,8 +13,8 @@
                 <g:GridView.itemTemplate>
                   <Border borderWidth="2" borderColor="#DEDDDD" cssClass="tile" >
                     <StackLayout orientation="vertical">
-                      <Image src="res://ic_approved" cssClass="statusIcon" stretch="none" style="horizontal-align: right;" />
-                      <PieChart items="{{ expensesByCategory }}" valueProperty="Total" cssClass="categoriesChart" />
+                      <Image src="" cssClass="statusIcon" stretch="none" style="horizontal-align: right;" />
+                      <PieChart items="{{ expensesByCategory }}" valueProperty="TotalCost" cssClass="categoriesChart" />
                       <Label text="{{ report.Title }}" cssClass="itemTitle" />
                       <Label text="{{ report.Date | formatDate }}" cssClass="itemSubTitleLast" />
                     </StackLayout>

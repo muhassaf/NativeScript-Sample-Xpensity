@@ -15,14 +15,15 @@ import reportStatusModule = require("../../utils/report-status");
 export class ViewReportViewModel extends viewModelBaseModule.ViewModelBase {
     private _report: any;
     private _status: string;
+    private _totalCost: number;
     private _expenses: any[];
-    private _expensesLoaded: boolean;
+    private _expensesByCategory;
 
     constructor(report: any) {
         super();
 
         this.report = report;
-        this._expensesLoaded = false;
+        this.refresh();
     }
 
     get report(): any {
@@ -37,18 +38,17 @@ export class ViewReportViewModel extends viewModelBaseModule.ViewModelBase {
     }
 
     get expensesByCategory(): any[] {
-        return [
-            { Category: "Food & Dining", Total: 25 },
-            { Category: "Fees & Changes", Total: 25 },
-            { Category: "Business Services", Total: 12.5 },
-            { Category: "Personal Care", Total: 12.5 },
-            { Category: "Auto & Transport", Total: 25 }
-        ];
+        return this._expensesByCategory;
+    }
+
+    set expensesByCategory(value: any[]) {
+        if (this._expensesByCategory !== value) {
+            this._expensesByCategory = value;
+            this.notifyPropertyChanged("expensesByCategory", value);
+        }
     }
 
     get expenses(): any[]{
-        this.loadExpenses();
-
         return this._expenses;
     }
 
@@ -59,8 +59,15 @@ export class ViewReportViewModel extends viewModelBaseModule.ViewModelBase {
         }
     }
 
-    get total(): number {
-        return 1500;
+    get totalCost(): number {
+        return this._totalCost;
+    }
+
+    set totalCost(value: number) { 
+        if (this._totalCost !== value) {
+            this._totalCost = value;
+            this.notifyPropertyChanged("totalCost", value);
+        }
     }
 
     get fabVisibility() {
@@ -111,23 +118,61 @@ export class ViewReportViewModel extends viewModelBaseModule.ViewModelBase {
     }
 
     refresh() {
-        this.reloadExpenses();
+        this.loadExpenses();
     }
 
     private loadExpenses() {
-        if (!this._expensesLoaded) {
-            this.reloadExpenses();
-        }
-    }
-
-    private reloadExpenses() {
         this.beginLoading();
         serviceModule.service.getExpenses(this.report).then((data) => {
             this.expenses = data;
-            this._expensesLoaded = true;
+            this.loadExpensesByCategory();
             this.endLoading();
         },(error) => {
                 this.endLoading();
             });
+    }
+
+    private loadExpensesByCategory() {
+        if (this.expenses) {
+            this.beginLoading();
+            console.log("GET CATEGORIES");
+            serviceModule.service.getExpenseCategories().then(categories => {
+                console.log("CATEGORIES: " + JSON.stringify(categories));
+                var expenses = {};
+                var totalCost = 0;
+                for (var i = 0; i < this.expenses.length; i++) {
+                    var expense = this.expenses[i];
+                    if (expense.Cost && !isNaN(expense.Cost)) {
+                        console.log("EXPENSE: " + JSON.stringify(expense));
+                        if (!expenses[expense.Category]) {
+                            expenses[expense.Category] = 0;
+                        }
+
+                        expenses[expense.Category] += (+expense.Cost)
+                        console.log("EXPENSES: " + JSON.stringify(expenses[expense.Category]));
+                        totalCost += (+expense.Cost);
+                        console.log("TOTAL COST: " + totalCost);
+                    }
+                }
+
+                console.log("EXPENSES: " + JSON.stringify(expenses[expense.Category]));
+                var expensesByCategory = [];
+                for (var i = 0; i < categories.length; i++) {
+                    var category = categories[i];
+                    console.log("CATEGORY: " + JSON.stringify(category));
+                    if (expenses[category.Id]) {
+                        expensesByCategory.push({ Category: category.Title, TotalCost: expenses[category.Id] });
+                    }
+                }
+
+                console.log("EXPENSES BY CATEGORY: " + JSON.stringify(expensesByCategory));
+                this.expensesByCategory = expensesByCategory;
+                this.totalCost = totalCost;
+
+                this.endLoading();
+            },(error) => {
+                    this.endLoading();
+                });
+        }
     }
 }

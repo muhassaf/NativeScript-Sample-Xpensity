@@ -7,6 +7,7 @@ import notificationsModule = require("../utils/notifications");
 
 export class EditViewModelBase extends viewModelBaseModule.ViewModelBase {
     private _item: any;
+    private _originalItem: any;
     private _isAdd: boolean;
 
     constructor(item?: any) {
@@ -14,7 +15,8 @@ export class EditViewModelBase extends viewModelBaseModule.ViewModelBase {
 
         if (item) {
             this._isAdd = false
-            this.item = item;
+            this._originalItem = item;
+            this.item = EditViewModelBase.clone(item);
         }
         else {
             this._isAdd = true;
@@ -75,6 +77,7 @@ export class EditViewModelBase extends viewModelBaseModule.ViewModelBase {
 
     update() {
         this.updateItem(this.item).then((data) => {
+            EditViewModelBase.copy(this.item, this._originalItem);
             this.endLoading();
             navigationModule.goBack();
         }, error => {
@@ -106,5 +109,20 @@ export class EditViewModelBase extends viewModelBaseModule.ViewModelBase {
 
     deleteItem(item: any): Promise<any> {
         return null;
+    }
+
+    private static clone(item: any): any {
+        var clone = {};
+        EditViewModelBase.copy(item, clone);
+
+        return clone;
+    }
+
+    private static copy(fromItem: any, toItem: any) {
+        for (var prop in fromItem) {
+            if (fromItem.hasOwnProperty(prop)) {
+                toItem[prop] = fromItem[prop];
+            }
+        }
     }
 } 

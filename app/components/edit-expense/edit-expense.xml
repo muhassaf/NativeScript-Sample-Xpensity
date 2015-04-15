@@ -8,6 +8,7 @@
     <ScrollView>
       <StackLayout>
         <TextField text="{{ item.Title }}" hint="Title" cssClass="firstTextField" />
+        <TextField text="{{ item.Location  }}" hint="Location" />
         <TextField text="{{ item.Cost  }}" hint="Cost" />
 
         <StackLayout cssClass="pickerContainer" tap="datePickerTap">

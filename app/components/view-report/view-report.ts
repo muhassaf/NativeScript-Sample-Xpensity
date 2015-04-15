@@ -18,7 +18,9 @@ export function navigatedTo(args: observableModule.EventData) {
     var page = <pageModule.Page>args.object;
     viewModel = <viewReportViewModelModule.ViewReportViewModel>page.navigationContext;
     buildMenu(page);
+    page.bindingContext = null;
     page.bindingContext = viewModel;
+    viewModel.refresh();
 }
 
 export function addExpenseTap(args: observableModule.EventData) {

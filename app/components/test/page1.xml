@@ -1,0 +1,11 @@
+﻿<Page xmlns="http://www.nativescript.org/tns.xsd"
+      xmlns:g="components/grid-view/grid-view"
+      loaded="pageLoaded"
+      navigatedTo="navigatedTo" >
+  <Page.optionsMenu>
+    <MenuItem text="EDIT" tap="editMenuItemTap" android.position="actionBar" />
+  </Page.optionsMenu>
+  <GridLayout>
+    <Label text="{{ item.Title }}" />
+  </GridLayout>
+</Page>
