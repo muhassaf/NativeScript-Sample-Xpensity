@@ -21,6 +21,7 @@ var PieChart = (function (_super) {
     PieChart.prototype._createUI = function () {
         this._android = new com.telerik.widget.chart.visualization.pieChart.RadPieChartView(this._context);
         this._pieSeries = new com.telerik.widget.chart.visualization.pieChart.PieSeries();
+        this._pieSeries.setLabelRenderer(new CustomPieLabelRenderer(this._pieSeries));
         this._android.getSeries().add(this._pieSeries);
         this.refresh();
     };
@@ -28,6 +29,15 @@ var PieChart = (function (_super) {
         if (this._pieSeries && this.items) {
             _super.prototype.refresh.call(this);
             this._pieSeries.setData(PieChart.wrapItems(this.items, this.valueProperty));
+            this._pieSeries.setShowLabels(this.showLabels);
+            if (this.canSelect) {
+                this._selectionBehavior = new com.telerik.widget.chart.visualization.behaviors.ChartSelectionBehavior();
+                this._android.getBehaviors().add(this._selectionBehavior);
+            }
+            else if (this._selectionBehavior) {
+                this._android.getBehaviors().remove(this._selectionBehavior);
+                this._selectionBehavior = null;
+            }
         }
     };
     PieChart.wrapItems = function (items, valueProperty) {
@@ -57,4 +67,15 @@ var PieChart = (function (_super) {
     return PieChart;
 })(pieChartCommon.PieChart);
 exports.PieChart = PieChart;
+var CustomPieLabelRenderer = (function (_super) {
+    __extends(CustomPieLabelRenderer, _super);
+    function CustomPieLabelRenderer(owner) {
+        _super.call(this, owner);
+    }
+    CustomPieLabelRenderer.prototype.getLabelText = function (dataPoint) {
+        return "Label";
+    };
+    return CustomPieLabelRenderer;
+})(com.telerik.widget.chart.visualization.pieChart.PieSeriesLabelRenderer);
+exports.CustomPieLabelRenderer = CustomPieLabelRenderer;
 //# sourceMappingURL=pie-chart.android.js.map

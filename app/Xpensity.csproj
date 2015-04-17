@@ -393,9 +393,6 @@ xcopy /E /Y "$(SolutionDir)app" "\\valkovmac\kvelikov\work\NativeScript\sample-X
     <Content Include="tns_modules\ui\page\page.android.js" />
     <Content Include="tns_modules\ui\page\page.ios.js" />
     <Content Include="tns_modules\ui\pie-chart\package.json" />
-    <Content Include="tns_modules\ui\pie-chart\pie-chart-common.js" />
-    <Content Include="tns_modules\ui\pie-chart\pie-chart.android.js" />
-    <Content Include="tns_modules\ui\pie-chart\pie-chart.js" />
     <Content Include="tns_modules\ui\placeholder\placeholder-common.js" />
     <Content Include="tns_modules\ui\placeholder\placeholder.android.js" />
     <Content Include="tns_modules\ui\placeholder\placeholder.ios.js" />
@@ -604,9 +601,6 @@ xcopy /E /Y "$(SolutionDir)app" "\\valkovmac\kvelikov\work\NativeScript\sample-X
   </ItemGroup>
   <ItemGroup>
     <Content Include="tns_modules\ui\items-view\items-view.js.map" />
-    <Content Include="tns_modules\ui\pie-chart\pie-chart-common.js.map" />
-    <Content Include="tns_modules\ui\pie-chart\pie-chart.android.js.map" />
-    <Content Include="tns_modules\ui\pie-chart\pie-chart.js.map" />
     <Content Include="tns_modules\ui\placeholder\package.json" />
   </ItemGroup>
 </Project>

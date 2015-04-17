@@ -10,6 +10,9 @@ var PieChart = (function (_super) {
     function PieChart() {
         _super.call(this);
         this.valueProperty = null;
+        this.labelProperty = null;
+        this.canSelect = false;
+        this.showLabels = false;
     }
     Object.defineProperty(PieChart.prototype, "valueProperty", {
         get: function () {
@@ -18,6 +21,58 @@ var PieChart = (function (_super) {
         set: function (value) {
             if (this._valueProperty !== value) {
                 this._valueProperty = value;
+                this.refresh();
+            }
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(PieChart.prototype, "labelProperty", {
+        get: function () {
+            return this._labelProperty;
+        },
+        set: function (value) {
+            if (this._labelProperty !== value) {
+                this._labelProperty = value;
+                this.refresh();
+            }
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(PieChart.prototype, "showLabels", {
+        get: function () {
+            return this._showLabels;
+        },
+        set: function (value) {
+            if (this._showLabels !== value) {
+                this._showLabels = value;
+                this.refresh();
+            }
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(PieChart.prototype, "canSelect", {
+        get: function () {
+            return this._canSelect;
+        },
+        set: function (value) {
+            if (this._canSelect !== value) {
+                this._canSelect = value;
+                this.refresh();
+            }
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(PieChart.prototype, "colors", {
+        get: function () {
+            return this._colors;
+        },
+        set: function (value) {
+            if (this._colors !== value) {
+                this._colors = value;
                 this.refresh();
             }
         },
