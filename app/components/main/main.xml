@@ -11,7 +11,7 @@
             <ScrollView row="1" >
               <g:GridView items="{{ reports }}" gridColumns="2" cssClass="reportsGrid" itemTap="reportTap">
                 <g:GridView.itemTemplate>
-                  <Border borderWidth="2" borderColor="#DEDDDD" cssClass="tile" >
+                  <Border cssClass="tile" >
                     <StackLayout orientation="vertical">
                       <Image src="" cssClass="statusIcon" stretch="none" style="horizontal-align: right;" />
                       <PieChart items="{{ expensesByCategory }}" valueProperty="TotalCost" cssClass="categoriesChart" />
@@ -57,12 +57,12 @@
 
                 <GridLayout columns="*, auto">
                   <Label text="Offline Mode" />
-                  <Switch checked="{{ offlineMode }}"/>
+                  <Switch col="1" checked="{{ offlineMode }}"/>
                 </GridLayout>
 
                 <GridLayout columns="*, auto">
                   <Label text="Notifications" />
-                  <Switch checked="{{ notifications }}"/>
+                  <Switch col="1" checked="{{ notifications }}"/>
                 </GridLayout>
 
                 <Button text="LOGOUT" tap="logoutButtonTap" cssClass="secondaryButton" />

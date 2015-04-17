@@ -7,4 +7,5 @@
     export var editExpense = "components/edit-expense/edit-expense";
     export var datePicker = "components/date-picker/date-picker";
     export var listPicker = "components/list-picker/list-picker";
+    export var test = "components/test/page1";
 } 

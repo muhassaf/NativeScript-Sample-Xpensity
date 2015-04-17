@@ -11,11 +11,3 @@ export function pageLoaded(args: observableModule.EventData) {
     var page = <pageModule.Page>args.object;
     page.bindingContext = viewModel;
 }
-
-
-export function editMenuItemTap(args: observableModule.EventData) {
-    frameModule.topmost().navigate({
-        moduleName: "components/test/page2",
-        context: new page2ViewModelModule.Page2ViewModel(viewModel.item)
-    });
-}

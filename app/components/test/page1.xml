@@ -2,10 +2,5 @@
       xmlns:g="components/grid-view/grid-view"
       loaded="pageLoaded"
       navigatedTo="navigatedTo" >
-  <Page.optionsMenu>
-    <MenuItem text="EDIT" tap="editMenuItemTap" android.position="actionBar" />
-  </Page.optionsMenu>
-  <GridLayout>
-    <Label text="{{ item.Title }}" />
-  </GridLayout>
+  <PieChart items="{{ items }}" valueProperty="TotalCost" cssClass="categoriesChart" />
 </Page>

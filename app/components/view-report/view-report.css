@@ -21,6 +21,7 @@
 .categoriesChart {
     margin-left: 50;
     margin-right: 50;
+    background-color: #EEEEEE;
 }
 
 .expensesListView {
@@ -35,4 +36,4 @@
     font-size: 16;
     margin: 0 16 0 16;
     vertical-align: center;
-}
+ }

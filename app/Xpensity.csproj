@@ -23,6 +23,12 @@
   <PropertyGroup>
     <RootNamespace>Xpensity</RootNamespace>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Android'">
+    <OutputPath>bin\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'iOS'">
+    <OutputPath>bin\</OutputPath>
+  </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\WebApplications\Microsoft.WebApplication.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\WebApplications\Microsoft.WebApplication.targets')" />
   <ProjectExtensions>
@@ -52,9 +58,19 @@
     <TypeScriptRemoveComments>true</TypeScriptRemoveComments>
     <TypeScriptSourceMap>false</TypeScriptSourceMap>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Android'">
+    <TypeScriptModuleKind>commonjs</TypeScriptModuleKind>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'iOS'">
+    <TypeScriptModuleKind>commonjs</TypeScriptModuleKind>
+  </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
   <PropertyGroup>
-    <PostBuildEvent>tns run android --emulator</PostBuildEvent>
+    <PostBuildEvent>if $(ConfigurationName) == Android (
+tns run android --emulator
+) ELSE if $(ConfigurationName) == iOS (
+xcopy /E /Y "$(SolutionDir)app" "\\valkovmac\kvelikov\work\NativeScript\sample-Xpensity\app"
+)</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
     <PreBuildEvent>
@@ -551,6 +567,7 @@
     <TypeScriptCompile Include="tns_modules\ui\pie-chart\pie-chart-common.ts" />
     <TypeScriptCompile Include="tns_modules\ui\pie-chart\pie-chart.android.ts" />
     <TypeScriptCompile Include="tns_modules\ui\pie-chart\pie-chart.d.ts" />
+    <TypeScriptCompile Include="tns_modules\ui\pie-chart\pie-chart.ios.ts" />
     <TypeScriptCompile Include="tns_modules\ui\placeholder\placeholder.d.ts" />
     <TypeScriptCompile Include="tns_modules\ui\progress\progress.d.ts" />
     <TypeScriptCompile Include="tns_modules\ui\scroll-view\scroll-view.d.ts" />
