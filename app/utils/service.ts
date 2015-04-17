@@ -149,7 +149,7 @@ export class Service {
         });
     }
 
-    getExpenseCategory(categoryId: number): Promise<any> {
+    getExpenseCategory(categoryId: string): Promise<any> {
         return new Promise<any>((resolve, reject) => {
             var everlive = this.createEverlive();
             everlive.data(EXPENSE_CATEGORY).getById(categoryId).then(data => {
@@ -157,6 +157,21 @@ export class Service {
             }, error => {
                     Service.showErrorAndReject(error, reject);
                 })
+        });
+    }
+
+    getColorByExpenseCategory(categoryId: string): Promise<string> {
+        return new Promise<any>((resolve, reject) => {
+            this.getExpenseCategories().then(categories => {
+                for (var i = 0; i < categories.length; i++) {
+                    var category = categories[i];
+                    if (category.Id == categoryId) {
+                        resolve(category.Color);
+
+                        break;
+                    }
+                }
+            }, reject);
         });
     }
 

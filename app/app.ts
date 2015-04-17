@@ -12,10 +12,6 @@ applicationModule.resources = {
 
     formatCurrency: function (currency: number) {
         return "$" + (Math.round(currency * 100) / 100).toFixed(2);
-    },
-
-    getExpenseCategoryColor: function (expense: any): string {
-        return "#0000FF";
     }
 }
 

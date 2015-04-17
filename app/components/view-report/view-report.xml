@@ -14,13 +14,13 @@
     <ListView row="4" items="{{ expenses }}" itemTap="expenseTap" cssClass="expensesListView">
       <ListView.itemTemplate>
         <GridLayout columns="auto, *, auto">
-          <Border backgroundColor="#0000FF" cssClass="category" />
+          <Border backgroundColor="{{ categoryColor }}" cssClass="category" />
           <StackLayout col="1">
-            <Label text="{{ Title }}" cssClass="itemTitle" />
-            <Label text="{{ Date | formatDate }}" cssClass="itemSubTitle" />
-            <Label text="{{ Location }}" cssClass="itemSubTitleLast" />
+            <Label text="{{ expense.Title }}" cssClass="itemTitle" />
+            <Label text="{{ expense.Date | formatDate }}" cssClass="itemSubTitle" />
+            <Label text="{{ expense.Location }}" cssClass="itemSubTitleLast" />
           </StackLayout>
-          <Label col="2" text="{{ Cost | formatCurrency }}" cssClass="itemCost" />
+          <Label col="2" text="{{ expense.Cost | formatCurrency }}" cssClass="itemCost" />
         </GridLayout>
       </ListView.itemTemplate>
     </ListView>

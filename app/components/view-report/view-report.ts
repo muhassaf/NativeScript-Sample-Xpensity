@@ -28,7 +28,7 @@ export function addExpenseTap(args: observableModule.EventData) {
 }
 
 export function expenseTap(args: listViewModule.ItemEventData) {
-    viewModel.editExpense(args.view.bindingContext);
+    viewModel.editExpense(args.view.bindingContext.expense);
 }
 
 function buildMenu(page: pageModule.Page) {

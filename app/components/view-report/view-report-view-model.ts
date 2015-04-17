@@ -2,6 +2,7 @@
 
 import enumsModule = require("ui/enums");
 
+import viewExpenseViewModelModule = require("./view-expense-view-model");
 import editExpenseViewModelModule = require("../edit-expense/edit-expense-view-model");
 import editReportViewModelModule = require("../edit-report/edit-report-view-model");
 
@@ -16,25 +17,18 @@ export class ViewReportViewModel extends viewModelBaseModule.ViewModelBase {
     private _report: any;
     private _status: string;
     private _totalCost: number;
-    private _expenses: any[];
+    private _expenses: Array<viewExpenseViewModelModule.ViewExpenseViewModel>;
     private _expensesByCategory;
 
     constructor(report: any) {
         super();
 
-        this.report = report;
+        this._report = report;
         this.refresh();
     }
 
     get report(): any {
         return this._report;
-    }
-
-    set report(value: any) {
-        if (this._report !== value) {
-            this._report = value;
-            this.notifyPropertyChanged("report", value);
-        }
     }
 
     get expensesByCategory(): any[] {
@@ -48,11 +42,11 @@ export class ViewReportViewModel extends viewModelBaseModule.ViewModelBase {
         }
     }
 
-    get expenses(): any[]{
+    get expenses(): Array<viewExpenseViewModelModule.ViewExpenseViewModel>{
         return this._expenses;
     }
 
-    set expenses(value: any[]) {
+    set expenses(value: Array<viewExpenseViewModelModule.ViewExpenseViewModel>) {
         if (this._expenses !== value) {
             this._expenses = value;
             this.notifyPropertyChanged("expenses", value);
@@ -71,10 +65,12 @@ export class ViewReportViewModel extends viewModelBaseModule.ViewModelBase {
     }
 
     get fabVisibility() {
-        if (this.report.status === reportStatusModule.ForApproval ||
-            this.report.status === reportStatusModule.Approved) {
+        if (this.report.Status === reportStatusModule.ForApproval ||
+            this.report.Status === reportStatusModule.Approved) {
             return enumsModule.Visibility.collapsed;
         }
+
+        return this.androidVisibility;
     }
 
     showReportInfo() {
@@ -86,7 +82,7 @@ export class ViewReportViewModel extends viewModelBaseModule.ViewModelBase {
             this.beginLoading();
             this.report.Status = reportStatusModule.ForApproval;
             serviceModule.service.updateReport(this.report).then((data) => {
-                this.notifyPropertyChanged("fapVisibility", false);
+                this.notifyPropertyChanged("fabVisibility");
                 this.endLoading();
                 resolve(data)
             }, error => {
@@ -124,7 +120,12 @@ export class ViewReportViewModel extends viewModelBaseModule.ViewModelBase {
     private loadExpenses() {
         this.beginLoading();
         serviceModule.service.getExpenses(this.report).then((data) => {
-            this.expenses = data;
+            var expenses = new Array<viewExpenseViewModelModule.ViewExpenseViewModel>();
+            for (var i = 0; i < data.length; i++) {
+                expenses.push(new viewExpenseViewModelModule.ViewExpenseViewModel(data[i]));
+            }
+
+            this.expenses = expenses;
             this.loadExpensesByCategory();
             this.endLoading();
         },(error) => {
@@ -139,7 +140,7 @@ export class ViewReportViewModel extends viewModelBaseModule.ViewModelBase {
                 var expenses = {};
                 var totalCost = 0;
                 for (var i = 0; i < this.expenses.length; i++) {
-                    var expense = this.expenses[i];
+                    var expense = this.expenses[i].expense;
                     if (expense.Cost && !isNaN(expense.Cost)) {
                         if (!expenses[expense.Category]) {
                             expenses[expense.Category] = 0;
