@@ -2,5 +2,5 @@
       xmlns:g="components/grid-view/grid-view"
       loaded="pageLoaded"
       navigatedTo="navigatedTo" >
-  <PieChart items="{{ items }}" valueProperty="TotalCost" showLabels="true" canSelect="true" cssClass="categoriesChart" />
+  <PieChart items="{{ items }}" valueProperty="TotalCost" labelProperty="Category" showLabels="true" canSelect="true" cssClass="categoriesChart" />
 </Page>

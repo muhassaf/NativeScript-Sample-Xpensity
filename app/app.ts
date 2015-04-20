@@ -2,7 +2,7 @@
 
 import viewsModule = require("./utils/views");
 
-applicationModule.mainModule = viewsModule.Views.main;
+applicationModule.mainModule = viewsModule.Views.test;
 
 var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 applicationModule.resources = {
