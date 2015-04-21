@@ -7,9 +7,9 @@ export class Page1ViewModel extends observableModule.Observable {
         super();
 
         this.items = [
-            { Category: "Alabala", TotalCost: 30 },
-            { Category: "Test", TotalCost: 50 },
-            { Category: "Test 2", TotalCost: 8 }
+            { Category: "Alabala", TotalCost: 30, Color: "#FF0000" },
+            { Category: "Test", TotalCost: 50, Color: "#0000FF" },
+            { Category: "Test 2", TotalCost: 8, Color: "#00FF00" }
         ]
     }
 

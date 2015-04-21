@@ -4,6 +4,7 @@ var __extends = this.__extends || function (d, b) {
     __.prototype = b.prototype;
     d.prototype = new __();
 };
+var colorModule = require("color");
 var itemsViewModule = require("ui/items-view");
 var PieChart = (function (_super) {
     __extends(PieChart, _super);
@@ -79,9 +80,13 @@ var PieChart = (function (_super) {
         enumerable: true,
         configurable: true
     });
+    PieChart.getDarkerColor = function (color) {
+        return new colorModule.Color(color.a, Math.max(0, color.r - PieChart.DARK_FACTOR), Math.max(0, color.g - PieChart.DARK_FACTOR), Math.max(0, color.b - PieChart.DARK_FACTOR));
+    };
     PieChart.prototype.onMeasure = function (widthMeasureSpec, heightMeasureSpec) {
         _super.prototype.onMeasure.call(this, widthMeasureSpec, widthMeasureSpec);
     };
+    PieChart.DARK_FACTOR = 50;
     return PieChart;
 })(itemsViewModule.ItemsView);
 exports.PieChart = PieChart;

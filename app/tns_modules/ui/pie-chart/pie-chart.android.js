@@ -4,8 +4,9 @@ var __extends = this.__extends || function (d, b) {
     __.prototype = b.prototype;
     d.prototype = new __();
 };
-var pieChartCommon = require("ui/pie-chart/pie-chart-common");
-require("utils/module-merge").merge(pieChartCommon, exports);
+var colorModule = require("color");
+var pieChartCommonModule = require("ui/pie-chart/pie-chart-common");
+require("utils/module-merge").merge(pieChartCommonModule, exports);
 var PieChart = (function (_super) {
     __extends(PieChart, _super);
     function PieChart() {
@@ -23,11 +24,7 @@ var PieChart = (function (_super) {
         this._pieSeries = new com.telerik.widget.chart.visualization.pieChart.PieSeries();
         this._renderer = new CustomPieLabelRenderer(this, this._pieSeries);
         this._pieSeries.setLabelRenderer(this._renderer);
-        this._pieSeries.setLabelFillColor(android.graphics.Color.TRANSPARENT);
-        this._pieSeries.setLabelStrokeColor(android.graphics.Color.TRANSPARENT);
-        this._pieSeries.setLabelTextColor(android.graphics.Color.BLACK);
         this._pieSeries.setLabelOffset(-50);
-        this._pieSeries.setLabelSize(16);
         this._android.getSeries().add(this._pieSeries);
         this.refresh();
     };
@@ -52,6 +49,32 @@ var PieChart = (function (_super) {
                 this._android.getBehaviors().remove(this._selectionBehavior);
                 this._selectionBehavior = null;
             }
+            this.updatePalette();
+        }
+    };
+    PieChart.prototype.updatePalette = function () {
+        if (this.items) {
+            console.log("UPDATE PALETTE");
+            var customPalette = this._android.getPalette().clone();
+            var pieEntries = customPalette.entriesForFamily(com.telerik.widget.palettes.ChartPalette.PIE_FAMILY);
+            pieEntries.clear();
+            var customSelectPalette = this._android.getSelectionPalette().clone();
+            var pieSelectEntries = customSelectPalette.entriesForFamily(com.telerik.widget.palettes.ChartPalette.PIE_FAMILY);
+            pieSelectEntries.clear();
+            for (var i = 0; i < this.items.length; i++) {
+                console.log("ADD ITEM");
+                var item = this.items[i];
+                var color = new colorModule.Color(item.Color);
+                pieEntries.add(new com.telerik.widget.palettes.PaletteEntry(color.android));
+                var entry = new com.telerik.widget.palettes.PaletteEntry(color.android);
+                entry.setStroke(PieChart.getDarkerColor(color).android);
+                entry.setStrokeWidth(3);
+                pieSelectEntries.add(entry);
+            }
+            console.log("SET PALETTE");
+            this._android.setPalette(customPalette);
+            console.log("SET SELECTION PALETTE");
+            this._android.setSelectionPalette(customSelectPalette);
         }
     };
     PieChart.prototype.getWrappedItems = function () {
@@ -59,20 +82,15 @@ var PieChart = (function (_super) {
         if (this.items) {
             for (var i = 0; i < this.items.length; i++) {
                 var item = this.items[i];
-                console.log("ADD ITEM " + JSON.stringify(item));
-                console.log("VALUE PROPERTY" + this.valueProperty);
-                console.log("LABEL PROPERTY" + this.labelProperty);
                 var value = getPropertyValue(item, this.valueProperty);
                 var label = getPropertyValue(item, this.labelProperty);
-                console.log("VALUE PROPERTY" + value);
-                console.log("LABEL PROPERTY" + label);
                 result.add(java.lang.String.valueOf(JSON.stringify({ value: value, label: label })));
             }
         }
         return result;
     };
     return PieChart;
-})(pieChartCommon.PieChart);
+})(pieChartCommonModule.PieChart);
 exports.PieChart = PieChart;
 var CustomPieLabelRenderer = (function (_super) {
     __extends(CustomPieLabelRenderer, _super);
@@ -81,35 +99,20 @@ var CustomPieLabelRenderer = (function (_super) {
         this._owner = owner;
     }
     CustomPieLabelRenderer.prototype.getLabelText = function (dataPoint) {
-        console.log("GET LABEL: " + dataPoint.getDataItem());
         var item = JSON.parse(dataPoint.getDataItem());
         return item.label;
+    };
+    CustomPieLabelRenderer.prototype.drawLabelBackground = function (canvas, path, index) {
+    };
+    CustomPieLabelRenderer.prototype.drawLabelText = function (canvas, labelText, textPositionX, textPositionY) {
+        var paint = new android.graphics.Paint();
+        paint.setStyle(android.graphics.Paint.Style.FILL);
+        paint.setColor(android.graphics.Color.BLACK);
+        canvas.drawText(labelText, textPositionX, textPositionY, paint);
     };
     return CustomPieLabelRenderer;
 })(com.telerik.widget.chart.visualization.pieChart.PieSeriesLabelRenderer);
 exports.CustomPieLabelRenderer = CustomPieLabelRenderer;
-var Data = (function (_super) {
-    __extends(Data, _super);
-    function Data(label, value) {
-        _super.call(this);
-        this._label = label;
-        this._value = value;
-    }
-    Data.prototype.getLabel = function () {
-        return this._label;
-    };
-    Data.prototype.getValue = function () {
-        return this._value;
-    };
-    Data.convert = function (value) {
-        return java.lang.Double.valueOf(value);
-    };
-    Data.prototype.toString = function () {
-        return "1";
-    };
-    return Data;
-})(java.lang.Object);
-exports.Data = Data;
 function getPropertyValue(item, property) {
     var value = item;
     if (item) {

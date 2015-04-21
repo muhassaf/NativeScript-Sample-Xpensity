@@ -1,8 +1,11 @@
-﻿import itemsViewModule = require("ui/items-view");
+﻿import colorModule = require("color");
+import itemsViewModule = require("ui/items-view");
 import definitionModule = require("ui/pie-chart");
 import utilsModule = require("utils/utils");
 
 export class PieChart extends itemsViewModule.ItemsView implements definitionModule.PieChart {
+    private static DARK_FACTOR = 50;
+
     private _valueProperty: string;
     private _labelProperty: string;
     private _showLabels: boolean;
@@ -71,6 +74,10 @@ export class PieChart extends itemsViewModule.ItemsView implements definitionMod
             this._colors = value;
             this.refresh();
         }
+    }
+
+    static getDarkerColor(color: colorModule.Color): colorModule.Color {
+        return new colorModule.Color(color.a, Math.max(0, color.r - PieChart.DARK_FACTOR), Math.max(0, color.g - PieChart.DARK_FACTOR), Math.max(0, color.b - PieChart.DARK_FACTOR))
     }
 
     onMeasure(widthMeasureSpec: number, heightMeasureSpec: number): void {

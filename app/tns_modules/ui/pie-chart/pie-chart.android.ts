@@ -1,4 +1,6 @@
-﻿import pieChartCommon = require("ui/pie-chart/pie-chart-common");
+﻿import colorModule = require("color");
+
+import pieChartCommonModule = require("ui/pie-chart/pie-chart-common");
 
 declare var exports;
 
@@ -13,6 +15,19 @@ declare module com {
         }
 
         module widget {
+            module palettes {
+                class ChartPalette {
+                    static PIE_FAMILY: string;
+                }
+
+                class PaletteEntry {
+                    constructor(fill: number);
+
+                    setStroke(value: number);
+                    setStrokeWidth(value: number);
+                }
+            }
+
             module chart {
                 module visualization {
                     module pieChart {
@@ -48,10 +63,10 @@ declare module com {
     }
 }
 
-require("utils/module-merge").merge(pieChartCommon, exports);
+require("utils/module-merge").merge(pieChartCommonModule, exports);
 
 
-export class PieChart extends pieChartCommon.PieChart {
+export class PieChart extends pieChartCommonModule.PieChart {
     private _android: any;
     private _pieSeries: any;
     private _selectionBehavior: any;
@@ -70,11 +85,7 @@ export class PieChart extends pieChartCommon.PieChart {
         this._pieSeries = new com.telerik.widget.chart.visualization.pieChart.PieSeries();
         this._renderer = new CustomPieLabelRenderer(this, this._pieSeries);
         this._pieSeries.setLabelRenderer(this._renderer);
-        this._pieSeries.setLabelFillColor(android.graphics.Color.TRANSPARENT);
-        this._pieSeries.setLabelStrokeColor(android.graphics.Color.TRANSPARENT);
-        this._pieSeries.setLabelTextColor(android.graphics.Color.BLACK);
         this._pieSeries.setLabelOffset(-50);
-        this._pieSeries.setLabelSize(16);
         this._android.getSeries().add(this._pieSeries);
 
         this.refresh();
@@ -95,6 +106,7 @@ export class PieChart extends pieChartCommon.PieChart {
 
             this._pieSeries.setData(this.getWrappedItems());
             this._pieSeries.setShowLabels(this.showLabels);
+
             if (this.canSelect) {
                 this._selectionBehavior = new com.telerik.widget.chart.visualization.behaviors.ChartSelectionBehavior();
                 this._android.getBehaviors().add(this._selectionBehavior);
@@ -103,6 +115,41 @@ export class PieChart extends pieChartCommon.PieChart {
                 this._android.getBehaviors().remove(this._selectionBehavior);
                 this._selectionBehavior = null;
             }
+
+            this.updatePalette();
+        }
+    }
+
+    private updatePalette() {
+        if (this.items) {
+            console.log("UPDATE PALETTE");
+
+            var customPalette = this._android.getPalette().clone();
+            var pieEntries = customPalette.entriesForFamily(com.telerik.widget.palettes.ChartPalette.PIE_FAMILY);
+            pieEntries.clear();
+
+            var customSelectPalette = this._android.getSelectionPalette().clone();
+            var pieSelectEntries = customSelectPalette.entriesForFamily(com.telerik.widget.palettes.ChartPalette.PIE_FAMILY);
+            pieSelectEntries.clear();
+
+            for (var i = 0; i < this.items.length; i++) {
+                console.log("ADD ITEM");
+
+                var item = this.items[i];
+                var color = new colorModule.Color(item.Color);
+                pieEntries.add(new com.telerik.widget.palettes.PaletteEntry(color.android));
+
+                var entry = new com.telerik.widget.palettes.PaletteEntry(color.android)
+                entry.setStroke(PieChart.getDarkerColor(color).android);
+                entry.setStrokeWidth(3);
+                pieSelectEntries.add(entry);
+            }
+
+            console.log("SET PALETTE");
+            this._android.setPalette(customPalette);
+
+            console.log("SET SELECTION PALETTE");
+            this._android.setSelectionPalette(customSelectPalette);
         }
     }
 
@@ -111,15 +158,8 @@ export class PieChart extends pieChartCommon.PieChart {
         if (this.items) {
             for (var i = 0; i < this.items.length; i++) {
                 var item = this.items[i];
-                console.log("ADD ITEM " + JSON.stringify(item));
-                console.log("VALUE PROPERTY" + this.valueProperty);
-                console.log("LABEL PROPERTY" + this.labelProperty);
-
                 var value = getPropertyValue(item, this.valueProperty);
                 var label = getPropertyValue(item, this.labelProperty);
-
-                console.log("VALUE PROPERTY" + value);
-                console.log("LABEL PROPERTY" + label);
                 
                 result.add(java.lang.String.valueOf(JSON.stringify({ value: value, label: label })));
             }
@@ -139,38 +179,20 @@ export class CustomPieLabelRenderer extends com.telerik.widget.chart.visualizati
     }
 
     getLabelText(dataPoint: any): string {
-        console.log("GET LABEL: " + dataPoint.getDataItem());
         var item = JSON.parse(dataPoint.getDataItem());
 
         return item.label;
     }
-}
 
-export class Data extends java.lang.Object {
-    private _label: string;
-    private _value: number;
-
-    constructor(label: string, value: number) {
-        super();
-
-        this._label = label;
-        this._value = value;
+    drawLabelBackground(canvas: any, path: any, index: any) {
     }
 
-    getLabel(): string {
-        return this._label;
-    }
+    drawLabelText(canvas: android.graphics.Canvas, labelText: string, textPositionX: number, textPositionY: number) {
+        var paint = new android.graphics.Paint();
+        paint.setStyle(android.graphics.Paint.Style.FILL);
+        paint.setColor(android.graphics.Color.BLACK);
 
-    getValue(): number {
-        return this._value;
-    }
-
-    private static convert(value: any): any {
-        return java.lang.Double.valueOf(value);
-    }
-
-    toString() {
-        return "1";
+        canvas.drawText(labelText, textPositionX, textPositionY, paint);
     }
 }
 
