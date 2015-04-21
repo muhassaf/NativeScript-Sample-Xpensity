@@ -62,8 +62,8 @@ var PieChart = (function (_super) {
             var pieSelectEntries = customSelectPalette.entriesForFamily(com.telerik.widget.palettes.ChartPalette.PIE_FAMILY);
             pieSelectEntries.clear();
             for (var i = 0; i < this.items.length; i++) {
-                console.log("ADD ITEM");
                 var item = this.items[i];
+                console.log("ADD ITEM: " + JSON.stringify(item));
                 var color = new colorModule.Color(item.Color);
                 pieEntries.add(new com.telerik.widget.palettes.PaletteEntry(color.android));
                 var entry = new com.telerik.widget.palettes.PaletteEntry(color.android);

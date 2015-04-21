@@ -31,7 +31,7 @@
        
         <TextView text="{{ item.Notes }}" hint="Notes" />
 
-        <Button text="DELETE EXPENSE" tap="deleteExpenseButtonTap" color="#FF0000" cssClass="secondaryButton" style.visibility="{{ editVisibility }}" />
+        <Button text="DELETE EXPENSE" tap="deleteExpenseButtonTap" color="#FF0000" cssClass="secondaryButton" visibility="{{ editVisibility }}" />
       </StackLayout>
     </ScrollView>
 

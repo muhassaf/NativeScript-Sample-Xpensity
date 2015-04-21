@@ -17,8 +17,14 @@ declare module "platform" {
      */
     export class device {
         /**
+         * Gets the manufacturer of the device.
+         * For example: "Apple" or "HTC" or "Samsung".
+         */
+        static manufacturer: string;
+
+        /**
          * Gets the model of the device.
-         * For example: "Nexus 5" or "iPhone.
+         * For example: "Nexus 5" or "iPhone".
          */
         static model: string;
 

@@ -1,4 +1,4 @@
-﻿import localSettingsModule = require("local-settings");
+﻿import applicationSettingsModule = require("application-settings");
 
 import constantsModule = require("./constants");
 import notificationsModule = require("./notifications");
@@ -15,14 +15,14 @@ export class Service {
     private _categories: any[];
 
     get isAuthenticated(): boolean {
-        return localSettingsModule.hasKey(constantsModule.authenticationTokenKey);
+        return applicationSettingsModule.hasKey(constantsModule.authenticationTokenKey);
     }
 
     login(username: string, password: string): Promise<any> {
         return new Promise<any>((resolve, reject) => {
             var everlive = new everliveModule(constantsModule.telerikApiKey);
             everlive.Users.login(username, password,(data: any) => {
-                localSettingsModule.setString(constantsModule.authenticationTokenKey, data.result.access_token);
+                applicationSettingsModule.setString(constantsModule.authenticationTokenKey, data.result.access_token);
                 this.setupLocalSettings("Kamen Velikov", data.result.access_token);
                 resolve(data);
             }, error => {
@@ -177,7 +177,7 @@ export class Service {
 
     private createEverlive(): any {
         if (!this._everlive) {
-            this._everlive = new everliveModule({ apiKey: constantsModule.telerikApiKey, token: localSettingsModule.getString(constantsModule.authenticationTokenKey) }); // offlineStorage: true
+            this._everlive = new everliveModule({ apiKey: constantsModule.telerikApiKey, token: applicationSettingsModule.getString(constantsModule.authenticationTokenKey) }); // offlineStorage: true
         }
 
         return this._everlive;
@@ -189,17 +189,17 @@ export class Service {
     }
 
     private setupLocalSettings(name: string, authenticationTokenKey: string) {
-        localSettingsModule.setString(constantsModule.name, name);
-        localSettingsModule.setString(constantsModule.authenticationTokenKey, authenticationTokenKey);
-        localSettingsModule.setBoolean(constantsModule.offlineMode, true);
-        localSettingsModule.setBoolean(constantsModule.notifications, false);
+        applicationSettingsModule.setString(constantsModule.name, name);
+        applicationSettingsModule.setString(constantsModule.authenticationTokenKey, authenticationTokenKey);
+        applicationSettingsModule.setBoolean(constantsModule.offlineMode, true);
+        applicationSettingsModule.setBoolean(constantsModule.notifications, false);
     }
 
     private clearLocalSettings() {
-        localSettingsModule.remove(constantsModule.authenticationTokenKey);
-        localSettingsModule.remove(constantsModule.name);
-        localSettingsModule.remove(constantsModule.notifications);
-        localSettingsModule.remove(constantsModule.offlineMode);
+        applicationSettingsModule.remove(constantsModule.authenticationTokenKey);
+        applicationSettingsModule.remove(constantsModule.name);
+        applicationSettingsModule.remove(constantsModule.notifications);
+        applicationSettingsModule.remove(constantsModule.offlineMode);
     }
 }
 

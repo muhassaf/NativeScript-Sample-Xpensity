@@ -1,4 +1,4 @@
-﻿import localSettingsModule = require("local-settings");
+﻿import applicationSettingsModule = require("application-settings");
 import observableModule = require("data/observable");
 import dialogsModule = require("ui/dialogs");
 
@@ -19,33 +19,35 @@ export class SettingsViewModel extends viewModelBaseModule.ViewModelBase {
     }
 
     get name(): string {
-        return localSettingsModule.getString(constantsModule.name);
+        return applicationSettingsModule.getString(constantsModule.name);
     }
 
     get offlineMode(): boolean {
-        return localSettingsModule.getBoolean(constantsModule.offlineMode);
+        return applicationSettingsModule.getBoolean(constantsModule.offlineMode);
     }
 
     set offlineMode(value: boolean) {
-        if (localSettingsModule.getBoolean(constantsModule.offlineMode) !== value) {
-            localSettingsModule.setBoolean(constantsModule.offlineMode, value);
+        if (applicationSettingsModule.getBoolean(constantsModule.offlineMode) !== value) {
+            applicationSettingsModule.setBoolean(constantsModule.offlineMode, value);
             this.notifyPropertyChanged("offlineMode", value);
         }
     }
 
     get notifications(): boolean {
-        return localSettingsModule.getBoolean(constantsModule.notifications);
+        return applicationSettingsModule.getBoolean(constantsModule.notifications);
     }
 
     set notifications(value: boolean) {
-        if (localSettingsModule.getBoolean(constantsModule.notifications) !== value) {
-            localSettingsModule.setBoolean(constantsModule.notifications, value);
+        if (applicationSettingsModule.getBoolean(constantsModule.notifications) !== value) {
+            applicationSettingsModule.setBoolean(constantsModule.notifications, value);
             this.notifyPropertyChanged("notifications", value);
         }
     }
 
     logout() {
+        console.log("LOGOUT");
         serviceModule.service.logout();
+        console.log("NAVIGATE");
         navigationModule.navigateWitouthHistory(viewsModule.Views.login);
     }
 

@@ -53,36 +53,36 @@ var GesturesObserver = (function () {
         this._target = target;
         if (this._target && this._target.ios && this._target.ios.addGestureRecognizer) {
             var nativeView = this._target.ios;
-            if (type & definition.GestureTypes.Tap) {
-                nativeView.addGestureRecognizer(this._createRecognizer(definition.GestureTypes.Tap));
+            if (type & definition.GestureTypes.tap) {
+                nativeView.addGestureRecognizer(this._createRecognizer(definition.GestureTypes.tap));
             }
-            if (type & definition.GestureTypes.DoubleTap) {
-                var r = this._createRecognizer(definition.GestureTypes.DoubleTap);
+            if (type & definition.GestureTypes.doubleTap) {
+                var r = this._createRecognizer(definition.GestureTypes.doubleTap);
                 r.numberOfTapsRequired = 2;
                 nativeView.addGestureRecognizer(r);
             }
-            if (type & definition.GestureTypes.Pinch) {
-                nativeView.addGestureRecognizer(this._createRecognizer(definition.GestureTypes.Pinch, function (args) {
+            if (type & definition.GestureTypes.pinch) {
+                nativeView.addGestureRecognizer(this._createRecognizer(definition.GestureTypes.pinch, function (args) {
                     _this._executeCallback(_getPinchData(args));
                 }));
             }
-            if (type & definition.GestureTypes.Pan) {
-                nativeView.addGestureRecognizer(this._createRecognizer(definition.GestureTypes.Pan, function (args) {
+            if (type & definition.GestureTypes.pan) {
+                nativeView.addGestureRecognizer(this._createRecognizer(definition.GestureTypes.pan, function (args) {
                     _this._executeCallback(_getPanData(args, _this._target.ios));
                 }));
             }
-            if (type & definition.GestureTypes.Swipe) {
-                nativeView.addGestureRecognizer(this._createRecognizer(definition.GestureTypes.Swipe, function (args) {
+            if (type & definition.GestureTypes.swipe) {
+                nativeView.addGestureRecognizer(this._createRecognizer(definition.GestureTypes.swipe, function (args) {
                     _this._executeCallback(_getSwipeData(args));
                 }));
             }
-            if (type & definition.GestureTypes.Rotation) {
-                nativeView.addGestureRecognizer(this._createRecognizer(definition.GestureTypes.Rotation, function (args) {
+            if (type & definition.GestureTypes.rotation) {
+                nativeView.addGestureRecognizer(this._createRecognizer(definition.GestureTypes.rotation, function (args) {
                     _this._executeCallback(_getRotationData(args));
                 }));
             }
-            if (type & definition.GestureTypes.LongPress) {
-                nativeView.addGestureRecognizer(this._createRecognizer(definition.GestureTypes.LongPress));
+            if (type & definition.GestureTypes.longPress) {
+                nativeView.addGestureRecognizer(this._createRecognizer(definition.GestureTypes.longPress));
             }
         }
     };
@@ -126,41 +126,41 @@ function _createUIGestureRecognizerTarget(owner, type, callback) {
 }
 function _getUIGestureRecognizerType(type) {
     var nativeType = null;
-    if (type === definition.GestureTypes.Tap) {
+    if (type === definition.GestureTypes.tap) {
         nativeType = UITapGestureRecognizer;
     }
-    else if (type === definition.GestureTypes.DoubleTap) {
+    else if (type === definition.GestureTypes.doubleTap) {
         nativeType = UITapGestureRecognizer;
     }
-    else if (type === definition.GestureTypes.Pinch) {
+    else if (type === definition.GestureTypes.pinch) {
         nativeType = UIPinchGestureRecognizer;
     }
-    else if (type === definition.GestureTypes.Pan) {
+    else if (type === definition.GestureTypes.pan) {
         nativeType = UIPanGestureRecognizer;
     }
-    else if (type === definition.GestureTypes.Swipe) {
+    else if (type === definition.GestureTypes.swipe) {
         nativeType = UISwipeGestureRecognizer;
     }
-    else if (type === definition.GestureTypes.Rotation) {
+    else if (type === definition.GestureTypes.rotation) {
         nativeType = UIRotationGestureRecognizer;
     }
-    else if (type === definition.GestureTypes.LongPress) {
+    else if (type === definition.GestureTypes.longPress) {
         nativeType = UILongPressGestureRecognizer;
     }
     return nativeType;
 }
 function _getSwipeDirection(direction) {
     if (direction === UISwipeGestureRecognizerDirection.UISwipeGestureRecognizerDirectionDown) {
-        return definition.SwipeDirection.Down;
+        return definition.SwipeDirection.down;
     }
     else if (direction === UISwipeGestureRecognizerDirection.UISwipeGestureRecognizerDirectionLeft) {
-        return definition.SwipeDirection.Left;
+        return definition.SwipeDirection.left;
     }
     else if (direction === UISwipeGestureRecognizerDirection.UISwipeGestureRecognizerDirectionRight) {
-        return definition.SwipeDirection.Right;
+        return definition.SwipeDirection.right;
     }
     else if (direction === UISwipeGestureRecognizerDirection.UISwipeGestureRecognizerDirectionUp) {
-        return definition.SwipeDirection.Up;
+        return definition.SwipeDirection.up;
     }
 }
 function _getPinchData(args) {

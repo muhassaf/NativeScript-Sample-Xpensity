@@ -155,7 +155,7 @@ export class ViewReportViewModel extends viewModelBaseModule.ViewModelBase {
                 for (var i = 0; i < categories.length; i++) {
                     var category = categories[i];
                     if (expenses[category.Id]) {
-                        expensesByCategory.push({ Category: category.Title, TotalCost: expenses[category.Id] });
+                        expensesByCategory.push({ Category: category.Title, TotalCost: expenses[category.Id], Color: category.Color });
                     }
                 }
 

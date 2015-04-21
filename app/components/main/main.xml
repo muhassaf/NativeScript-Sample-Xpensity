@@ -5,7 +5,7 @@
     <TabView.items>
       <TabViewItem iconSource="res://ic_reports" >
         <TabViewItem.view>
-          <GridLayout rows="auto, *" loaded="reportsViewLoaded" >
+          <GridLayout rows="auto, *" bindingContext="{{ reportsViewModel }}" >
             <Label text="MY REPORTS" cssClass="header" />
 
             <ScrollView row="1" >
@@ -13,7 +13,6 @@
                 <g:GridView.itemTemplate>
                   <Border cssClass="tile" >
                     <StackLayout orientation="vertical">
-                      <Image src="" cssClass="statusIcon" stretch="none" style="horizontal-align: right;" />
                       <PieChart items="{{ expensesByCategory }}" valueProperty="TotalCost" cssClass="categoriesChart" />
                       <Label text="{{ report.Title }}" cssClass="itemTitle" />
                       <Label text="{{ report.Date | formatDate }}" cssClass="itemSubTitleLast" />
@@ -23,7 +22,7 @@
               </g:GridView>
             </ScrollView>
 
-            <AbsoluteLayout rowSpan="2" cssClass="fabContainer" style.visibility="{{ androidVisibility }}" >
+            <AbsoluteLayout rowSpan="2" cssClass="fabContainer" visibility="{{ androidVisibility }}" >
               <Image src="res://fab" tap="addReportTap" stretch="none" cssClass="fab" />
             </AbsoluteLayout>
 
@@ -46,7 +45,7 @@
       </TabViewItem >
       <TabViewItem iconSource="res://ic_settings" >
         <TabViewItem.view>
-          <GridLayout rows="auto, *" loaded="settingsViewLoaded">
+          <GridLayout rows="auto, *" bindingContext="{{ settingsViewModel }}">
             <Label text="SETTINGS" cssClass="header" />
 
             <ScrollView row="1">
@@ -65,7 +64,7 @@
                   <Switch col="1" checked="{{ notifications }}"/>
                 </GridLayout>
 
-                <Button text="LOGOUT" tap="logoutButtonTap" cssClass="secondaryButton" />
+                <Button text="LOGOUT" tap="{{ logout }}" cssClass="secondaryButton" />
               </StackLayout>
             </ScrollView>
 

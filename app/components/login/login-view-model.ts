@@ -1,4 +1,4 @@
-﻿import localSettingsModule = require("local-settings");
+﻿import applicationSettingsModule = require("application-settings");
 import observableModule = require("data/observable");
 
 import viewModelBaseModule = require("../view-model-base");
@@ -60,7 +60,7 @@ export class LoginViewModel extends viewModelBaseModule.ViewModelBase {
 
     private validate(): boolean {
         if (this.username === "") {
-            notificationsModule.showError("Please enter username.");
+            notificationsModule.showError("Please enter email.");
             return false;
         }
 

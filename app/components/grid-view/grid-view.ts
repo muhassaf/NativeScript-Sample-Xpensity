@@ -155,7 +155,7 @@ export class GridView extends gridLayoutModule.GridLayout implements definitionM
         }
 
         var that = new WeakRef(this);
-        templateView.observe(gesturesModule.GestureTypes.Tap, function (args: gesturesModule.GestureEventData) {
+        templateView.observe(gesturesModule.GestureTypes.tap, function (args: gesturesModule.GestureEventData) {
             that.get().onItemTap(index, templateView);
         });
 

@@ -197,7 +197,12 @@ var UINavigationControllerImpl = (function (_super) {
         var newEntry = viewController[ENTRY];
         var newPage = newEntry.resolvedPage;
         if (!newPage.parent) {
-            frame._navigateToEntry = newEntry;
+            if (!frame._currentEntry) {
+                frame._currentEntry = newEntry;
+            }
+            else {
+                frame._navigateToEntry = newEntry;
+            }
             frame._addView(newPage);
             frame.populateMenuItems(newPage);
         }

@@ -133,9 +133,9 @@ export class PieChart extends pieChartCommonModule.PieChart {
             pieSelectEntries.clear();
 
             for (var i = 0; i < this.items.length; i++) {
-                console.log("ADD ITEM");
-
                 var item = this.items[i];
+
+                console.log("ADD ITEM: " + JSON.stringify(item));
                 var color = new colorModule.Color(item.Color);
                 pieEntries.add(new com.telerik.widget.palettes.PaletteEntry(color.android));
 

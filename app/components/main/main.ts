@@ -54,7 +54,3 @@ export function settingsViewLoaded(args: observableModule.EventData) {
     var tabItem = <viewModule.View>args.object;
     tabItem.bindingContext = viewModel.settingsViewModel;
 }
-
-export function logoutButtonTap(args: observableModule.EventData) {
-    viewModel.settingsViewModel.logout();
-}

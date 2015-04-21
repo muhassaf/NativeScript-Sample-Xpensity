@@ -1,4 +1,4 @@
-﻿import localSettingsModule = require("local-settings");
+﻿import applicationSettingsModule = require("application-settings");
 import observableModule = require("data/observable");
 import dialogsModule = require("ui/dialogs");
 
@@ -13,7 +13,6 @@ import notificationsModule = require("../../utils/notifications");
 export class SignUpViewModel extends viewModelBaseModule.ViewModelBase {
     private _name: string;
     private _email: string;
-    private _username: string;
     private _password: string;
     private _confirmPassword: string;
 
@@ -22,7 +21,6 @@ export class SignUpViewModel extends viewModelBaseModule.ViewModelBase {
 
         this.name = "";
         this.email = "";
-        this.username = "";
         this.password = "";
         this.confirmPassword = "";
     }
@@ -46,17 +44,6 @@ export class SignUpViewModel extends viewModelBaseModule.ViewModelBase {
         if (this._email != value) {
             this._email = value;
             this.notifyPropertyChanged("email", value);
-        }
-    }
-
-    get username(): string {
-        return this._username;
-    }
-
-    set username(value: string) {
-        if (this._username != value) {
-            this._username = value;
-            this.notifyPropertyChanged("username", value);
         }
     }
 
@@ -84,7 +71,7 @@ export class SignUpViewModel extends viewModelBaseModule.ViewModelBase {
 
     signUp() {
         if (this.validate()) {
-            serviceModule.service.signUp(this.username, this.password, { Email: this.email, DisplayName: this.name }).then((data: any) => {
+            serviceModule.service.signUp(this.email, this.password, { Email: this.email, DisplayName: this.name }).then((data: any) => {
                 this.endLoading();
                 dialogsModule.alert({ title: "Success", message: "Please login with your credentials now.", okButtonText: "Close" });
                 navigationModule.goBack();
@@ -110,11 +97,6 @@ export class SignUpViewModel extends viewModelBaseModule.ViewModelBase {
 
         if (this.email == "") {
             notificationsModule.showError("Please enter your email.");
-            return false;
-        }
-
-        if (this.username == "") {
-            notificationsModule.showError("Please enter username.");
             return false;
         }
 

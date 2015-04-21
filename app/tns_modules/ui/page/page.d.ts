@@ -29,7 +29,6 @@ declare module "ui/page" {
          * The event raised when the Page.onNavigatedTo method is called.
          */
         export var navigatedTo: string;
-
         export var tap: string;
     }
 

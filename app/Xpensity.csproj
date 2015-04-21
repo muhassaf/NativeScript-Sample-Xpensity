@@ -230,10 +230,14 @@ xcopy /E /Y "$(SolutionDir)app" "\\valkovmac\kvelikov\work\NativeScript\sample-X
     <Content Include="components\test\page1.xml" />
     <Content Include="components\view-report\view-report.css" />
     <Content Include="lib\everlive.all.map.js" />
+    <Content Include="tns_modules\application-settings\application-settings-common.js" />
+    <Content Include="tns_modules\application-settings\application-settings.android.js" />
+    <Content Include="tns_modules\application-settings\application-settings.ios.js" />
     <Content Include="tns_modules\application\application-common.js" />
     <Content Include="tns_modules\application\application.android.js" />
     <Content Include="tns_modules\application\application.ios.js" />
     <Content Include="tns_modules\application\package.json" />
+    <Content Include="tns_modules\camera\camera-common.js" />
     <Content Include="tns_modules\camera\camera.android.js" />
     <Content Include="tns_modules\camera\camera.ios.js" />
     <Content Include="tns_modules\camera\package.json" />
@@ -280,10 +284,6 @@ xcopy /E /Y "$(SolutionDir)app" "\\valkovmac\kvelikov\work\NativeScript\sample-X
     <Content Include="tns_modules\js-libs\polymer-expressions\polymer-expressions.js" />
     <Content Include="tns_modules\js-libs\reworkcss\package.json" />
     <Content Include="tns_modules\js-libs\reworkcss\reworkcss.js" />
-    <Content Include="tns_modules\local-settings\local-settings-common.js" />
-    <Content Include="tns_modules\local-settings\local-settings.android.js" />
-    <Content Include="tns_modules\local-settings\local-settings.ios.js" />
-    <Content Include="tns_modules\local-settings\package.json" />
     <Content Include="tns_modules\location\location-common.js" />
     <Content Include="tns_modules\location\location.android.js" />
     <Content Include="tns_modules\location\location.ios.js" />
@@ -364,6 +364,7 @@ xcopy /E /Y "$(SolutionDir)app" "\\valkovmac\kvelikov\work\NativeScript\sample-X
     <Content Include="tns_modules\ui\image\image.ios.js" />
     <Content Include="tns_modules\ui\image\package.json" />
     <Content Include="tns_modules\ui\items-view\items-view.js" />
+    <Content Include="tns_modules\ui\items-view\items-view.js.map" />
     <Content Include="tns_modules\ui\items-view\package.json" />
     <Content Include="tns_modules\ui\label\label-common.js" />
     <Content Include="tns_modules\ui\label\label.android.js" />
@@ -393,6 +394,11 @@ xcopy /E /Y "$(SolutionDir)app" "\\valkovmac\kvelikov\work\NativeScript\sample-X
     <Content Include="tns_modules\ui\page\page.android.js" />
     <Content Include="tns_modules\ui\page\page.ios.js" />
     <Content Include="tns_modules\ui\pie-chart\package.json" />
+    <Content Include="tns_modules\ui\pie-chart\pie-chart-common.js" />
+    <Content Include="tns_modules\ui\pie-chart\pie-chart.android.js" />
+    <Content Include="tns_modules\ui\pie-chart\pie-chart.ios.js" />
+    <Content Include="tns_modules\ui\pie-chart\pie-chart.js" />
+    <Content Include="tns_modules\ui\placeholder\package.json" />
     <Content Include="tns_modules\ui\placeholder\placeholder-common.js" />
     <Content Include="tns_modules\ui\placeholder\placeholder.android.js" />
     <Content Include="tns_modules\ui\placeholder\placeholder.ios.js" />
@@ -502,6 +508,7 @@ xcopy /E /Y "$(SolutionDir)app" "\\valkovmac\kvelikov\work\NativeScript\sample-X
     <TypeScriptCompile Include="components\grid-view\grid-view.d.ts" />
     <TypeScriptCompile Include="components\grid-view\grid-view.ts" />
     <TypeScriptCompile Include="tns_modules\android17.d.ts" />
+    <TypeScriptCompile Include="tns_modules\application-settings\application-settings.d.ts" />
     <TypeScriptCompile Include="tns_modules\application\application.d.ts" />
     <TypeScriptCompile Include="tns_modules\camera\camera.d.ts" />
     <TypeScriptCompile Include="tns_modules\color\color.d.ts" />
@@ -523,7 +530,6 @@ xcopy /E /Y "$(SolutionDir)app" "\\valkovmac\kvelikov\work\NativeScript\sample-X
     <TypeScriptCompile Include="tns_modules\js-libs\esprima\esprima.d.ts" />
     <TypeScriptCompile Include="tns_modules\js-libs\reworkcss\reworkcss.d.ts" />
     <TypeScriptCompile Include="tns_modules\libjs.d.ts" />
-    <TypeScriptCompile Include="tns_modules\local-settings\local-settings.d.ts" />
     <TypeScriptCompile Include="tns_modules\location\location.d.ts" />
     <TypeScriptCompile Include="tns_modules\platform\platform.d.ts" />
     <TypeScriptCompile Include="tns_modules\text\formatted-string.d.ts" />
@@ -534,6 +540,8 @@ xcopy /E /Y "$(SolutionDir)app" "\\valkovmac\kvelikov\work\NativeScript\sample-X
     <TypeScriptCompile Include="tns_modules\ui\activity-indicator\activity-indicator.d.ts" />
     <TypeScriptCompile Include="tns_modules\ui\border\border.d.ts" />
     <TypeScriptCompile Include="tns_modules\ui\builder\builder.d.ts" />
+    <TypeScriptCompile Include="tns_modules\ui\builder\component-builder.d.ts" />
+    <TypeScriptCompile Include="tns_modules\ui\builder\template-builder.d.ts" />
     <TypeScriptCompile Include="tns_modules\ui\button\button.d.ts" />
     <TypeScriptCompile Include="tns_modules\ui\content-view\content-view.d.ts" />
     <TypeScriptCompile Include="tns_modules\ui\core\bindable.d.ts" />
@@ -601,7 +609,13 @@ xcopy /E /Y "$(SolutionDir)app" "\\valkovmac\kvelikov\work\NativeScript\sample-X
     <Content Include="components\grid-view\package.json" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="tns_modules\ui\items-view\items-view.js.map" />
-    <Content Include="tns_modules\ui\placeholder\package.json" />
+    <Content Include="tns_modules\application-settings\package.json" />
+    <Content Include="tns_modules\ui\pie-chart\pie-chart-common.js.map" />
+    <Content Include="tns_modules\ui\pie-chart\pie-chart.android.js.map" />
+    <Content Include="tns_modules\ui\pie-chart\pie-chart.ios.js.map" />
+    <Content Include="tns_modules\ui\pie-chart\pie-chart.js.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="tns_modules\local-settings\" />
   </ItemGroup>
 </Project>

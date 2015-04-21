@@ -20,17 +20,13 @@ declare module "ui/image-cache" {
         /**
          * An optional function to be called when the download is complete.
          */
-        completed?: (result: imageSource.ImageSource, key: string) => void;
+        completed?: (image: any, key: string) => void;
     }
 
     /**
      * Represents a class that stores handles image download requests and caches the already downloaded images.
      */
     export class Cache extends observable.Observable {
-        /**
-         * The image to be used when the requested url is invalid or the result may not be decoded.
-         */
-        invalid: imageSource.ImageSource;
         /**
          * The image to be used to notify for a pending download request - e.g. loading indicator.
          */
@@ -61,11 +57,11 @@ declare module "ui/image-cache" {
         /**
          * Gets the image for the specified key. May be undefined if the key is not present in the cache.
          */
-        get(key: string): imageSource.ImageSource;
+        get(key: string): any;
         /**
          * Sets the image for the specified key.
          */
-        set(key: string, source: imageSource.ImageSource): void;
+        set(key: string, image: any): void;
         /**
          * Removes the cache for the specified key.
          */

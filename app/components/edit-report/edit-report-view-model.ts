@@ -1,4 +1,4 @@
-﻿import localSettingsModule = require("local-settings");
+﻿import applicationSettingsModule = require("application-settings");
 
 import observableModule = require("data/observable");
 import observableArrayModule = require("data/observable-array");
