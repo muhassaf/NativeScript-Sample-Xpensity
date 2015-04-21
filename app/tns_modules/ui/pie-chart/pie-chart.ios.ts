@@ -7,7 +7,9 @@ declare var TKChart: any;
 declare var TKChartDataPoint: any;
 declare var TKChartData: any;
 declare var TKChartPieSeries: any;
-declare class TKChartDelegate { };
+declare var TKChartDelegate: any;
+
+interface TKChartDelegate { };
 
 var TKChartSeriesSelectionModeDataPoint = 2;
 var TKChartPieSeriesLabelDisplayModeOutside = 1;
@@ -39,7 +41,7 @@ export class PieChart extends pieChartCommon.PieChart {
                 pieSeries.labelDisplayMode = TKChartPieSeriesLabelDisplayModeOutside;
                 pieSeries.style.pointLabelStyle.textHidden = false;
                 //pieSeries.style.pointLabelStyle.labelOffset = new UIOffset({ 10, 10});
-                this._ios.delegate = new LabelConverter();
+                this._ios.delegate = LabelConverter.new();
             }
 
             this._ios.addSeries(pieSeries);
@@ -71,7 +73,13 @@ export class PieChart extends pieChartCommon.PieChart {
     }
 }
 
-export class LabelConverter extends TKChartDelegate {
+export class LabelConverter extends NSObject implements TKChartDelegate {
+    public static ObjCProtocols = [TKChartDelegate];
+
+    static new(): LabelConverter {
+        return <LabelConverter>super.new();
+    }
+
     textForLabelAtPointInSeriesAtIndex(dataPoint: any, series: any, index: any): string {
         return "Label";
     }
