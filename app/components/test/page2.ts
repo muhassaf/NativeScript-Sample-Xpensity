@@ -8,7 +8,6 @@ export function navigatedTo(args: observableModule.EventData) {
     page.bindingContext = page.navigationContext;
 }
 
-
 export function doneMenuItemTap(args: observableModule.EventData) {
-    frameModule.topmost().goBack();
+    frameModule.topmost().navigate("components/test/page1");
 }

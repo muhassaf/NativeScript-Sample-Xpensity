@@ -183,6 +183,21 @@ xcopy /E /Y "$(SolutionDir)app" "\\valkovmac\kvelikov\work\NativeScript\sample-X
     <Content Include="App_Resources\Android\drawable-xxxhdpi\ic_settings_1.png" />
     <Content Include="App_Resources\Android\drawable-xxxhdpi\ic_submit.png" />
     <Content Include="App_Resources\Android\values\styles.xml" />
+    <Content Include="App_Resources\iOS\ic_add%402x.png" />
+    <Content Include="App_Resources\iOS\ic_add%403x.png" />
+    <Content Include="App_Resources\iOS\ic_add.png" />
+    <Content Include="App_Resources\iOS\ic_approve%402x.png" />
+    <Content Include="App_Resources\iOS\ic_approve%403x.png" />
+    <Content Include="App_Resources\iOS\ic_approve.png" />
+    <Content Include="App_Resources\iOS\ic_approved%402x.png" />
+    <Content Include="App_Resources\iOS\ic_approved%403x.png" />
+    <Content Include="App_Resources\iOS\ic_approved.png" />
+    <Content Include="App_Resources\iOS\ic_arrow-right%402x.png" />
+    <Content Include="App_Resources\iOS\ic_arrow-right%403x.png" />
+    <Content Include="App_Resources\iOS\ic_arrow-right.png" />
+    <Content Include="App_Resources\iOS\ic_back%402x.png" />
+    <Content Include="App_Resources\iOS\ic_back%403x.png" />
+    <Content Include="App_Resources\iOS\ic_back.png" />
     <Content Include="App_Resources\iOS\Default%402x.png" />
     <Content Include="App_Resources\iOS\Default-568h%402x.png" />
     <Content Include="App_Resources\iOS\Default-Landscape%402x.png" />
@@ -190,7 +205,10 @@ xcopy /E /Y "$(SolutionDir)app" "\\valkovmac\kvelikov\work\NativeScript\sample-X
     <Content Include="App_Resources\iOS\Default-Portrait%402x.png" />
     <Content Include="App_Resources\iOS\Default-Portrait.png" />
     <Content Include="App_Resources\iOS\Default.png" />
-    <Content Include="App_Resources\iOS\icon%402x.png" />
+    <Content Include="App_Resources\iOS\ic_edit%402x.png" />
+    <Content Include="App_Resources\iOS\ic_edit%403x.png" />
+    <Content Include="App_Resources\iOS\ic_edit.png" />
+    <Content Include="App_Resources\iOS\ic_icon%402x.png" />
     <Content Include="App_Resources\iOS\icon-40%402x.png" />
     <Content Include="App_Resources\iOS\icon-40.png" />
     <Content Include="App_Resources\iOS\icon-60%402x.png" />
@@ -204,6 +222,42 @@ xcopy /E /Y "$(SolutionDir)app" "\\valkovmac\kvelikov\work\NativeScript\sample-X
     <Content Include="App_Resources\iOS\Icon-Small-50.png" />
     <Content Include="App_Resources\iOS\Icon-Small.png" />
     <Content Include="App_Resources\iOS\icon.png" />
+    <Content Include="App_Resources\iOS\ic_notifications%402x.png" />
+    <Content Include="App_Resources\iOS\ic_notifications%403x.png" />
+    <Content Include="App_Resources\iOS\ic_notifications-1%402x.png" />
+    <Content Include="App_Resources\iOS\ic_notifications-1%403x.png" />
+    <Content Include="App_Resources\iOS\ic_notifications-1.png" />
+    <Content Include="App_Resources\iOS\ic_notifications.png" />
+    <Content Include="App_Resources\iOS\ic_overview%402x.png" />
+    <Content Include="App_Resources\iOS\ic_overview%403x.png" />
+    <Content Include="App_Resources\iOS\ic_overview-1%402x.png" />
+    <Content Include="App_Resources\iOS\ic_overview-1%403x.png" />
+    <Content Include="App_Resources\iOS\ic_overview-1.png" />
+    <Content Include="App_Resources\iOS\ic_overview.png" />
+    <Content Include="App_Resources\iOS\ic_photo%402x.png" />
+    <Content Include="App_Resources\iOS\ic_photo%403x.png" />
+    <Content Include="App_Resources\iOS\ic_photo.png" />
+    <Content Include="App_Resources\iOS\ic_reject%402x.png" />
+    <Content Include="App_Resources\iOS\ic_reject%403x.png" />
+    <Content Include="App_Resources\iOS\ic_reject.png" />
+    <Content Include="App_Resources\iOS\ic_rejected%402x.png" />
+    <Content Include="App_Resources\iOS\ic_rejected%403x.png" />
+    <Content Include="App_Resources\iOS\ic_rejected.png" />
+    <Content Include="App_Resources\iOS\ic_reports%402x.png" />
+    <Content Include="App_Resources\iOS\ic_reports%403x.png" />
+    <Content Include="App_Resources\iOS\ic_reports-1%402x.png" />
+    <Content Include="App_Resources\iOS\ic_reports-1%403x.png" />
+    <Content Include="App_Resources\iOS\ic_reports-1.png" />
+    <Content Include="App_Resources\iOS\ic_reports.png" />
+    <Content Include="App_Resources\iOS\ic_settings%402x.png" />
+    <Content Include="App_Resources\iOS\ic_settings%403x.png" />
+    <Content Include="App_Resources\iOS\ic_settings-1%402x.png" />
+    <Content Include="App_Resources\iOS\ic_settings-1%403x.png" />
+    <Content Include="App_Resources\iOS\ic_settings-1.png" />
+    <Content Include="App_Resources\iOS\ic_settings.png" />
+    <Content Include="App_Resources\iOS\ic_submit%402x.png" />
+    <Content Include="App_Resources\iOS\ic_submit%403x.png" />
+    <Content Include="App_Resources\iOS\ic_submit.png" />
     <Content Include="bootstrap.js" />
     <Content Include="components\date-picker\date-picker.xml">
       <SubType>Designer</SubType>
@@ -394,10 +448,6 @@ xcopy /E /Y "$(SolutionDir)app" "\\valkovmac\kvelikov\work\NativeScript\sample-X
     <Content Include="tns_modules\ui\page\page.android.js" />
     <Content Include="tns_modules\ui\page\page.ios.js" />
     <Content Include="tns_modules\ui\pie-chart\package.json" />
-    <Content Include="tns_modules\ui\pie-chart\pie-chart-common.js" />
-    <Content Include="tns_modules\ui\pie-chart\pie-chart.android.js" />
-    <Content Include="tns_modules\ui\pie-chart\pie-chart.ios.js" />
-    <Content Include="tns_modules\ui\pie-chart\pie-chart.js" />
     <Content Include="tns_modules\ui\placeholder\package.json" />
     <Content Include="tns_modules\ui\placeholder\placeholder-common.js" />
     <Content Include="tns_modules\ui\placeholder\placeholder.android.js" />
@@ -610,10 +660,6 @@ xcopy /E /Y "$(SolutionDir)app" "\\valkovmac\kvelikov\work\NativeScript\sample-X
   </ItemGroup>
   <ItemGroup>
     <Content Include="tns_modules\application-settings\package.json" />
-    <Content Include="tns_modules\ui\pie-chart\pie-chart-common.js.map" />
-    <Content Include="tns_modules\ui\pie-chart\pie-chart.android.js.map" />
-    <Content Include="tns_modules\ui\pie-chart\pie-chart.ios.js.map" />
-    <Content Include="tns_modules\ui\pie-chart\pie-chart.js.map" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="tns_modules\local-settings\" />

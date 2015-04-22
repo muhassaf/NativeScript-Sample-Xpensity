@@ -82,8 +82,8 @@ var PieChart = (function (_super) {
         if (this.items) {
             for (var i = 0; i < this.items.length; i++) {
                 var item = this.items[i];
-                var value = getPropertyValue(item, this.valueProperty);
-                var label = getPropertyValue(item, this.labelProperty);
+                var value = pieChartCommonModule.getPropertyValue(item, this.valueProperty);
+                var label = pieChartCommonModule.getPropertyValue(item, this.labelProperty);
                 result.add(java.lang.String.valueOf(JSON.stringify({ value: value, label: label })));
             }
         }
@@ -100,7 +100,7 @@ var CustomPieLabelRenderer = (function (_super) {
     }
     CustomPieLabelRenderer.prototype.getLabelText = function (dataPoint) {
         var item = JSON.parse(dataPoint.getDataItem());
-        return item.label;
+        return item.label + "\r\n" + item.value + "%";
     };
     CustomPieLabelRenderer.prototype.drawLabelBackground = function (canvas, path, index) {
     };
@@ -113,18 +113,4 @@ var CustomPieLabelRenderer = (function (_super) {
     return CustomPieLabelRenderer;
 })(com.telerik.widget.chart.visualization.pieChart.PieSeriesLabelRenderer);
 exports.CustomPieLabelRenderer = CustomPieLabelRenderer;
-function getPropertyValue(item, property) {
-    var value = item;
-    if (item) {
-        if (property) {
-            if (item.getValue) {
-                value = item.getValue(property);
-            }
-            else {
-                value = item[property];
-            }
-        }
-    }
-    return value;
-}
 //# sourceMappingURL=pie-chart.android.js.map

@@ -90,4 +90,19 @@ var PieChart = (function (_super) {
     return PieChart;
 })(itemsViewModule.ItemsView);
 exports.PieChart = PieChart;
+function getPropertyValue(item, property) {
+    var value = item;
+    if (item) {
+        if (property) {
+            if (item.getValue) {
+                value = item.getValue(property);
+            }
+            else {
+                value = item[property];
+            }
+        }
+    }
+    return value;
+}
+exports.getPropertyValue = getPropertyValue;
 //# sourceMappingURL=pie-chart-common.js.map

@@ -13,7 +13,7 @@
                 <g:GridView.itemTemplate>
                   <Border cssClass="tile" >
                     <StackLayout orientation="vertical">
-                      <PieChart items="{{ expensesByCategory }}" valueProperty="TotalCost" cssClass="categoriesChart" />
+                      <PieChart items="{{ expensesByCategory }}" valueProperty="TotalCost" labelProperty="Category" cssClass="categoriesChart" />
                       <Label text="{{ report.Title }}" cssClass="itemTitle" />
                       <Label text="{{ report.Date | formatDate }}" cssClass="itemSubTitleLast" />
                     </StackLayout>

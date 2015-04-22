@@ -84,3 +84,19 @@ export class PieChart extends itemsViewModule.ItemsView implements definitionMod
         super.onMeasure(widthMeasureSpec, widthMeasureSpec);
     }
 }
+
+export function getPropertyValue(item: any, property: string): any {
+    var value = item;
+    if (item) {
+        if (property) {
+            if (item.getValue) {
+                value = item.getValue(property);
+            }
+            else {
+                value = item[property];
+            }
+        }
+    }
+
+    return value;
+} 

@@ -1,7 +1,7 @@
-﻿import pieChartCommon = require("ui/pie-chart/pie-chart-common");
+﻿import pieChartCommonModule = require("ui/pie-chart/pie-chart-common");
 
 declare var exports;
-require("utils/module-merge").merge(pieChartCommon, exports);
+require("utils/module-merge").merge(pieChartCommonModule, exports);
 
 declare var TKChart: any;
 declare var TKChartDataPoint: any;
@@ -14,13 +14,16 @@ interface TKChartDelegate { };
 var TKChartSeriesSelectionModeDataPoint = 2;
 var TKChartPieSeriesLabelDisplayModeOutside = 1;
 
-export class PieChart extends pieChartCommon.PieChart {
+export class PieChart extends pieChartCommonModule.PieChart {
     private _ios: any;
+    private _pieSeries: any;
+    private _delegate;
 
     constructor() {
         super();
 
         this._ios = TKChart.new()
+        this._delegate = LabelConverter.new();
     }
 
     get ios(): any {
@@ -30,46 +33,44 @@ export class PieChart extends pieChartCommon.PieChart {
     refresh() {
         if (this.items) {
             super.refresh();
-            var pieSeries = TKChartPieSeries.alloc().initWithItems(PieChart.wrapItems(this.items, this.valueProperty));
-            pieSeries.rotationEnabled = false;
+
+            if (this._pieSeries) {
+                this._ios.removeSeries(this._pieSeries);
+            }
+
+            this._pieSeries = TKChartPieSeries.alloc().initWithItems(this.getWrappedItems());
+            this._pieSeries.rotationEnabled = false;
             if (this.canSelect) {
-                pieSeries.selectionMode = TKChartSeriesSelectionModeDataPoint;
-                pieSeries.expandRadius = 1.1;
+                this._pieSeries.selectionMode = TKChartSeriesSelectionModeDataPoint;
+                this._pieSeries.expandRadius = 1.1;
             }
 
             if (this.showLabels) {
-                pieSeries.labelDisplayMode = TKChartPieSeriesLabelDisplayModeOutside;
-                pieSeries.style.pointLabelStyle.textHidden = false;
-                //pieSeries.style.pointLabelStyle.labelOffset = new UIOffset({ 10, 10});
-                this._ios.delegate = LabelConverter.new();
+                this._pieSeries.labelDisplayMode = TKChartPieSeriesLabelDisplayModeOutside;
+                this._pieSeries.radiusInset = 50;
+                this._pieSeries.style.pointLabelStyle.textHidden = false;
+                this._pieSeries.style.pointLabelStyle.labelOffset = { horizontal: 20, vertical: 20 };
+                this._pieSeries.style.pointLabelStyle.font = UIFont.systemFontOfSize(10);
+                this._ios.delegate = this._delegate;
             }
 
-            this._ios.addSeries(pieSeries);
+            this._ios.addSeries(this._pieSeries);
         }
     }
 
-    private static wrapItems(items: any, valueProperty: string): any {
-        var data = NSMutableArray.new();
-        if (items) {
-            for (var i = 0; i < items.length; i++) {
-                var item = items[i];
-                var value = item;
-                if (item) {
-                    if (valueProperty) {
-                        if (item.getValue) {
-                            value = item.getValue(valueProperty);
-                        }
-                        else {
-                            value = item[valueProperty];
-                        }
-                    }
-                }
+    private getWrappedItems(): any {
+        var result = NSMutableArray.new();
+        if (this.items) {
+            for (var i = 0; i < this.items.length; i++) {
+                var item = this.items[i];
+                var value = pieChartCommonModule.getPropertyValue(item, this.valueProperty);
+                var label = pieChartCommonModule.getPropertyValue(item, this.labelProperty);
 
-                data.addObject(TKChartDataPoint.alloc().initWithNameValue("T" + i, value));
+                result.addObject(TKChartDataPoint.alloc().initWithNameValue(label, value));
             }
         }
 
-        return data;
+        return result;
     }
 }
 
@@ -80,7 +81,7 @@ export class LabelConverter extends NSObject implements TKChartDelegate {
         return <LabelConverter>super.new();
     }
 
-    textForLabelAtPointInSeriesAtIndex(dataPoint: any, series: any, index: any): string {
-        return "Label";
+    chartTextForLabelAtPointInSeriesAtIndex(chart: any, dataPoint: any, series: any, index: any): string {
+        return dataPoint.dataName() + "\r\n" + dataPoint.dataXValue() + "%";
     }
 }

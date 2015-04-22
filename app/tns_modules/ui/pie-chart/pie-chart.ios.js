@@ -4,8 +4,8 @@ var __extends = this.__extends || function (d, b) {
     __.prototype = b.prototype;
     d.prototype = new __();
 };
-var pieChartCommon = require("ui/pie-chart/pie-chart-common");
-require("utils/module-merge").merge(pieChartCommon, exports);
+var pieChartCommonModule = require("ui/pie-chart/pie-chart-common");
+require("utils/module-merge").merge(pieChartCommonModule, exports);
 ;
 var TKChartSeriesSelectionModeDataPoint = 2;
 var TKChartPieSeriesLabelDisplayModeOutside = 1;
@@ -14,6 +14,7 @@ var PieChart = (function (_super) {
     function PieChart() {
         _super.call(this);
         this._ios = TKChart.new();
+        this._delegate = LabelConverter.new();
     }
     Object.defineProperty(PieChart.prototype, "ios", {
         get: function () {
@@ -25,44 +26,40 @@ var PieChart = (function (_super) {
     PieChart.prototype.refresh = function () {
         if (this.items) {
             _super.prototype.refresh.call(this);
-            var pieSeries = TKChartPieSeries.alloc().initWithItems(PieChart.wrapItems(this.items, this.valueProperty));
-            pieSeries.rotationEnabled = false;
+            if (this._pieSeries) {
+                this._ios.removeSeries(this._pieSeries);
+            }
+            this._pieSeries = TKChartPieSeries.alloc().initWithItems(this.getWrappedItems());
+            this._pieSeries.rotationEnabled = false;
             if (this.canSelect) {
-                pieSeries.selectionMode = TKChartSeriesSelectionModeDataPoint;
-                pieSeries.expandRadius = 1.1;
+                this._pieSeries.selectionMode = TKChartSeriesSelectionModeDataPoint;
+                this._pieSeries.expandRadius = 1.1;
             }
             if (this.showLabels) {
-                pieSeries.labelDisplayMode = TKChartPieSeriesLabelDisplayModeOutside;
-                pieSeries.style.pointLabelStyle.textHidden = false;
-                //pieSeries.style.pointLabelStyle.labelOffset = new UIOffset({ 10, 10});
-                this._ios.delegate = LabelConverter.new();
+                this._pieSeries.labelDisplayMode = TKChartPieSeriesLabelDisplayModeOutside;
+                this._pieSeries.radiusInset = 50;
+                this._pieSeries.style.pointLabelStyle.textHidden = false;
+                this._pieSeries.style.pointLabelStyle.labelOffset = { horizontal: 20, vertical: 20 };
+                this._pieSeries.style.pointLabelStyle.font = UIFont.systemFontOfSize(10);
+                this._ios.delegate = this._delegate;
             }
-            this._ios.addSeries(pieSeries);
+            this._ios.addSeries(this._pieSeries);
         }
     };
-    PieChart.wrapItems = function (items, valueProperty) {
-        var data = NSMutableArray.new();
-        if (items) {
-            for (var i = 0; i < items.length; i++) {
-                var item = items[i];
-                var value = item;
-                if (item) {
-                    if (valueProperty) {
-                        if (item.getValue) {
-                            value = item.getValue(valueProperty);
-                        }
-                        else {
-                            value = item[valueProperty];
-                        }
-                    }
-                }
-                data.addObject(TKChartDataPoint.alloc().initWithNameValue("T" + i, value));
+    PieChart.prototype.getWrappedItems = function () {
+        var result = NSMutableArray.new();
+        if (this.items) {
+            for (var i = 0; i < this.items.length; i++) {
+                var item = this.items[i];
+                var value = pieChartCommonModule.getPropertyValue(item, this.valueProperty);
+                var label = pieChartCommonModule.getPropertyValue(item, this.labelProperty);
+                result.addObject(TKChartDataPoint.alloc().initWithNameValue(label, value));
             }
         }
-        return data;
+        return result;
     };
     return PieChart;
-})(pieChartCommon.PieChart);
+})(pieChartCommonModule.PieChart);
 exports.PieChart = PieChart;
 var LabelConverter = (function (_super) {
     __extends(LabelConverter, _super);
@@ -72,8 +69,8 @@ var LabelConverter = (function (_super) {
     LabelConverter.new = function () {
         return _super.new.call(this);
     };
-    LabelConverter.prototype.textForLabelAtPointInSeriesAtIndex = function (dataPoint, series, index) {
-        return "Label";
+    LabelConverter.prototype.chartTextForLabelAtPointInSeriesAtIndex = function (chart, dataPoint, series, index) {
+        return dataPoint.dataName() + "\r\n" + dataPoint.dataXValue() + "%";
     };
     LabelConverter.ObjCProtocols = [TKChartDelegate];
     return LabelConverter;
