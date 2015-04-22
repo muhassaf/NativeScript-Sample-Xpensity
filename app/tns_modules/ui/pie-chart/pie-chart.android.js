@@ -26,19 +26,19 @@ var PieChart = (function (_super) {
         this._pieSeries.setLabelRenderer(this._renderer);
         this._pieSeries.setLabelOffset(-50);
         this._android.getSeries().add(this._pieSeries);
+        var that = this;
+        this._pieSeries.setValueBinding(new com.telerik.widget.chart.engine.databinding.GenericDataPointBinding(new com.telerik.android.common.Function({
+            apply: function (arg) {
+                console.log("APPLY: " + arg);
+                var item = JSON.parse(arg);
+                return item.value;
+            }
+        })));
         this.refresh();
     };
     PieChart.prototype.refresh = function () {
         if (this._pieSeries && this.items) {
             _super.prototype.refresh.call(this);
-            var that = this;
-            this._pieSeries.setValueBinding(new com.telerik.widget.chart.engine.databinding.GenericDataPointBinding(new com.telerik.android.common.Function({
-                apply: function (arg) {
-                    console.log("APPLY: " + arg);
-                    var item = JSON.parse(arg);
-                    return item.value;
-                }
-            })));
             this._pieSeries.setData(this.getWrappedItems());
             this._pieSeries.setShowLabels(this.showLabels);
             if (this.canSelect) {

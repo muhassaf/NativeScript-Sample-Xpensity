@@ -87,6 +87,15 @@ export class PieChart extends pieChartCommonModule.PieChart {
         this._pieSeries.setLabelRenderer(this._renderer);
         this._pieSeries.setLabelOffset(-50);
         this._android.getSeries().add(this._pieSeries);
+        var that = this;
+        this._pieSeries.setValueBinding(new com.telerik.widget.chart.engine.databinding.GenericDataPointBinding(new (<any>com).telerik.android.common.Function({
+            apply: function (arg: any): any {
+                console.log("APPLY: " + arg);
+                var item = JSON.parse(arg);
+
+                return item.value;
+            }
+        })));
 
         this.refresh();
     }
@@ -94,15 +103,6 @@ export class PieChart extends pieChartCommonModule.PieChart {
     refresh() {
         if (this._pieSeries && this.items) {
             super.refresh();
-            var that = this;
-            this._pieSeries.setValueBinding(new com.telerik.widget.chart.engine.databinding.GenericDataPointBinding(new (<any>com).telerik.android.common.Function({
-                apply: function (arg: any): any {
-                    console.log("APPLY: " + arg);
-                    var item = JSON.parse(arg);
-
-                    return item.value;
-                }
-            })));
 
             this._pieSeries.setData(this.getWrappedItems());
             this._pieSeries.setShowLabels(this.showLabels);

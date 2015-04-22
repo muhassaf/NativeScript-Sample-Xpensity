@@ -6,7 +6,6 @@ import enumsModule = require("ui/enums");
 import dialogsModule = require("ui/dialogs");
 
 export class ViewModelBase extends observableModule.Observable {
-
     private _loadingCount: number;
     private _isLoading: boolean;
 
