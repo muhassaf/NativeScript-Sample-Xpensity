@@ -25,6 +25,9 @@ var PieChart = (function (_super) {
         this._renderer = new CustomPieLabelRenderer(this, this._pieSeries);
         this._pieSeries.setLabelRenderer(this._renderer);
         this._pieSeries.setLabelOffset(-50);
+        this._pieSeries.setLabelFillColor(android.graphics.Color.TRANSPARENT);
+        this._pieSeries.setLabelTextColor(android.graphics.Color.BLACK);
+        this._pieSeries.setLabelSize(18);
         this._android.getSeries().add(this._pieSeries);
         var that = this;
         this._pieSeries.setValueBinding(new com.telerik.widget.chart.engine.databinding.GenericDataPointBinding(new com.telerik.android.common.Function({
@@ -39,6 +42,7 @@ var PieChart = (function (_super) {
     PieChart.prototype.refresh = function () {
         if (this._pieSeries && this.items) {
             _super.prototype.refresh.call(this);
+            this._pieSeries.setData(new java.util.ArrayList());
             this._pieSeries.setData(this.getWrappedItems());
             this._pieSeries.setShowLabels(this.showLabels);
             if (this.canSelect) {
@@ -67,8 +71,8 @@ var PieChart = (function (_super) {
                 var color = new colorModule.Color(item.Color);
                 pieEntries.add(new com.telerik.widget.palettes.PaletteEntry(color.android));
                 var entry = new com.telerik.widget.palettes.PaletteEntry(color.android);
-                entry.setStroke(PieChart.getDarkerColor(color).android);
-                entry.setStrokeWidth(3);
+                //entry.setStroke(PieChart.getDarkerColor(color).android);
+                //entry.setStrokeWidth(3);
                 pieSelectEntries.add(entry);
             }
             console.log("SET PALETTE");
@@ -104,11 +108,7 @@ var CustomPieLabelRenderer = (function (_super) {
     };
     CustomPieLabelRenderer.prototype.drawLabelBackground = function (canvas, path, index) {
     };
-    CustomPieLabelRenderer.prototype.drawLabelText = function (canvas, labelText, textPositionX, textPositionY) {
-        var paint = new android.graphics.Paint();
-        paint.setStyle(android.graphics.Paint.Style.FILL);
-        paint.setColor(android.graphics.Color.BLACK);
-        canvas.drawText(labelText, textPositionX, textPositionY, paint);
+    CustomPieLabelRenderer.prototype.applyPalette = function (palette) {
     };
     return CustomPieLabelRenderer;
 })(com.telerik.widget.chart.visualization.pieChart.PieSeriesLabelRenderer);

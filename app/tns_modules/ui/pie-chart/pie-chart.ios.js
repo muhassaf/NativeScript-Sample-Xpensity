@@ -4,6 +4,7 @@ var __extends = this.__extends || function (d, b) {
     __.prototype = b.prototype;
     d.prototype = new __();
 };
+var colorModule = require("color");
 var pieChartCommonModule = require("ui/pie-chart/pie-chart-common");
 require("utils/module-merge").merge(pieChartCommonModule, exports);
 ;
@@ -43,8 +44,24 @@ var PieChart = (function (_super) {
                 this._pieSeries.style.pointLabelStyle.font = UIFont.systemFontOfSize(10);
                 this._ios.delegate = this._delegate;
             }
+            this.updatePalette();
             this._ios.addSeries(this._pieSeries);
         }
+    };
+    PieChart.prototype.updatePalette = function () {
+        if (this.items) {
+            var palette = TKChartPalette.new();
+            for (var i = 0; i < this.items.length; i++) {
+                var item = this.items[i];
+                console.log("ADD ITEM: " + JSON.stringify(item));
+                var color = new colorModule.Color(item.Color);
+                var paletteItem = TKChartPaletteItem.alloc().initWithFill(TKSolidFill.solidFillWithColor(color.ios));
+                palette.addPaletteItem(paletteItem);
+            }
+            console.log("SET PALETTE");
+            this._pieSeries.style.palette = palette;
+        }
+        return palette;
     };
     PieChart.prototype.getWrappedItems = function () {
         var result = NSMutableArray.new();

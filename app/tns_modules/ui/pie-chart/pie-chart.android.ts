@@ -86,6 +86,10 @@ export class PieChart extends pieChartCommonModule.PieChart {
         this._renderer = new CustomPieLabelRenderer(this, this._pieSeries);
         this._pieSeries.setLabelRenderer(this._renderer);
         this._pieSeries.setLabelOffset(-50);
+        this._pieSeries.setLabelFillColor(android.graphics.Color.TRANSPARENT);
+        this._pieSeries.setLabelTextColor(android.graphics.Color.BLACK);
+        this._pieSeries.setLabelSize(18);
+
         this._android.getSeries().add(this._pieSeries);
         var that = this;
         this._pieSeries.setValueBinding(new com.telerik.widget.chart.engine.databinding.GenericDataPointBinding(new (<any>com).telerik.android.common.Function({
@@ -104,6 +108,7 @@ export class PieChart extends pieChartCommonModule.PieChart {
         if (this._pieSeries && this.items) {
             super.refresh();
 
+            this._pieSeries.setData(new java.util.ArrayList());
             this._pieSeries.setData(this.getWrappedItems());
             this._pieSeries.setShowLabels(this.showLabels);
 
@@ -140,8 +145,8 @@ export class PieChart extends pieChartCommonModule.PieChart {
                 pieEntries.add(new com.telerik.widget.palettes.PaletteEntry(color.android));
 
                 var entry = new com.telerik.widget.palettes.PaletteEntry(color.android)
-                entry.setStroke(PieChart.getDarkerColor(color).android);
-                entry.setStrokeWidth(3);
+                //entry.setStroke(PieChart.getDarkerColor(color).android);
+                //entry.setStrokeWidth(3);
                 pieSelectEntries.add(entry);
             }
 
@@ -187,11 +192,6 @@ export class CustomPieLabelRenderer extends com.telerik.widget.chart.visualizati
     drawLabelBackground(canvas: any, path: any, index: any) {
     }
 
-    drawLabelText(canvas: android.graphics.Canvas, labelText: string, textPositionX: number, textPositionY: number) {
-        var paint = new android.graphics.Paint();
-        paint.setStyle(android.graphics.Paint.Style.FILL);
-        paint.setColor(android.graphics.Color.BLACK);
-
-        canvas.drawText(labelText, textPositionX, textPositionY, paint);
+    applyPalette(palette: any) {
     }
 }

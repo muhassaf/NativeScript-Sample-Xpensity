@@ -1,4 +1,6 @@
-﻿import pieChartCommonModule = require("ui/pie-chart/pie-chart-common");
+﻿import colorModule = require("color");
+
+import pieChartCommonModule = require("ui/pie-chart/pie-chart-common");
 
 declare var exports;
 require("utils/module-merge").merge(pieChartCommonModule, exports);
@@ -8,6 +10,9 @@ declare var TKChartDataPoint: any;
 declare var TKChartData: any;
 declare var TKChartPieSeries: any;
 declare var TKChartDelegate: any;
+declare var TKChartPalette: any;
+declare var TKChartPaletteItem: any;
+declare var TKSolidFill: any;
 
 interface TKChartDelegate { };
 
@@ -54,8 +59,28 @@ export class PieChart extends pieChartCommonModule.PieChart {
                 this._ios.delegate = this._delegate;
             }
 
+            this.updatePalette();
+
             this._ios.addSeries(this._pieSeries);
         }
+    }
+
+    private updatePalette(): any {
+        if (this.items) {
+            var palette = TKChartPalette.new();
+            for (var i = 0; i < this.items.length; i++) {
+                var item = this.items[i];
+                console.log("ADD ITEM: " + JSON.stringify(item));
+                var color = new colorModule.Color(item.Color);
+                var paletteItem = TKChartPaletteItem.alloc().initWithFill(TKSolidFill.solidFillWithColor(color.ios));
+                palette.addPaletteItem(paletteItem);
+            }
+
+            console.log("SET PALETTE");
+            this._pieSeries.style.palette = palette;
+        }
+
+        return palette;
     }
 
     private getWrappedItems(): any {
