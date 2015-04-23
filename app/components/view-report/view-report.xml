@@ -3,7 +3,7 @@
       loaded="pageLoaded"
       navigatedTo="navigatedTo" >
 
-  <GridLayout rows="auto, auto, auto, auto, *">
+  <GridLayout rows="auto, auto, auto, auto, *, auto">
     <Label text="{{ report.Title }}" cssClass="title" />
     <Label text="{{ totalCost | formatCurrency }}" cssClass="total" />
     <Label row="1" text="{{ report.BusinessPurpose }}" cssClass="subTitle" />
@@ -25,10 +25,15 @@
       </ListView.itemTemplate>
     </ListView>
 
-    <AbsoluteLayout rowSpan="5" cssClass="fabContainer" visibility="{{ fabVisibility }}" >
+    <AbsoluteLayout rowSpan="6" cssClass="fabContainer" visibility="{{ fabVisibility }}" >
       <Image src="res://fab" tap="addExpenseTap" stretch="none" cssClass="fab" />
     </AbsoluteLayout>
 
-    <ActivityIndicator rowSpan="5" busy="{{ isLoading }}" />
+    <GridLayout row="5" columns="auto, *" tap="addExpenseTap" cssClass="imageButtonContainer" visibility="{{ addExpenseButtonVisibility }}">
+      <Image src="res://ic_add" stretch="none" cssClass="imageButtonIcon" />
+      <Label col="1" text="Add expense" cssClass="imageButtonText" />
+    </GridLayout>
+
+    <ActivityIndicator rowSpan="6" busy="{{ isLoading }}" />
   </GridLayout>
 </Page>

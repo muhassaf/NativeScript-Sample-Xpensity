@@ -78,6 +78,7 @@ xcopy /E /Y "$(SolutionDir)app" "\\valkovmac\kvelikov\work\NativeScript\sample-X
   </PropertyGroup>
   <ItemGroup>
     <Content Include="app.css" />
+    <Content Include="app.ios.css" />
     <Content Include="App_Resources\Android\drawable-hdpi\fab.png" />
     <Content Include="App_Resources\Android\drawable-hdpi\icon.png" />
     <Content Include="App_Resources\Android\drawable-hdpi\ic_approve.png" />

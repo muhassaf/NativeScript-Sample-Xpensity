@@ -87,7 +87,7 @@ function clearMenu(page: pageModule.Page) {
 }
 
 function setAndroidPosition(menuItem: pageModule.MenuItem, position: string) {
-    if (menuItem.android) {
+    if (platformModule.device.os == platformModule.platformNames.android) {
         menuItem.android.position = position;
     }
 }

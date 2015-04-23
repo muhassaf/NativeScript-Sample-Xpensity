@@ -7,9 +7,15 @@
   <GridLayout>
     <ScrollView>
       <StackLayout>
-        <TextField text="{{ item.Title }}" hint="Title" cssClass="firstTextField" />
-        <TextField text="{{ item.Location  }}" hint="Location" />
-        <TextField text="{{ item.Cost  }}" hint="Cost" />
+        <GridLayout cssClass="TextFieldContainer">
+          <TextField text="{{ item.Title }}" hint="Title" cssClass="firstTextField" />
+        </GridLayout>
+        <GridLayout cssClass="TextFieldContainer">
+          <TextField text="{{ item.Location  }}" hint="Location" />
+        </GridLayout>
+        <GridLayout cssClass="TextFieldContainer">
+          <TextField text="{{ item.Cost  }}" hint="Cost" />
+        </GridLayout>
 
         <StackLayout cssClass="pickerContainer" tap="datePickerTap">
           <Label text="Date" cssClass="pickerLabel" />
@@ -28,8 +34,10 @@
           </GridLayout>
           <Border cssClass="pickerBorder" />
         </StackLayout>
-       
-        <TextView text="{{ item.Notes }}" hint="Notes" />
+        
+        <GridLayout cssClass="TextFieldContainer">
+          <TextView text="{{ item.Notes }}" hint="Notes" />
+        </GridLayout>
 
         <Button text="DELETE EXPENSE" tap="deleteExpenseButtonTap" color="#FF0000" cssClass="secondaryButton" visibility="{{ editVisibility }}" />
       </StackLayout>

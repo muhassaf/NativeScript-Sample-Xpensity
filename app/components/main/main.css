@@ -4,8 +4,7 @@
 }
 
 .reportsGrid {
-    margin-left: 8;
-    margin-right: 8;
+    margin: 8 8 0 8;
 }
 
 .categoriesChart {
@@ -15,7 +14,7 @@
 
 .blockContainer {
     background-color: #FFFFFF;
-    margin: 8 0 8 0;
+    margin: 16 0 8 0;
 }
 
 .blockLabel {

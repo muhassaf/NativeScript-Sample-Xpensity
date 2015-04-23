@@ -74,6 +74,16 @@ export class ViewReportViewModel extends viewModelBaseModule.ViewModelBase {
         return this.androidVisibility;
     }
 
+    get addExpenseButtonVisibility() {
+        if (this.report.Status === reportStatusModule.ForApproval ||
+            this.report.Status === reportStatusModule.Approved) {
+
+            return enumsModule.Visibility.collapsed;
+        }
+
+        return this.iosVisibility;
+    }
+
     showReportInfo() {
         notificationsModule.showInfo(this.report.Info);
     }
@@ -85,6 +95,7 @@ export class ViewReportViewModel extends viewModelBaseModule.ViewModelBase {
             serviceModule.service.updateReport(this.report).then((data) => {
                 console.log("NOTIFY FAB");
                 this.notifyPropertyChanged("fabVisibility", enumsModule.Visibility.collapsed);
+                this.notifyPropertyChanged("addExpenseButtonVisibility", enumsModule.Visibility.collapsed);
                 this.endLoading();
                 resolve(data)
             }, error => {

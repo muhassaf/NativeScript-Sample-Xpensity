@@ -1,4 +1,6 @@
-﻿import observableModule = require("data/observable");
+﻿import platformModule = require("platform");
+
+import observableModule = require("data/observable");
 
 import viewModule = require("ui/core/view");
 import pageModule = require("ui/page");
@@ -24,6 +26,8 @@ export function pageLoaded(args: observableModule.EventData) {
         var page = <pageModule.Page>args.object;
         page.bindingContext = viewModel;
         viewModel.refresh();
+
+        buildMenu(page);
     }
 }
 
@@ -53,4 +57,14 @@ export function reportsViewLoaded(args: observableModule.EventData) {
 export function settingsViewLoaded(args: observableModule.EventData) {
     var tabItem = <viewModule.View>args.object;
     tabItem.bindingContext = viewModel.settingsViewModel;
+}
+
+function buildMenu(page: pageModule.Page) {
+    if (platformModule.device.os == platformModule.platformNames.ios) {
+        var addReportMenuItem = new pageModule.MenuItem();
+        addReportMenuItem.icon = "ic_add";
+        addReportMenuItem.on(pageModule.knownEvents.tap, addReportTap);
+
+        page.optionsMenu.addItem(addReportMenuItem);
+    }
 }

@@ -1,12 +1,13 @@
 <Page xmlns="http://www.nativescript.org/tns.xsd"
       xmlns:g="components/grid-view/grid-view"
+      ios.title="My reports"
       loaded="pageLoaded">
   <TabView>
     <TabView.items>
       <TabViewItem iconSource="res://ic_reports" >
         <TabViewItem.view>
           <GridLayout rows="auto, *" bindingContext="{{ reportsViewModel }}" >
-            <Label text="MY REPORTS" cssClass="header" />
+            <Label text="MY REPORTS" cssClass="header" visibility="{{ androidVisibility }}" />
 
             <ScrollView row="1" >
               <g:GridView items="{{ reports }}" gridColumns="2" cssClass="reportsGrid" itemTap="reportTap">
