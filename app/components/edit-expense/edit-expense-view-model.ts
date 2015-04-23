@@ -9,6 +9,7 @@ import constantsModule = require("../../utils/constants");
 import serviceModule = require("../../utils/service");
 import navigationModule = require("../../utils/navigation");
 import viewsModule = require("../../utils/views");
+import notificationsModule = require("../../utils/notifications");
 
 export class EditExpenseViewModel extends editViewModelBaseModule.EditViewModelBase {
     private _report: any;
@@ -55,6 +56,20 @@ export class EditExpenseViewModel extends editViewModelBaseModule.EditViewModelB
 
     refresh() {
         this.loadCategory();
+    }
+
+    validate(): boolean {
+        if (!this.item.Title || this.item.Title === "") {
+            notificationsModule.showError("Please enter title.");
+            return false;
+        }
+
+        if (isNaN(this.item.Cost)) {
+            notificationsModule.showError("Please enter cost.");
+            return false;
+        }
+
+        return super.validate();
     }
 
     private loadCategory() {

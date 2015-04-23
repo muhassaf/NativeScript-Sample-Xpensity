@@ -13,6 +13,7 @@ import serviceModule = require("../../utils/service");
 import navigationModule = require("../../utils/navigation");
 import viewsModule = require("../../utils/views");
 import reportStatusModule = require("../../utils/report-status");
+import notificationsModule = require("../../utils/notifications");
 
 export class EditReportViewModel extends editViewModelBaseModule.EditViewModelBase {
     constructor(report?: any) {
@@ -33,6 +34,15 @@ export class EditReportViewModel extends editViewModelBaseModule.EditViewModelBa
 
     updateItem(item: any): Promise<any> {
         return serviceModule.service.updateReport(item);
+    }
+
+    validate(): boolean {
+        if (!this.item.Title || this.item.Title === "") {
+            notificationsModule.showError("Please enter title.");
+            return false;
+        }
+
+        return super.validate();
     }
 
     deleteItem(item: any): Promise<any> {

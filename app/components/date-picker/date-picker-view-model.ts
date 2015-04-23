@@ -11,7 +11,7 @@ export class DatePickerViewModel extends viewModelBaseModule.ViewModelBase {
         super();
 
         this.day = selectedDate.getDate();
-        this.month = selectedDate.getMonth();
+        this.month = selectedDate.getMonth() + 1;
         this.year = selectedDate.getFullYear();
 
         this._selectedCallback = selectedCallback;
@@ -51,7 +51,7 @@ export class DatePickerViewModel extends viewModelBaseModule.ViewModelBase {
     }
 
     done() {
-        this._selectedCallback(new Date(this.year, this.month, this.day));
+        this._selectedCallback(new Date(this.year, this.month - 1, this.day));
         navigationModule.goBack();
     }
 }

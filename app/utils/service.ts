@@ -67,10 +67,12 @@ export class Service {
 
     updateReport(report: any): Promise<any> {
         return new Promise<any>((resolve, reject) => {
-            var everlive = this.createEverlive();
-            everlive.data(REPORT).updateSingle(report, resolve, error => {
-                Service.showErrorAndReject(error, reject);
-            })
+            resolve(report);
+            // TODO: uncomment this.
+            //var everlive = this.createEverlive();
+            //everlive.data(REPORT).updateSingle(report, resolve, error => {
+            //    Service.showErrorAndReject(error, reject);
+            //})
         });
     }
 

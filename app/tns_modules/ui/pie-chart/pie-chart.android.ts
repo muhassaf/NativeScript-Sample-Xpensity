@@ -94,7 +94,6 @@ export class PieChart extends pieChartCommonModule.PieChart {
         var that = this;
         this._pieSeries.setValueBinding(new com.telerik.widget.chart.engine.databinding.GenericDataPointBinding(new (<any>com).telerik.android.common.Function({
             apply: function (arg: any): any {
-                console.log("APPLY: " + arg);
                 var item = JSON.parse(arg);
 
                 return item.value;
@@ -112,6 +111,13 @@ export class PieChart extends pieChartCommonModule.PieChart {
             this._pieSeries.setData(this.getWrappedItems());
             this._pieSeries.setShowLabels(this.showLabels);
 
+            if (this.showLabels) {
+                this._android.setChartPadding(50);
+            }
+            else {
+                this._android.setChartPadding(0);
+            }
+
             if (this.canSelect) {
                 this._selectionBehavior = new com.telerik.widget.chart.visualization.behaviors.ChartSelectionBehavior();
                 this._android.getBehaviors().add(this._selectionBehavior);
@@ -127,8 +133,6 @@ export class PieChart extends pieChartCommonModule.PieChart {
 
     private updatePalette() {
         if (this.items) {
-            console.log("UPDATE PALETTE");
-
             var customPalette = this._android.getPalette().clone();
             var pieEntries = customPalette.entriesForFamily(com.telerik.widget.palettes.ChartPalette.PIE_FAMILY);
             pieEntries.clear();
@@ -140,7 +144,6 @@ export class PieChart extends pieChartCommonModule.PieChart {
             for (var i = 0; i < this.items.length; i++) {
                 var item = this.items[i];
 
-                console.log("ADD ITEM: " + JSON.stringify(item));
                 var color = new colorModule.Color(item.Color);
                 pieEntries.add(new com.telerik.widget.palettes.PaletteEntry(color.android));
 
@@ -150,10 +153,8 @@ export class PieChart extends pieChartCommonModule.PieChart {
                 pieSelectEntries.add(entry);
             }
 
-            console.log("SET PALETTE");
             this._android.setPalette(customPalette);
 
-            console.log("SET SELECTION PALETTE");
             this._android.setSelectionPalette(customSelectPalette);
         }
     }

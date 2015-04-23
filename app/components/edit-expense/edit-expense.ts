@@ -19,6 +19,7 @@ var viewModel: editExpenseViewModelModule.EditExpenseViewModel;
 export function navigatedTo(args: observableModule.EventData) {
     var page = <pagesModule.Page>args.object;
     viewModel = <editExpenseViewModelModule.EditExpenseViewModel>page.navigationContext;
+    page.bindingContext = null;
     page.bindingContext = viewModel;
 }
 

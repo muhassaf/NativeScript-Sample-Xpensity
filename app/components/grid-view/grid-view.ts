@@ -104,14 +104,10 @@ export class GridView extends gridLayoutModule.GridLayout implements definitionM
                 this.addRow(new gridLayoutModule.ItemSpec(1, gridLayoutModule.GridUnitType.star));
             }
 
-            console.log("Rows: " + rows + " Columns: " + this.gridColumns);
-
             for (var i = 0; i < this.items.length; i++) {
                 var templateView = this.getItemTemplateContent(i);
                 var row = Math.floor(i / this.gridColumns);
                 var col = i % this.gridColumns;
-
-                console.log("Row: " + row + " Column: " + col);
 
                 gridLayoutModule.GridLayout.setRow(templateView, row);
                 gridLayoutModule.GridLayout.setColumn(templateView, col);

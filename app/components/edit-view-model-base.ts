@@ -57,12 +57,14 @@ export class EditViewModelBase extends viewModelBaseModule.ViewModelBase {
     }
 
     save() {
-        this.beginLoading();
-        if (this._isAdd) {
-            this.add();
-        }
-        else {
-            this.update();
+        if (this.validate()) {
+            this.beginLoading();
+            if (this._isAdd) {
+                this.add();
+            }
+            else {
+                this.update();
+            }
         }
     }
 
@@ -109,6 +111,10 @@ export class EditViewModelBase extends viewModelBaseModule.ViewModelBase {
 
     deleteItem(item: any): Promise<any> {
         return null;
+    }
+
+    validate(): boolean {
+        return true;
     }
 
     private static clone(item: any): any {

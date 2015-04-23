@@ -67,6 +67,7 @@ export class ViewReportViewModel extends viewModelBaseModule.ViewModelBase {
     get fabVisibility() {
         if (this.report.Status === reportStatusModule.ForApproval ||
             this.report.Status === reportStatusModule.Approved) {
+
             return enumsModule.Visibility.collapsed;
         }
 
@@ -82,7 +83,8 @@ export class ViewReportViewModel extends viewModelBaseModule.ViewModelBase {
             this.beginLoading();
             this.report.Status = reportStatusModule.ForApproval;
             serviceModule.service.updateReport(this.report).then((data) => {
-                this.notifyPropertyChanged("fabVisibility");
+                console.log("NOTIFY FAB");
+                this.notifyPropertyChanged("fabVisibility", enumsModule.Visibility.collapsed);
                 this.endLoading();
                 resolve(data)
             }, error => {

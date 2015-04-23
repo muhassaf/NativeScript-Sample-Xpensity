@@ -1,4 +1,6 @@
-﻿import observableModule = require("data/observable");
+﻿import platformModule = require("platform");
+
+import observableModule = require("data/observable");
 
 import viewModule = require("ui/core/view");
 import pageModule = require("ui/page");
@@ -11,6 +13,13 @@ import reportStatusModule = require("../../utils/report-status");
 
 export function pageLoaded(args: observableModule.EventData) {
     actionBarModule.showBackNavigation();
+
+    if (platformModule.device.os == platformModule.platformNames.android) {
+        var page = <pageModule.Page>args.object;
+        var chart = page.getViewById<viewModule.View>("PieChart");
+        chart.marginLeft = 50;
+        chart.marginRight = 50;
+    }
 }
 
 var viewModel: viewReportViewModelModule.ViewReportViewModel;
