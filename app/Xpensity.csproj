@@ -77,7 +77,7 @@ xcopy /E /Y "$(SolutionDir)app" "\\valkovmac\kvelikov\work\NativeScript\sample-X
     </PreBuildEvent>
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="app.css" />
+    <Content Include="app.android.css" />
     <Content Include="app.ios.css" />
     <Content Include="App_Resources\Android\drawable-hdpi\fab.png" />
     <Content Include="App_Resources\Android\drawable-hdpi\icon.png" />

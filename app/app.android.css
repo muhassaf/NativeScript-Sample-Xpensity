@@ -15,8 +15,8 @@ Switch, Label {
     margin: 8 16 8 16;
 }
 
-.firstTextField {
-    margin: 16 16 0 16;
+.firstTextFieldContainer {
+    margin-top: 16;
 }
 
 .statusIcon {

@@ -7,14 +7,17 @@
   <GridLayout>
     <ScrollView>
       <StackLayout>
-        <GridLayout cssClass="TextFieldContainer">
-          <TextField text="{{ item.Title }}" hint="Title" cssClass="firstTextField" />
+        <GridLayout cssClass="firstTextFieldContainer">
+          <TextField text="{{ item.Title }}" hint="Title" />
+          <Border cssClass="pickerBorder" visibility="{{ iosVisibility }}" />
         </GridLayout>
-        <GridLayout cssClass="TextFieldContainer">
+        <GridLayout cssClass="textFieldContainer">
           <TextField text="{{ item.BusinessPurpose  }}" hint="Business Purpose" />
+          <Border cssClass="pickerBorder" visibility="{{ iosVisibility }}" />
         </GridLayout>
-        <GridLayout cssClass="TextFieldContainer">
+        <GridLayout cssClass="textFieldContainer">
           <TextField text="{{ item.CostCenter }}" hint="Cost Center" />
+          <Border cssClass="pickerBorder" visibility="{{ iosVisibility }}" />
         </GridLayout>
         
         <Button text="DELETE REPORT" tap="deleteReportButtonTap" color="#FF0000" cssClass="secondaryButton" visibility="{{ editVisibility }}" />
