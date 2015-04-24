@@ -14,6 +14,10 @@ export function pageLoaded(args: observableModule.EventData) {
     page.bindingContext = viewModel;
 }
 
+export function navigatedTo(args: observableModule.EventData) {
+    viewModel.clear();
+}
+
 export function signUpMenuItemTap(args: observableModule.EventData) {
     navigationModule.navigate(viewsModule.Views.signUp);
 }

@@ -1,7 +1,8 @@
 <Page xmlns="http://www.nativescript.org/tns.xsd"
       xmlns:g="components/grid-view/grid-view"
       ios.title="My reports"
-      loaded="pageLoaded">
+      navigatedTo="navigatedTo"     
+      loaded="pageLoaded" >
   <TabView>
     <TabView.items>
       <TabViewItem iconSource="res://ic_reports" >
@@ -65,7 +66,7 @@
                   <Switch col="1" checked="{{ notifications }}"/>
                 </GridLayout>
 
-                <Button text="LOGOUT" tap="{{ logout }}" cssClass="secondaryButton" />
+                <Button text="LOGOUT" tap="logoutButtonTap" cssClass="secondaryButton" />
               </StackLayout>
             </ScrollView>
 

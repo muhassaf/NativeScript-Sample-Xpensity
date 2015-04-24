@@ -66,11 +66,8 @@
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
   <PropertyGroup>
-    <PostBuildEvent>if $(ConfigurationName) == Android (
-tns run android --emulator
-) ELSE if $(ConfigurationName) == iOS (
-xcopy /E /Y "$(SolutionDir)app" "\\valkovmac\kvelikov\work\NativeScript\sample-Xpensity\app"
-)</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
     <PreBuildEvent>
@@ -272,12 +269,14 @@ xcopy /E /Y "$(SolutionDir)app" "\\valkovmac\kvelikov\work\NativeScript\sample-X
     <Content Include="components\list-picker\list-picker.xml">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="components\login\login.ios.later.css" />
     <Content Include="components\login\login.xml" />
     <Content Include="components\main\main.xml" />
     <Content Include="components\main\main.css" />
     <Content Include="components\edit-report\edit-report.xml">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="components\sign-up\sign-up.ios.later.css" />
     <Content Include="components\sign-up\sign-up.xml">
       <SubType>Designer</SubType>
     </Content>

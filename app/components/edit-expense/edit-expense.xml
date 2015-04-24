@@ -20,14 +20,14 @@
           <Border cssClass="pickerBorder" visibility="{{ iosVisibility }}" />
         </GridLayout>
 
-        <GridLayout cssClass="pickerContainer" tap="datePickerTap" visibility="{{ androidVisibility }}">
+        <StackLayout cssClass="pickerContainer" tap="datePickerTap" visibility="{{ androidVisibility }}">
           <Label text="Date" cssClass="pickerLabel" />
           <GridLayout columns="*, auto">
             <Label text="{{ item.Date | formatDate }}" cssClass="pickerValue" />
             <Image col="1" src="res://ic_arrow_drop_down" cssClass="pickerIcon" stretch="none" />
           </GridLayout>
           <Border cssClass="pickerBorder" />
-        </GridLayout>
+        </StackLayout>
 
         <GridLayout cssClass="pickerContainer" tap="datePickerTap" visibility="{{ iosVisibility }}">
           <GridLayout columns="*, *, auto">
@@ -38,14 +38,14 @@
           <Border cssClass="pickerBorder" />
         </GridLayout>
 
-        <GridLayout cssClass="pickerContainer" tap="categoryPickerTap" visibility="{{ androidVisibility }}">
+        <StackLayout cssClass="pickerContainer" tap="categoryPickerTap" visibility="{{ androidVisibility }}">
           <Label text="Category" cssClass="pickerLabel" />
           <GridLayout columns="*, auto" bindingContext="{{ category }}">
             <Label text="{{ Title }}" cssClass="pickerValue" />
             <Image col="1" src="res://ic_arrow_drop_down" cssClass="pickerIcon" stretch="none" />
           </GridLayout>
           <Border cssClass="pickerBorder" />
-        </GridLayout>
+        </StackLayout>
 
         <GridLayout cssClass="pickerContainer" tap="categoryPickerTap" visibility="{{ iosVisibility }}">
           <GridLayout columns="*, *, auto" bindingContext="{{ category }}">

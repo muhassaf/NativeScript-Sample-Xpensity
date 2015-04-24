@@ -16,8 +16,7 @@ export class LoginViewModel extends viewModelBaseModule.ViewModelBase {
     constructor() {
         super();
 
-        this.username = "";
-        this.password = "";
+        this.clear();
     }
 
     get username(): string {
@@ -56,6 +55,11 @@ export class LoginViewModel extends viewModelBaseModule.ViewModelBase {
         else {
             this.clearPassword();
         }
+    }
+
+    clear() {
+        this.username = "";
+        this.password = "";
     }
 
     private validate(): boolean {

@@ -70,13 +70,11 @@ export class PieChart extends pieChartCommonModule.PieChart {
             var palette = TKChartPalette.new();
             for (var i = 0; i < this.items.length; i++) {
                 var item = this.items[i];
-                console.log("ADD ITEM: " + JSON.stringify(item));
                 var color = new colorModule.Color(item.Color);
                 var paletteItem = TKChartPaletteItem.alloc().initWithFill(TKSolidFill.solidFillWithColor(color.ios));
                 palette.addPaletteItem(paletteItem);
             }
 
-            console.log("SET PALETTE");
             this._pieSeries.style.palette = palette;
         }
 

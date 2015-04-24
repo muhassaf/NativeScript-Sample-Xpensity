@@ -30,6 +30,14 @@ export function hideBackNavigation() {
     }
 }
 
+export function showApplicationBar() {
+    if (platformModule.device.os == platformModule.platformNames.ios) {
+        var topmost = frameModule.topmost();
+        topmost.ios.controller.setNavigationBarHiddenAnimated(false, false)
+    }
+}
+
+
 function androidOptionSelected(args: frameModule.AndroidOptionEventData) {
     if (args.item.getItemId() === (<any>android).R.id.home) {
         navigationModule.goBack();

@@ -72,8 +72,8 @@ Switch, Label {
 }
 
 .primaryButton {
-    background-color: #0079FF;
-    color: #FFFFFF;
+    background-color: #FFFFFF;
+    color: #0079FF;
     margin: 30 0 16 0;
     height: 44;
 }

@@ -1,13 +1,28 @@
-<Page xmlns="http://www.nativescript.org/tns.xsd" loaded="pageLoaded">
+<Page xmlns="http://www.nativescript.org/tns.xsd" 
+      loaded="pageLoaded"
+      navigatedTo="navigatedTo">
   <GridLayout>
     <ScrollView>
       <StackLayout>
-        <TextField text="{{ name }}" hint="name" cssClass="firstTextField" />
-        <TextField text="{{ email }}" keyboardType="email" autocorrect="false" autocapitalizationType="none" hint="email" />
-        <TextField text="{{ password }}" secure="true" hint="password" />
-        <TextField text="{{ confirmPassword }}" secure="true" hint="confirm password" />
+        <GridLayout cssClass="firstTextFieldContainer">
+          <TextField text="{{ name }}" hint="name" cssClass="firstTextField" />
+          <Border cssClass="pickerBorder" visibility="{{ iosVisibility }}" />
+        </GridLayout>
+        <GridLayout cssClass="textFieldContainer">
+          <TextField text="{{ email }}" keyboardType="email" autocorrect="false" autocapitalizationType="none" hint="email" />
+          <Border cssClass="pickerBorder" visibility="{{ iosVisibility }}" />
+        </GridLayout>
+        <GridLayout cssClass="textFieldContainer">
+          <TextField text="{{ password }}" secure="true" hint="password" />
+          <Border cssClass="pickerBorder" visibility="{{ iosVisibility }}" />
+        </GridLayout>
+        <GridLayout cssClass="textFieldContainer">
+          <TextField text="{{ confirmPassword }}" secure="true" hint="confirm password" />
+          <Border cssClass="pickerBorder" visibility="{{ iosVisibility }}" />
+        </GridLayout>
 
         <Button text="SIGN UP" tap="{{ signUp }}" cssClass="primaryButton" />
+
       </StackLayout>
     </ScrollView>
 

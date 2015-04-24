@@ -19,10 +19,7 @@ export class SignUpViewModel extends viewModelBaseModule.ViewModelBase {
     constructor() {
         super();
 
-        this.name = "";
-        this.email = "";
-        this.password = "";
-        this.confirmPassword = "";
+        this.clear();
     }
 
     get name(): string {
@@ -87,6 +84,13 @@ export class SignUpViewModel extends viewModelBaseModule.ViewModelBase {
 
     login() {
         navigationModule.navigate(viewsModule.Views.login);
+    }
+
+    clear() {
+        this.name = "";
+        this.email = "";
+        this.password = "";
+        this.confirmPassword = "";
     }
 
     private validate(): boolean {

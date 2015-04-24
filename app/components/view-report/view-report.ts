@@ -14,12 +14,18 @@ import reportStatusModule = require("../../utils/report-status");
 export function pageLoaded(args: observableModule.EventData) {
     actionBarModule.showBackNavigation();
 
+    var margin = 0;
     if (platformModule.device.os == platformModule.platformNames.android) {
-        var page = <pageModule.Page>args.object;
-        var chart = page.getViewById<viewModule.View>("PieChart");
-        chart.marginLeft = 50;
-        chart.marginRight = 50;
+        margin = 70;
     }
+    else if (platformModule.device.os == platformModule.platformNames.ios) {
+        margin = 30;
+    }
+
+    var page = <pageModule.Page>args.object;
+    var chart = page.getViewById<viewModule.View>("PieChart");
+    chart.marginLeft = margin;
+    chart.marginRight = margin;
 }
 
 var viewModel: viewReportViewModelModule.ViewReportViewModel;
