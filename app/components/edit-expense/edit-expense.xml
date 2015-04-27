@@ -16,7 +16,7 @@
           <Border cssClass="pickerBorder" visibility="{{ iosVisibility }}" />
         </GridLayout>
         <GridLayout cssClass="textFieldContainer">
-          <TextField text="{{ item.Cost  }}" hint="Cost" />
+          <TextField text="{{ item.Cost  }}" hint="Cost" keyboardType="number" />
           <Border cssClass="pickerBorder" visibility="{{ iosVisibility }}" />
         </GridLayout>
 

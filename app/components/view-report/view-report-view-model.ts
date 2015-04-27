@@ -93,9 +93,7 @@ export class ViewReportViewModel extends viewModelBaseModule.ViewModelBase {
             this.beginLoading();
             this.report.Status = reportStatusModule.ForApproval;
             serviceModule.service.updateReport(this.report).then((data) => {
-                console.log("NOTIFY FAB");
-                this.notifyPropertyChanged("fabVisibility", enumsModule.Visibility.collapsed);
-                this.notifyPropertyChanged("addExpenseButtonVisibility", enumsModule.Visibility.collapsed);
+                navigationModule.goBack();
                 this.endLoading();
                 resolve(data)
             }, error => {

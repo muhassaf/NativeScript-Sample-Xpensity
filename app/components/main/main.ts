@@ -4,6 +4,7 @@ import observableModule = require("data/observable");
 
 import viewModule = require("ui/core/view");
 import pageModule = require("ui/page");
+import tabViewModule = require("ui/tab-view");
 
 import gridViewModule = require("grid-view");
 
@@ -17,6 +18,7 @@ import actionBarModule = require("../../utils/action-bar");
 import serviceModule = require("../../utils/service");
 
 var viewModel = new mainViewModelModule.MainViewModel();
+var page: pageModule.Page;
 export function pageLoaded(args: observableModule.EventData) {
     if (platformModule.device.os == platformModule.platformNames.android) {
         checkIfLoggedIn(args);
@@ -44,6 +46,8 @@ export function addReportTap(args: observableModule.EventData) {
 }
 
 export function logoutButtonTap(args: observableModule.EventData) {
+    var tabView = <tabViewModule.TabView>page.getViewById("TabView");
+    tabView.selectedIndex = 0;
     viewModel.settingsViewModel.logout();
 }
 
@@ -64,10 +68,11 @@ function checkIfLoggedIn(args: observableModule.EventData) {
         navigationModule.navigateWitouthHistory(viewsModule.Views.login);
     }
     else {
-        var page = <pageModule.Page>args.object;
+        page = <pageModule.Page>args.object;
         page.bindingContext = null;
         page.bindingContext = viewModel;
         viewModel.refresh();
+        console.log("RELOADED");
         buildMenu(page);
     }
 }

@@ -283,7 +283,7 @@
     <Content Include="components\test\page2.xml" />
     <Content Include="components\test\page1.xml" />
     <Content Include="components\view-report\view-report.css" />
-    <Content Include="lib\everlive.all.map.js" />
+    <Content Include="lib\everlive.js" />
     <Content Include="tns_modules\application-settings\application-settings-common.js" />
     <Content Include="tns_modules\application-settings\application-settings.android.js" />
     <Content Include="tns_modules\application-settings\application-settings.ios.js" />
@@ -537,6 +537,7 @@
     <TypeScriptCompile Include="components\list-picker\list-picker-view-model.ts" />
     <TypeScriptCompile Include="components\list-picker\list-picker.ts" />
     <TypeScriptCompile Include="components\main\main-view-model.ts" />
+    <TypeScriptCompile Include="components\main\notifications-view-model.ts" />
     <TypeScriptCompile Include="components\main\settings-view-model.ts" />
     <TypeScriptCompile Include="components\sign-up\sign-up-view-model.ts" />
     <TypeScriptCompile Include="components\sign-up\sign-up.ts" />

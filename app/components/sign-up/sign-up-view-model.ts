@@ -68,10 +68,16 @@ export class SignUpViewModel extends viewModelBaseModule.ViewModelBase {
 
     signUp() {
         if (this.validate()) {
+            this.beginLoading();
             serviceModule.service.signUp(this.email, this.password, { Email: this.email, DisplayName: this.name }).then((data: any) => {
-                this.endLoading();
-                dialogsModule.alert({ title: "Success", message: "Please login with your credentials now.", okButtonText: "Close" });
-                navigationModule.goBack();
+                serviceModule.service.login(this.email, this.password).then((data: any) => {
+                    this.endLoading();
+                    navigationModule.goBack();
+                    navigationModule.goBack();
+                },(error: any) => {
+                        this.endLoading();
+                    })
+
             },(error: any) => {
                     this.endLoading();
                     this.clearPassword();

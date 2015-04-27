@@ -2,8 +2,9 @@
 
 import constantsModule = require("./constants");
 import notificationsModule = require("./notifications");
+import reportStatusModule = require("./report-status");
 
-var everliveModule = require("../lib/everlive.all.map");
+var everliveModule = require("../lib/everlive");
 
 var REPORT = "Report";
 var EXPENSE = "Expense";
@@ -22,8 +23,7 @@ export class Service {
         return new Promise<any>((resolve, reject) => {
             var everlive = new everliveModule(constantsModule.telerikApiKey);
             everlive.Users.login(username, password,(data: any) => {
-                applicationSettingsModule.setString(constantsModule.authenticationTokenKey, data.result.access_token);
-                this.setupLocalSettings("Kamen Velikov", data.result.access_token);
+                this.setupLocalSettings(data.result.access_token);
                 resolve(data);
             }, error => {
                     Service.showErrorAndReject(error, reject);
@@ -33,6 +33,7 @@ export class Service {
 
     logout() {
         this.clearLocalSettings();
+        this.clearEverlive();
     }
 
     signUp(username: string, password: string, additionalData: any): Promise<any> {
@@ -41,6 +42,17 @@ export class Service {
             everlive.Users.register(username, password, additionalData, resolve, error => {
                 Service.showErrorAndReject(error, reject);
             })
+        });
+    }
+
+    getCurrentUser(): Promise<any> {
+        return new Promise<any>((resolve, reject) => {
+            var everlive = this.createEverlive();
+            everlive.Users.currentUser().then((data) => {
+                resolve(data.result);
+            }, error => {
+                    Service.showErrorAndReject(error, reject);
+                })
         });
     }
 
@@ -55,9 +67,19 @@ export class Service {
         });
     }
 
+    getReportsForApproval(): Promise<number> {
+        return new Promise<number>((resolve, reject) => {
+            var everlive = this.createEverlive();
+            everlive.data(REPORT).get({ Status: reportStatusModule.ForApproval }).then(data => {
+                resolve(<number>data.result.length);
+            }, error => {
+                    Service.showErrorAndReject(error, reject);
+                })
+        });
+    }
+
     createReport(report: any): Promise<any> {
         return new Promise<any>((resolve, reject) => {
-            console.log("CREATE REPORT");
             var everlive = this.createEverlive();
             everlive.data(REPORT).create(report, resolve, error => {
                 Service.showErrorAndReject(error, reject);
@@ -67,12 +89,10 @@ export class Service {
 
     updateReport(report: any): Promise<any> {
         return new Promise<any>((resolve, reject) => {
-            resolve(report);
-            // TODO: uncomment this.
-            //var everlive = this.createEverlive();
-            //everlive.data(REPORT).updateSingle(report, resolve, error => {
-            //    Service.showErrorAndReject(error, reject);
-            //})
+            var everlive = this.createEverlive();
+            everlive.data(REPORT).updateSingle(report, resolve, error => {
+                Service.showErrorAndReject(error, reject);
+            })
         });
     }
 
@@ -177,9 +197,20 @@ export class Service {
         });
     }
 
+    clearEverlive() {
+        if (this._everlive) {
+            this._everlive.offlineStorage.purgeAll();
+            this._everlive = null;
+        }
+    }
+
     private createEverlive(): any {
         if (!this._everlive) {
-            this._everlive = new everliveModule({ apiKey: constantsModule.telerikApiKey, token: applicationSettingsModule.getString(constantsModule.authenticationTokenKey) }); // offlineStorage: true
+            this._everlive = new everliveModule({
+                apiKey: constantsModule.telerikApiKey,
+                token: applicationSettingsModule.getString(constantsModule.authenticationTokenKey),
+                offlineStorage: applicationSettingsModule.getBoolean(constantsModule.offlineMode)
+            });
         }
 
         return this._everlive;
@@ -190,8 +221,7 @@ export class Service {
         reject(error);
     }
 
-    private setupLocalSettings(name: string, authenticationTokenKey: string) {
-        applicationSettingsModule.setString(constantsModule.name, name);
+    private setupLocalSettings(authenticationTokenKey: string) {
         applicationSettingsModule.setString(constantsModule.authenticationTokenKey, authenticationTokenKey);
         applicationSettingsModule.setBoolean(constantsModule.offlineMode, true);
         applicationSettingsModule.setBoolean(constantsModule.notifications, false);
@@ -199,7 +229,6 @@ export class Service {
 
     private clearLocalSettings() {
         applicationSettingsModule.remove(constantsModule.authenticationTokenKey);
-        applicationSettingsModule.remove(constantsModule.name);
         applicationSettingsModule.remove(constantsModule.notifications);
         applicationSettingsModule.remove(constantsModule.offlineMode);
     }

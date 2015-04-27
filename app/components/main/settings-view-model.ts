@@ -11,15 +11,20 @@ import viewsModule = require("../../utils/views");
 
 export class SettingsViewModel extends viewModelBaseModule.ViewModelBase {
     private _name: string;
-    private _offlineMode: boolean;
-    private _notifications: boolean;
 
     constructor() {
         super();
     }
 
     get name(): string {
-        return applicationSettingsModule.getString(constantsModule.name);
+        return this._name;
+    }
+
+    set name(value: string) {
+        if (this._name !== value) {
+            this._name = value;
+            this.notifyPropertyChanged("name", value);
+        }
     }
 
     get offlineMode(): boolean {
@@ -30,6 +35,7 @@ export class SettingsViewModel extends viewModelBaseModule.ViewModelBase {
         if (applicationSettingsModule.getBoolean(constantsModule.offlineMode) !== value) {
             applicationSettingsModule.setBoolean(constantsModule.offlineMode, value);
             this.notifyPropertyChanged("offlineMode", value);
+            serviceModule.service.clearEverlive();
         }
     }
 
@@ -45,12 +51,19 @@ export class SettingsViewModel extends viewModelBaseModule.ViewModelBase {
     }
 
     logout() {
-        console.log("LOGOUT");
         serviceModule.service.logout();
-        console.log("NAVIGATE");
         navigationModule.navigateWitouthHistory(viewsModule.Views.login);
     }
 
     refresh() {
+        this.offlineMode = applicationSettingsModule.getBoolean(constantsModule.offlineMode);
+        this.notifications = applicationSettingsModule.getBoolean(constantsModule.notifications);
+        this.beginLoading();
+        serviceModule.service.getCurrentUser().then((user) => {
+            this.name = user.DisplayName;
+            this.endLoading();
+        },(error) => {
+                this.endLoading();
+            });
     }
 }

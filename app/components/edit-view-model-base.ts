@@ -44,7 +44,6 @@ export class EditViewModelBase extends viewModelBaseModule.ViewModelBase {
     }
 
     get editVisibility(): string {
-        console.log("IS ADD: " + this._isAdd);
         if (this._isAdd) {
             return enumsModule.Visibility.collapsed;
         }

@@ -3,7 +3,7 @@
       ios.title="My reports"
       navigatedTo="navigatedTo"     
       loaded="pageLoaded" >
-  <TabView>
+  <TabView id="TabView">
     <TabView.items>
       <TabViewItem iconSource="res://ic_reports" >
         <TabViewItem.view>
@@ -32,13 +32,16 @@
           </GridLayout>
         </TabViewItem.view>
       </TabViewItem >
-      <TabViewItem iconSource="res://ic_notifications" bindingContext="{{ notificationsViewModel }}">
+      <TabViewItem iconSource="res://ic_notifications" >
         <TabViewItem.view>
-          <GridLayout rows="auto, auto, *">
+          <GridLayout rows="auto, auto, *" bindingContext="{{ notificationsViewModel }}">
             <Label text="NOTIFICATIONS" cssClass="header" />
 
             <Border row="1" cssClass="blockContainer">
-              <Label text="3 REPORTS WAITING FOR APPROVAL" cssClass="blockLabel" color="#0079FF" />
+              <StackLayout orientation="horizontal">
+                <Label text="{{ reportsForApproval }}" cssClass="blockLabel" />
+                <Label margin="16 0 16 0" text=" REPORT(S) WAITING FOR APPROVAL" cssClass="blockLabel" />
+              </StackLayout>
             </Border>
 
             <ActivityIndicator rowSpan="3" busy="{{ isLoading }}" />
@@ -61,10 +64,10 @@
                   <Switch col="1" checked="{{ offlineMode }}"/>
                 </GridLayout>
 
-                <GridLayout columns="*, auto">
+                <!--<GridLayout columns="*, auto">
                   <Label text="Notifications" />
                   <Switch col="1" checked="{{ notifications }}"/>
-                </GridLayout>
+                </GridLayout>-->
 
                 <Button text="LOGOUT" tap="logoutButtonTap" cssClass="secondaryButton" />
               </StackLayout>
