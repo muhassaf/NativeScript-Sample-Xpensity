@@ -51,8 +51,10 @@ var PieChart = (function (_super) {
                 this._android.setChartPadding(0);
             }
             if (this.canSelect) {
-                this._selectionBehavior = new com.telerik.widget.chart.visualization.behaviors.ChartSelectionBehavior();
-                this._android.getBehaviors().add(this._selectionBehavior);
+                if (!this._selectionBehavior) {
+                    this._selectionBehavior = new com.telerik.widget.chart.visualization.behaviors.ChartSelectionBehavior();
+                    this._android.getBehaviors().add(this._selectionBehavior);
+                }
             }
             else if (this._selectionBehavior) {
                 this._android.getBehaviors().remove(this._selectionBehavior);

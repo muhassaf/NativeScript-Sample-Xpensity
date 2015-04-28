@@ -72,7 +72,6 @@ function checkIfLoggedIn(args: observableModule.EventData) {
         page.bindingContext = null;
         page.bindingContext = viewModel;
         viewModel.refresh();
-        console.log("RELOADED");
         buildMenu(page);
     }
 }

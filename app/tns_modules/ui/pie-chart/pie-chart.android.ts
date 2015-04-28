@@ -119,8 +119,10 @@ export class PieChart extends pieChartCommonModule.PieChart {
             }
 
             if (this.canSelect) {
-                this._selectionBehavior = new com.telerik.widget.chart.visualization.behaviors.ChartSelectionBehavior();
-                this._android.getBehaviors().add(this._selectionBehavior);
+                if (!this._selectionBehavior) {
+                    this._selectionBehavior = new com.telerik.widget.chart.visualization.behaviors.ChartSelectionBehavior();
+                    this._android.getBehaviors().add(this._selectionBehavior);
+                }
             }
             else if (this._selectionBehavior) {
                 this._android.getBehaviors().remove(this._selectionBehavior);
@@ -166,7 +168,7 @@ export class PieChart extends pieChartCommonModule.PieChart {
                 var item = this.items[i];
                 var value = pieChartCommonModule.getPropertyValue(item, this.valueProperty);
                 var label = pieChartCommonModule.getPropertyValue(item, this.labelProperty);
-                
+
                 result.add(java.lang.String.valueOf(JSON.stringify({ value: value, label: label })));
             }
         }
