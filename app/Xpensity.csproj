@@ -77,7 +77,6 @@
     <Content Include="app.android.css" />
     <Content Include="app.ios.css" />
     <Content Include="App_Resources\Android\drawable-hdpi\fab.png" />
-    <Content Include="App_Resources\Android\drawable-hdpi\icon.png" />
     <Content Include="App_Resources\Android\drawable-hdpi\ic_approve.png" />
     <Content Include="App_Resources\Android\drawable-hdpi\ic_approved.png" />
     <Content Include="App_Resources\Android\drawable-hdpi\ic_arrow_back.png" />
@@ -97,10 +96,10 @@
     <Content Include="App_Resources\Android\drawable-hdpi\ic_settings.png" />
     <Content Include="App_Resources\Android\drawable-hdpi\ic_settings_1.png" />
     <Content Include="App_Resources\Android\drawable-hdpi\ic_submit.png" />
+    <Content Include="App_Resources\Android\drawable-hdpi\icon.png" />
     <Content Include="App_Resources\Android\drawable-hdpi\launcher.png" />
     <Content Include="App_Resources\Android\drawable-ldpi\icon.png" />
     <Content Include="App_Resources\Android\drawable-mdpi\fab.png" />
-    <Content Include="App_Resources\Android\drawable-mdpi\icon.png" />
     <Content Include="App_Resources\Android\drawable-mdpi\ic_approve.png" />
     <Content Include="App_Resources\Android\drawable-mdpi\ic_approved.png" />
     <Content Include="App_Resources\Android\drawable-mdpi\ic_arrow_back.png" />
@@ -120,6 +119,7 @@
     <Content Include="App_Resources\Android\drawable-mdpi\ic_settings.png" />
     <Content Include="App_Resources\Android\drawable-mdpi\ic_settings_1.png" />
     <Content Include="App_Resources\Android\drawable-mdpi\ic_submit.png" />
+    <Content Include="App_Resources\Android\drawable-mdpi\icon.png" />
     <Content Include="App_Resources\Android\drawable-mdpi\launcher.png" />
     <Content Include="App_Resources\Android\drawable-nodpi\splashscreen.png" />
     <Content Include="App_Resources\Android\drawable-xhdpi\fab.png" />
