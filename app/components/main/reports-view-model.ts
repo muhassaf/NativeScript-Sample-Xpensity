@@ -12,7 +12,6 @@ export class ReportsViewModel extends viewModelBaseModule.ViewModelBase {
     }
 
     get reports(): Array<viewReportViewModelModule.ViewReportViewModel> {
-        console.log("GET REPORTS");
         return this._reports;
     }
 
@@ -26,7 +25,6 @@ export class ReportsViewModel extends viewModelBaseModule.ViewModelBase {
     refresh() {
         this.beginLoading();
         serviceModule.service.getReports().then((data: any[]) => {
-            console.log("REPORTS: " + data.length);
             var reports = new Array<viewReportViewModelModule.ViewReportViewModel>();
             for (var i = 0; i < data.length; i++) {
                 reports.push(new viewReportViewModelModule.ViewReportViewModel(data[i]));

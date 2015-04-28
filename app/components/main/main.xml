@@ -5,7 +5,7 @@
       loaded="pageLoaded" >
   <TabView id="TabView">
     <TabView.items>
-      <TabViewItem iconSource="res://ic_reports" >
+      <TabViewItem id="ReportsTabItem" iconSource="res://ic_reports" >
         <TabViewItem.view>
           <GridLayout rows="auto, *" bindingContext="{{ reportsViewModel }}" >
             <Label text="MY REPORTS" cssClass="header" visibility="{{ androidVisibility }}" />
@@ -15,7 +15,7 @@
                 <g:GridView.itemTemplate>
                   <Border cssClass="tile" >
                     <StackLayout orientation="vertical">
-                      <PieChart valueProperty="TotalCost" labelProperty="Category" cssClass="categoriesChart" items="{{ expensesByCategory }}" />
+                      <PieChart valueProperty="Percent" labelProperty="Category" cssClass="categoriesChart" items="{{ expensesByCategory }}" />
                       <Label text="{{ report.Title }}" cssClass="itemTitle" />
                       <Label text="{{ report.Date | formatDate }}" cssClass="itemSubTitleLast" />
                     </StackLayout>

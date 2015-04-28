@@ -100,3 +100,7 @@ export function getPropertyValue(item: any, property: string): any {
 
     return value;
 } 
+
+export function getLabelText(label: string, value: number): string {
+    return label + "\r\n" + value.toFixed(2) + "%";
+}

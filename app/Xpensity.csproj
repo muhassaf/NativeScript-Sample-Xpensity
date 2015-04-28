@@ -97,6 +97,7 @@
     <Content Include="App_Resources\Android\drawable-hdpi\ic_settings.png" />
     <Content Include="App_Resources\Android\drawable-hdpi\ic_settings_1.png" />
     <Content Include="App_Resources\Android\drawable-hdpi\ic_submit.png" />
+    <Content Include="App_Resources\Android\drawable-hdpi\launcher.png" />
     <Content Include="App_Resources\Android\drawable-ldpi\icon.png" />
     <Content Include="App_Resources\Android\drawable-mdpi\fab.png" />
     <Content Include="App_Resources\Android\drawable-mdpi\icon.png" />
@@ -119,6 +120,7 @@
     <Content Include="App_Resources\Android\drawable-mdpi\ic_settings.png" />
     <Content Include="App_Resources\Android\drawable-mdpi\ic_settings_1.png" />
     <Content Include="App_Resources\Android\drawable-mdpi\ic_submit.png" />
+    <Content Include="App_Resources\Android\drawable-mdpi\launcher.png" />
     <Content Include="App_Resources\Android\drawable-nodpi\splashscreen.png" />
     <Content Include="App_Resources\Android\drawable-xhdpi\fab.png" />
     <Content Include="App_Resources\Android\drawable-xhdpi\ic_approve.png" />
@@ -140,6 +142,7 @@
     <Content Include="App_Resources\Android\drawable-xhdpi\ic_settings.png" />
     <Content Include="App_Resources\Android\drawable-xhdpi\ic_settings_1.png" />
     <Content Include="App_Resources\Android\drawable-xhdpi\ic_submit.png" />
+    <Content Include="App_Resources\Android\drawable-xhdpi\launcher.png" />
     <Content Include="App_Resources\Android\drawable-xxhdpi\fab.png" />
     <Content Include="App_Resources\Android\drawable-xxhdpi\ic_approve.png" />
     <Content Include="App_Resources\Android\drawable-xxhdpi\ic_approved.png" />
@@ -160,6 +163,7 @@
     <Content Include="App_Resources\Android\drawable-xxhdpi\ic_settings.png" />
     <Content Include="App_Resources\Android\drawable-xxhdpi\ic_settings_1.png" />
     <Content Include="App_Resources\Android\drawable-xxhdpi\ic_submit.png" />
+    <Content Include="App_Resources\Android\drawable-xxhdpi\launcher.png" />
     <Content Include="App_Resources\Android\drawable-xxxhdpi\fab.png" />
     <Content Include="App_Resources\Android\drawable-xxxhdpi\ic_approve.png" />
     <Content Include="App_Resources\Android\drawable-xxxhdpi\ic_approved.png" />
@@ -180,7 +184,14 @@
     <Content Include="App_Resources\Android\drawable-xxxhdpi\ic_settings.png" />
     <Content Include="App_Resources\Android\drawable-xxxhdpi\ic_settings_1.png" />
     <Content Include="App_Resources\Android\drawable-xxxhdpi\ic_submit.png" />
+    <Content Include="App_Resources\Android\drawable-xxxhdpi\launcher.png" />
     <Content Include="App_Resources\Android\values\styles.xml" />
+    <Content Include="App_Resources\iOS\icon%402x.png" />
+    <Content Include="App_Resources\iOS\Icon-60%403x.png" />
+    <Content Include="App_Resources\iOS\Icon-Small%403x.png" />
+    <Content Include="App_Resources\iOS\Icon-Small-40%402x.png" />
+    <Content Include="App_Resources\iOS\Icon-Small-40%403x.png" />
+    <Content Include="App_Resources\iOS\Icon-Small-40.png" />
     <Content Include="App_Resources\iOS\ic_add%402x.png" />
     <Content Include="App_Resources\iOS\ic_add%403x.png" />
     <Content Include="App_Resources\iOS\ic_add.png" />
@@ -206,7 +217,6 @@
     <Content Include="App_Resources\iOS\ic_edit%402x.png" />
     <Content Include="App_Resources\iOS\ic_edit%403x.png" />
     <Content Include="App_Resources\iOS\ic_edit.png" />
-    <Content Include="App_Resources\iOS\ic_icon%402x.png" />
     <Content Include="App_Resources\iOS\icon-40%402x.png" />
     <Content Include="App_Resources\iOS\icon-40.png" />
     <Content Include="App_Resources\iOS\icon-60%402x.png" />
@@ -256,6 +266,7 @@
     <Content Include="App_Resources\iOS\ic_submit%402x.png" />
     <Content Include="App_Resources\iOS\ic_submit%403x.png" />
     <Content Include="App_Resources\iOS\ic_submit.png" />
+    <Content Include="App_Resources\iOS\iTunesArtwork%402x.png" />
     <Content Include="bootstrap.js" />
     <Content Include="components\date-picker\date-picker.xml">
       <SubType>Designer</SubType>

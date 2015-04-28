@@ -24,8 +24,6 @@ export class ListPickerViewModel extends viewModelBaseModule.ViewModelBase{
                 listItems.push(listItem);
             }
 
-            console.log("ITEMS: " + JSON.stringify(listItems));
-
             this.items = listItems;
             this.endLoading();
         },(error) => {

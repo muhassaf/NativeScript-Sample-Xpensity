@@ -107,7 +107,7 @@ var CustomPieLabelRenderer = (function (_super) {
     }
     CustomPieLabelRenderer.prototype.getLabelText = function (dataPoint) {
         var item = JSON.parse(dataPoint.getDataItem());
-        return item.label + "\r\n" + item.value + "%";
+        return pieChartCommonModule.getLabelText(item.label, item.value);
     };
     CustomPieLabelRenderer.prototype.drawLabelBackground = function (canvas, path, index) {
     };

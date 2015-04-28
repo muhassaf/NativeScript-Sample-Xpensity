@@ -39,6 +39,7 @@ export class PieChart extends pieChartCommonModule.PieChart {
         if (this.items) {
             super.refresh();
 
+            this._ios.userInteractionEnabled = this.canSelect;
             if (this._pieSeries) {
                 this._ios.removeSeries(this._pieSeries);
             }
@@ -105,6 +106,6 @@ export class LabelConverter extends NSObject implements TKChartDelegate {
     }
 
     chartTextForLabelAtPointInSeriesAtIndex(chart: any, dataPoint: any, series: any, index: any): string {
-        return dataPoint.dataName() + "\r\n" + dataPoint.dataXValue() + "%";
+        return pieChartCommonModule.getLabelText(dataPoint.dataName(), dataPoint.dataXValue());
     }
 }

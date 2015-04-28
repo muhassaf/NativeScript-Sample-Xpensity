@@ -20,13 +20,16 @@ import serviceModule = require("../../utils/service");
 var viewModel = new mainViewModelModule.MainViewModel();
 var page: pageModule.Page;
 export function pageLoaded(args: observableModule.EventData) {
-    if (platformModule.device.os == platformModule.platformNames.android) {
+    if (platformModule.device.os === platformModule.platformNames.android) {
         checkIfLoggedIn(args);
+    }
+
+    if (platformModule.device.os === platformModule.platformNames.ios) {
     }
 }
 
 export function navigatedTo(args: observableModule.EventData) {
-    if (platformModule.device.os == platformModule.platformNames.ios) {
+    if (platformModule.device.os === platformModule.platformNames.ios) {
         checkIfLoggedIn(args);
     }
 }
@@ -84,7 +87,7 @@ function clearMenu(page: pageModule.Page) {
 }
 
 function buildMenu(page: pageModule.Page) {
-    if (platformModule.device.os == platformModule.platformNames.ios) {
+    if (platformModule.device.os === platformModule.platformNames.ios) {
         clearMenu(page);
         var addReportMenuItem = new pageModule.MenuItem();
         addReportMenuItem.icon = "ic_add";

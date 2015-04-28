@@ -1,6 +1,13 @@
 ﻿<Page xmlns="http://www.nativescript.org/tns.xsd"
       xmlns:g="components/grid-view/grid-view"
-      loaded="pageLoaded"
-      navigatedTo="navigatedTo" >
-  <PieChart items="{{ items }}" valueProperty="TotalCost" canSelect="true" labelProperty="Category" showLabels="true" cssClass="categoriesChart" />
+      navigatedTo="navigatedTo"
+      >
+  <StackLayout>
+    <StackLayout bindingContext="{{ item }}">
+      <Label text="{{ Title }}" />
+    </StackLayout>
+    <StackLayout bindingContext="{{ item }}">
+      <Label text="{{ Title }}" />
+    </StackLayout>
+  </StackLayout>
 </Page>

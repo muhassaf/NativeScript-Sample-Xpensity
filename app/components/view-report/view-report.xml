@@ -9,7 +9,7 @@
     <Label row="1" text="{{ report.BusinessPurpose }}" cssClass="subTitle" />
     <Label row="2" text="{{ report.Date | formatDate }}" cssClass="subTitle" />
 
-    <PieChart id="PieChart" row="3" valueProperty="TotalCost" canSelect="true" labelProperty="Category" showLabels="true" cssClass="categoriesChart" items="{{ expensesByCategory }}" />
+    <PieChart id="PieChart" row="3" valueProperty="Percent" canSelect="true" labelProperty="Category" showLabels="true" cssClass="categoriesChart" items="{{ expensesByCategory }}" />
 
     <ListView row="4" items="{{ expenses }}" itemTap="expenseTap" cssClass="expensesListView">
       <ListView.itemTemplate>

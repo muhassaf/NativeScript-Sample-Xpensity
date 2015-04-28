@@ -27,6 +27,7 @@ var PieChart = (function (_super) {
     PieChart.prototype.refresh = function () {
         if (this.items) {
             _super.prototype.refresh.call(this);
+            this._ios.userInteractionEnabled = this.canSelect;
             if (this._pieSeries) {
                 this._ios.removeSeries(this._pieSeries);
             }
@@ -85,7 +86,7 @@ var LabelConverter = (function (_super) {
         return _super.new.call(this);
     };
     LabelConverter.prototype.chartTextForLabelAtPointInSeriesAtIndex = function (chart, dataPoint, series, index) {
-        return dataPoint.dataName() + "\r\n" + dataPoint.dataXValue() + "%";
+        return pieChartCommonModule.getLabelText(dataPoint.dataName(), dataPoint.dataXValue());
     };
     LabelConverter.ObjCProtocols = [TKChartDelegate];
     return LabelConverter;

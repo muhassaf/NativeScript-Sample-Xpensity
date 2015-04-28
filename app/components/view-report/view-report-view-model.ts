@@ -110,7 +110,6 @@ export class ViewReportViewModel extends viewModelBaseModule.ViewModelBase {
     }
 
     addExpense() {
-        console.log("OUTER REPORT: " + JSON.stringify(this.report));
         navigationModule.navigate({
             moduleName: viewsModule.Views.editExpense,
             context: new editExpenseViewModelModule.EditExpenseViewModel(this.report)
@@ -166,7 +165,7 @@ export class ViewReportViewModel extends viewModelBaseModule.ViewModelBase {
                 for (var i = 0; i < categories.length; i++) {
                     var category = categories[i];
                     if (expenses[category.Id]) {
-                        expensesByCategory.push({ Category: category.Title, TotalCost: expenses[category.Id], Color: category.Color });
+                        expensesByCategory.push({ Category: category.Title, Percent: getPercent(totalCost, expenses[category.Id]), Color: category.Color });
                     }
                 }
 
@@ -179,4 +178,8 @@ export class ViewReportViewModel extends viewModelBaseModule.ViewModelBase {
                 });
         }
     }
+}
+
+function getPercent(totalCost: number, cost: number): number {
+    return (cost / totalCost) * 100;
 }

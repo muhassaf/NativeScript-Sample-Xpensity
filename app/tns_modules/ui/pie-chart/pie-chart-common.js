@@ -105,4 +105,8 @@ function getPropertyValue(item, property) {
     return value;
 }
 exports.getPropertyValue = getPropertyValue;
+function getLabelText(label, value) {
+    return label + "\r\n" + value.toFixed(2) + "%";
+}
+exports.getLabelText = getLabelText;
 //# sourceMappingURL=pie-chart-common.js.map

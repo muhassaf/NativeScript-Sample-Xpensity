@@ -1,26 +1,22 @@
 ﻿import observableModule = require("data/observable");
 
 export class Page1ViewModel extends observableModule.Observable {
-    private _items: any[];
+    private _item: any;
 
     constructor() {
         super();
 
-        this.items = [
-            { Category: "Alabala", TotalCost: 30, Color: "#FF0000" },
-            { Category: "Test", TotalCost: 50, Color: "#0000FF" },
-            { Category: "Test 2", TotalCost: 8, Color: "#00FF00" }
-        ]
+        this.item = { Title: "Alabala" };
     }
 
-    get items(): any {
-        return this._items;
+    get item(): any {
+        return this._item;
     }
 
-    set items(value: any) {
-        if (this._items !== value) {
-            this._items = value;
-            this.notifyPropertyChanged("items", value);
+    set item(value: any) {
+        if (this._item !== value) {
+            this._item = value;
+            this.notifyPropertyChanged("item", value);
         }
     }
 

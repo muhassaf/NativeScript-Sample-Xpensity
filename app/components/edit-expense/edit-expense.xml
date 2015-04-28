@@ -40,7 +40,7 @@
 
         <StackLayout cssClass="pickerContainer" tap="categoryPickerTap" visibility="{{ androidVisibility }}">
           <Label text="Category" cssClass="pickerLabel" />
-          <GridLayout columns="*, auto" bindingContext="{{ category }}">
+          <GridLayout columns="*, auto" bindingContext="{{ category, category, false }}">
             <Label text="{{ Title }}" cssClass="pickerValue" />
             <Image col="1" src="res://ic_arrow_drop_down" cssClass="pickerIcon" stretch="none" />
           </GridLayout>
@@ -48,7 +48,7 @@
         </StackLayout>
 
         <GridLayout cssClass="pickerContainer" tap="categoryPickerTap" visibility="{{ iosVisibility }}">
-          <GridLayout columns="*, *, auto" bindingContext="{{ category }}">
+          <GridLayout columns="*, *, auto" bindingContext="{{ category, category, false }}">
             <Label text="Category" cssClass="pickerLabel" />
             <Label col="1" text="{{ Title }}" cssClass="pickerValue" />
             <Image col="2" src="res://ic_arrow-right" cssClass="pickerIcon" stretch="none" />

@@ -24,7 +24,6 @@ export function navigatedTo(args: observableModule.EventData) {
 }
 
 export function datePickerTap(args: observableModule.EventData) {
-    console.log("EXPENSE DATE: " + viewModel.item.Date);
     navigationModule.navigate({
         moduleName: viewsModule.Views.datePicker,
         context: new datePickerViewModelModule.DatePickerViewModel(viewModel.item.Date,(selectedDate: Date) => {
@@ -36,7 +35,7 @@ export function datePickerTap(args: observableModule.EventData) {
 export function categoryPickerTap(args: observableModule.EventData) {
     navigationModule.navigate({
         moduleName: viewsModule.Views.listPicker,
-        context: new listPickerViewModelModule.ListPickerViewModel(() => { return serviceModule.service.getExpenseCategories(); }, viewModel.category, (selectedItem: any) => {
+        context: new listPickerViewModelModule.ListPickerViewModel(() => { return serviceModule.service.getExpenseCategories(); }, viewModel.category,(selectedItem: any) => {
             viewModel.category = selectedItem;
         })
     });

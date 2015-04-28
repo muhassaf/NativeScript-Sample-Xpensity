@@ -189,7 +189,7 @@ export class CustomPieLabelRenderer extends com.telerik.widget.chart.visualizati
     getLabelText(dataPoint: any): string {
         var item = JSON.parse(dataPoint.getDataItem());
 
-        return item.label + "\r\n" + item.value + "%";
+        return pieChartCommonModule.getLabelText(item.label, item.value);
     }
 
     drawLabelBackground(canvas: any, path: any, index: any) {
