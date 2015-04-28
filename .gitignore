@@ -14,3 +14,5 @@
 /lib/
 *.tgz
 *.map
+/package/
+*.DS_Store

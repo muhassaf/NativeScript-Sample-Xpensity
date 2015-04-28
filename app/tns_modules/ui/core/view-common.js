@@ -509,7 +509,7 @@ var View = (function (_super) {
                 childTop = top + child.marginTop * density;
                 break;
             case enums.VerticalAlignment.center:
-                childTop = top + ((bottom - top - childHeight) / 2) + (child.marginTop - child.marginBottom) * density;
+                childTop = top + ((bottom - top - childHeight) / 2) + (child.marginTop - child.marginBottom) * (density / 2);
                 break;
             case enums.VerticalAlignment.bottom:
                 childTop = bottom - childHeight - (child.marginBottom * density);
@@ -532,7 +532,7 @@ var View = (function (_super) {
                 childLeft = left + child.marginLeft * density;
                 break;
             case enums.HorizontalAlignment.center:
-                childLeft = left + ((right - left - childWidth) / 2) + (child.marginLeft - child.marginRight) * density;
+                childLeft = left + ((right - left - childWidth) / 2) + (child.marginLeft - child.marginRight) * (density / 2);
                 break;
             case enums.HorizontalAlignment.right:
                 childLeft = right - childWidth - child.marginRight * density;

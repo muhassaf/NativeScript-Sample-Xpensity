@@ -2,5 +2,8 @@
 	"id": "org.nativescript.Xpensity",
 	"tns-android": {
 		"version": "0.4.2-2015.3.31.1"
+	},
+	"tns-ios": {
+		"version": "0.4.2"
 	}
 }

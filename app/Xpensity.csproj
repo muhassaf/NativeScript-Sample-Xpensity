@@ -269,13 +269,14 @@
     <Content Include="components\list-picker\list-picker.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="components\login\login.ios.later.css" />
+    <Content Include="components\login\login.ios.css" />
     <Content Include="components\login\login.xml" />
     <Content Include="components\main\main.xml" />
     <Content Include="components\main\main.css" />
     <Content Include="components\edit-report\edit-report.xml">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="components\sign-up\sign-up.ios.css" />
     <Content Include="components\sign-up\sign-up.ios.later.css" />
     <Content Include="components\sign-up\sign-up.xml">
       <SubType>Designer</SubType>
