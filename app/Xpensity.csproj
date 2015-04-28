@@ -272,7 +272,7 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="components\date-picker\date-picker.css" />
-    <Content Include="components\edit-expense\edit-expense.css" />
+    <Content Include="components\edit-expense\edit-expense.android.css" />
     <Content Include="components\edit-expense\edit-expense.xml">
       <SubType>Designer</SubType>
     </Content>
@@ -282,8 +282,9 @@
     </Content>
     <Content Include="components\login\login.ios.css" />
     <Content Include="components\login\login.xml" />
+    <Content Include="components\main\main.ios.css" />
     <Content Include="components\main\main.xml" />
-    <Content Include="components\main\main.css" />
+    <Content Include="components\main\main.android.css" />
     <Content Include="components\edit-report\edit-report.xml">
       <SubType>Designer</SubType>
     </Content>
@@ -296,9 +297,13 @@
     <Content Include="components\test\page1.xml" />
     <Content Include="components\view-report\view-report.css" />
     <Content Include="lib\everlive.js" />
+    <Content Include="components\items-view\items-view.js.map" />
+    <Content Include="components\items-view\package.json" />
+    <Content Include="components\pie-chart\package.json" />
     <Content Include="tns_modules\application-settings\application-settings-common.js" />
     <Content Include="tns_modules\application-settings\application-settings.android.js" />
     <Content Include="tns_modules\application-settings\application-settings.ios.js" />
+    <Content Include="tns_modules\application-settings\package.json" />
     <Content Include="tns_modules\application\application-common.js" />
     <Content Include="tns_modules\application\application.android.js" />
     <Content Include="tns_modules\application\application.ios.js" />
@@ -429,9 +434,6 @@
     <Content Include="tns_modules\ui\image\image.android.js" />
     <Content Include="tns_modules\ui\image\image.ios.js" />
     <Content Include="tns_modules\ui\image\package.json" />
-    <Content Include="tns_modules\ui\items-view\items-view.js" />
-    <Content Include="tns_modules\ui\items-view\items-view.js.map" />
-    <Content Include="tns_modules\ui\items-view\package.json" />
     <Content Include="tns_modules\ui\label\label-common.js" />
     <Content Include="tns_modules\ui\label\label.android.js" />
     <Content Include="tns_modules\ui\label\label.ios.js" />
@@ -459,7 +461,6 @@
     <Content Include="tns_modules\ui\page\page-common.js" />
     <Content Include="tns_modules\ui\page\page.android.js" />
     <Content Include="tns_modules\ui\page\page.ios.js" />
-    <Content Include="tns_modules\ui\pie-chart\package.json" />
     <Content Include="tns_modules\ui\placeholder\package.json" />
     <Content Include="tns_modules\ui\placeholder\placeholder-common.js" />
     <Content Include="tns_modules\ui\placeholder\placeholder.android.js" />
@@ -551,6 +552,7 @@
     <TypeScriptCompile Include="components\main\main-view-model.ts" />
     <TypeScriptCompile Include="components\main\notifications-view-model.ts" />
     <TypeScriptCompile Include="components\main\settings-view-model.ts" />
+    <TypeScriptCompile Include="components\pie-chart\pie-chart.d.ts" />
     <TypeScriptCompile Include="components\sign-up\sign-up-view-model.ts" />
     <TypeScriptCompile Include="components\sign-up\sign-up.ts" />
     <TypeScriptCompile Include="components\test\page2.ts" />
@@ -570,6 +572,11 @@
     <TypeScriptCompile Include="components\view-model-base.ts" />
     <TypeScriptCompile Include="components\grid-view\grid-view.d.ts" />
     <TypeScriptCompile Include="components\grid-view\grid-view.ts" />
+    <TypeScriptCompile Include="components\items-view\items-view.d.ts" />
+    <TypeScriptCompile Include="components\items-view\items-view.ts" />
+    <TypeScriptCompile Include="components\pie-chart\pie-chart-common.ts" />
+    <TypeScriptCompile Include="components\pie-chart\pie-chart.android.ts" />
+    <TypeScriptCompile Include="components\pie-chart\pie-chart.ios.ts" />
     <TypeScriptCompile Include="tns_modules\android17.d.ts" />
     <TypeScriptCompile Include="tns_modules\application-settings\application-settings.d.ts" />
     <TypeScriptCompile Include="tns_modules\application\application.d.ts" />
@@ -603,8 +610,6 @@
     <TypeScriptCompile Include="tns_modules\ui\activity-indicator\activity-indicator.d.ts" />
     <TypeScriptCompile Include="tns_modules\ui\border\border.d.ts" />
     <TypeScriptCompile Include="tns_modules\ui\builder\builder.d.ts" />
-    <TypeScriptCompile Include="tns_modules\ui\builder\component-builder.d.ts" />
-    <TypeScriptCompile Include="tns_modules\ui\builder\template-builder.d.ts" />
     <TypeScriptCompile Include="tns_modules\ui\button\button.d.ts" />
     <TypeScriptCompile Include="tns_modules\ui\content-view\content-view.d.ts" />
     <TypeScriptCompile Include="tns_modules\ui\core\bindable.d.ts" />
@@ -621,8 +626,6 @@
     <TypeScriptCompile Include="tns_modules\ui\gestures\gestures.d.ts" />
     <TypeScriptCompile Include="tns_modules\ui\image-cache\image-cache.d.ts" />
     <TypeScriptCompile Include="tns_modules\ui\image\image.d.ts" />
-    <TypeScriptCompile Include="tns_modules\ui\items-view\items-view.d.ts" />
-    <TypeScriptCompile Include="tns_modules\ui\items-view\items-view.ts" />
     <TypeScriptCompile Include="tns_modules\ui\label\label.d.ts" />
     <TypeScriptCompile Include="tns_modules\ui\layouts\absolute-layout\absolute-layout.d.ts" />
     <TypeScriptCompile Include="tns_modules\ui\layouts\dock-layout\dock-layout.d.ts" />
@@ -633,10 +636,6 @@
     <TypeScriptCompile Include="tns_modules\ui\list-picker\list-picker.d.ts" />
     <TypeScriptCompile Include="tns_modules\ui\list-view\list-view.d.ts" />
     <TypeScriptCompile Include="tns_modules\ui\page\page.d.ts" />
-    <TypeScriptCompile Include="tns_modules\ui\pie-chart\pie-chart-common.ts" />
-    <TypeScriptCompile Include="tns_modules\ui\pie-chart\pie-chart.android.ts" />
-    <TypeScriptCompile Include="tns_modules\ui\pie-chart\pie-chart.d.ts" />
-    <TypeScriptCompile Include="tns_modules\ui\pie-chart\pie-chart.ios.ts" />
     <TypeScriptCompile Include="tns_modules\ui\placeholder\placeholder.d.ts" />
     <TypeScriptCompile Include="tns_modules\ui\progress\progress.d.ts" />
     <TypeScriptCompile Include="tns_modules\ui\scroll-view\scroll-view.d.ts" />
@@ -671,10 +670,5 @@
   <ItemGroup>
     <Content Include="components\grid-view\package.json" />
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="tns_modules\application-settings\package.json" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="tns_modules\local-settings\" />
-  </ItemGroup>
+  <ItemGroup />
 </Project>

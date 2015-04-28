@@ -8,7 +8,6 @@ var common = require("ui/image-cache/image-cache-common");
 var httpRequest = require("http/http-request");
 var utils = require("utils/utils");
 var trace = require("trace");
-module.exports.knownEvents = common.knownEvents;
 var MemmoryWarningHandler = (function (_super) {
     __extends(MemmoryWarningHandler, _super);
     function MemmoryWarningHandler() {

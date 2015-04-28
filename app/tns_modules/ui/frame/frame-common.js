@@ -94,13 +94,6 @@ function pageFromBuilder(moduleNamePath, moduleExports) {
     }
     return page;
 }
-var knownEvents;
-(function (knownEvents) {
-    var android;
-    (function (android) {
-        android.optionSelected = "optionSelected";
-    })(android = knownEvents.android || (knownEvents.android = {}));
-})(knownEvents = exports.knownEvents || (exports.knownEvents = {}));
 var Frame = (function (_super) {
     __extends(Frame, _super);
     function Frame() {
@@ -311,6 +304,7 @@ var Frame = (function (_super) {
     };
     Frame.prototype._invalidateOptionsMenu = function () {
     };
+    Frame.androidOptionSelectedEvent = "optionSelected";
     Frame.defaultAnimatedNavigation = true;
     return Frame;
 })(view.CustomLayoutView);

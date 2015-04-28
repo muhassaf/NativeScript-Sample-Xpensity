@@ -1,5 +1,5 @@
-﻿declare module "ui/pie-chart" {
-    class PieChart {
+﻿declare module "pie-chart" {
+    export class PieChart {
         valueProperty: string;
         labelProperty: string;
         showLabels: boolean;

@@ -55,7 +55,7 @@ function buildMenu(page: pageModule.Page) {
                 var infoMenuItem = new pageModule.MenuItem();
                 infoMenuItem.icon = "ic_info";
                 setAndroidPosition(infoMenuItem, enumsModule.MenuItemPosition.actionBar);
-                infoMenuItem.on(pageModule.knownEvents.tap,(args: observableModule.EventData) => {
+                infoMenuItem.on(pageModule.MenuItem.tapEvent,(args: observableModule.EventData) => {
                     viewModel.showReportInfo();
                 });
 
@@ -64,7 +64,7 @@ function buildMenu(page: pageModule.Page) {
 
             var submitMenuItem = new pageModule.MenuItem();
             submitMenuItem.icon = "ic_submit";
-            submitMenuItem.on(pageModule.knownEvents.tap,(args: observableModule.EventData) => {
+            submitMenuItem.on(pageModule.MenuItem.tapEvent,(args: observableModule.EventData) => {
                 viewModel.submit().then((data) => {
                     buildMenu(page);
                 });
@@ -75,7 +75,7 @@ function buildMenu(page: pageModule.Page) {
             var editMenuItem = new pageModule.MenuItem();
             editMenuItem.icon = "ic_edit";
             setAndroidPosition(editMenuItem, enumsModule.MenuItemPosition.actionBar);
-            editMenuItem.on(pageModule.knownEvents.tap,(args: observableModule.EventData) => {
+            editMenuItem.on(pageModule.MenuItem.tapEvent,(args: observableModule.EventData) => {
                 viewModel.edit();
             });
 

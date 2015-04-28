@@ -1,4 +1,4 @@
-﻿declare module "ui/items-view" {
+﻿declare module "items-view" {
     import viewModule = require("ui/core/view");
     import dependencyObservableModule = require("ui/core/dependency-observable");
 

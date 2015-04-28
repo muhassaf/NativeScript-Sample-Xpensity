@@ -1,21 +1,24 @@
 ﻿<Page xmlns="http://www.nativescript.org/tns.xsd"
       xmlns:g="components/grid-view/grid-view"
+      xmlns:c="components/pie-chart/pie-chart"
       loaded="pageLoaded"
       navigatedTo="navigatedTo" >
 
   <GridLayout rows="auto, auto, auto, auto, *, auto">
-    <Label text="{{ report.Title }}" cssClass="title" />
-    <Label text="{{ totalCost | formatCurrency }}" cssClass="total" />
+    <GridLayout columns="*, auto">
+      <Label text="{{ report.Title }}" cssClass="title" />
+      <Label col="1" text="{{ totalCost | formatCurrency }}" cssClass="total" />
+    </GridLayout>
     <Label row="1" text="{{ report.BusinessPurpose }}" cssClass="subTitle" />
     <Label row="2" text="{{ report.Date | formatDate }}" cssClass="subTitle" />
 
-    <PieChart id="PieChart" row="3" valueProperty="Percent" canSelect="true" labelProperty="Category" showLabels="true" cssClass="categoriesChart" items="{{ expensesByCategory }}" />
+    <c:PieChart id="PieChart" row="3" valueProperty="Percent" canSelect="true" labelProperty="Category" showLabels="true" cssClass="categoriesChart" items="{{ expensesByCategory }}" />
 
     <ListView row="4" items="{{ expenses }}" itemTap="expenseTap" cssClass="expensesListView">
       <ListView.itemTemplate>
         <GridLayout columns="auto, *, auto">
           <Border backgroundColor="{{ categoryColor }}" cssClass="category" />
-          <StackLayout col="1">
+          <StackLayout col="1" marginLeft="5">
             <Label text="{{ expense.Title }}" cssClass="itemTitle" />
             <Label text="{{ expense.Date | formatDate }}" cssClass="itemSubTitle" />
             <Label text="{{ expense.Location }}" cssClass="itemSubTitleLast" />

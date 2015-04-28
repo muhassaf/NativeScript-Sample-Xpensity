@@ -14,10 +14,6 @@ export module knownTemplates {
     export var itemTemplate = ITEM_TEMPLATE;
 }
 
-export module knownEvents {
-    export var itemTap = "itemTap";
-}
-
 var CHANGE = "change";
 var ITEMS = "items";
 var ITEM_TEMPLATE = "itemTemplate";
@@ -26,6 +22,8 @@ var GRID_VIEW = "GridView";
 var ITEMS_CHANGED = "_itemsChanged";
 
 export class GridView extends gridLayoutModule.GridLayout implements definitionModule.GridView {
+    public static itemTapEvent = "itemTap";
+
     public static itemsProperty = new dependencyObservableModule.Property(
         ITEMS,
         GRID_VIEW,
@@ -192,7 +190,7 @@ export class GridView extends gridLayoutModule.GridLayout implements definitionM
     }
 
     private onItemTap(index: number, view: viewModule.View) {
-        this.notify({ eventName: knownEvents.itemTap, object: this, item: this.getDataItem(index), view: view });
+        this.notify({ eventName: GridView.itemTapEvent, object: this, item: this.getDataItem(index), view: view });
     }
 }
 

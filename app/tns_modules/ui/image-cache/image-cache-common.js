@@ -5,10 +5,6 @@ var __extends = this.__extends || function (d, b) {
     d.prototype = new __();
 };
 var observable = require("data/observable");
-var knownEvents;
-(function (knownEvents) {
-    knownEvents.downloaded = "downloaded";
-})(knownEvents = exports.knownEvents || (exports.knownEvents = {}));
 var Cache = (function (_super) {
     __extends(Cache, _super);
     function Cache() {
@@ -104,9 +100,9 @@ var Cache = (function (_super) {
         if (request.completed) {
             request.completed(image, request.key);
         }
-        if (this.hasListeners(knownEvents.downloaded)) {
+        if (this.hasListeners(Cache.downloadedEvent)) {
             this.notify({
-                eventName: knownEvents.downloaded,
+                eventName: Cache.downloadedEvent,
                 object: this,
                 key: key,
                 image: image
@@ -142,6 +138,7 @@ var Cache = (function (_super) {
         var request = this._queue.pop();
         this._download(request);
     };
+    Cache.downloadedEvent = "downloaded";
     return Cache;
 })(observable.Observable);
 exports.Cache = Cache;

@@ -68,6 +68,6 @@ export class ViewModelBase extends observableModule.Observable {
     }
 
     notifyPropertyChanged(propertyName: string, value: any) {
-        this.notify({ object: this, eventName: observableModule.knownEvents.propertyChange, propertyName: propertyName, value: value });
+        this.notify({ object: this, eventName: observableModule.Observable.propertyChangeEvent, propertyName: propertyName, value: value });
     }
 }

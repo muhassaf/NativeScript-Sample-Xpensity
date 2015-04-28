@@ -5,7 +5,6 @@ var __extends = this.__extends || function (d, b) {
     d.prototype = new __();
 };
 var common = require("ui/image-cache/image-cache-common");
-module.exports.knownEvents = common.knownEvents;
 var LruBitmapCache = (function (_super) {
     __extends(LruBitmapCache, _super);
     function LruBitmapCache(cacheSize) {

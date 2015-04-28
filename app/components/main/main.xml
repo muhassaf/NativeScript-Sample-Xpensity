@@ -1,5 +1,6 @@
 <Page xmlns="http://www.nativescript.org/tns.xsd"
       xmlns:g="components/grid-view/grid-view"
+      xmlns:c="components/pie-chart/pie-chart"
       ios.title="My reports"
       navigatedTo="navigatedTo"     
       loaded="pageLoaded" >
@@ -15,7 +16,7 @@
                 <g:GridView.itemTemplate>
                   <Border cssClass="tile" >
                     <StackLayout orientation="vertical">
-                      <PieChart valueProperty="Percent" labelProperty="Category" cssClass="categoriesChart" items="{{ expensesByCategory }}" />
+                      <c:PieChart valueProperty="Percent" labelProperty="Category" cssClass="categoriesChart" items="{{ expensesByCategory }}" />
                       <Label text="{{ report.Title }}" cssClass="itemTitle" />
                       <Label text="{{ report.Date | formatDate }}" cssClass="itemSubTitleLast" />
                     </StackLayout>

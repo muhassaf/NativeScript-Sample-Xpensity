@@ -22,7 +22,7 @@
 
         <StackLayout cssClass="pickerContainer" tap="datePickerTap" visibility="{{ androidVisibility }}">
           <Label text="Date" cssClass="pickerLabel" />
-          <GridLayout columns="*, auto">
+          <GridLayout columns="*, auto" cssClass="innerContainer">
             <Label text="{{ item.Date | formatDate }}" cssClass="pickerValue" />
             <Image col="1" src="res://ic_arrow_drop_down" cssClass="pickerIcon" stretch="none" />
           </GridLayout>
@@ -40,7 +40,7 @@
 
         <StackLayout cssClass="pickerContainer" tap="categoryPickerTap" visibility="{{ androidVisibility }}">
           <Label text="Category" cssClass="pickerLabel" />
-          <GridLayout columns="*, auto" bindingContext="{{ category, category, false }}">
+          <GridLayout columns="*, auto" cssClass="innerContainer" bindingContext="{{ category, category, false }}">
             <Label text="{{ Title }}" cssClass="pickerValue" />
             <Image col="1" src="res://ic_arrow_drop_down" cssClass="pickerIcon" stretch="none" />
           </GridLayout>

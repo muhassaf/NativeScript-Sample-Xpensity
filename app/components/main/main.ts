@@ -91,7 +91,7 @@ function buildMenu(page: pageModule.Page) {
         clearMenu(page);
         var addReportMenuItem = new pageModule.MenuItem();
         addReportMenuItem.icon = "ic_add";
-        addReportMenuItem.on(pageModule.knownEvents.tap, addReportTap);
+        addReportMenuItem.on(pageModule.MenuItem.tapEvent, addReportTap);
 
         page.optionsMenu.addItem(addReportMenuItem);
     }

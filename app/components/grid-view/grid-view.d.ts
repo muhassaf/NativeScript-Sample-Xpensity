@@ -4,6 +4,8 @@
     import dependencyObservableModule = require("ui/core/dependency-observable");
 
     export class GridView {
+        public static itemTapEvent: string;
+
         public static itemsProperty: dependencyObservableModule.Property;
 
         public static itemTemplateProperty: dependencyObservableModule.Property;

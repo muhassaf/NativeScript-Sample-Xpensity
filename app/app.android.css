@@ -79,13 +79,13 @@ Switch, Label {
 }
 
 .pickerContainer {
-    margin: 8 16 8 16;
+    margin: 8 20 8 20;
 }
 
 .pickerLabel {
     color: #8F8F8F;
     font-size: 10;
-    margin: 0;
+    margin: 0 0 0 8;
 }
 
 .pickerValue {

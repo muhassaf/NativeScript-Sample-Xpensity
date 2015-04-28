@@ -1,6 +1,6 @@
 ﻿import colorModule = require("color");
-import itemsViewModule = require("ui/items-view");
-import definitionModule = require("ui/pie-chart");
+import itemsViewModule = require("../items-view/items-view");
+import definitionModule = require("pie-chart");
 import utilsModule = require("utils/utils");
 
 export class PieChart extends itemsViewModule.ItemsView implements definitionModule.PieChart {

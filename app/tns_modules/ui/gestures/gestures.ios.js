@@ -6,6 +6,8 @@ var __extends = this.__extends || function (d, b) {
 };
 var common = require("ui/gestures/gestures-common");
 var definition = require("ui/gestures");
+var view = require("ui/core/view");
+var trace = require("trace");
 require("utils/module-merge").merge(common, exports);
 var UIGestureRecognizerImpl = (function (_super) {
     __extends(UIGestureRecognizerImpl, _super);
@@ -49,10 +51,29 @@ var GesturesObserver = (function () {
     }
     GesturesObserver.prototype.observe = function (target, type) {
         var _this = this;
-        this.disconnect();
-        this._target = target;
-        if (this._target && this._target.ios && this._target.ios.addGestureRecognizer) {
-            var nativeView = this._target.ios;
+        if (target) {
+            this._target = target;
+            this._onTargetLoaded = function (args) {
+                trace.write(_this._target + ".target loaded. _nativeView:" + _this._target._nativeView, "gestures");
+                _this._attach(target, type);
+            };
+            this._onTargetUnloaded = function (args) {
+                trace.write(_this._target + ".target unloaded. _nativeView:" + _this._target._nativeView, "gestures");
+                _this._dettach();
+            };
+            target.on(view.View.loadedEvent, this._onTargetLoaded);
+            target.on(view.View.unloadedEvent, this._onTargetUnloaded);
+            if (target.isLoaded) {
+                this._attach(target, type);
+            }
+        }
+    };
+    GesturesObserver.prototype._attach = function (target, type) {
+        var _this = this;
+        trace.write(target + "._attach() _nativeView:" + target._nativeView, "gestures");
+        this._dettach();
+        if (target && target._nativeView && target._nativeView.addGestureRecognizer) {
+            var nativeView = target._nativeView;
             if (type & definition.GestureTypes.tap) {
                 nativeView.addGestureRecognizer(this._createRecognizer(definition.GestureTypes.tap));
             }
@@ -68,13 +89,22 @@ var GesturesObserver = (function () {
             }
             if (type & definition.GestureTypes.pan) {
                 nativeView.addGestureRecognizer(this._createRecognizer(definition.GestureTypes.pan, function (args) {
-                    _this._executeCallback(_getPanData(args, _this._target.ios));
+                    _this._executeCallback(_getPanData(args, target._nativeView));
                 }));
             }
             if (type & definition.GestureTypes.swipe) {
                 nativeView.addGestureRecognizer(this._createRecognizer(definition.GestureTypes.swipe, function (args) {
                     _this._executeCallback(_getSwipeData(args));
-                }));
+                }, UISwipeGestureRecognizerDirection.UISwipeGestureRecognizerDirectionDown));
+                nativeView.addGestureRecognizer(this._createRecognizer(definition.GestureTypes.swipe, function (args) {
+                    _this._executeCallback(_getSwipeData(args));
+                }, UISwipeGestureRecognizerDirection.UISwipeGestureRecognizerDirectionLeft));
+                nativeView.addGestureRecognizer(this._createRecognizer(definition.GestureTypes.swipe, function (args) {
+                    _this._executeCallback(_getSwipeData(args));
+                }, UISwipeGestureRecognizerDirection.UISwipeGestureRecognizerDirectionRight));
+                nativeView.addGestureRecognizer(this._createRecognizer(definition.GestureTypes.swipe, function (args) {
+                    _this._executeCallback(_getSwipeData(args));
+                }, UISwipeGestureRecognizerDirection.UISwipeGestureRecognizerDirectionUp));
             }
             if (type & definition.GestureTypes.rotation) {
                 nativeView.addGestureRecognizer(this._createRecognizer(definition.GestureTypes.rotation, function (args) {
@@ -86,32 +116,49 @@ var GesturesObserver = (function () {
             }
         }
     };
-    GesturesObserver.prototype.disconnect = function () {
-        if (this._target && this._target.ios) {
+    GesturesObserver.prototype._dettach = function () {
+        trace.write(this._target + "._dettach() _nativeView:" + this._target._nativeView, "gestures");
+        if (this._target && this._target._nativeView) {
             for (var name in this._recognizers) {
                 if (this._recognizers.hasOwnProperty(name)) {
                     var item = this._recognizers[name];
-                    this._target.ios.removeGestureRecognizer(item.recognizer);
+                    this._target._nativeView.removeGestureRecognizer(item.recognizer);
                     item.recognizer = null;
                     item.target = null;
                 }
             }
             this._recognizers = {};
         }
-        this._target = null;
+    };
+    GesturesObserver.prototype.disconnect = function () {
+        this._dettach();
+        if (this._target) {
+            this._target.off(view.View.loadedEvent, this._onTargetLoaded);
+            this._target.off(view.View.unloadedEvent, this._onTargetUnloaded);
+            this._onTargetLoaded = null;
+            this._onTargetUnloaded = null;
+            this._target = null;
+        }
     };
     GesturesObserver.prototype._executeCallback = function (args) {
         if (this._callback) {
             this._callback(args);
         }
     };
-    GesturesObserver.prototype._createRecognizer = function (type, callback) {
+    GesturesObserver.prototype._createRecognizer = function (type, callback, swipeDirection) {
         var recognizer;
         var name = definition.toString(type);
         var target = _createUIGestureRecognizerTarget(this, type, callback);
         var recognizerType = _getUIGestureRecognizerType(type);
         if (recognizerType) {
-            recognizer = recognizerType.alloc().initWithTargetAction(target, "recognize");
+            if (type === definition.GestureTypes.swipe && swipeDirection) {
+                name = name + swipeDirection.toString();
+                recognizer = recognizerType.alloc().initWithTargetAction(target, "recognize");
+                recognizer.direction = swipeDirection;
+            }
+            else {
+                recognizer = recognizerType.alloc().initWithTargetAction(target, "recognize");
+            }
             if (recognizer) {
                 this._recognizers[name] = { recognizer: recognizer, target: target };
             }

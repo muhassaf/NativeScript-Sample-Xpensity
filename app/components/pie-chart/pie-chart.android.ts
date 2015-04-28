@@ -1,6 +1,6 @@
 ﻿import colorModule = require("color");
 
-import pieChartCommonModule = require("ui/pie-chart/pie-chart-common");
+import pieChartCommonModule = require("./pie-chart-common");
 
 declare var exports;
 

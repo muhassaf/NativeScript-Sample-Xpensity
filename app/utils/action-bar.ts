@@ -8,7 +8,7 @@ export function attachToActionBarEvents() {
     if (!attached) {
         if (platformModule.device.os == platformModule.platformNames.android) {
             var topmost = frameModule.topmost();
-            topmost.android.on(frameModule.knownEvents.android.optionSelected, androidOptionSelected);
+            topmost.android.on(frameModule.Frame.androidOptionSelectedEvent, androidOptionSelected);
         }
 
         attached = true;

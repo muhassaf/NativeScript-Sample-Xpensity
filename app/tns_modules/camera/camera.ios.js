@@ -55,17 +55,20 @@ var UIImagePickerControllerDelegateImpl = (function (_super) {
             }
         }
         picker.presentingViewController.dismissViewControllerAnimatedCompletion(true, null);
+        listener = null;
     };
     UIImagePickerControllerDelegateImpl.prototype.imagePickerControllerDidCancel = function (picker) {
         picker.presentingViewController.dismissViewControllerAnimatedCompletion(true, null);
+        listener = null;
     };
     UIImagePickerControllerDelegateImpl.ObjCProtocols = [UIImagePickerControllerDelegate];
     return UIImagePickerControllerDelegateImpl;
 })(NSObject);
+var listener;
 exports.takePicture = function (options) {
     return new Promise(function (resolve, reject) {
+        listener = null;
         var imagePickerController = new UIImagePickerController();
-        var listener = null;
         var reqWidth = 0;
         var reqHeight = 0;
         var keepAspectRatio = true;
@@ -90,7 +93,7 @@ exports.takePicture = function (options) {
         if (topMostFrame) {
             var viewController = topMostFrame.currentPage && topMostFrame.currentPage.ios;
             if (viewController) {
-                viewController.presentModalViewControllerAnimated(imagePickerController, true);
+                viewController.presentViewControllerAnimatedCompletion(imagePickerController, true, null);
             }
         }
     });

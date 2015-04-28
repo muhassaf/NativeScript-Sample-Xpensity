@@ -4,7 +4,7 @@ import dependencyObservableModule = require("ui/core/dependency-observable");
 import proxyModule = require("ui/core/proxy");
 import viewModule = require("ui/core/view");
 
-import definitionModule = require("ui/items-view");
+import definitionModule = require("items-view");
 
 var CHANGE = "change";
 var ITEMS = "items";

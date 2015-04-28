@@ -34,8 +34,8 @@ var GesturesObserver = (function () {
                 trace.write(_this._target + ".target unloaded. android:" + _this._target.android, "gestures");
                 _this._dettach();
             };
-            target.on(view.knownEvents.loaded, this._onTargetLoaded);
-            target.on(view.knownEvents.unloaded, this._onTargetUnloaded);
+            target.on(view.View.loadedEvent, this._onTargetLoaded);
+            target.on(view.View.unloadedEvent, this._onTargetUnloaded);
             if (target.isLoaded) {
                 this._attach(target, type);
             }
@@ -44,8 +44,8 @@ var GesturesObserver = (function () {
     GesturesObserver.prototype.disconnect = function () {
         this._dettach();
         if (this._target) {
-            this._target.off(view.knownEvents.loaded, this._onTargetLoaded);
-            this._target.off(view.knownEvents.unloaded, this._onTargetUnloaded);
+            this._target.off(view.View.loadedEvent, this._onTargetLoaded);
+            this._target.off(view.View.unloadedEvent, this._onTargetUnloaded);
             this._onTargetLoaded = null;
             this._onTargetUnloaded = null;
             this._target = null;
