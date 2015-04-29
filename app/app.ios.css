@@ -91,6 +91,8 @@ Switch, Label {
 
 .imageButtonContainer {
     padding: 8 16 8 16;
+    height: 44;
+    background-color: #0079FF;
 }
 
 .imageButtonIcon {
@@ -99,7 +101,7 @@ Switch, Label {
 }
 
 .imageButtonText {
-    color: #0079FF;
+    color: #FFFFFF;
     margin: 0;
     vertical-align: center;
 }

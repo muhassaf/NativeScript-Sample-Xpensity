@@ -199,7 +199,7 @@ export class Service {
 
     clearEverlive() {
         if (this._everlive) {
-            this._everlive.offlineStorage.purgeAll();
+            //this._everlive.offlineStorage.purgeAll();
             this._everlive = null;
         }
     }
@@ -208,8 +208,7 @@ export class Service {
         if (!this._everlive) {
             this._everlive = new everliveModule({
                 apiKey: constantsModule.telerikApiKey,
-                token: applicationSettingsModule.getString(constantsModule.authenticationTokenKey),
-                offlineStorage: applicationSettingsModule.getBoolean(constantsModule.offlineMode)
+                token: applicationSettingsModule.getString(constantsModule.authenticationTokenKey)
             });
         }
 

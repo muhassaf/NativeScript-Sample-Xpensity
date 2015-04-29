@@ -282,9 +282,9 @@
     </Content>
     <Content Include="components\login\login.ios.css" />
     <Content Include="components\login\login.xml" />
+    <Content Include="components\main\main.android.css" />
     <Content Include="components\main\main.ios.css" />
     <Content Include="components\main\main.xml" />
-    <Content Include="components\main\main.android.css" />
     <Content Include="components\edit-report\edit-report.xml">
       <SubType>Designer</SubType>
     </Content>
