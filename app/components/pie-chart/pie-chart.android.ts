@@ -1,6 +1,7 @@
 ﻿import colorModule = require("color");
 
 import pieChartCommonModule = require("./pie-chart-common");
+import utilsModule = require("utils/utils");
 
 declare var exports;
 
@@ -65,7 +66,6 @@ declare module com {
 
 require("utils/module-merge").merge(pieChartCommonModule, exports);
 
-
 export class PieChart extends pieChartCommonModule.PieChart {
     private _android: any;
     private _pieSeries: any;
@@ -88,7 +88,8 @@ export class PieChart extends pieChartCommonModule.PieChart {
         this._pieSeries.setLabelOffset(-50);
         this._pieSeries.setLabelFillColor(android.graphics.Color.TRANSPARENT);
         this._pieSeries.setLabelTextColor(android.graphics.Color.BLACK);
-        this._pieSeries.setLabelSize(18);
+        
+        this._pieSeries.setLabelSize(14 * utilsModule.layout.getDisplayDensity());
 
         this._android.getSeries().add(this._pieSeries);
         var that = this;
