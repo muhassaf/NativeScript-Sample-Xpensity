@@ -46,11 +46,20 @@ export class EditReportViewModel extends editViewModelBaseModule.EditViewModelBa
     }
 
     deleteItem(item: any): Promise<any> {
-        return new Promise<any>((resolve, reject) => {
-            serviceModule.service.deleteReport(item).then((data) => {
-                resolve(data);
-                navigationModule.goBack();
-            }, reject);
+        return serviceModule.service.deleteReport(item);
+    }
+
+    onItemAdded(item: any) {
+        console.log("ITEM: " + JSON.stringify(item));
+        super.onItemAdded(item);
+        navigationModule.navigate({
+            moduleName: viewsModule.Views.viewReport,
+            context: new viewReportViewModelModule.ViewReportViewModel(item)
         });
+    }
+
+    onItemDeleted(item: any) {
+        super.onItemDeleted(item);
+        navigationModule.goBack();
     }
 }

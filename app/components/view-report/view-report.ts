@@ -32,9 +32,10 @@ var viewModel: viewReportViewModelModule.ViewReportViewModel;
 export function navigatedTo(args: observableModule.EventData) {
     var page = <pageModule.Page>args.object;
     viewModel = <viewReportViewModelModule.ViewReportViewModel>page.navigationContext;
-    buildMenu(page);
     page.bindingContext = null;
     page.bindingContext = viewModel;
+    buildMenu(page);
+
     viewModel.refresh();
 }
 
@@ -43,7 +44,10 @@ export function addExpenseTap(args: observableModule.EventData) {
 }
 
 export function expenseTap(args: listViewModule.ItemEventData) {
-    viewModel.editExpense(args.view.bindingContext.expense);
+    if (viewModel.report.Status === reportStatusModule.New ||
+        viewModel.report.Status === reportStatusModule.Returned) {
+        viewModel.editExpense(args.view.bindingContext.expense);
+    }
 }
 
 function buildMenu(page: pageModule.Page) {

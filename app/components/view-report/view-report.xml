@@ -6,7 +6,7 @@
 
   <GridLayout rows="auto, auto, auto, auto, *, auto">
     <GridLayout columns="*, auto">
-      <Label text="{{ report.Title }}" cssClass="title" />
+      <Label text="{{ report.Title }}" textWrap="true" cssClass="title" />
       <Label col="1" text="{{ totalCost | formatCurrency }}" cssClass="total" />
     </GridLayout>
     <Label row="1" text="{{ report.BusinessPurpose }}" cssClass="subTitle" />

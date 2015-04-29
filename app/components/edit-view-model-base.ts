@@ -69,8 +69,9 @@ export class EditViewModelBase extends viewModelBaseModule.ViewModelBase {
 
     add() {
         this.addItem(this.item).then((data) => {
+            this.item.Id = data.result.Id;
+            this.onItemAdded(this.item);
             this.endLoading();
-            navigationModule.goBack();
         }, error => {
                 this.endLoading();
             });
@@ -91,8 +92,8 @@ export class EditViewModelBase extends viewModelBaseModule.ViewModelBase {
             if (value) {
                 this.beginLoading();
                 this.deleteItem(this.item).then((data) => {
+                    this.onItemDeleted(this.item);
                     this.endLoading();
-                    navigationModule.goBack();
                 },(error) => {
                         this.endLoading();
                     });
@@ -114,6 +115,14 @@ export class EditViewModelBase extends viewModelBaseModule.ViewModelBase {
 
     validate(): boolean {
         return true;
+    }
+
+    onItemAdded(item: any) {
+        navigationModule.goBack();
+    }
+
+    onItemDeleted(item: any) {
+        navigationModule.goBack();
     }
 
     private static clone(item: any): any {

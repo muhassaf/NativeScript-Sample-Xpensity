@@ -23,9 +23,6 @@ export function pageLoaded(args: observableModule.EventData) {
     if (platformModule.device.os === platformModule.platformNames.android) {
         checkIfLoggedIn(args);
     }
-
-    if (platformModule.device.os === platformModule.platformNames.ios) {
-    }
 }
 
 export function navigatedTo(args: observableModule.EventData) {
