@@ -6,7 +6,6 @@ export function navigate(navigationContext: any) {
 }
 
 export function navigateWitouthHistory(navigationContext: any) {
-    var topmost = frameModule.topmost();
     this.navigate(navigationContext);
 }
 

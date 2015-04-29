@@ -19,16 +19,14 @@ import serviceModule = require("../../utils/service");
 
 var viewModel = new mainViewModelModule.MainViewModel();
 var page: pageModule.Page;
-export function pageLoaded(args: observableModule.EventData) {
-    if (platformModule.device.os === platformModule.platformNames.android) {
-        checkIfLoggedIn(args);
-    }
-}
-
 export function navigatedTo(args: observableModule.EventData) {
-    if (platformModule.device.os === platformModule.platformNames.ios) {
-        checkIfLoggedIn(args);
-    }
+    actionBarModule.hideBackNavigation();
+    actionBarModule.showApplicationBar();
+    page = <pageModule.Page>args.object;
+    page.bindingContext = null;
+    page.bindingContext = viewModel;
+    viewModel.refresh();
+    buildMenu(page);
 }
 
 export function reportTap(args: gridViewModule.ItemEventData) {
@@ -59,21 +57,6 @@ export function reportsViewLoaded(args: observableModule.EventData) {
 export function settingsViewLoaded(args: observableModule.EventData) {
     var tabItem = <viewModule.View>args.object;
     tabItem.bindingContext = viewModel.settingsViewModel;
-}
-
-function checkIfLoggedIn(args: observableModule.EventData) {
-    actionBarModule.hideBackNavigation();
-    actionBarModule.showApplicationBar();
-    if (!serviceModule.service.isAuthenticated) {
-        navigationModule.navigateWitouthHistory(viewsModule.Views.login);
-    }
-    else {
-        page = <pageModule.Page>args.object;
-        page.bindingContext = null;
-        page.bindingContext = viewModel;
-        viewModel.refresh();
-        buildMenu(page);
-    }
 }
 
 function clearMenu(page: pageModule.Page) {

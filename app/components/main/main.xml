@@ -2,8 +2,7 @@
       xmlns:g="components/grid-view/grid-view"
       xmlns:c="components/pie-chart/pie-chart"
       ios.title="My reports"
-      navigatedTo="navigatedTo"     
-      loaded="pageLoaded" >
+      navigatedTo="navigatedTo" >
   <TabView id="TabView">
     <TabView.items>
       <TabViewItem id="ReportsTabItem" iconSource="res://ic_reports" >

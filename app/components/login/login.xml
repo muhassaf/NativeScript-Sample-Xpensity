@@ -8,7 +8,7 @@
     <ScrollView>
       <StackLayout>
         <GridLayout cssClass="firstTextFieldContainer">
-          <TextField text="{{ username }}" autocorrect="false" autocapitalizationType="none" hint="email" cssClass="firstTextField" />
+          <TextField text="{{ username }}" autocorrect="false" autocapitalizationType="none" hint="email" keyboardType="email" cssClass="firstTextField" />
           <Border cssClass="pickerBorder" visibility="{{ iosVisibility }}" />
         </GridLayout>
         <GridLayout cssClass="textFieldContainer">

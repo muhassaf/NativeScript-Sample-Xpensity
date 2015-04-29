@@ -2,8 +2,6 @@
 
 import viewsModule = require("./utils/views");
 
-applicationModule.mainModule = viewsModule.Views.main;
-
 var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 applicationModule.resources = {
     formatDate: function (date: Date): string {
@@ -12,6 +10,16 @@ applicationModule.resources = {
 
     formatCurrency: function (currency: number) {
         return "$" + (Math.round(currency * 100) / 100).toFixed(2);
+    }
+}
+
+applicationModule.onLaunch = function (context: any) {
+    var serviceModule = require("./utils/service");
+    if (serviceModule.service.isAuthenticated) {
+        applicationModule.mainModule = viewsModule.Views.main;
+    }
+    else {
+        applicationModule.mainModule = viewsModule.Views.login;
     }
 }
 

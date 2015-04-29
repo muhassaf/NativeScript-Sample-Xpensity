@@ -1,6 +1,6 @@
-﻿export var telerikApiKey = "8ejErOSM38Q4hOCu";
+﻿export var telerikApiKey = "hYxsMOYMwpLgdV7z";
 export var authenticationTokenKey = "authentication_token";
 export var name = "name";
 export var offlineMode = "offlineMode";
 export var notifications = "notifications";
-export var defaultExpenseCategoryId = "b52fad50-d48f-11e4-bd94-d3e6520405f0";
+export var defaultExpenseCategoryId = "82f88dd0-ee4c-11e4-bf80-a57b3cc4e475";
