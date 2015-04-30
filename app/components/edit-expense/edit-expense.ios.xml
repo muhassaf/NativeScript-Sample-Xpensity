@@ -1,0 +1,51 @@
+<Page xmlns="http://www.nativescript.org/tns.xsd"
+      loaded="pageLoaded"
+      navigatingTo="navigatedTo" >
+  <Page.optionsMenu>
+    <MenuItem text="{{ resources.done }}" tap="doneMenuItemTap" android.position="actionBar" />
+  </Page.optionsMenu>
+  <GridLayout>
+    <ScrollView>
+      <StackLayout>
+        <GridLayout cssClass="firstTextFieldContainer">
+          <TextField text="{{ item.Title }}" hint="Title" />
+          <Border cssClass="pickerBorder" visibility="{{ iosVisibility }}" />
+        </GridLayout>
+        <GridLayout cssClass="textFieldContainer">
+          <TextField text="{{ item.Location  }}" hint="Location" />
+          <Border cssClass="pickerBorder" visibility="{{ iosVisibility }}" />
+        </GridLayout>
+        <GridLayout cssClass="textFieldContainer">
+          <TextField text="{{ item.Cost  }}" hint="Cost" keyboardType="number" />
+          <Border cssClass="pickerBorder" visibility="{{ iosVisibility }}" />
+        </GridLayout>
+
+        <GridLayout cssClass="pickerContainer" tap="datePickerTap" >
+          <GridLayout columns="*, *, auto">
+            <Label text="Date" cssClass="pickerLabel" />
+            <Label col="1" text="{{ item.Date | formatDate }}" cssClass="pickerValue" />
+            <Image col="2" src="res://ic_arrow-right" cssClass="pickerIcon" stretch="none" />
+          </GridLayout>
+          <Border cssClass="pickerBorder" />
+        </GridLayout>
+
+        <GridLayout cssClass="pickerContainer" tap="categoryPickerTap" >
+          <GridLayout columns="*, *, auto" bindingContext="{{ category }}">
+            <Label text="Category" cssClass="pickerLabel" />
+            <Label col="1" text="{{ Title }}" cssClass="pickerValue" />
+            <Image col="2" src="res://ic_arrow-right" cssClass="pickerIcon" stretch="none" />
+          </GridLayout>
+          <Border cssClass="pickerBorder" />
+        </GridLayout>
+        
+        <GridLayout cssClass="textViewContainer">
+          <TextView text="{{ item.Notes }}" hint="Notes" />
+        </GridLayout>
+
+        <Button text="{{ resources.deleteExpense }}" tap="deleteExpenseButtonTap" color="#FF0000" cssClass="secondaryButton" visibility="{{ editVisibility }}" />
+      </StackLayout>
+    </ScrollView>
+
+    <ActivityIndicator busy="{{ isLoading }}" />
+  </GridLayout>
+</Page>
