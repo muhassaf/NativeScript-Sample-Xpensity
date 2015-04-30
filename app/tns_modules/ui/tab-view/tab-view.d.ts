@@ -2,6 +2,7 @@
  * Contains the TabView class, which represents a standard content component with tabs.
  */
 declare module "ui/tab-view" {
+    import observable = require("data/observable");
     import view = require("ui/core/view");
     import dependencyObservable = require("ui/core/dependency-observable");
 
@@ -29,6 +30,8 @@ declare module "ui/tab-view" {
      * Represents a tab view.
      */
     class TabView extends view.View {
+        public static selectedItemChangedEvent: string;
+
         public static itemsProperty: dependencyObservable.Property;
         public static selectedIndexProperty: dependencyObservable.Property;
 
@@ -51,5 +54,10 @@ declare module "ui/tab-view" {
          * Gets the native iOS [UITabBarController](https://developer.apple.com/library/ios/documentation/UIKit/Reference/UITabBarController_Class/) that represents the user interface for this component. Valid only when running on iOS.
          */
         ios: UITabBarController;
+    }
+
+    interface SelectedItemChangedEventData extends observable.EventData {
+        index: number;
+        tabViewItem: TabViewItem
     }
 } 

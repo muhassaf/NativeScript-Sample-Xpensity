@@ -2,7 +2,7 @@
       xmlns:g="components/grid-view/grid-view"
       xmlns:c="components/pie-chart/pie-chart"
       loaded="pageLoaded"
-      navigatedTo="navigatedTo" >
+      navigatingTo="navigatedTo" >
 
   <GridLayout rows="auto, auto, auto, auto, *, auto">
     <GridLayout columns="*, auto">
@@ -33,7 +33,7 @@
     </AbsoluteLayout>
 
     <GridLayout row="5" columns="auto, *" tap="addExpenseTap" cssClass="imageButtonContainer" visibility="{{ addExpenseButtonVisibility }}">
-      <Image src="res://ic_add" stretch="none" cssClass="imageButtonIcon" />
+      <Image src="res://add-white" stretch="none" cssClass="imageButtonIcon" />
       <Label col="1" text="Add expense" cssClass="imageButtonText" />
     </GridLayout>
 

@@ -19,14 +19,31 @@ import serviceModule = require("../../utils/service");
 
 var viewModel = new mainViewModelModule.MainViewModel();
 var page: pageModule.Page;
-export function navigatedTo(args: observableModule.EventData) {
-    actionBarModule.hideBackNavigation();
-    actionBarModule.showApplicationBar();
+export function navigatingTo(args: observableModule.EventData) {
     page = <pageModule.Page>args.object;
     page.bindingContext = null;
     page.bindingContext = viewModel;
     viewModel.refresh();
-    buildMenu(page);
+
+    updatePage(page, selectedTabViewItem, selectedTabViewIndex);
+}
+
+export function navigatedTo(args: observableModule.EventData) {
+    actionBarModule.hideBackNavigation();
+    actionBarModule.showApplicationBar();
+}
+
+export function navigatedFrom(args: observableModule.EventData) {
+    setPageTitle(page, null);
+}
+
+var selectedTabViewItem: tabViewModule.TabViewItem;
+var selectedTabViewIndex: number;
+export function selectedItemChanged(args: tabViewModule.SelectedItemChangedEventData) {
+    selectedTabViewItem = args.tabViewItem;
+    selectedTabViewIndex = args.index;
+
+    updatePage(page, selectedTabViewItem, selectedTabViewIndex);
 }
 
 export function reportTap(args: gridViewModule.ItemEventData) {
@@ -59,6 +76,17 @@ export function settingsViewLoaded(args: observableModule.EventData) {
     tabItem.bindingContext = viewModel.settingsViewModel;
 }
 
+function updatePage(page: pageModule.Page, tabViewItem: tabViewModule.TabViewItem, tabViewIndex: number) {
+    if (platformModule.device.os === platformModule.platformNames.ios && page && tabViewItem) {
+        clearMenu(page);
+        if (tabViewIndex === 0) {
+            buildMenu(page);
+        }
+
+        setPageTitle(page, tabViewItem.title);
+    }
+}
+
 function clearMenu(page: pageModule.Page) {
     var menuItems = page.optionsMenu.getItems()
     for (var i = 0; i < menuItems.length; i++) {
@@ -67,12 +95,15 @@ function clearMenu(page: pageModule.Page) {
 }
 
 function buildMenu(page: pageModule.Page) {
-    if (platformModule.device.os === platformModule.platformNames.ios) {
-        clearMenu(page);
-        var addReportMenuItem = new pageModule.MenuItem();
-        addReportMenuItem.icon = "ic_add";
-        addReportMenuItem.on(pageModule.MenuItem.tapEvent, addReportTap);
+    var addReportMenuItem = new pageModule.MenuItem();
+    addReportMenuItem.icon = "ic_add";
+    addReportMenuItem.on(pageModule.MenuItem.tapEvent, addReportTap);
 
-        page.optionsMenu.addItem(addReportMenuItem);
+    page.optionsMenu.addItem(addReportMenuItem);
+}
+
+function setPageTitle(page: pageModule.Page, title: string) {
+    if (platformModule.device.os === platformModule.platformNames.ios) {
+        page.ios.title = title;
     }
 }

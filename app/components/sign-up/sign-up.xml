@@ -21,7 +21,7 @@
           <Border cssClass="pickerBorder" visibility="{{ iosVisibility }}" />
         </GridLayout>
 
-        <Button text="SIGN UP" tap="{{ signUp }}" cssClass="primaryButton" />
+        <Button text="{{ resources.signUp }}" tap="{{ signUp }}" cssClass="primaryButton" />
 
       </StackLayout>
     </ScrollView>

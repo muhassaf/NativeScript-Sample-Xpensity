@@ -1,8 +1,8 @@
 <Page xmlns="http://www.nativescript.org/tns.xsd"
       loaded="pageLoaded"
-      navigatedTo="navigatedTo" >
+      navigatingTo="navigatedTo" >
   <Page.optionsMenu>
-    <MenuItem text="DONE" tap="doneMenuItemTap" android.position="actionBar" />
+    <MenuItem text="{{ resources.done }}" tap="doneMenuItemTap" android.position="actionBar" />
   </Page.optionsMenu>
   <GridLayout>
     <ScrollView>
@@ -20,7 +20,7 @@
           <Border cssClass="pickerBorder" visibility="{{ iosVisibility }}" />
         </GridLayout>
 
-        <StackLayout cssClass="pickerContainer" tap="datePickerTap" visibility="{{ androidVisibility }}">
+        <StackLayout cssClass="pickerContainer" tap="datePickerTap" >
           <Label text="Date" cssClass="pickerLabel" />
           <GridLayout columns="*, auto" cssClass="innerContainer">
             <Label text="{{ item.Date | formatDate }}" cssClass="pickerValue" />
@@ -29,38 +29,20 @@
           <Border cssClass="pickerBorder" />
         </StackLayout>
 
-        <GridLayout cssClass="pickerContainer" tap="datePickerTap" visibility="{{ iosVisibility }}">
-          <GridLayout columns="*, *, auto">
-            <Label text="Date" cssClass="pickerLabel" />
-            <Label col="1" text="{{ item.Date | formatDate }}" cssClass="pickerValue" />
-            <Image col="2" src="res://ic_arrow-right" cssClass="pickerIcon" stretch="none" />
-          </GridLayout>
-          <Border cssClass="pickerBorder" />
-        </GridLayout>
-
-        <StackLayout cssClass="pickerContainer" tap="categoryPickerTap" visibility="{{ androidVisibility }}">
+        <StackLayout cssClass="pickerContainer" tap="categoryPickerTap" >
           <Label text="Category" cssClass="pickerLabel" />
-          <GridLayout columns="*, auto" cssClass="innerContainer" bindingContext="{{ category, category, false }}">
+          <GridLayout columns="*, auto" cssClass="innerContainer" bindingContext="{{ category }}">
             <Label text="{{ Title }}" cssClass="pickerValue" />
             <Image col="1" src="res://ic_arrow_drop_down" cssClass="pickerIcon" stretch="none" />
           </GridLayout>
           <Border cssClass="pickerBorder" />
         </StackLayout>
-
-        <GridLayout cssClass="pickerContainer" tap="categoryPickerTap" visibility="{{ iosVisibility }}">
-          <GridLayout columns="*, *, auto" bindingContext="{{ category, category, false }}">
-            <Label text="Category" cssClass="pickerLabel" />
-            <Label col="1" text="{{ Title }}" cssClass="pickerValue" />
-            <Image col="2" src="res://ic_arrow-right" cssClass="pickerIcon" stretch="none" />
-          </GridLayout>
-          <Border cssClass="pickerBorder" />
-        </GridLayout>
         
         <GridLayout cssClass="textViewContainer">
           <TextView text="{{ item.Notes }}" hint="Notes" />
         </GridLayout>
 
-        <Button text="DELETE EXPENSE" tap="deleteExpenseButtonTap" color="#FF0000" cssClass="secondaryButton" visibility="{{ editVisibility }}" />
+        <Button text="{{ resources.deleteExpense }}" tap="deleteExpenseButtonTap" color="#FF0000" cssClass="secondaryButton" visibility="{{ editVisibility }}" />
       </StackLayout>
     </ScrollView>
 

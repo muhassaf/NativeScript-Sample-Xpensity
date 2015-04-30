@@ -276,7 +276,6 @@ var TabView = (function (_super) {
         for (i; i < length; i++) {
             item = newItems[i];
             tab = actionBar.newTab();
-            tab.setText(item.title);
             this._setIcon(item.iconSource, tab, resources, androidApp.packageName);
             tab.setTabListener(this._tabListener);
             actionBar.addTab(tab);

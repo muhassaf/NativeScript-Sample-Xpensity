@@ -69,9 +69,7 @@ function buildMenu(page: pageModule.Page) {
             var submitMenuItem = new pageModule.MenuItem();
             submitMenuItem.icon = "ic_submit";
             submitMenuItem.on(pageModule.MenuItem.tapEvent,(args: observableModule.EventData) => {
-                viewModel.submit().then((data) => {
-                    buildMenu(page);
-                });
+                viewModel.submit();
             });
 
             page.optionsMenu.addItem(submitMenuItem);

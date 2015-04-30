@@ -50,7 +50,6 @@ export class EditReportViewModel extends editViewModelBaseModule.EditViewModelBa
     }
 
     onItemAdded(item: any) {
-        console.log("ITEM: " + JSON.stringify(item));
         super.onItemAdded(item);
         navigationModule.navigate({
             moduleName: viewsModule.Views.viewReport,

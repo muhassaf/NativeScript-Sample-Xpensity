@@ -5,6 +5,8 @@ import observableModule = require("data/observable");
 import enumsModule = require("ui/enums");
 import dialogsModule = require("ui/dialogs");
 
+var resourcesModule = require("../resources");
+
 export class ViewModelBase extends observableModule.Observable {
     private _loadingCount: number;
     private _isLoading: boolean;
@@ -40,6 +42,10 @@ export class ViewModelBase extends observableModule.Observable {
         }
 
         return enumsModule.Visibility.collapsed;
+    }
+
+    get resources(): any {
+        return resourcesModule.resources;
     }
 
     beginLoading() {

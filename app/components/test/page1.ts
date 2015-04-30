@@ -10,4 +10,6 @@ var viewModel = new page1ViewModelModule.Page1ViewModel();
 export function pageLoaded(args: observableModule.EventData) {
     var page = <pageModule.Page>args.object;
     page.bindingContext = viewModel;
+
+    console.log("LOADED");
 }

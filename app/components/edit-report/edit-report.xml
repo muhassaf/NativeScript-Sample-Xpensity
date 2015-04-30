@@ -1,8 +1,8 @@
 <Page xmlns="http://www.nativescript.org/tns.xsd"
       loaded="pageLoaded"
-      navigatedTo="navigatedTo" >
+      navigatingTo="navigatedTo" >
   <Page.optionsMenu>
-    <MenuItem text="DONE" tap="doneMenuItemTap" android.position="actionBar" />
+    <MenuItem text="{{ resources.done }}" tap="doneMenuItemTap" android.position="actionBar" />
   </Page.optionsMenu>
   <GridLayout>
     <ScrollView>
@@ -20,7 +20,7 @@
           <Border cssClass="pickerBorder" visibility="{{ iosVisibility }}" />
         </GridLayout>
         
-        <Button text="DELETE REPORT" tap="deleteReportButtonTap" color="#FF0000" cssClass="secondaryButton" visibility="{{ editVisibility }}" />
+        <Button text="{{ resources.deleteReport }}" tap="deleteReportButtonTap" color="#FF0000" cssClass="secondaryButton" visibility="{{ editVisibility }}" />
       </StackLayout>
     </ScrollView>
 

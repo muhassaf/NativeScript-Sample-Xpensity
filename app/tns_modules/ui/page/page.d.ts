@@ -33,6 +33,8 @@ declare module "ui/page" {
          * String value used when hooking to navigatedTo event.
          */
         public static navigatedToEvent: string;
+        public static navigatedFromEvent: string;
+        public static navigatingToEvent: string;
 
         constructor(options?: Options)
 

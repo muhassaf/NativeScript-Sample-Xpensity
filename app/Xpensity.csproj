@@ -186,6 +186,9 @@
     <Content Include="App_Resources\Android\drawable-xxxhdpi\ic_submit.png" />
     <Content Include="App_Resources\Android\drawable-xxxhdpi\launcher.png" />
     <Content Include="App_Resources\Android\values\styles.xml" />
+    <Content Include="App_Resources\iOS\add-white%402x.png" />
+    <Content Include="App_Resources\iOS\add-white%403x.png" />
+    <Content Include="App_Resources\iOS\add-white.png" />
     <Content Include="App_Resources\iOS\icon%402x.png" />
     <Content Include="App_Resources\iOS\Icon-60%403x.png" />
     <Content Include="App_Resources\iOS\Icon-Small%403x.png" />
@@ -272,8 +275,11 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="components\date-picker\date-picker.css" />
+    <Content Include="components\edit-expense\edit-expense.ios.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="components\edit-expense\edit-expense.android.css" />
-    <Content Include="components\edit-expense\edit-expense.xml">
+    <Content Include="components\edit-expense\edit-expense.android.xml">
       <SubType>Designer</SubType>
     </Content>
     <Content Include="components\list-picker\list-picker.css" />
@@ -284,7 +290,9 @@
     <Content Include="components\login\login.xml" />
     <Content Include="components\main\main.android.css" />
     <Content Include="components\main\main.ios.css" />
-    <Content Include="components\main\main.xml" />
+    <Content Include="components\main\main.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="components\edit-report\edit-report.xml">
       <SubType>Designer</SubType>
     </Content>
@@ -294,7 +302,9 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="components\test\page2.xml" />
-    <Content Include="components\test\page1.xml" />
+    <Content Include="components\test\page1.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="components\view-report\view-report.css" />
     <Content Include="lib\everlive.js" />
     <Content Include="components\items-view\items-view.js.map" />
@@ -577,6 +587,8 @@
     <TypeScriptCompile Include="components\pie-chart\pie-chart-common.ts" />
     <TypeScriptCompile Include="components\pie-chart\pie-chart.android.ts" />
     <TypeScriptCompile Include="components\pie-chart\pie-chart.ios.ts" />
+    <TypeScriptCompile Include="resources.ios.ts" />
+    <TypeScriptCompile Include="resources.android.ts" />
     <TypeScriptCompile Include="tns_modules\android17.d.ts" />
     <TypeScriptCompile Include="tns_modules\application-settings\application-settings.d.ts" />
     <TypeScriptCompile Include="tns_modules\application\application.d.ts" />

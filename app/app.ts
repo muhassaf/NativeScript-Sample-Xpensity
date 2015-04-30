@@ -21,6 +21,8 @@ applicationModule.onLaunch = function (context: any) {
     else {
         applicationModule.mainModule = viewsModule.Views.login;
     }
+
+    //applicationModule.mainModule = viewsModule.Views.test;
 }
 
 applicationModule.start();

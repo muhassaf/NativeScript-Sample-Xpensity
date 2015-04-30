@@ -96,6 +96,11 @@ var Page = (function (_super) {
     });
     Page.prototype.onNavigatingTo = function (context) {
         this._navigationContext = context;
+        this.notify({
+            eventName: Page.navigatingToEvent,
+            object: this,
+            context: context
+        });
     };
     Page.prototype.onNavigatedTo = function (context) {
         this._navigationContext = context;
@@ -109,6 +114,10 @@ var Page = (function (_super) {
     };
     Page.prototype.onNavigatedFrom = function (isBackNavigation) {
         this._navigationContext = undefined;
+        this.notify({
+            eventName: Page.navigatedFromEvent,
+            object: this,
+        });
     };
     Page.prototype._getStyleScope = function () {
         return this._styleScope;
@@ -141,6 +150,8 @@ var Page = (function (_super) {
         }
     };
     Page.navigatedToEvent = "navigatedTo";
+    Page.navigatedFromEvent = "navigatedFrom";
+    Page.navigatingToEvent = "navigatingTo";
     return Page;
 })(contentView.ContentView);
 exports.Page = Page;

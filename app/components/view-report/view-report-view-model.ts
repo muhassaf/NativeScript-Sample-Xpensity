@@ -42,7 +42,7 @@ export class ViewReportViewModel extends viewModelBaseModule.ViewModelBase {
         }
     }
 
-    get expenses(): Array<viewExpenseViewModelModule.ViewExpenseViewModel>{
+    get expenses(): Array<viewExpenseViewModelModule.ViewExpenseViewModel> {
         return this._expenses;
     }
 
@@ -57,7 +57,7 @@ export class ViewReportViewModel extends viewModelBaseModule.ViewModelBase {
         return this._totalCost;
     }
 
-    set totalCost(value: number) { 
+    set totalCost(value: number) {
         if (this._totalCost !== value) {
             this._totalCost = value;
             this.notifyPropertyChanged("totalCost", value);
@@ -88,17 +88,18 @@ export class ViewReportViewModel extends viewModelBaseModule.ViewModelBase {
         notificationsModule.showInfo(this.report.Info);
     }
 
-    submit(): Promise<any> {
-        return new Promise<any>((resolve) => {
-            this.beginLoading();
-            this.report.Status = reportStatusModule.ForApproval;
-            serviceModule.service.updateReport(this.report).then((data) => {
-                navigationModule.goBack();
-                this.endLoading();
-                resolve(data)
-            }, error => {
+    submit() {
+        notificationsModule.confirm("Submit report", "Do you want to submit the report?").then((value: boolean) => {
+            if (value) {
+                this.beginLoading();
+                this.report.Status = reportStatusModule.ForApproval;
+                serviceModule.service.updateReport(this.report).then((data) => {
+                    navigationModule.goBack();
                     this.endLoading();
-                });
+                }, error => {
+                        this.endLoading();
+                    });
+            }
         });
     }
 

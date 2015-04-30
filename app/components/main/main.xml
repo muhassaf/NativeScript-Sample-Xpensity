@@ -1,11 +1,13 @@
 <Page xmlns="http://www.nativescript.org/tns.xsd"
       xmlns:g="components/grid-view/grid-view"
       xmlns:c="components/pie-chart/pie-chart"
-      ios.title="My reports"
-      navigatedTo="navigatedTo" >
-  <TabView id="TabView">
+      navigatingTo="navigatingTo"
+      navigatedTo="navigatedTo"
+      navigatedFrom="navigatedFrom"
+      >
+  <TabView id="TabView" selectedItemChanged="selectedItemChanged">
     <TabView.items>
-      <TabViewItem id="ReportsTabItem" iconSource="res://ic_reports" >
+      <TabViewItem id="ReportsTabItem" title="My reports" iconSource="res://ic_reports" >
         <TabViewItem.view>
           <GridLayout rows="auto, *" bindingContext="{{ reportsViewModel }}" >
             <Label text="MY REPORTS" cssClass="header" visibility="{{ androidVisibility }}" />
@@ -32,15 +34,15 @@
           </GridLayout>
         </TabViewItem.view>
       </TabViewItem >
-      <TabViewItem iconSource="res://ic_notifications" >
+      <TabViewItem iconSource="res://ic_notifications" title="Notifications" >
         <TabViewItem.view>
           <GridLayout rows="auto, auto, *" bindingContext="{{ notificationsViewModel }}">
-            <Label text="NOTIFICATIONS" cssClass="header" />
+            <Label text="NOTIFICATIONS" cssClass="header" visibility="{{ androidVisibility }}" />
 
             <Border row="1" cssClass="blockContainer">
               <StackLayout orientation="horizontal">
                 <Label text="{{ reportsForApproval }}" cssClass="blockLabel" />
-                <Label margin="16 0 16 0" text=" REPORT(S) WAITING FOR APPROVAL" cssClass="blockLabel" />
+                <Label margin="16 0 16 0" text="{{ resources.notificationsMessage }}" cssClass="blockLabel" />
               </StackLayout>
             </Border>
 
@@ -48,10 +50,10 @@
           </GridLayout>
         </TabViewItem.view>
       </TabViewItem >
-      <TabViewItem iconSource="res://ic_settings" >
+      <TabViewItem iconSource="res://ic_settings" title="Settings" >
         <TabViewItem.view>
           <GridLayout rows="auto, *" bindingContext="{{ settingsViewModel }}">
-            <Label text="SETTINGS" cssClass="header" />
+            <Label text="SETTINGS" cssClass="header" visibility="{{ androidVisibility }}"/>
 
             <ScrollView row="1">
               <StackLayout>
@@ -69,7 +71,7 @@
                   <Switch col="1" checked="{{ notifications }}"/>
                 </GridLayout>-->
 
-                <Button text="LOGOUT" tap="logoutButtonTap" cssClass="secondaryButton" />
+                <Button text="{{ resources.logout }}" tap="logoutButtonTap" cssClass="secondaryButton" />
               </StackLayout>
             </ScrollView>
 

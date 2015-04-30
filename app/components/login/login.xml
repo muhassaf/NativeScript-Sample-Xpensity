@@ -2,7 +2,7 @@
       loaded="pageLoaded"
       navigatedTo="navigatedTo">
   <Page.optionsMenu>
-    <MenuItem text="SIGN UP" tap="signUpMenuItemTap" android.position="actionBar" />
+    <MenuItem text="{{ resources.signUp }}" tap="signUpMenuItemTap" android.position="actionBar" />
   </Page.optionsMenu>
   <GridLayout>
     <ScrollView>
@@ -16,7 +16,7 @@
           <Border cssClass="pickerBorder" visibility="{{ iosVisibility }}" />
         </GridLayout>
 
-        <Button text="LOGIN" tap="{{ login }}" cssClass="primaryButton" />
+        <Button text="{{ resources.login }}" tap="{{ login }}" cssClass="primaryButton" />
       </StackLayout>
     </ScrollView>
 
