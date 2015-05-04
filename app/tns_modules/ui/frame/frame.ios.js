@@ -164,9 +164,7 @@ var Frame = (function (_super) {
             }
             array.addObject(barButtonItem);
         }
-        if (array) {
-            navigationItem.setRightBarButtonItemsAnimated(array, true);
-        }
+        navigationItem.setRightBarButtonItemsAnimated(array, true);
     };
     return Frame;
 })(frameCommon.Frame);

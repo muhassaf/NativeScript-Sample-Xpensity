@@ -72,8 +72,7 @@ export class SignUpViewModel extends viewModelBaseModule.ViewModelBase {
             serviceModule.service.signUp(this.email, this.password, { Email: this.email, DisplayName: this.name }).then((data: any) => {
                 serviceModule.service.login(this.email, this.password).then((data: any) => {
                     this.endLoading();
-                    navigationModule.goBack();
-                    navigationModule.goBack();
+                    navigationModule.navigateWitouthHistory(viewsModule.Views.main);
                 },(error: any) => {
                         this.endLoading();
                     })

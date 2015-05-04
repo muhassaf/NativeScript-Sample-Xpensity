@@ -1,6 +1,7 @@
 ﻿import platformModule = require("platform");
 
 import frameModule = require("ui/frame");
+import enumsModule = require("ui/enums");
 import navigationModule = require("./navigation");
 
 var attached = false;
@@ -33,7 +34,7 @@ export function hideBackNavigation() {
 export function showApplicationBar() {
     if (platformModule.device.os == platformModule.platformNames.ios) {
         var topmost = frameModule.topmost();
-        topmost.ios.controller.setNavigationBarHiddenAnimated(false, false)
+        topmost.ios.navBarVisibility = enumsModule.NavigationBarVisibility.always;
     }
 }
 

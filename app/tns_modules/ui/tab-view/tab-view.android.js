@@ -53,6 +53,7 @@ var PagerAdapterClass = (function (_super) {
             trace.write("TabView.PagerAdapter.instantiateItem; restoreHierarchyState: " + item.view, common.traceCategory);
             item.view.android.restoreHierarchyState(this[VIEWS_STATES]);
         }
+        item.view.onLoaded();
         container.addView(item.view.android);
         return item.view.android;
     };
