@@ -3,6 +3,8 @@ Open source cross-platform Expensity app built with NativeScript.
 
 Use this application to find-out how to implement common mobile scenarios with NativeScript.
 
+![Alt text](https://www.nativescript.org/images/default-source/default-album/expensity-overview.png "Optional title")
+
 ## Running the sample
 
 1. Make sure you have the [NativeScript Command-line Interface](https://www.npmjs.com/package/nativescript) installed as well as all the prerequisites for the NativeScript development, described in the package page.
