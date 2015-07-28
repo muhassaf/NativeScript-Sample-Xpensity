@@ -6,6 +6,7 @@ var types = require("utils/types");
 var fs = require("file-system");
 var gestures = require("ui/gestures");
 var bindingBuilder = require("ui/builder/binding-builder");
+var platform = require("platform");
 var EVENT = "Event";
 var UI_PATH = "ui/";
 var MODULES = {
@@ -26,6 +27,7 @@ var MODULES = {
     "FormattedString": "text/formatted-string",
     "Span": "text/span",
     "WebView": "ui/web-view",
+    "HtmlView": "ui/html-view",
     "SegmentedBar": "ui/segmented-bar",
     "SegmentedBarItem": "ui/segmented-bar",
     "ToolBar": "ui/tool-bar",
@@ -33,7 +35,9 @@ var MODULES = {
     "TimePicker": "ui/time-picker",
     "DatePicker": "ui/date-picker",
     "ListPicker": "ui/list-picker",
-    "MenuItem": "ui/page",
+    "ActionBar": "ui/action-bar",
+    "ActionItem": "ui/action-bar",
+    "NavigationButton": "ui/action-bar",
 };
 var ROW = "row";
 var COL = "col";
@@ -48,7 +52,16 @@ function getComponentModule(elementName, namespace, attributes, exports) {
     var componentModule;
     var moduleId = MODULES[elementName] || UI_PATH + elementName.toLowerCase();
     try {
-        instanceModule = require(types.isString(namespace) && fs.path.join(fs.knownFolders.currentApp().path, namespace) || moduleId);
+        if (types.isString(namespace)) {
+            var pathInsideTNSModules = fs.path.join(fs.knownFolders.currentApp().path, "tns_modules", namespace);
+            if (fs.Folder.exists(pathInsideTNSModules)) {
+                moduleId = pathInsideTNSModules;
+            }
+            else {
+                moduleId = fs.path.join(fs.knownFolders.currentApp().path, namespace);
+            }
+        }
+        instanceModule = require(moduleId);
         var instanceType = instanceModule[elementName] || Object;
         instance = new instanceType();
     }
@@ -59,6 +72,15 @@ function getComponentModule(elementName, namespace, attributes, exports) {
         var bindings = new Array();
         for (var attr in attributes) {
             var attrValue = attributes[attr];
+            if (attr.indexOf(":") !== -1) {
+                var platformName = attr.split(":")[0].trim();
+                if (platformName.toLowerCase() === platform.device.os.toLowerCase()) {
+                    attr = attr.split(":")[1].trim();
+                }
+                else {
+                    continue;
+                }
+            }
             if (attr.indexOf(".") !== -1) {
                 var subObj = instance;
                 var properties = attr.split(".");
@@ -83,9 +105,13 @@ function getComponentModule(elementName, namespace, attributes, exports) {
 }
 exports.getComponentModule = getComponentModule;
 function setPropertyValue(instance, instanceModule, exports, propertyName, propertyValue) {
+    var isEvent = instanceModule && isKnownEvent(propertyName, instanceModule[instance.typeName]);
     if (isBinding(propertyValue) && instance.bind) {
-        if (isKnownEvent(propertyName, instanceModule[instance.typeName])) {
+        if (isEvent) {
             attachEventBinding(instance, propertyName, propertyValue);
+        }
+        else if (isGesture(propertyName, instance)) {
+            attachGestureBinding(instance, propertyName, propertyValue);
         }
         else {
             var bindOptions = bindingBuilder.getBindingOptions(propertyName, getBindingExpressionFromAttribute(propertyValue));
@@ -97,7 +123,7 @@ function setPropertyValue(instance, instanceModule, exports, propertyName, prope
             }, bindOptions[bindingBuilder.bindingConstants.source]);
         }
     }
-    else if (isKnownEvent(propertyName, instanceModule[instance.typeName])) {
+    else if (isEvent) {
         var handler = exports && exports[propertyValue];
         if (types.isFunction(handler)) {
             instance.on(propertyName, handler);
@@ -132,8 +158,8 @@ function setPropertyValue(instance, instanceModule, exports, propertyName, prope
     }
     else {
         var attrHandled = false;
-        if (instance.applyXmlAttribute) {
-            attrHandled = instance.applyXmlAttribute(propertyName, propertyValue);
+        if (instance._applyXmlAttribute) {
+            attrHandled = instance._applyXmlAttribute(propertyName, propertyValue);
         }
         if (!attrHandled) {
             var valueAsNumber = +propertyValue;
@@ -156,6 +182,18 @@ function attachEventBinding(instance, eventName, value) {
             var handler = instance.bindingContext && instance.bindingContext[getBindingExpressionFromAttribute(value)];
             if (types.isFunction(handler)) {
                 instance.on(eventName, handler, instance.bindingContext);
+            }
+            instance.off(observable.Observable.propertyChangeEvent, propertyChangeHandler);
+        }
+    };
+    instance.on(observable.Observable.propertyChangeEvent, propertyChangeHandler);
+}
+function attachGestureBinding(instance, gestureName, value) {
+    var propertyChangeHandler = function (args) {
+        if (args.propertyName === "bindingContext") {
+            var handler = instance.bindingContext && instance.bindingContext[getBindingExpressionFromAttribute(value)];
+            if (types.isFunction(handler)) {
+                instance.observe(gestures.fromString(gestureName.toLowerCase()), handler, instance.bindingContext);
             }
             instance.off(observable.Observable.propertyChangeEvent, propertyChangeHandler);
         }

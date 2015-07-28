@@ -107,7 +107,6 @@ var TabView = (function (_super) {
                 throw new Error("SelectedIndex should be between [0, items.length)");
             }
         }
-        this.notify({ eventName: TabView.selectedItemChangedEvent, object: this, index: this.selectedIndex, tabViewItem: this.items[this.selectedIndex] });
     };
     Object.defineProperty(TabView.prototype, "_selectedView", {
         get: function () {
@@ -156,9 +155,9 @@ var TabView = (function (_super) {
             }
         }
     };
-    TabView.selectedItemChangedEvent = "selectedItemChanged";
     TabView.itemsProperty = itemsProperty;
     TabView.selectedIndexProperty = selectedIndexProperty;
+    TabView.selectedIndexChangedEvent = "selectedIndexChanged";
     return TabView;
 })(view.View);
 exports.TabView = TabView;
