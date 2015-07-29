@@ -4,9 +4,10 @@ import observableModule = require("data/observable");
 
 import viewModule = require("ui/core/view");
 import pageModule = require("ui/page");
+import actionBar = require("ui/action-bar");
 import tabViewModule = require("ui/tab-view");
 
-import gridViewModule = require("grid-view");
+import gridViewModule = require("../grid-view/grid-view");
 
 import mainViewModelModule = require("./main-view-model");
 import reportsViewModelModule = require("./reports-view-model");
@@ -39,10 +40,10 @@ export function navigatedFrom(args: observableModule.EventData) {
 
 var selectedTabViewItem: tabViewModule.TabViewItem;
 var selectedTabViewIndex: number;
-export function selectedItemChanged(args: tabViewModule.SelectedItemChangedEventData) {
-    selectedTabViewItem = args.tabViewItem;
-    selectedTabViewIndex = args.index;
-
+export function selectedItemChanged(args: tabViewModule.SelectedIndexChangedEventData) {
+    selectedTabViewIndex = args.newIndex;
+    var tab = <tabViewModule.TabView>page.getViewById("TabView");
+    selectedTabViewItem = tab.items[selectedTabViewIndex];
     updatePage(page, selectedTabViewItem, selectedTabViewIndex);
 }
 
@@ -88,18 +89,24 @@ function updatePage(page: pageModule.Page, tabViewItem: tabViewModule.TabViewIte
 }
 
 function clearMenu(page: pageModule.Page) {
-    var menuItems = page.optionsMenu.getItems()
-    for (var i = 0; i < menuItems.length; i++) {
-        page.optionsMenu.removeItem(menuItems[i]);
+    if (page.actionBar) {
+        var actionItems = page.actionBar.actionItems;
+        var items = actionItems.getItems();
+        for (var i = 0; i < items.length; i++) {
+            actionItems.removeItem(items[i]);
+        }
     }
 }
 
 function buildMenu(page: pageModule.Page) {
-    var addReportMenuItem = new pageModule.MenuItem();
-    addReportMenuItem.icon = "ic_add";
-    addReportMenuItem.on(pageModule.MenuItem.tapEvent, addReportTap);
+    var addReportActionItem = new actionBar.ActionItem();
+    addReportActionItem.icon = "res://ic_add";
+    addReportActionItem.on(actionBar.ActionItem.tapEvent, addReportTap);
 
-    page.optionsMenu.addItem(addReportMenuItem);
+    if (!page.actionBar) {
+        page.actionBar = new actionBar.ActionBar();
+    }
+    page.actionBar.actionItems.addItem(addReportActionItem);
 }
 
 function setPageTitle(page: pageModule.Page, title: string) {

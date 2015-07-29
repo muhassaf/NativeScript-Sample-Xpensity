@@ -1,19 +1,12 @@
 */bin
 */obj
+*.user-settings.xml
 
-*.js
-*.dat
-*.suo
-
-!*/tns_modules/*.*
-!bootstrap.js
-!everlive.js
-
-/platforms/
-/external/
-/lib/
-*.tgz
 *.map
-/package/
-*.DS_Store
-app/node_modules
+node_modules/
+
+platforms/
+lib/
+
+app/**/*.d.ts
+!app/tns_modules/**/*.*

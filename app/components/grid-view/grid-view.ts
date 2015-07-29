@@ -194,6 +194,15 @@ export class GridView extends gridLayoutModule.GridLayout implements definitionM
     }
 }
 
+export interface ItemEventData extends observableModule.EventData {
+    item: any;
+
+    /**
+     * The view that is associated to the item, for which the event is raised.
+     */
+    view: viewModule.View;
+}
+
 function getExports(instance: viewModule.View): any {
     var parent = instance.parent;
 

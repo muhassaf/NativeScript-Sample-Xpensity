@@ -32,7 +32,7 @@ function fromUrl(url) {
 exports.fromUrl = fromUrl;
 function fromFileOrResource(path) {
     if (!isFileOrResourcePath(path)) {
-        throw new Error("Path \"" + "\" is not a valid file or resource." + new Error().stack);
+        throw new Error("Path \"" + "\" is not a valid file or resource.");
     }
     if (path.indexOf(utils.RESOURCE_PREFIX) === 0) {
         return fromResource(path.substr(utils.RESOURCE_PREFIX.length));

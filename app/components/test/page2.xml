@@ -2,9 +2,11 @@
       xmlns:g="components/grid-view/grid-view"
       loaded="pageLoaded"
       navigatedTo="navigatedTo" >
-  <Page.optionsMenu>
-    <MenuItem text="DONE" tap="doneMenuItemTap" android.position="actionBar" />
-  </Page.optionsMenu>
+  <Page.actionBar>
+    <ActionBar>
+      <ActionItem text="DONE" tap="doneMenuItemTap" android.position="actionBar" />
+    </ActionBar>
+  </Page.actionBar>
   <GridLayout>
     <TextField text="{{ item.Title }}" />
   </GridLayout>
