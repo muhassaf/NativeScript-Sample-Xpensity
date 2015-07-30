@@ -2,7 +2,9 @@
       navigatedTo="navigatedTo" >
   <Page.actionBar>
   	<ActionBar>
-  	  <ActionItem text="{{ resources.done }}" tap="doneMenuItemTap" android.position="actionBar" />
+  	  <ActionBar.actionItems>
+  	    <ActionItem text="{{ resources.done }}" tap="doneMenuItemTap" android.position="actionBar" />
+  	  </ActionBar.actionItems>
   	</ActionBar>
   </Page.actionBar>
   <DatePicker cssClass="datePickerControl" day="{{ day }}" month="{{ month }}" year="{{ year }}"/>

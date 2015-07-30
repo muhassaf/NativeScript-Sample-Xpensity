@@ -4,8 +4,10 @@
       >
   <Page.actionBar>
     <ActionBar>
-      <ActionItem text="DONE" tap="doneMenuItemTap" android.position="actionBar" />
-      <ActionItem text="{{ resources.reports }}" android.position="actionBar" />
+      <ActionBar.actionItems>
+        <ActionItem text="DONE" tap="doneMenuItemTap" android.position="actionBar" />
+        <ActionItem text="{{ resources.reports }}" android.position="actionBar" />
+      </ActionBar.actionItems>
     </ActionBar>
   </Page.actionBar>
   <TabView>
