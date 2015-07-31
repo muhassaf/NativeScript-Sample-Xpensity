@@ -1,7 +1,6 @@
-# sample-Xpensity
-Open source cross-platform Expensity app built with NativeScript.
+# Expensity sample app
 
-Use this application to find-out how to implement common mobile scenarios with NativeScript.
+Expensity is an enterprise line of business application showing you how to deal with data and how to visualize the data in a rich and engaging way.
 
 ![Expensity app overview screen](https://www.nativescript.org/images/default-source/default-album/expensity-overview.png)
 ![Expensity app report details](https://www.nativescript.org/images/default-source/default-album/expensity-report-details.png)
@@ -34,7 +33,3 @@ For convenience you can use the `run.bat`/`run.sh` scripts on a \*NIX/windows en
 For \*NIX systems the following script runs the sample directly:
 
 `curl https://raw.githubusercontent.com/NativeScript/sample-Xpensity/master/run.sh | bash`
-
-
-## Application Scenario
-TBD
