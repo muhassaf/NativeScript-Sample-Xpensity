@@ -7,6 +7,8 @@ import pageModule = require("ui/page");
 import listViewModule = require("ui/list-view");
 import enumsModule = require("ui/enums");
 
+import actionBar = require("ui/action-bar");
+
 import viewReportViewModelModule = require("./view-report-view-model");
 import actionBarModule = require("../../utils/action-bar");
 import reportStatusModule = require("../../utils/report-status");
@@ -55,46 +57,51 @@ function buildMenu(page: pageModule.Page) {
     switch (viewModel.report.Status) {
         case reportStatusModule.Returned:
         case reportStatusModule.New:
-            if (viewModel.report.Status === reportStatusModule.Returned) {
-                var infoMenuItem = new pageModule.MenuItem();
-                infoMenuItem.icon = "ic_info";
-                setAndroidPosition(infoMenuItem, enumsModule.MenuItemPosition.actionBar);
-                infoMenuItem.on(pageModule.MenuItem.tapEvent,(args: observableModule.EventData) => {
-                    viewModel.showReportInfo();
-                });
-
-                page.optionsMenu.addItem(infoMenuItem);
+            if (!page.actionBar) {
+                page.actionBar = new actionBar.ActionBar();
             }
 
-            var submitMenuItem = new pageModule.MenuItem();
-            submitMenuItem.icon = "ic_submit";
-            submitMenuItem.on(pageModule.MenuItem.tapEvent,(args: observableModule.EventData) => {
+            if (viewModel.report.Status === reportStatusModule.Returned) {
+                var infoActionItem = new actionBar.ActionItem();
+                infoActionItem.icon = "res://ic_info";
+                setAndroidPosition(infoActionItem, enumsModule.AndroidActionItemPosition.actionBar);
+                infoActionItem.on(actionBar.ActionItem.tapEvent, (args: observableModule.EventData) => {
+                    viewModel.showReportInfo();
+                });
+                page.actionBar.actionItems.addItem(infoActionItem);
+            }
+
+            var submitActionItem = new actionBar.ActionItem();
+            submitActionItem.icon = "res://ic_submit";
+            submitActionItem.on(actionBar.ActionItem.tapEvent, (args: observableModule.EventData) => {
                 viewModel.submit();
             });
+            page.actionBar.actionItems.addItem(submitActionItem);
 
-            page.optionsMenu.addItem(submitMenuItem);
-
-            var editMenuItem = new pageModule.MenuItem();
-            editMenuItem.icon = "ic_edit";
-            setAndroidPosition(editMenuItem, enumsModule.MenuItemPosition.actionBar);
-            editMenuItem.on(pageModule.MenuItem.tapEvent,(args: observableModule.EventData) => {
+            var editMenuItem = new actionBar.ActionItem();
+            editMenuItem.icon = "res://ic_edit";
+            setAndroidPosition(editMenuItem, enumsModule.AndroidActionItemPosition.actionBar);
+            editMenuItem.on(actionBar.ActionItem.tapEvent, (args: observableModule.EventData) => {
                 viewModel.edit();
             });
 
-            page.optionsMenu.addItem(editMenuItem);
+            page.actionBar.actionItems.addItem(editMenuItem);
 
             break;
     }
 }
 
 function clearMenu(page: pageModule.Page) {
-    var menuItems = page.optionsMenu.getItems()
-    for (var i = 0; i < menuItems.length; i++) {
-        page.optionsMenu.removeItem(menuItems[i]);
+    if (page.actionBar) {
+        var actionItems = page.actionBar.actionItems;
+        var items = actionItems.getItems();
+        for (var i = 0; i < items.length; i++) {
+            page.actionBar.actionItems.removeItem(items[i]);
+        }
     }
 }
 
-function setAndroidPosition(menuItem: pageModule.MenuItem, position: string) {
+function setAndroidPosition(menuItem: actionBar.ActionItem, position: string) {
     if (platformModule.device.os == platformModule.platformNames.android) {
         menuItem.android.position = position;
     }

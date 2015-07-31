@@ -5,6 +5,7 @@ var __extends = this.__extends || function (d, b) {
     d.prototype = new __();
 };
 var common = require("ui/tab-view/tab-view-common");
+var view = require("ui/core/view");
 var trace = require("trace");
 var imageSource = require("image-source");
 var types = require("utils/types");
@@ -53,7 +54,6 @@ var PagerAdapterClass = (function (_super) {
             trace.write("TabView.PagerAdapter.instantiateItem; restoreHierarchyState: " + item.view, common.traceCategory);
             item.view.android.restoreHierarchyState(this[VIEWS_STATES]);
         }
-        item.view.onLoaded();
         container.addView(item.view.android);
         return item.view.android;
     };
@@ -177,6 +177,7 @@ var TabView = (function (_super) {
     TabView.prototype._onVisibilityChanged = function (changedView, visibility) {
         trace.write("TabView._onVisibilityChanged:" + this.android + " isShown():" + this.android.isShown(), common.traceCategory);
         if (this.isLoaded && this.android && this.android.isShown()) {
+            this._setAdapterIfNeeded();
             this._addTabsIfNeeded();
             this._setNativeSelectedIndex(this.selectedIndex);
         }
@@ -207,6 +208,7 @@ var TabView = (function (_super) {
         trace.write("TabView.onLoaded(); selectedIndex: " + this.selectedIndex + "; items: " + this.items + ";", common.traceCategory);
         _super.prototype.onLoaded.call(this);
         if (this.android && this.android.isShown()) {
+            this._setAdapterIfNeeded();
             this._addTabsIfNeeded();
             this._setNativeSelectedIndex(this.selectedIndex);
         }
@@ -214,6 +216,7 @@ var TabView = (function (_super) {
     TabView.prototype.onUnloaded = function () {
         trace.write("TabView.onUnloaded();", common.traceCategory);
         this._removeTabsIfNeeded();
+        this._unsetAdapter();
         _super.prototype.onUnloaded.call(this);
     };
     TabView.prototype._addTabsIfNeeded = function () {
@@ -244,6 +247,11 @@ var TabView = (function (_super) {
         this._updateSelectedIndexOnItemsPropertyChanged(data.newValue);
         this._listenersSuspended = false;
     };
+    TabView.prototype._setAdapterIfNeeded = function () {
+        if (!this._pagerAdapter && this.items && this.items.length > 0) {
+            this._setAdapter(this.items);
+        }
+    };
     TabView.prototype._setAdapter = function (items) {
         this._pagerAdapter = new PagerAdapterClass(this, items);
         this._android.setAdapter(this._pagerAdapter);
@@ -255,6 +263,10 @@ var TabView = (function (_super) {
         }
     };
     TabView.prototype._addTabs = function (newItems) {
+        var parentPage = view.getAncestor(this, "Page");
+        if (parentPage && parentPage.actionBarHidden) {
+            return;
+        }
         trace.write("TabView._addTabs(" + newItems + ");", common.traceCategory);
         _super.prototype._addTabs.call(this, newItems);
         var actionBar = this._getActionBar();
@@ -277,6 +289,7 @@ var TabView = (function (_super) {
         for (i; i < length; i++) {
             item = newItems[i];
             tab = actionBar.newTab();
+            tab.setText(item.title);
             this._setIcon(item.iconSource, tab, resources, androidApp.packageName);
             tab.setTabListener(this._tabListener);
             actionBar.addTab(tab);
@@ -310,6 +323,10 @@ var TabView = (function (_super) {
         }
     };
     TabView.prototype._removeTabs = function (oldItems) {
+        var parentPage = view.getAncestor(this, "Page");
+        if (parentPage && parentPage.actionBarHidden) {
+            return;
+        }
         trace.write("TabView._removeTabs(" + oldItems + ");", common.traceCategory);
         _super.prototype._removeTabs.call(this, oldItems);
         var actionBar = this._getActionBar();
@@ -343,18 +360,17 @@ var TabView = (function (_super) {
         trace.write("TabView._onSelectedIndexPropertyChangedSetNativeValue(" + data.oldValue + " ---> " + data.newValue + ");", common.traceCategory);
         _super.prototype._onSelectedIndexPropertyChangedSetNativeValue.call(this, data);
         this._setNativeSelectedIndex(data.newValue);
+        var args = { eventName: TabView.selectedIndexChangedEvent, object: this, oldIndex: data.oldValue, newIndex: data.newValue };
+        this.notify(args);
     };
     TabView.prototype._setNativeSelectedIndex = function (index) {
         if (types.isNullOrUndefined(index)) {
             return;
         }
         var actionBar = this._getActionBar();
-        if (actionBar) {
-            var actionBarSelectedIndex = actionBar.getSelectedNavigationIndex();
-            if (actionBarSelectedIndex !== index) {
-                trace.write("TabView actionBar.setSelectedNavigationItem(" + index + ")", common.traceCategory);
-                actionBar.setSelectedNavigationItem(index);
-            }
+        if (actionBar && index < actionBar.getNavigationItemCount() && index !== actionBar.getSelectedNavigationIndex()) {
+            trace.write("TabView actionBar.setSelectedNavigationItem(" + index + ")", common.traceCategory);
+            actionBar.setSelectedNavigationItem(index);
         }
         var viewPagerSelectedIndex = this._android.getCurrentItem();
         if (viewPagerSelectedIndex !== index) {

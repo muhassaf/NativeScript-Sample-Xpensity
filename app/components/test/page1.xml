@@ -2,10 +2,14 @@
       xmlns:g="components/grid-view/grid-view"
       loaded="pageLoaded"
       >
-  <Page.optionsMenu>
-    <MenuItem text="DONE" tap="doneMenuItemTap" android.position="actionBar" />
-    <MenuItem text="{{ resources.reports }}" android.position="actionBar" />
-  </Page.optionsMenu>
+  <Page.actionBar>
+    <ActionBar>
+      <ActionBar.actionItems>
+        <ActionItem text="DONE" tap="doneMenuItemTap" android.position="actionBar" />
+        <ActionItem text="{{ resources.reports }}" android.position="actionBar" />
+      </ActionBar.actionItems>
+    </ActionBar>
+  </Page.actionBar>
   <TabView>
     <TabView.items>
       <TabViewItem title="{{ resources.reports }}" iconSource="res://ic_reports" >

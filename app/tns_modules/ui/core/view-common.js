@@ -93,13 +93,69 @@ var View = (function (_super) {
         this._domId = viewIdCounter++;
         this._visualState = visualStateConstants.Normal;
     }
-    View.prototype.observe = function (type, callback) {
-        this._gesturesObserver = gestures.observe(this, type, callback);
-        return this._gesturesObserver;
+    View.prototype.getGestureObservers = function (type) {
+        var result;
+        if (this._gestureObservers) {
+            result = this._gestureObservers.get(type) ? this._gestureObservers.get(type).slice(0) : undefined;
+        }
+        return result;
+    };
+    View.prototype.observe = function (type, callback, thisArg) {
+        var gesturesList = this._getGesturesList(type, true);
+        gesturesList.push(gestures.observe(this, type, callback, thisArg));
+    };
+    View.prototype._getGesturesList = function (gestureType, createIfNeeded) {
+        if (!gestureType) {
+            throw new Error("GestureType must be a valid gesture!");
+        }
+        var list;
+        if (this._gestureObservers && this._gestureObservers.has(gestureType)) {
+            list = this._gestureObservers.get(gestureType);
+        }
+        else {
+            if (createIfNeeded) {
+                list = [];
+                if (!this._gestureObservers) {
+                    this._gestureObservers = new Map();
+                }
+                this._gestureObservers.set(gestureType, list);
+            }
+        }
+        return list;
     };
     View.prototype.getViewById = function (id) {
         return getViewById(this, id);
     };
+    Object.defineProperty(View.prototype, "borderRadius", {
+        get: function () {
+            return this.style.borderRadius;
+        },
+        set: function (value) {
+            this.style.borderRadius = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(View.prototype, "borderWidth", {
+        get: function () {
+            return this.style.borderWidth;
+        },
+        set: function (value) {
+            this.style.borderWidth = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(View.prototype, "borderColor", {
+        get: function () {
+            return this.style.borderColor;
+        },
+        set: function (value) {
+            this.style.borderColor = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
     Object.defineProperty(View.prototype, "color", {
         get: function () {
             return this.style.color;
@@ -116,6 +172,16 @@ var View = (function (_super) {
         },
         set: function (value) {
             this.style.backgroundColor = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(View.prototype, "backgroundImage", {
+        get: function () {
+            return this.style.backgroundImage;
+        },
+        set: function (value) {
+            this.style.backgroundImage = value;
         },
         enumerable: true,
         configurable: true
@@ -345,7 +411,7 @@ var View = (function (_super) {
             return this._style;
         },
         set: function (value) {
-            this._applyInlineStyle(value);
+            throw new Error("View.style property is read-only.");
         },
         enumerable: true,
         configurable: true
@@ -420,16 +486,34 @@ var View = (function (_super) {
     View.prototype._onPropertyChanged = function (property, oldValue, newValue) {
         _super.prototype._onPropertyChanged.call(this, property, oldValue, newValue);
         if (this._childrenCount > 0) {
-            var shouldUpdateInheritableProps = ((property.metadata && property.metadata.inheritable) && property.name !== "bindingContext" && !(property instanceof styling.Property));
+            var shouldUpdateInheritableProps = ((property.metadata && property.metadata.inheritable) &&
+                !(property instanceof styling.Property));
+            var that = this;
             if (shouldUpdateInheritableProps) {
                 var notifyEachChild = function (child) {
-                    child._setValue(property, newValue, dependencyObservable.ValueSource.Inherited);
+                    child._setValue(property, that._getValue(property), dependencyObservable.ValueSource.Inherited);
                     return true;
                 };
+                this._updatingInheritedProperties = true;
                 this._eachChildView(notifyEachChild);
+                this._updatingInheritedProperties = false;
             }
         }
         this._checkMetadataOnPropertyChanged(property.metadata);
+    };
+    View.prototype._isInheritedChange = function () {
+        if (this._updatingInheritedProperties) {
+            return true;
+        }
+        var parentView;
+        parentView = (this.parent);
+        while (parentView) {
+            if (parentView._updatingInheritedProperties) {
+                return true;
+            }
+            parentView = (parentView.parent);
+        }
+        return false;
     };
     View.prototype._checkMetadataOnPropertyChanged = function (metadata) {
         if (metadata.affectsLayout) {
@@ -625,18 +709,6 @@ var View = (function (_super) {
         this._oldBottom = bottom;
         return changed;
     };
-    View.prototype._onBindingContextChanged = function (oldValue, newValue) {
-        _super.prototype._onBindingContextChanged.call(this, oldValue, newValue);
-        if (this._childrenCount === 0) {
-            return;
-        }
-        var thatContext = this.bindingContext;
-        var eachChild = function (child) {
-            child._setValue(bindable.Bindable.bindingContextProperty, thatContext, dependencyObservable.ValueSource.Inherited);
-            return true;
-        };
-        this._eachChildView(eachChild);
-    };
     View.prototype._applyStyleFromScope = function () {
         var rootPage = getAncestor(this, "Page");
         if (!rootPage || !rootPage.isLoaded) {
@@ -647,7 +719,13 @@ var View = (function (_super) {
     };
     View.prototype._applyInlineStyle = function (inlineStyle) {
         if (types.isString(inlineStyle)) {
-            styleScope.applyInlineSyle(this, inlineStyle);
+            try {
+                this.style._beginUpdate();
+                styleScope.applyInlineSyle(this, inlineStyle);
+            }
+            finally {
+                this.style._endUpdate();
+            }
         }
     };
     View.prototype._onAttached = function (context) {
@@ -681,8 +759,7 @@ var View = (function (_super) {
         trace.write("called _addView on view " + this._domId + " for a child " + view._domId, trace.categories.ViewHierarchy);
     };
     View.prototype._addViewCore = function (view) {
-        view._setValue(bindable.Bindable.bindingContextProperty, this.bindingContext, dependencyObservable.ValueSource.Inherited);
-        view._inheritProperties(this);
+        this._propagateInheritableProperties(view);
         view.style._inheritStyleProperties();
         if (!view._isAddedToNativeVisualTree) {
             view._isAddedToNativeVisualTree = this._addViewToNativeVisualTree(view);
@@ -691,10 +768,13 @@ var View = (function (_super) {
             view.onLoaded();
         }
     };
+    View.prototype._propagateInheritableProperties = function (view) {
+        view._inheritProperties(this);
+    };
     View.prototype._inheritProperties = function (parentView) {
         var that = this;
         var inheritablePropertySetCallback = function (property) {
-            if (property instanceof styling.Property || property.name === "bindingContext") {
+            if (property instanceof styling.Property) {
                 return true;
             }
             if (property.metadata && property.metadata.inheritable) {
@@ -722,7 +802,7 @@ var View = (function (_super) {
         }
         view._setValue(bindable.Bindable.bindingContextProperty, undefined, dependencyObservable.ValueSource.Inherited);
         var inheritablePropertiesSetCallback = function (property) {
-            if (property instanceof styling.Property || property.name === "bindingContext") {
+            if (property instanceof styling.Property) {
                 return true;
             }
             if (property.metadata && property.metadata.inheritable) {
@@ -753,6 +833,13 @@ var View = (function (_super) {
         var vsm = require("ui/styling/visual-state");
         this._visualState = vsm.goToState(this, state);
         this._requestedVisualState = state;
+    };
+    View.prototype._applyXmlAttribute = function (attribute, value) {
+        if (attribute === "style") {
+            this._applyInlineStyle(value);
+            return true;
+        }
+        return false;
     };
     View.prototype._updateLayout = function () {
     };

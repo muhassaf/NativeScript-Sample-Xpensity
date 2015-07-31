@@ -1,9 +1,13 @@
 ﻿<Page xmlns="http://www.nativescript.org/tns.xsd" 
       loaded="pageLoaded"
       navigatedTo="navigatedTo">
-  <Page.optionsMenu>
-    <MenuItem text="{{ resources.signUp }}" tap="signUpMenuItemTap" android.position="actionBar" />
-  </Page.optionsMenu>
+  <Page.actionBar>
+    <ActionBar>
+      <ActionBar.actionItems>
+        <ActionItem text="{{ resources.signUp }}" tap="signUpMenuItemTap" android.position="actionBar" />
+      </ActionBar.actionItems>
+    </ActionBar>
+  </Page.actionBar>
   <GridLayout>
     <ScrollView>
       <StackLayout>
@@ -15,7 +19,6 @@
           <TextField text="{{ password }}" secure="true" hint="password" />
           <Border cssClass="pickerBorder" visibility="{{ iosVisibility }}" />
         </GridLayout>
-
         <Button text="{{ resources.login }}" tap="{{ login }}" cssClass="primaryButton" />
       </StackLayout>
     </ScrollView>
