@@ -5,7 +5,7 @@
       navigatedTo="navigatedTo"
       navigatedFrom="navigatedFrom"
       >
-  <TabView id="TabView" selectedItemChanged="selectedItemChanged">
+  <TabView id="TabView" selectedIndexChanged="selectedIndexChanged">
     <TabView.items>
       <TabViewItem id="ReportsTabItem" title="My reports" iconSource="res://ic_reports" >
         <TabViewItem.view>

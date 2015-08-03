@@ -26,13 +26,13 @@ function navigatedFrom(args) {
 exports.navigatedFrom = navigatedFrom;
 var selectedTabViewItem;
 var selectedTabViewIndex;
-function selectedItemChanged(args) {
+function selectedIndexChanged(args) {
     selectedTabViewIndex = args.newIndex;
-    var tab = page.getViewById("TabView");
+    var tab = args.object;
     selectedTabViewItem = tab.items[selectedTabViewIndex];
     updatePage(page, selectedTabViewItem, selectedTabViewIndex);
 }
-exports.selectedItemChanged = selectedItemChanged;
+exports.selectedIndexChanged = selectedIndexChanged;
 function reportTap(args) {
     navigationModule.navigate({
         moduleName: viewsModule.Views.viewReport,

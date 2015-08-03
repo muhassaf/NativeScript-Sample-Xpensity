@@ -40,9 +40,9 @@ export function navigatedFrom(args: observableModule.EventData) {
 
 var selectedTabViewItem: tabViewModule.TabViewItem;
 var selectedTabViewIndex: number;
-export function selectedItemChanged(args: tabViewModule.SelectedIndexChangedEventData) {
+export function selectedIndexChanged(args: tabViewModule.SelectedIndexChangedEventData) {
     selectedTabViewIndex = args.newIndex;
-    var tab = <tabViewModule.TabView>page.getViewById("TabView");
+    var tab = <tabViewModule.TabView>args.object;
     selectedTabViewItem = tab.items[selectedTabViewIndex];
     updatePage(page, selectedTabViewItem, selectedTabViewIndex);
 }
