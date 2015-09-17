@@ -9,7 +9,7 @@ Expensity is an enterprise line of business application showing you how to deal 
 ## Running the sample
 
 1. Make sure you have the [NativeScript Command-line Interface](https://www.npmjs.com/package/nativescript) installed as well as all the prerequisites for the NativeScript development, described in the package page.
-2. Install the dev dependencies of the sample (TypeScript) and add preferred platforms. Note that iOS development is only available with a Mac machine.
+2. Install the dev dependencies of the sample (TypeScript) and add preferred platforms. Note that iOS development is only available with a Mac machine.  
      `tns install`
 3. Compile the TypeScript code to JavaScript  
      `node_modules/typescript/bin/tsc -p ./app`
