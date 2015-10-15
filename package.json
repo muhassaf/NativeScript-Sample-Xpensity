@@ -1,18 +1,22 @@
 {
-	"nativescript": {
-		"id": "org.nativescript.Xpensity",
-		"tns-ios": {
-			"version": "1.3.0"
-		},
-		"tns-android": {
-			"version": "1.3.0"
-		}
-	},
-	"devDependencies": {
-		"typescript": "1.5.3"
-	},
-	"dependencies": {
-		"nativescript-telerik-ui": "0.0.10",
-		"tns-core-modules": "1.3.0"
-	}
+  "nativescript": {
+    "id": "org.nativescript.Xpensity",
+    "tns-ios": {
+      "version": "1.4.0"
+    },
+    "tns-android": {
+      "version": "1.4.0"
+    }
+  },
+  "devDependencies": {
+    "typescript": "1.5.3"
+  },
+  "dependencies": {
+    "nativescript-telerik-ui": "0.0.10",
+    "navigation": "file:..\\Plugins\\navigation",
+    "table": "file:..\\Plugins\\table",
+    "tns-core-modules": "1.4.1",
+    "view-model-base": "file:..\\Plugins\\view-model-base",
+    "views": "file:..\\Plugins\\views"
+  }
 }

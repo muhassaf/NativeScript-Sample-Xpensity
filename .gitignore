@@ -1,12 +1,16 @@
-*/bin
-*/obj
+bin
+obj
 *.user-settings.xml
 
 *.map
+*.js
+*.DS_Store
+*.d.ts
 node_modules/
 
 platforms/
 lib/
+Tmp/
+Design/
 
-app/**/*.d.ts
-!app/tns_modules/**/*.*
+!app/lib

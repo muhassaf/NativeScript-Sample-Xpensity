@@ -1,0 +1,30 @@
+@import url("~/tns_modules/table/table.css");
+
+Page {
+    background-color: #EEEEEE;
+}
+
+TextView {
+    height: 48;
+}
+
+.table-margin {
+    margin-top: 60;
+}
+
+.text-button {
+    background-color: transparent;
+    color: #007AFF;
+    height: 48;
+    horizontal-align: left;
+}
+
+.profile-picture {
+    height: 54;
+    width: 54;
+    margin: 24 0 20 0;
+    horizontal-align: center;
+    border-radius: 27;
+    border-width: 2;
+    border-color: #595450;
+}

@@ -1,0 +1,28 @@
+<Page xmlns="http://www.nativescript.org/tns.xsd"
+      xmlns:table="table"
+      xmlns:vs="shared/validation-summary"
+      navigatedTo="onNavigatedTo">
+  <Page.actionBar>
+    <ActionBar>
+      <NavigationButton icon="res://ic_arrow_back" link="#back" />
+    </ActionBar>
+  </Page.actionBar>
+  <GridLayout rows="auto, *">
+    <vs:validation-summary />
+    <ScrollView row="1">
+      <StackLayout>
+        <Image src="res://profile_picture" stretch="fill" cssClass="profile-picture" />
+        <table:Table>
+          <TextField text="{{ name }}" hint="name" />
+          <TextField text="{{ email }}" keyboardType="email" autocorrect="false" autocapitalizationType="none" hint="email" />
+          <TextField text="{{ password }}" secure="true" hint="password" />
+          <TextField text="{{ confirmPassword }}" secure="true" hint="confirm password" />
+        </table:Table>
+        
+        <Button text="Sign Up" tap="{{ signUp }}" cssClass="primary-button" />
+      </StackLayout>
+    </ScrollView>
+
+    <ActivityIndicator rowspan="2" busy="{{ isLoading }}" />
+  </GridLayout>
+</Page>

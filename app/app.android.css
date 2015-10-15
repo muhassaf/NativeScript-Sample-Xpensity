@@ -1,102 +1,12 @@
-ActivityIndicator {
-    horizontal-align: center;
-    vertical-align: center;
-}
+﻿@import url("~/app-common.css");
 
-Page {
-    background-color: #EEEEEE;
-}
-
-TextField, TextView {
-    margin: 0 16 0 16;
-}
-
-Switch, Label {
-    margin: 8 16 8 16;
-}
-
-.firstTextFieldContainer {
-    margin-top: 16;
-}
-
-.statusIcon {
-    margin: 8 8 0 0;
-}
-
-.icon {
-    margin: 0;
-}
-
-.header {
-    font-size: 16;
-    margin: 16 16 0 16;
-}
-
-.itemTitle {
-    font-size: 16;
-    margin: 5 5 0 5;
-}
-
-.itemSubTitle {
-    font-size: 10;
-    color: #828282;
-    margin: 0 5 0 5;
-}
-
-.itemSubTitleLast {
-    font-size: 10;
-    color: #828282;
-    margin: 0 5 5 5;
-}
-
-.fab {
-    margin: 0 16 28 0;
-}
-
-.fabContainer {
-    vertical-align: bottom;
-    horizontal-align: right;
-}
-
-.primaryButton {
-    background-color: #0079FF;
+.primary-button {
+    margin: 30 16 16 16;
+    height: 36;
     color: #FFFFFF;
-    margin: 32 16 16 16;
+    background-color: #007AFF;
 }
 
-.secondaryButton {
-    background-color: #FFFFFF;
-    color: #0079FF;
-    margin: 32 16 16 16;
-}
-
-.infoLabel {
-    font-size: 10;
-}
-
-.imageButtonContainer {
-    margin: 8 16 8 16;
-}
-
-.pickerContainer {
-    margin: 8 20 8 20;
-}
-
-.pickerLabel {
-    color: #8F8F8F;
-    font-size: 10;
-    margin: 0 0 0 8;
-}
-
-.pickerValue {
-    margin: 0;
-}
-
-.pickerIcon {
-    vertical-align: center;
-}
-
-.pickerBorder {
-    background-color: #D1D1D1;
-    height: 1;
+.text-button {
+    margin-left: 6;
 }

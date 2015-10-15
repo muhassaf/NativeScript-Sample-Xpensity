@@ -1,0 +1,4 @@
+<GridLayout columns="*, auto" visibility="{{ isValidationSummaryVisible | visibilityConverter }}" cssClass="validation-summary">
+  <Label textWrap="true" text="{{ errorMessage }}" />
+  <Label col="1" text="x" tap="{{ hideValidationSummary }}" />
+</GridLayout>

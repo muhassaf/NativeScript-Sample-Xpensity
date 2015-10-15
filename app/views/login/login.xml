@@ -1,0 +1,27 @@
+﻿<Page xmlns="http://www.nativescript.org/tns.xsd"
+      xmlns:table="table"
+      xmlns:vs="shared/validation-summary"
+      navigatedTo="onNavigatedTo">
+  <Page.actionBar>
+    <ActionBar>
+      <ActionBar.actionItems>
+        <ActionItem text="Sign Up" ios.position="right" link="signUp" />
+      </ActionBar.actionItems>
+    </ActionBar>
+  </Page.actionBar>
+  <GridLayout rows="auto, *">
+    <vs:validation-summary />
+    <ScrollView row="1">
+      <StackLayout>
+        <table:Table cssClass="table-margin">
+          <TextField text="{{ username }}" autocorrect="false" autocapitalizationType="none" hint="email" keyboardType="email" />
+          <TextField text="{{ password }}" secure="true" hint="password" />
+        </table:Table>
+        <Button text="Forgotten password?" link="passwordRecovery" cssClass="text-button" />
+        <Button text="Login" tap="{{ login }}" cssClass="primary-button" />
+      </StackLayout>
+    </ScrollView>
+
+    <ActivityIndicator rowspan="2" busy="{{ isLoading }}" />
+  </GridLayout>
+</Page>

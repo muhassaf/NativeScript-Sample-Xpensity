@@ -1,0 +1,1007 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <ProjectGuid>{28997AC2-B859-4BD2-8A63-68CE599BB158}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <OutputPath>bin</OutputPath>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+    <TypeScriptToolsVersion>1.6</TypeScriptToolsVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">12.0</VisualStudioVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RootNamespace>Xpensity</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Android'">
+    <OutputPath>bin\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'iOS'">
+    <OutputPath>bin\</OutputPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\WebApplications\Microsoft.WebApplication.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\WebApplications\Microsoft.WebApplication.targets')" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>60165</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:60165/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <TypeScriptRemoveComments>false</TypeScriptRemoveComments>
+    <TypeScriptSourceMap>true</TypeScriptSourceMap>
+    <TypeScriptModuleKind>commonjs</TypeScriptModuleKind>
+    <TypeScriptTarget>ES5</TypeScriptTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <TypeScriptRemoveComments>true</TypeScriptRemoveComments>
+    <TypeScriptSourceMap>false</TypeScriptSourceMap>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Android'">
+    <TypeScriptModuleKind>commonjs</TypeScriptModuleKind>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'iOS'">
+    <TypeScriptModuleKind>commonjs</TypeScriptModuleKind>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="app\app-common.css" />
+    <Content Include="app\app.android.css" />
+    <Content Include="app\app.ios.css" />
+    <Content Include="app\App_Resources\Android\drawable-hdpi\fab.png" />
+    <Content Include="app\App_Resources\Android\drawable-hdpi\icon.png" />
+    <Content Include="app\App_Resources\Android\drawable-hdpi\ic_approve.png" />
+    <Content Include="app\App_Resources\Android\drawable-hdpi\ic_approved.png" />
+    <Content Include="app\App_Resources\Android\drawable-hdpi\ic_arrow_back.png" />
+    <Content Include="app\App_Resources\Android\drawable-hdpi\ic_arrow_drop_down.png" />
+    <Content Include="app\App_Resources\Android\drawable-hdpi\ic_clear_all.png" />
+    <Content Include="app\App_Resources\Android\drawable-hdpi\ic_edit.png" />
+    <Content Include="app\App_Resources\Android\drawable-hdpi\ic_info.png" />
+    <Content Include="app\App_Resources\Android\drawable-hdpi\ic_notifications.png" />
+    <Content Include="app\App_Resources\Android\drawable-hdpi\ic_notifications_1.png" />
+    <Content Include="app\App_Resources\Android\drawable-hdpi\ic_overview.png" />
+    <Content Include="app\App_Resources\Android\drawable-hdpi\ic_overview_1.png" />
+    <Content Include="app\App_Resources\Android\drawable-hdpi\ic_photo.png" />
+    <Content Include="app\App_Resources\Android\drawable-hdpi\ic_reject.png" />
+    <Content Include="app\App_Resources\Android\drawable-hdpi\ic_rejected.png" />
+    <Content Include="app\App_Resources\Android\drawable-hdpi\ic_reports.png" />
+    <Content Include="app\App_Resources\Android\drawable-hdpi\ic_reports_1.png" />
+    <Content Include="app\App_Resources\Android\drawable-hdpi\ic_settings.png" />
+    <Content Include="app\App_Resources\Android\drawable-hdpi\ic_settings_1.png" />
+    <Content Include="app\App_Resources\Android\drawable-hdpi\ic_submit.png" />
+    <Content Include="app\App_Resources\Android\drawable-hdpi\launcher.png" />
+    <Content Include="app\App_Resources\Android\drawable-hdpi\profile_picture.png" />
+    <Content Include="app\App_Resources\Android\drawable-ldpi\icon.png" />
+    <Content Include="app\App_Resources\Android\drawable-mdpi\fab.png" />
+    <Content Include="app\App_Resources\Android\drawable-mdpi\icon.png" />
+    <Content Include="app\App_Resources\Android\drawable-mdpi\ic_approve.png" />
+    <Content Include="app\App_Resources\Android\drawable-mdpi\ic_approved.png" />
+    <Content Include="app\App_Resources\Android\drawable-mdpi\ic_arrow_back.png" />
+    <Content Include="app\App_Resources\Android\drawable-mdpi\ic_arrow_drop_down.png" />
+    <Content Include="app\App_Resources\Android\drawable-mdpi\ic_clear_all.png" />
+    <Content Include="app\App_Resources\Android\drawable-mdpi\ic_edit.png" />
+    <Content Include="app\App_Resources\Android\drawable-mdpi\ic_info.png" />
+    <Content Include="app\App_Resources\Android\drawable-mdpi\ic_notifications.png" />
+    <Content Include="app\App_Resources\Android\drawable-mdpi\ic_notifications_1.png" />
+    <Content Include="app\App_Resources\Android\drawable-mdpi\ic_overview.png" />
+    <Content Include="app\App_Resources\Android\drawable-mdpi\ic_overview_1.png" />
+    <Content Include="app\App_Resources\Android\drawable-mdpi\ic_photo.png" />
+    <Content Include="app\App_Resources\Android\drawable-mdpi\ic_reject.png" />
+    <Content Include="app\App_Resources\Android\drawable-mdpi\ic_rejected.png" />
+    <Content Include="app\App_Resources\Android\drawable-mdpi\ic_reports.png" />
+    <Content Include="app\App_Resources\Android\drawable-mdpi\ic_reports_1.png" />
+    <Content Include="app\App_Resources\Android\drawable-mdpi\ic_settings.png" />
+    <Content Include="app\App_Resources\Android\drawable-mdpi\ic_settings_1.png" />
+    <Content Include="app\App_Resources\Android\drawable-mdpi\ic_submit.png" />
+    <Content Include="app\App_Resources\Android\drawable-mdpi\launcher.png" />
+    <Content Include="app\App_Resources\Android\drawable-mdpi\profile_picture.png" />
+    <Content Include="app\App_Resources\Android\drawable-nodpi\splashscreen.png" />
+    <Content Include="app\App_Resources\Android\drawable-xhdpi\fab.png" />
+    <Content Include="app\App_Resources\Android\drawable-xhdpi\ic_approve.png" />
+    <Content Include="app\App_Resources\Android\drawable-xhdpi\ic_approved.png" />
+    <Content Include="app\App_Resources\Android\drawable-xhdpi\ic_arrow_back.png" />
+    <Content Include="app\App_Resources\Android\drawable-xhdpi\ic_arrow_drop_down.png" />
+    <Content Include="app\App_Resources\Android\drawable-xhdpi\ic_clear_all.png" />
+    <Content Include="app\App_Resources\Android\drawable-xhdpi\ic_edit.png" />
+    <Content Include="app\App_Resources\Android\drawable-xhdpi\ic_info.png" />
+    <Content Include="app\App_Resources\Android\drawable-xhdpi\ic_notifications.png" />
+    <Content Include="app\App_Resources\Android\drawable-xhdpi\ic_notifications_1.png" />
+    <Content Include="app\App_Resources\Android\drawable-xhdpi\ic_overview.png" />
+    <Content Include="app\App_Resources\Android\drawable-xhdpi\ic_overview_1.png" />
+    <Content Include="app\App_Resources\Android\drawable-xhdpi\ic_photo.png" />
+    <Content Include="app\App_Resources\Android\drawable-xhdpi\ic_reject.png" />
+    <Content Include="app\App_Resources\Android\drawable-xhdpi\ic_rejected.png" />
+    <Content Include="app\App_Resources\Android\drawable-xhdpi\ic_reports.png" />
+    <Content Include="app\App_Resources\Android\drawable-xhdpi\ic_reports_1.png" />
+    <Content Include="app\App_Resources\Android\drawable-xhdpi\ic_settings.png" />
+    <Content Include="app\App_Resources\Android\drawable-xhdpi\ic_settings_1.png" />
+    <Content Include="app\App_Resources\Android\drawable-xhdpi\ic_submit.png" />
+    <Content Include="app\App_Resources\Android\drawable-xhdpi\launcher.png" />
+    <Content Include="app\App_Resources\Android\drawable-xhdpi\profile_picture.png" />
+    <Content Include="app\App_Resources\Android\drawable-xxhdpi\fab.png" />
+    <Content Include="app\App_Resources\Android\drawable-xxhdpi\ic_approve.png" />
+    <Content Include="app\App_Resources\Android\drawable-xxhdpi\ic_approved.png" />
+    <Content Include="app\App_Resources\Android\drawable-xxhdpi\ic_arrow_back.png" />
+    <Content Include="app\App_Resources\Android\drawable-xxhdpi\ic_arrow_drop_down.png" />
+    <Content Include="app\App_Resources\Android\drawable-xxhdpi\ic_clear_all.png" />
+    <Content Include="app\App_Resources\Android\drawable-xxhdpi\ic_edit.png" />
+    <Content Include="app\App_Resources\Android\drawable-xxhdpi\ic_info.png" />
+    <Content Include="app\App_Resources\Android\drawable-xxhdpi\ic_notifications.png" />
+    <Content Include="app\App_Resources\Android\drawable-xxhdpi\ic_notifications_1.png" />
+    <Content Include="app\App_Resources\Android\drawable-xxhdpi\ic_overview.png" />
+    <Content Include="app\App_Resources\Android\drawable-xxhdpi\ic_overview_1.png" />
+    <Content Include="app\App_Resources\Android\drawable-xxhdpi\ic_photo.png" />
+    <Content Include="app\App_Resources\Android\drawable-xxhdpi\ic_reject.png" />
+    <Content Include="app\App_Resources\Android\drawable-xxhdpi\ic_rejected.png" />
+    <Content Include="app\App_Resources\Android\drawable-xxhdpi\ic_reports.png" />
+    <Content Include="app\App_Resources\Android\drawable-xxhdpi\ic_reports_1.png" />
+    <Content Include="app\App_Resources\Android\drawable-xxhdpi\ic_settings.png" />
+    <Content Include="app\App_Resources\Android\drawable-xxhdpi\ic_settings_1.png" />
+    <Content Include="app\App_Resources\Android\drawable-xxhdpi\ic_submit.png" />
+    <Content Include="app\App_Resources\Android\drawable-xxhdpi\launcher.png" />
+    <Content Include="app\App_Resources\Android\drawable-xxhdpi\profile_picture.png" />
+    <Content Include="app\App_Resources\Android\drawable-xxxhdpi\fab.png" />
+    <Content Include="app\App_Resources\Android\drawable-xxxhdpi\ic_approve.png" />
+    <Content Include="app\App_Resources\Android\drawable-xxxhdpi\ic_approved.png" />
+    <Content Include="app\App_Resources\Android\drawable-xxxhdpi\ic_arrow_back.png" />
+    <Content Include="app\App_Resources\Android\drawable-xxxhdpi\ic_arrow_drop_down.png" />
+    <Content Include="app\App_Resources\Android\drawable-xxxhdpi\ic_clear_all.png" />
+    <Content Include="app\App_Resources\Android\drawable-xxxhdpi\ic_edit.png" />
+    <Content Include="app\App_Resources\Android\drawable-xxxhdpi\ic_info.png" />
+    <Content Include="app\App_Resources\Android\drawable-xxxhdpi\ic_notifications.png" />
+    <Content Include="app\App_Resources\Android\drawable-xxxhdpi\ic_notifications_1.png" />
+    <Content Include="app\App_Resources\Android\drawable-xxxhdpi\ic_overview.png" />
+    <Content Include="app\App_Resources\Android\drawable-xxxhdpi\ic_overview_1.png" />
+    <Content Include="app\App_Resources\Android\drawable-xxxhdpi\ic_photo.png" />
+    <Content Include="app\App_Resources\Android\drawable-xxxhdpi\ic_reject.png" />
+    <Content Include="app\App_Resources\Android\drawable-xxxhdpi\ic_rejected.png" />
+    <Content Include="app\App_Resources\Android\drawable-xxxhdpi\ic_reports.png" />
+    <Content Include="app\App_Resources\Android\drawable-xxxhdpi\ic_reports_1.png" />
+    <Content Include="app\App_Resources\Android\drawable-xxxhdpi\ic_settings.png" />
+    <Content Include="app\App_Resources\Android\drawable-xxxhdpi\ic_settings_1.png" />
+    <Content Include="app\App_Resources\Android\drawable-xxxhdpi\ic_submit.png" />
+    <Content Include="app\App_Resources\Android\drawable-xxxhdpi\launcher.png" />
+    <Content Include="app\App_Resources\Android\drawable-xxxhdpi\profile_picture.png" />
+    <Content Include="app\App_Resources\Android\values-v21\styles.xml" />
+    <Content Include="app\App_Resources\Android\values\colors.xml" />
+    <Content Include="app\App_Resources\Android\values\strings.xml" />
+    <Content Include="app\App_Resources\Android\values\styles.xml" />
+    <Content Include="app\App_Resources\iOS\add-white%402x.png" />
+    <Content Include="app\App_Resources\iOS\add-white%403x.png" />
+    <Content Include="app\App_Resources\iOS\add-white.png" />
+    <Content Include="app\App_Resources\iOS\Default%402x.png" />
+    <Content Include="app\App_Resources\iOS\Default-568h%402x.png" />
+    <Content Include="app\App_Resources\iOS\Default-Landscape%402x.png" />
+    <Content Include="app\App_Resources\iOS\Default-Landscape.png" />
+    <Content Include="app\App_Resources\iOS\Default-Portrait%402x.png" />
+    <Content Include="app\App_Resources\iOS\Default-Portrait.png" />
+    <Content Include="app\App_Resources\iOS\Default.png" />
+    <Content Include="app\App_Resources\iOS\icon%402x.png" />
+    <Content Include="app\App_Resources\iOS\icon-40%402x.png" />
+    <Content Include="app\App_Resources\iOS\icon-40.png" />
+    <Content Include="app\App_Resources\iOS\icon-60%402x.png" />
+    <Content Include="app\App_Resources\iOS\Icon-60%403x.png" />
+    <Content Include="app\App_Resources\iOS\icon-60.png" />
+    <Content Include="app\App_Resources\iOS\icon-72%402x.png" />
+    <Content Include="app\App_Resources\iOS\icon-72.png" />
+    <Content Include="app\App_Resources\iOS\icon-76%402x.png" />
+    <Content Include="app\App_Resources\iOS\icon-76.png" />
+    <Content Include="app\App_Resources\iOS\Icon-Small%402x.png" />
+    <Content Include="app\App_Resources\iOS\Icon-Small%403x.png" />
+    <Content Include="app\App_Resources\iOS\Icon-Small-40%402x.png" />
+    <Content Include="app\App_Resources\iOS\Icon-Small-40%403x.png" />
+    <Content Include="app\App_Resources\iOS\Icon-Small-40.png" />
+    <Content Include="app\App_Resources\iOS\Icon-Small-50%402x.png" />
+    <Content Include="app\App_Resources\iOS\Icon-Small-50.png" />
+    <Content Include="app\App_Resources\iOS\Icon-Small.png" />
+    <Content Include="app\App_Resources\iOS\icon.png" />
+    <Content Include="app\App_Resources\iOS\ic_add%402x.png" />
+    <Content Include="app\App_Resources\iOS\ic_add%403x.png" />
+    <Content Include="app\App_Resources\iOS\ic_add.png" />
+    <Content Include="app\App_Resources\iOS\ic_approve%402x.png" />
+    <Content Include="app\App_Resources\iOS\ic_approve%403x.png" />
+    <Content Include="app\App_Resources\iOS\ic_approve.png" />
+    <Content Include="app\App_Resources\iOS\ic_approved%402x.png" />
+    <Content Include="app\App_Resources\iOS\ic_approved%403x.png" />
+    <Content Include="app\App_Resources\iOS\ic_approved.png" />
+    <Content Include="app\App_Resources\iOS\ic_arrow-right%402x.png" />
+    <Content Include="app\App_Resources\iOS\ic_arrow-right%403x.png" />
+    <Content Include="app\App_Resources\iOS\ic_arrow-right.png" />
+    <Content Include="app\App_Resources\iOS\ic_back%402x.png" />
+    <Content Include="app\App_Resources\iOS\ic_back%403x.png" />
+    <Content Include="app\App_Resources\iOS\ic_back.png" />
+    <Content Include="app\App_Resources\iOS\ic_edit%402x.png" />
+    <Content Include="app\App_Resources\iOS\ic_edit%403x.png" />
+    <Content Include="app\App_Resources\iOS\ic_edit.png" />
+    <Content Include="app\App_Resources\iOS\ic_notifications%402x.png" />
+    <Content Include="app\App_Resources\iOS\ic_notifications%403x.png" />
+    <Content Include="app\App_Resources\iOS\ic_notifications-1%402x.png" />
+    <Content Include="app\App_Resources\iOS\ic_notifications-1%403x.png" />
+    <Content Include="app\App_Resources\iOS\ic_notifications-1.png" />
+    <Content Include="app\App_Resources\iOS\ic_notifications.png" />
+    <Content Include="app\App_Resources\iOS\ic_overview%402x.png" />
+    <Content Include="app\App_Resources\iOS\ic_overview%403x.png" />
+    <Content Include="app\App_Resources\iOS\ic_overview-1%402x.png" />
+    <Content Include="app\App_Resources\iOS\ic_overview-1%403x.png" />
+    <Content Include="app\App_Resources\iOS\ic_overview-1.png" />
+    <Content Include="app\App_Resources\iOS\ic_overview.png" />
+    <Content Include="app\App_Resources\iOS\ic_photo%402x.png" />
+    <Content Include="app\App_Resources\iOS\ic_photo%403x.png" />
+    <Content Include="app\App_Resources\iOS\ic_photo.png" />
+    <Content Include="app\App_Resources\iOS\ic_reject%402x.png" />
+    <Content Include="app\App_Resources\iOS\ic_reject%403x.png" />
+    <Content Include="app\App_Resources\iOS\ic_reject.png" />
+    <Content Include="app\App_Resources\iOS\ic_rejected%402x.png" />
+    <Content Include="app\App_Resources\iOS\ic_rejected%403x.png" />
+    <Content Include="app\App_Resources\iOS\ic_rejected.png" />
+    <Content Include="app\App_Resources\iOS\ic_reports%402x.png" />
+    <Content Include="app\App_Resources\iOS\ic_reports%403x.png" />
+    <Content Include="app\App_Resources\iOS\ic_reports-1%402x.png" />
+    <Content Include="app\App_Resources\iOS\ic_reports-1%403x.png" />
+    <Content Include="app\App_Resources\iOS\ic_reports-1.png" />
+    <Content Include="app\App_Resources\iOS\ic_reports.png" />
+    <Content Include="app\App_Resources\iOS\ic_settings%402x.png" />
+    <Content Include="app\App_Resources\iOS\ic_settings%403x.png" />
+    <Content Include="app\App_Resources\iOS\ic_settings-1%402x.png" />
+    <Content Include="app\App_Resources\iOS\ic_settings-1%403x.png" />
+    <Content Include="app\App_Resources\iOS\ic_settings-1.png" />
+    <Content Include="app\App_Resources\iOS\ic_settings.png" />
+    <Content Include="app\App_Resources\iOS\ic_submit%402x.png" />
+    <Content Include="app\App_Resources\iOS\ic_submit%403x.png" />
+    <Content Include="app\App_Resources\iOS\ic_submit.png" />
+    <Content Include="app\App_Resources\iOS\iTunesArtwork%402x.png" />
+    <Content Include="app\bin\Xpensity.dll" />
+    <Content Include="app\bin\Xpensity.pdb" />
+    <Content Include="app\shared\validation-summary\validation-summary.css" />
+    <Content Include="app\shared\validation-summary\validation-summary.xml" />
+    <Content Include="app\views\login\login.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="app\views\password-recovery\password-recovery.xml" />
+    <Content Include="app\views\sign-up\sign-up.xml" />
+    <Content Include="app\lib\everlive.js" />
+    <Content Include="app\obj\Android\Xpensity.csproj.FileListAbsolute.txt" />
+    <Content Include="app\obj\Android\Xpensity.dll" />
+    <Content Include="app\obj\Android\Xpensity.pdb" />
+    <Content Include="app\obj\Debug\Xpensity.csproj.FileListAbsolute.txt" />
+    <Content Include="app\obj\Debug\Xpensity.dll" />
+    <Content Include="app\obj\Debug\Xpensity.pdb" />
+    <Content Include="app\obj\iOS\Xpensity.csproj.FileListAbsolute.txt" />
+    <Content Include="app\obj\iOS\Xpensity.dll" />
+    <Content Include="app\obj\iOS\Xpensity.pdb" />
+    <Content Include="node_modules\nativescript-telerik-ui\chart\chart-common.js" />
+    <Content Include="node_modules\nativescript-telerik-ui\chart\chart-initializers-common.js" />
+    <Content Include="node_modules\nativescript-telerik-ui\chart\chart-initializers.android.js" />
+    <Content Include="node_modules\nativescript-telerik-ui\chart\chart-initializers.ios.js" />
+    <Content Include="node_modules\nativescript-telerik-ui\chart\chart.android.js" />
+    <Content Include="node_modules\nativescript-telerik-ui\chart\chart.ios.js" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\ImageEffects.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TelerikUI.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKAlert.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKAlertAction.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKAlertButtonsView.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKAlertContentView.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKAlertStyle.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKAlertView.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKBalloonShape.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKCalendar.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKCalendarCell.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKCalendarCellStyle.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKCalendarDayCell.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKCalendarDayCellStyle.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKCalendarDayNameCell.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKCalendarDefaultTheme.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKCalendarEvent.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKCalendarEventKitDataSource.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKCalendarFlowPresenter.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKCalendarInlineView.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKCalendarInlineViewTableViewCell.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKCalendarInlineViewTableViewCellStyle.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKCalendarIPadTheme.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKCalendarMonthCell.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKCalendarMonthNameCell.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKCalendarMonthNamesPresenter.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKCalendarMonthPresenter.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKCalendarMonthPresenterStyle.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKCalendarMonthTitleCell.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKCalendarMonthView.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKCalendarMonthViewController.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKCalendarNavigationController.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKCalendarPresenterBase.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKCalendarTextEffect.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKCalendarTitleCell.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKCalendarWeekNumberCell.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKCalendarWeekPresenter.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKCalendarYearNumberCell.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKCalendarYearNumbersPresenter.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKCalendarYearPresenter.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKCalendarYearPresenterStyle.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKCalendarYearTitleView.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKCalendarYearViewController.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChart.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartAbsoluteVolumeOscillator.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartAccumulationDistributionLine.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartAdaptiveMovingAverageIndicator.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartAnnotation.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartAnnotationStyle.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartAreaSeries.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartAverageTrueRangeIndicator.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartAxis.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartAxisLabelStyle.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartAxisMajorTickStyle.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartAxisStyle.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartAxisTickStyle.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartAxisTitleStyle.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartBalloonAnnotation.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartBalloonAnnotationStyle.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartBandAnnotation.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartBandAnnotationStyle.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartBandIndicator.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartBandVisualPoint.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartBarSeries.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartBollingerBandIndicator.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartBubbleDataPoint.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartBubbleSeries.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartBubbleVisualPoint.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartCandlestickBar.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartCandlestickSeries.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartCategoryAxis.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartChaikinOscillator.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartColumnSeries.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartCommodityChannelIndex.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartCrossLineAnnotation.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartCrossLineAnnotationStyle.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartData.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartDataPoint.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartDateTimeAxis.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartDetrendedPriceOscillator.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartDonutSeries.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartEaseOfMovementIndicator.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartExponentialMovingAverageIndicator.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartFastStochasticIndicator.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartFinancialDataPoint.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartFinancialIndicator.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartForceIndexIndicator.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartFullStochasticIndicator.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartGridLineAnnotation.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartGridLineAnnotationStyle.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartGridStyle.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartLabelStyle.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartLayerAnnotation.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartLegendContainer.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartLegendItem.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartLegendItemStyle.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartLegendStyle.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartLegendView.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartLineSeries.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartMACDIndicator.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartMarketFacilitationIndex.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartMedianPriceIndicator.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartModifiedMovingAverageIndicator.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartMoneyFlowIndexIndicator.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartMovingAverageEnvelopesIndicator.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartNegativeVolumeIndexIndicator.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartNumericAxis.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartOhlcBar.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartOhlcSeries.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartOnBalanceVolumeIndicator.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartPalette.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartPaletteItem.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartPercentagePriceOscillator.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartPercentageVolumeOscillator.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartPieSeries.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartPieVisualPoint.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartPointAnnotation.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartPointLabel.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartPointLabelRender.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartPointLabelStyle.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartPositiveVolumeIndexIndicator.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartPriceVolumeTrendIndicator.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartRapidAdaptiveVarianceIndicator.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartRateOfChangeIndicator.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartRelativeMomentumIndex.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartRelativeStrengthIndex.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartRender.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartScatterSeries.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartSelectionInfo.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartSeries.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartSeriesRender.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartSeriesRenderState.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartSeriesStyle.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartSignalLineIndicator.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartSimpleMovingAverageIndicator.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartSlowStochasticIndicator.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartSplineAreaSeries.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartSplineSeries.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartStackInfo.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartStandardDeviationIndicator.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartStyle.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartTitleStyle.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartTitleView.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartTrackball.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartTrackballLineAnnotation.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartTrackballTooltipAnnotation.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartTriangularMovingAverageIndicator.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartTRIXIndicator.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartTrueRangeIndicator.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartTypicalPriceIndicator.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartUltimateOscillator.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartViewAnnotation.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartViewController.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartVisualPoint.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartWeightedCloseIndicator.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartWeightedMovingAverageIndicator.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartWilliamsPercentIndicator.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKCheckShape.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKCheckView.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKCollectionViewCell.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKDataForm.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKDataFormDatePickerEditor.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKDataFormEditor.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKDataFormEditorStyle.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKDataFormEntity.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKDataFormEntityDataSource.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKDataFormEntityProperty.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKDataFormHeaderView.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKDataFormOptionsEditor.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKDataFormOptionsViewController.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKDataFormPickerViewEditor.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKDataFormSegmentedEditor.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKDataFormSliderEditor.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKDataFormStepperEditor.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKDataFormSwitchEditor.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKDataFormTextFieldEditor.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKDataFormValidator.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKDataFormViewController.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKDataSource.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKDataSourceCalendarSettings.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKDataSourceChartSettings.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKDataSourceCollectionViewSettings.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKDataSourceFilterDescriptor.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKDataSourceGroup.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKDataSourceGroupDescriptor.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKDataSourceListViewSettings.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKDataSourceSettings.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKDataSourceSortDescriptor.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKDataSourceTableViewSettings.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKDateRange.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKDefinitions.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKDrawing.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKFill.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKGradientFill.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKImageFill.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKLayer.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKLayout.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKLayoutItem.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKLinearGradientFill.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKListView.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKListViewCell.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKListViewCellBackgroundView.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKListViewFooterCell.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKListViewGridLayout.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKListViewHeaderCell.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKListViewLinearLayout.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKListViewLoadOnDemandCell.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKListViewLoadOnDemandView.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKListViewPullToRefreshView.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKListViewReorderHandle.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKListViewReusableCell.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKListViewStaggeredLayout.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKMutableArray.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKPredefinedShape.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKRadialGradientFill.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKRange.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKShape.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKSideDrawer.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKSideDrawerController.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKSideDrawerDefaultTheme.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKSideDrawerHeader.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKSideDrawerItem.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKSideDrawerItemStyle.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKSideDrawerSection.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKSideDrawerStyle.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKSideDrawerTableView.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKSideDrawerTableViewCell.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKSideDrawerTransition.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKSideDrawerView.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKSolidFill.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKStackLayout.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKStackLayoutView.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKStroke.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKStyleID.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKStyleNode.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKTheme.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKView.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKViewTransition.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\sidedrawer\sidedrawer-common.js" />
+    <Content Include="node_modules\nativescript-telerik-ui\sidedrawer\sidedrawer.android.js" />
+    <Content Include="node_modules\nativescript-telerik-ui\sidedrawer\sidedrawer.ios.js" />
+    <Content Include="node_modules\table\table-common.css" />
+    <Content Include="node_modules\table\table.ios.css" />
+    <Content Include="node_modules\tns-core-modules\application-settings\application-settings-common.js" />
+    <Content Include="node_modules\tns-core-modules\application-settings\application-settings.android.js" />
+    <Content Include="node_modules\tns-core-modules\application-settings\application-settings.ios.js" />
+    <Content Include="node_modules\tns-core-modules\application\application-common.js" />
+    <Content Include="node_modules\tns-core-modules\application\application.android.js" />
+    <Content Include="node_modules\tns-core-modules\application\application.ios.js" />
+    <Content Include="node_modules\tns-core-modules\camera\camera-common.js" />
+    <Content Include="node_modules\tns-core-modules\camera\camera.android.js" />
+    <Content Include="node_modules\tns-core-modules\camera\camera.ios.js" />
+    <Content Include="node_modules\tns-core-modules\color\color-common.js" />
+    <Content Include="node_modules\tns-core-modules\color\color.android.js" />
+    <Content Include="node_modules\tns-core-modules\color\color.ios.js" />
+    <Content Include="node_modules\tns-core-modules\color\known-colors.js" />
+    <Content Include="node_modules\tns-core-modules\connectivity\connectivity-common.js" />
+    <Content Include="node_modules\tns-core-modules\connectivity\connectivity.android.js" />
+    <Content Include="node_modules\tns-core-modules\connectivity\connectivity.ios.js" />
+    <Content Include="node_modules\tns-core-modules\console\console.js" />
+    <Content Include="node_modules\tns-core-modules\css-value\reworkcss-value.js" />
+    <Content Include="node_modules\tns-core-modules\css\reworkcss.js" />
+    <Content Include="node_modules\tns-core-modules\data\observable-array\observable-array.js" />
+    <Content Include="node_modules\tns-core-modules\data\observable\observable.js" />
+    <Content Include="node_modules\tns-core-modules\data\virtual-array\virtual-array.js" />
+    <Content Include="node_modules\tns-core-modules\fetch\fetch.js" />
+    <Content Include="node_modules\tns-core-modules\file-system\file-name-resolver.js" />
+    <Content Include="node_modules\tns-core-modules\file-system\file-system-access.android.js" />
+    <Content Include="node_modules\tns-core-modules\file-system\file-system-access.ios.js" />
+    <Content Include="node_modules\tns-core-modules\file-system\file-system.js" />
+    <Content Include="node_modules\tns-core-modules\fps-meter\fps-meter.js" />
+    <Content Include="node_modules\tns-core-modules\fps-meter\fps-native.android.js" />
+    <Content Include="node_modules\tns-core-modules\fps-meter\fps-native.ios.js" />
+    <Content Include="node_modules\tns-core-modules\globals\globals.js" />
+    <Content Include="node_modules\tns-core-modules\http\http-request.android.js" />
+    <Content Include="node_modules\tns-core-modules\http\http-request.ios.js" />
+    <Content Include="node_modules\tns-core-modules\http\http.js" />
+    <Content Include="node_modules\tns-core-modules\image-source\image-source-common.js" />
+    <Content Include="node_modules\tns-core-modules\image-source\image-source.android.js" />
+    <Content Include="node_modules\tns-core-modules\image-source\image-source.ios.js" />
+    <Content Include="node_modules\tns-core-modules\js-libs\easysax\easysax.js" />
+    <Content Include="node_modules\tns-core-modules\js-libs\esprima\esprima.js" />
+    <Content Include="node_modules\tns-core-modules\js-libs\polymer-expressions\path-parser.js" />
+    <Content Include="node_modules\tns-core-modules\js-libs\polymer-expressions\polymer-expressions.js" />
+    <Content Include="node_modules\tns-core-modules\location\location-common.js" />
+    <Content Include="node_modules\tns-core-modules\location\location.android.js" />
+    <Content Include="node_modules\tns-core-modules\location\location.ios.js" />
+    <Content Include="node_modules\tns-core-modules\platform\platform.android.js" />
+    <Content Include="node_modules\tns-core-modules\platform\platform.ios.js" />
+    <Content Include="node_modules\tns-core-modules\text\formatted-string-common.js" />
+    <Content Include="node_modules\tns-core-modules\text\formatted-string.android.js" />
+    <Content Include="node_modules\tns-core-modules\text\formatted-string.ios.js" />
+    <Content Include="node_modules\tns-core-modules\text\span-common.js" />
+    <Content Include="node_modules\tns-core-modules\text\span.android.js" />
+    <Content Include="node_modules\tns-core-modules\text\span.ios.js" />
+    <Content Include="node_modules\tns-core-modules\text\text.android.js" />
+    <Content Include="node_modules\tns-core-modules\text\text.ios.js" />
+    <Content Include="node_modules\tns-core-modules\timer\timer.android.js" />
+    <Content Include="node_modules\tns-core-modules\timer\timer.ios.js" />
+    <Content Include="node_modules\tns-core-modules\trace\trace.js" />
+    <Content Include="node_modules\tns-core-modules\ui\action-bar\action-bar-common.js" />
+    <Content Include="node_modules\tns-core-modules\ui\action-bar\action-bar.android.js" />
+    <Content Include="node_modules\tns-core-modules\ui\action-bar\action-bar.ios.js" />
+    <Content Include="node_modules\tns-core-modules\ui\activity-indicator\activity-indicator-common.js" />
+    <Content Include="node_modules\tns-core-modules\ui\activity-indicator\activity-indicator.android.js" />
+    <Content Include="node_modules\tns-core-modules\ui\activity-indicator\activity-indicator.ios.js" />
+    <Content Include="node_modules\tns-core-modules\ui\animation\animation-common.js" />
+    <Content Include="node_modules\tns-core-modules\ui\animation\animation.android.js" />
+    <Content Include="node_modules\tns-core-modules\ui\animation\animation.ios.js" />
+    <Content Include="node_modules\tns-core-modules\ui\border\border.js" />
+    <Content Include="node_modules\tns-core-modules\ui\builder\binding-builder.js" />
+    <Content Include="node_modules\tns-core-modules\ui\builder\builder.js" />
+    <Content Include="node_modules\tns-core-modules\ui\builder\component-builder.js" />
+    <Content Include="node_modules\tns-core-modules\ui\builder\special-properties.js" />
+    <Content Include="node_modules\tns-core-modules\ui\builder\template-builder.js" />
+    <Content Include="node_modules\tns-core-modules\ui\button\button-common.js" />
+    <Content Include="node_modules\tns-core-modules\ui\button\button.android.js" />
+    <Content Include="node_modules\tns-core-modules\ui\button\button.ios.js" />
+    <Content Include="node_modules\tns-core-modules\ui\content-view\content-view.js" />
+    <Content Include="node_modules\tns-core-modules\ui\core\bindable.js" />
+    <Content Include="node_modules\tns-core-modules\ui\core\control-state-change.ios.js" />
+    <Content Include="node_modules\tns-core-modules\ui\core\dependency-observable.js" />
+    <Content Include="node_modules\tns-core-modules\ui\core\proxy.js" />
+    <Content Include="node_modules\tns-core-modules\ui\core\view-common.js" />
+    <Content Include="node_modules\tns-core-modules\ui\core\view.android.js" />
+    <Content Include="node_modules\tns-core-modules\ui\core\view.ios.js" />
+    <Content Include="node_modules\tns-core-modules\ui\core\weak-event-listener.js" />
+    <Content Include="node_modules\tns-core-modules\ui\date-picker\date-picker-common.js" />
+    <Content Include="node_modules\tns-core-modules\ui\date-picker\date-picker.android.js" />
+    <Content Include="node_modules\tns-core-modules\ui\date-picker\date-picker.ios.js" />
+    <Content Include="node_modules\tns-core-modules\ui\dialogs\dialogs-common.js" />
+    <Content Include="node_modules\tns-core-modules\ui\dialogs\dialogs.android.js" />
+    <Content Include="node_modules\tns-core-modules\ui\dialogs\dialogs.ios.js" />
+    <Content Include="node_modules\tns-core-modules\ui\editable-text-base\editable-text-base-common.js" />
+    <Content Include="node_modules\tns-core-modules\ui\editable-text-base\editable-text-base.android.js" />
+    <Content Include="node_modules\tns-core-modules\ui\editable-text-base\editable-text-base.ios.js" />
+    <Content Include="node_modules\tns-core-modules\ui\enums\enums.js" />
+    <Content Include="node_modules\tns-core-modules\ui\frame\frame-common.js" />
+    <Content Include="node_modules\tns-core-modules\ui\frame\frame.android.js" />
+    <Content Include="node_modules\tns-core-modules\ui\frame\frame.ios.js" />
+    <Content Include="node_modules\tns-core-modules\ui\gestures\gestures-common.js" />
+    <Content Include="node_modules\tns-core-modules\ui\gestures\gestures.android.js" />
+    <Content Include="node_modules\tns-core-modules\ui\gestures\gestures.ios.js" />
+    <Content Include="node_modules\tns-core-modules\ui\html-view\html-view-common.js" />
+    <Content Include="node_modules\tns-core-modules\ui\html-view\html-view.android.js" />
+    <Content Include="node_modules\tns-core-modules\ui\html-view\html-view.ios.js" />
+    <Content Include="node_modules\tns-core-modules\ui\image-cache\image-cache-common.js" />
+    <Content Include="node_modules\tns-core-modules\ui\image-cache\image-cache.android.js" />
+    <Content Include="node_modules\tns-core-modules\ui\image-cache\image-cache.ios.js" />
+    <Content Include="node_modules\tns-core-modules\ui\image\image-common.js" />
+    <Content Include="node_modules\tns-core-modules\ui\image\image.android.js" />
+    <Content Include="node_modules\tns-core-modules\ui\image\image.ios.js" />
+    <Content Include="node_modules\tns-core-modules\ui\label\label-common.js" />
+    <Content Include="node_modules\tns-core-modules\ui\label\label.android.js" />
+    <Content Include="node_modules\tns-core-modules\ui\label\label.ios.js" />
+    <Content Include="node_modules\tns-core-modules\ui\layouts\absolute-layout\absolute-layout-common.js" />
+    <Content Include="node_modules\tns-core-modules\ui\layouts\absolute-layout\absolute-layout.android.js" />
+    <Content Include="node_modules\tns-core-modules\ui\layouts\absolute-layout\absolute-layout.ios.js" />
+    <Content Include="node_modules\tns-core-modules\ui\layouts\dock-layout\dock-layout-common.js" />
+    <Content Include="node_modules\tns-core-modules\ui\layouts\dock-layout\dock-layout.android.js" />
+    <Content Include="node_modules\tns-core-modules\ui\layouts\dock-layout\dock-layout.ios.js" />
+    <Content Include="node_modules\tns-core-modules\ui\layouts\grid-layout\grid-layout-common.js" />
+    <Content Include="node_modules\tns-core-modules\ui\layouts\grid-layout\grid-layout.android.js" />
+    <Content Include="node_modules\tns-core-modules\ui\layouts\grid-layout\grid-layout.ios.js" />
+    <Content Include="node_modules\tns-core-modules\ui\layouts\layout-base.js" />
+    <Content Include="node_modules\tns-core-modules\ui\layouts\layout.android.js" />
+    <Content Include="node_modules\tns-core-modules\ui\layouts\layout.ios.js" />
+    <Content Include="node_modules\tns-core-modules\ui\layouts\stack-layout\stack-layout-common.js" />
+    <Content Include="node_modules\tns-core-modules\ui\layouts\stack-layout\stack-layout.android.js" />
+    <Content Include="node_modules\tns-core-modules\ui\layouts\stack-layout\stack-layout.ios.js" />
+    <Content Include="node_modules\tns-core-modules\ui\layouts\wrap-layout\wrap-layout-common.js" />
+    <Content Include="node_modules\tns-core-modules\ui\layouts\wrap-layout\wrap-layout.android.js" />
+    <Content Include="node_modules\tns-core-modules\ui\layouts\wrap-layout\wrap-layout.ios.js" />
+    <Content Include="node_modules\tns-core-modules\ui\list-picker\list-picker-common.js" />
+    <Content Include="node_modules\tns-core-modules\ui\list-picker\list-picker.android.js" />
+    <Content Include="node_modules\tns-core-modules\ui\list-picker\list-picker.ios.js" />
+    <Content Include="node_modules\tns-core-modules\ui\list-view\list-view-common.js" />
+    <Content Include="node_modules\tns-core-modules\ui\list-view\list-view.android.js" />
+    <Content Include="node_modules\tns-core-modules\ui\list-view\list-view.ios.js" />
+    <Content Include="node_modules\tns-core-modules\ui\page\page-common.js" />
+    <Content Include="node_modules\tns-core-modules\ui\page\page.android.js" />
+    <Content Include="node_modules\tns-core-modules\ui\page\page.ios.js" />
+    <Content Include="node_modules\tns-core-modules\ui\placeholder\placeholder-common.js" />
+    <Content Include="node_modules\tns-core-modules\ui\placeholder\placeholder.android.js" />
+    <Content Include="node_modules\tns-core-modules\ui\placeholder\placeholder.ios.js" />
+    <Content Include="node_modules\tns-core-modules\ui\progress\progress-common.js" />
+    <Content Include="node_modules\tns-core-modules\ui\progress\progress.android.js" />
+    <Content Include="node_modules\tns-core-modules\ui\progress\progress.ios.js" />
+    <Content Include="node_modules\tns-core-modules\ui\repeater\repeater.js" />
+    <Content Include="node_modules\tns-core-modules\ui\scroll-view\scroll-view-common.js" />
+    <Content Include="node_modules\tns-core-modules\ui\scroll-view\scroll-view.android.js" />
+    <Content Include="node_modules\tns-core-modules\ui\scroll-view\scroll-view.ios.js" />
+    <Content Include="node_modules\tns-core-modules\ui\search-bar\search-bar-common.js" />
+    <Content Include="node_modules\tns-core-modules\ui\search-bar\search-bar.android.js" />
+    <Content Include="node_modules\tns-core-modules\ui\search-bar\search-bar.ios.js" />
+    <Content Include="node_modules\tns-core-modules\ui\segmented-bar\segmented-bar-common.js" />
+    <Content Include="node_modules\tns-core-modules\ui\segmented-bar\segmented-bar.android.js" />
+    <Content Include="node_modules\tns-core-modules\ui\segmented-bar\segmented-bar.ios.js" />
+    <Content Include="node_modules\tns-core-modules\ui\slider\slider-common.js" />
+    <Content Include="node_modules\tns-core-modules\ui\slider\slider.android.js" />
+    <Content Include="node_modules\tns-core-modules\ui\slider\slider.ios.js" />
+    <Content Include="node_modules\tns-core-modules\ui\styling\background-common.js" />
+    <Content Include="node_modules\tns-core-modules\ui\styling\background.android.js" />
+    <Content Include="node_modules\tns-core-modules\ui\styling\background.ios.js" />
+    <Content Include="node_modules\tns-core-modules\ui\styling\converters.js" />
+    <Content Include="node_modules\tns-core-modules\ui\styling\css-selector.js" />
+    <Content Include="node_modules\tns-core-modules\ui\styling\font-common.js" />
+    <Content Include="node_modules\tns-core-modules\ui\styling\font.android.js" />
+    <Content Include="node_modules\tns-core-modules\ui\styling\font.ios.js" />
+    <Content Include="node_modules\tns-core-modules\ui\styling\style-property.js" />
+    <Content Include="node_modules\tns-core-modules\ui\styling\style-scope.js" />
+    <Content Include="node_modules\tns-core-modules\ui\styling\style.js" />
+    <Content Include="node_modules\tns-core-modules\ui\styling\stylers-common.js" />
+    <Content Include="node_modules\tns-core-modules\ui\styling\stylers.android.js" />
+    <Content Include="node_modules\tns-core-modules\ui\styling\stylers.ios.js" />
+    <Content Include="node_modules\tns-core-modules\ui\styling\styling.js" />
+    <Content Include="node_modules\tns-core-modules\ui\styling\visual-state-constants.js" />
+    <Content Include="node_modules\tns-core-modules\ui\styling\visual-state.js" />
+    <Content Include="node_modules\tns-core-modules\ui\switch\switch-common.js" />
+    <Content Include="node_modules\tns-core-modules\ui\switch\switch.android.js" />
+    <Content Include="node_modules\tns-core-modules\ui\switch\switch.ios.js" />
+    <Content Include="node_modules\tns-core-modules\ui\tab-view\tab-view-common.js" />
+    <Content Include="node_modules\tns-core-modules\ui\tab-view\tab-view.android.js" />
+    <Content Include="node_modules\tns-core-modules\ui\tab-view\tab-view.ios.js" />
+    <Content Include="node_modules\tns-core-modules\ui\text-base\text-base.js" />
+    <Content Include="node_modules\tns-core-modules\ui\text-field\text-field-common.js" />
+    <Content Include="node_modules\tns-core-modules\ui\text-field\text-field.android.js" />
+    <Content Include="node_modules\tns-core-modules\ui\text-field\text-field.ios.js" />
+    <Content Include="node_modules\tns-core-modules\ui\text-view\text-view-common.js" />
+    <Content Include="node_modules\tns-core-modules\ui\text-view\text-view.android.js" />
+    <Content Include="node_modules\tns-core-modules\ui\text-view\text-view.ios.js" />
+    <Content Include="node_modules\tns-core-modules\ui\time-picker\time-picker-common.js" />
+    <Content Include="node_modules\tns-core-modules\ui\time-picker\time-picker.android.js" />
+    <Content Include="node_modules\tns-core-modules\ui\time-picker\time-picker.ios.js" />
+    <Content Include="node_modules\tns-core-modules\ui\ui.js" />
+    <Content Include="node_modules\tns-core-modules\ui\utils.ios.js" />
+    <Content Include="node_modules\tns-core-modules\ui\web-view\web-view-common.js" />
+    <Content Include="node_modules\tns-core-modules\ui\web-view\web-view.android.js" />
+    <Content Include="node_modules\tns-core-modules\ui\web-view\web-view.ios.js" />
+    <Content Include="node_modules\tns-core-modules\utils\module-merge.js" />
+    <Content Include="node_modules\tns-core-modules\utils\number-utils.js" />
+    <Content Include="node_modules\tns-core-modules\utils\types.js" />
+    <Content Include="node_modules\tns-core-modules\utils\utils-common.js" />
+    <Content Include="node_modules\tns-core-modules\utils\utils.android.js" />
+    <Content Include="node_modules\tns-core-modules\utils\utils.ios.js" />
+    <Content Include="node_modules\tns-core-modules\xhr\xhr.js" />
+    <Content Include="node_modules\tns-core-modules\xml\xml.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="app\obj\Android\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <Content Include="app\obj\Android\Xpensity.csprojResolveAssemblyReference.cache" />
+    <Content Include="app\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <Content Include="app\obj\Debug\Xpensity.csprojResolveAssemblyReference.cache" />
+    <Content Include="app\obj\iOS\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <Content Include="app\obj\iOS\Xpensity.csprojResolveAssemblyReference.cache" />
+    <Content Include="app\obj\Release\DesignTimeResolveAssemblyReferencesInput.cache" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="app\app.ts" />
+    <TypeScriptCompile Include="app\shared\constants.ts" />
+    <TypeScriptCompile Include="app\shared\service.ts" />
+    <TypeScriptCompile Include="app\shared\validation-rules.ts" />
+    <TypeScriptCompile Include="app\views\login\login-view-model.ts" />
+    <TypeScriptCompile Include="app\views\login\login.ts" />
+    <TypeScriptCompile Include="app\views\password-recovery\password-recovery-view-model.ts" />
+    <TypeScriptCompile Include="app\views\password-recovery\password-recovery.ts" />
+    <TypeScriptCompile Include="app\views\sign-up\sign-up-view-model.ts" />
+    <TypeScriptCompile Include="app\views\sign-up\sign-up.ts" />
+    <TypeScriptCompile Include="app\resources\resources.android.ts" />
+    <TypeScriptCompile Include="app\resources\resources.ios.ts" />
+    <TypeScriptCompile Include="node_modules\navigation\navigation.ts" />
+    <TypeScriptCompile Include="node_modules\navigation\navigation.d.ts" />
+    <TypeScriptCompile Include="node_modules\table\table-common.ts" />
+    <TypeScriptCompile Include="node_modules\table\table.android.ts" />
+    <TypeScriptCompile Include="node_modules\table\table.d.ts" />
+    <TypeScriptCompile Include="node_modules\table\table.ios.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\android17.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\application-settings\application-settings.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\application\application.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\camera\camera.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\color\color.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\color\known-colors.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\connectivity\connectivity.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\console\console.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\css-value\reworkcss-value.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\css\reworkcss.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\data\observable-array\observable-array.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\data\observable\observable.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\data\virtual-array\virtual-array.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\declarations.android.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\declarations.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\declarations.ios.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\es-collections.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\es6-promise.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\file-system\file-name-resolver.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\file-system\file-system-access.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\file-system\file-system.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\fps-meter\fps-meter.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\fps-meter\fps-native.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\http\http.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\image-source\image-source.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\ios.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\js-libs\esprima\esprima.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\location\location.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\org.nativescript.widgets.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\platform\platform.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\text\formatted-string.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\text\span.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\text\text.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\timer\timer.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\trace\trace.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\ui\action-bar\action-bar.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\ui\activity-indicator\activity-indicator.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\ui\animation\animation.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\ui\border\border.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\ui\builder\builder.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\ui\builder\component-builder.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\ui\builder\special-properties.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\ui\button\button.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\ui\content-view\content-view.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\ui\core\bindable.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\ui\core\control-state-change.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\ui\core\dependency-observable.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\ui\core\proxy.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\ui\core\view.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\ui\core\weak-event-listener.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\ui\date-picker\date-picker.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\ui\dialogs\dialogs.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\ui\editable-text-base\editable-text-base.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\ui\enums\enums.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\ui\frame\frame.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\ui\gestures\gestures.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\ui\html-view\html-view.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\ui\image-cache\image-cache.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\ui\image\image.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\ui\label\label.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\ui\layouts\absolute-layout\absolute-layout.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\ui\layouts\dock-layout\dock-layout.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\ui\layouts\grid-layout\grid-layout.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\ui\layouts\layout-base.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\ui\layouts\layout.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\ui\layouts\stack-layout\stack-layout.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\ui\layouts\wrap-layout\wrap-layout.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\ui\list-picker\list-picker.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\ui\list-view\list-view.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\ui\page\page.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\ui\placeholder\placeholder.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\ui\progress\progress.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\ui\repeater\repeater.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\ui\scroll-view\scroll-view.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\ui\search-bar\search-bar.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\ui\segmented-bar\segmented-bar.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\ui\slider\slider.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\ui\styling\background.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\ui\styling\css-selector.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\ui\styling\font.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\ui\styling\style-property.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\ui\styling\stylers.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\ui\styling\styling.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\ui\styling\visual-state-constants.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\ui\switch\switch.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\ui\tab-view\tab-view.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\ui\text-base\text-base.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\ui\text-field\text-field.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\ui\text-view\text-view.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\ui\time-picker\time-picker.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\ui\ui.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\ui\utils.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\ui\web-view\web-view.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\utils\types.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\utils\utils.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\weakmap.d.ts" />
+    <TypeScriptCompile Include="node_modules\tns-core-modules\xml\xml.d.ts" />
+    <TypeScriptCompile Include="node_modules\view-model-base\view-model-base.ts" />
+    <TypeScriptCompile Include="node_modules\view-model-base\view-model-base.d.ts" />
+    <TypeScriptCompile Include="node_modules\views\views.d.ts" />
+    <TypeScriptCompile Include="node_modules\views\views.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="app\obj\Android\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="app\obj\Android\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="app\obj\Android\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="app\obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="app\obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="app\obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="app\obj\iOS\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="app\obj\iOS\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="app\obj\iOS\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="app\obj\Release\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="app\obj\Release\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="app\obj\Release\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="node_modules\tns-core-modules\application-settings\package.json" />
+    <Content Include="node_modules\tns-core-modules\application\package.json" />
+    <Content Include="node_modules\tns-core-modules\camera\package.json" />
+    <Content Include="node_modules\tns-core-modules\color\package.json" />
+    <Content Include="node_modules\tns-core-modules\connectivity\package.json" />
+    <Content Include="node_modules\tns-core-modules\console\package.json" />
+    <Content Include="node_modules\tns-core-modules\css-value\package.json" />
+    <Content Include="node_modules\tns-core-modules\css\package.json" />
+    <Content Include="node_modules\tns-core-modules\data\observable-array\package.json" />
+    <Content Include="node_modules\tns-core-modules\data\observable\package.json" />
+    <Content Include="node_modules\tns-core-modules\data\virtual-array\package.json" />
+    <Content Include="node_modules\tns-core-modules\fetch\package.json" />
+    <Content Include="node_modules\tns-core-modules\file-system\package.json" />
+    <Content Include="node_modules\tns-core-modules\fps-meter\package.json" />
+    <Content Include="node_modules\tns-core-modules\globals\package.json" />
+    <Content Include="node_modules\tns-core-modules\http\package.json" />
+    <Content Include="node_modules\tns-core-modules\image-source\package.json" />
+    <Content Include="node_modules\tns-core-modules\js-libs\easysax\package.json" />
+    <Content Include="node_modules\tns-core-modules\js-libs\esprima\package.json" />
+    <Content Include="node_modules\tns-core-modules\js-libs\polymer-expressions\package.json" />
+    <Content Include="node_modules\tns-core-modules\location\package.json" />
+    <Content Include="node_modules\tns-core-modules\package.json" />
+    <Content Include="node_modules\tns-core-modules\platform\package.json" />
+    <Content Include="node_modules\tns-core-modules\text\package.json" />
+    <Content Include="node_modules\tns-core-modules\timer\package.json" />
+    <Content Include="node_modules\tns-core-modules\trace\package.json" />
+    <Content Include="node_modules\tns-core-modules\ui\action-bar\package.json" />
+    <Content Include="node_modules\tns-core-modules\ui\activity-indicator\package.json" />
+    <Content Include="node_modules\tns-core-modules\ui\animation\package.json" />
+    <Content Include="node_modules\tns-core-modules\ui\border\package.json" />
+    <Content Include="node_modules\tns-core-modules\ui\builder\package.json" />
+    <Content Include="node_modules\tns-core-modules\ui\button\package.json" />
+    <Content Include="node_modules\tns-core-modules\ui\content-view\package.json" />
+    <Content Include="node_modules\tns-core-modules\ui\date-picker\package.json" />
+    <Content Include="node_modules\tns-core-modules\ui\dialogs\package.json" />
+    <Content Include="node_modules\tns-core-modules\ui\editable-text-base\package.json" />
+    <Content Include="node_modules\tns-core-modules\ui\enums\package.json" />
+    <Content Include="node_modules\tns-core-modules\ui\frame\package.json" />
+    <Content Include="node_modules\tns-core-modules\ui\gestures\package.json" />
+    <Content Include="node_modules\tns-core-modules\ui\html-view\package.json" />
+    <Content Include="node_modules\tns-core-modules\ui\image-cache\package.json" />
+    <Content Include="node_modules\tns-core-modules\ui\image\package.json" />
+    <Content Include="node_modules\tns-core-modules\ui\label\package.json" />
+    <Content Include="node_modules\tns-core-modules\ui\layouts\absolute-layout\package.json" />
+    <Content Include="node_modules\tns-core-modules\ui\layouts\dock-layout\package.json" />
+    <Content Include="node_modules\tns-core-modules\ui\layouts\grid-layout\package.json" />
+    <Content Include="node_modules\tns-core-modules\ui\layouts\stack-layout\package.json" />
+    <Content Include="node_modules\tns-core-modules\ui\layouts\wrap-layout\package.json" />
+    <Content Include="node_modules\tns-core-modules\ui\list-picker\package.json" />
+    <Content Include="node_modules\tns-core-modules\ui\list-view\package.json" />
+    <Content Include="node_modules\tns-core-modules\ui\package.json" />
+    <Content Include="node_modules\tns-core-modules\ui\page\package.json" />
+    <Content Include="node_modules\tns-core-modules\ui\placeholder\package.json" />
+    <Content Include="node_modules\tns-core-modules\ui\progress\package.json" />
+    <Content Include="node_modules\tns-core-modules\ui\repeater\package.json" />
+    <Content Include="node_modules\tns-core-modules\ui\scroll-view\package.json" />
+    <Content Include="node_modules\tns-core-modules\ui\search-bar\package.json" />
+    <Content Include="node_modules\tns-core-modules\ui\segmented-bar\package.json" />
+    <Content Include="node_modules\tns-core-modules\ui\slider\package.json" />
+    <Content Include="node_modules\tns-core-modules\ui\styling\package.json" />
+    <Content Include="node_modules\tns-core-modules\ui\switch\package.json" />
+    <Content Include="node_modules\tns-core-modules\ui\tab-view\package.json" />
+    <Content Include="node_modules\tns-core-modules\ui\text-base\package.json" />
+    <Content Include="node_modules\tns-core-modules\ui\text-field\package.json" />
+    <Content Include="node_modules\tns-core-modules\ui\text-view\package.json" />
+    <Content Include="node_modules\tns-core-modules\ui\time-picker\package.json" />
+    <Content Include="node_modules\tns-core-modules\ui\web-view\package.json" />
+    <Content Include="node_modules\tns-core-modules\xhr\package.json" />
+    <Content Include="node_modules\tns-core-modules\xml\package.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="node_modules\nativescript-telerik-ui\chart\package.json" />
+    <Content Include="node_modules\nativescript-telerik-ui\LICENSE.rtf" />
+    <Content Include="node_modules\nativescript-telerik-ui\package.json" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\Android\Chart-2015.2.910-trial-release.aar" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\Android\Common-2015.2.910-trial-release.aar" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\Android\Primitives-2015.2.910-trial-release.aar" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Info.plist" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Modules\module.modulemap" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\TelerikUI" />
+    <Content Include="node_modules\nativescript-telerik-ui\README.md" />
+    <Content Include="node_modules\nativescript-telerik-ui\sidedrawer\package.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="app\obj\Android\TempPE\" />
+    <Folder Include="app\obj\Debug\TempPE\" />
+    <Folder Include="app\obj\iOS\TempPE\" />
+    <Folder Include="app\obj\Release\TempPE\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="node_modules\table\table.android.css" />
+    <Content Include="node_modules\view-model-base\package.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="node_modules\navigation\package.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="node_modules\views\package.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="node_modules\table\package.json" />
+  </ItemGroup>
+</Project>
