@@ -12,6 +12,7 @@
     "typescript": "1.5.3"
   },
   "dependencies": {
+    "grid-view": "file:..\\Plugins\\grid-view",
     "nativescript-telerik-ui": "0.0.10",
     "navigation": "file:..\\Plugins\\navigation",
     "table": "file:..\\Plugins\\table",

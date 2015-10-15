@@ -28,6 +28,6 @@ applicationModule.resources = {
 //        navigationModule.replace(view);
 //    });
 //}
-applicationModule.mainModule = viewsModule.login;
+applicationModule.mainModule = viewsModule.main;
 applicationModule.start();
 //# sourceMappingURL=app.js.map

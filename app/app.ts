@@ -39,5 +39,5 @@ applicationModule.resources = {
 //    });
 //}
 
-applicationModule.mainModule = viewsModule.login;
+applicationModule.mainModule = viewsModule.main;
 applicationModule.start();

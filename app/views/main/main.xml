@@ -1,0 +1,86 @@
+<Page xmlns="http://www.nativescript.org/tns.xsd"
+      xmlns:g="grid-view"
+      xmlns:chart="nativescript-telerik-ui/chart"
+      navigatedTo="onNavigatedTo" 
+      android:actionBarHidden="true" >
+  <TabView id="TabView">
+    <TabView.items>
+      <TabViewItem id="ReportsTabItem" ios:title="My reports" iconSource="res://ic_reports" >
+        <TabViewItem.view>
+          <GridLayout rows="auto, *" bindingContext="{{ reportsViewModel }}" >
+            <Label text="MY REPORTS" cssClass="header" visibility="{{ androidVisibility }}" />
+            
+            <ScrollView row="1" >
+              <g:GridView items="{{ reports }}" gridColumns="2" cssClass="reports-grid" >
+                <g:GridView.itemTemplate>
+                    <StackLayout orientation="vertical" cssClass="tile">
+                      <Image src="res://ic_approved" stretch="none" cssClass="status-icon" />
+                      <chart:PieChart cssClass="categories-chart">
+                        <chart:PieChart.series>
+                          <chart:PieSeries items="{{ report.Data }}" valueProperty="Amount">
+                          </chart:PieSeries>
+                        </chart:PieChart.series>
+                      </chart:PieChart>
+                      <Label text="{{ report.Title }}" cssClass="item-header" />
+                      <Label text="{{ report.Date | formatDate }}" cssClass="item-content" />
+                    </StackLayout>
+                </g:GridView.itemTemplate>
+              </g:GridView>
+            </ScrollView>
+
+            <AbsoluteLayout rowSpan="2" cssClass="fab-container" ios:visibility="hidden">
+              <Image src="res://fab" tap="{{ addReport }}" stretch="none" cssClass="fab" />
+            </AbsoluteLayout>
+
+            <ActivityIndicator rowSpan="2" busy="{{ isLoading }}" />
+          </GridLayout>
+        </TabViewItem.view>
+      </TabViewItem >
+      <TabViewItem iconSource="res://ic_notifications" ios:title="Notifications" >
+        <TabViewItem.view>
+          <GridLayout rows="auto, auto, *" bindingContext="{{ notificationsViewModel }}">
+            <Label text="NOTIFICATIONS" cssClass="header" />
+
+            <Border row="1" cssClass="blockContainer">
+              <StackLayout orientation="horizontal">
+                <Label text="{{ reportsForApproval }}" cssClass="blockLabel" />
+                <Label margin="16 0 16 0" text="Reports waiting for approval" cssClass="blockLabel" />
+              </StackLayout>
+            </Border>
+
+            <ActivityIndicator rowSpan="3" busy="{{ isLoading }}" />
+          </GridLayout>
+        </TabViewItem.view>
+      </TabViewItem >
+      <TabViewItem iconSource="res://ic_settings" ios:title="Settings" >
+        <TabViewItem.view>
+          <GridLayout rows="auto, *" bindingContext="{{ settingsViewModel }}">
+            <Label text="SETTINGS" cssClass="header" />
+
+            <ScrollView row="1">
+              <StackLayout>
+                <Border cssClass="blockContainer">
+                  <Label text="{{ name }}" cssClass="blockLabel" />
+                </Border>
+
+                <GridLayout columns="*, auto">
+                  <Label text="Offline Mode" />
+                  <Switch col="1" checked="{{ offlineMode }}"/>
+                </GridLayout>
+
+                <!--<GridLayout columns="*, auto">
+                  <Label text="Notifications" />
+                  <Switch col="1" checked="{{ notifications }}"/>
+                </GridLayout>-->
+
+                <Button text="Logout" tap="logoutButtonTap" cssClass="secondaryButton" />
+              </StackLayout>
+            </ScrollView>
+
+            <ActivityIndicator rowSpan="2" busy="{{ isLoading }}" />
+          </GridLayout>
+        </TabViewItem.view>
+      </TabViewItem >
+    </TabView.items>
+  </TabView>
+</Page>

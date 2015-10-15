@@ -291,6 +291,9 @@
     <Content Include="app\views\login\login.xml">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="app\views\main\main.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="app\views\password-recovery\password-recovery.xml" />
     <Content Include="app\views\sign-up\sign-up.xml" />
     <Content Include="app\lib\everlive.js" />
@@ -773,12 +776,17 @@
     <TypeScriptCompile Include="app\shared\validation-rules.ts" />
     <TypeScriptCompile Include="app\views\login\login-view-model.ts" />
     <TypeScriptCompile Include="app\views\login\login.ts" />
+    <TypeScriptCompile Include="app\views\main\main-view-model.ts" />
+    <TypeScriptCompile Include="app\views\main\main.ts" />
+    <TypeScriptCompile Include="app\views\main\reports-view-model.ts" />
     <TypeScriptCompile Include="app\views\password-recovery\password-recovery-view-model.ts" />
     <TypeScriptCompile Include="app\views\password-recovery\password-recovery.ts" />
     <TypeScriptCompile Include="app\views\sign-up\sign-up-view-model.ts" />
     <TypeScriptCompile Include="app\views\sign-up\sign-up.ts" />
     <TypeScriptCompile Include="app\resources\resources.android.ts" />
     <TypeScriptCompile Include="app\resources\resources.ios.ts" />
+    <TypeScriptCompile Include="node_modules\grid-view\grid-view.d.ts" />
+    <TypeScriptCompile Include="node_modules\grid-view\grid-view.ts" />
     <TypeScriptCompile Include="node_modules\navigation\navigation.ts" />
     <TypeScriptCompile Include="node_modules\navigation\navigation.d.ts" />
     <TypeScriptCompile Include="node_modules\table\table-common.ts" />
@@ -1003,5 +1011,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="node_modules\table\package.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="node_modules\grid-view\package.json" />
   </ItemGroup>
 </Project>

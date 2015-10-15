@@ -10,3 +10,35 @@
 .text-button {
     margin-left: 6;
 }
+
+.fab {
+    margin: 0 16 28 0;
+}
+
+.fab-container {
+    vertical-align: bottom;
+    horizontal-align: right;
+}
+
+.header {
+    margin: 16 16 0 16;
+}
+
+.tile {
+    margin: 8;
+    padding: 8;
+}
+
+.categories-chart {
+}
+
+.reports-grid {
+    padding: 8;
+}
+
+
+.item-header {
+}
+
+.item-content {
+}
