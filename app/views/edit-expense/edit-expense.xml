@@ -1,0 +1,28 @@
+<Page xmlns="http://www.nativescript.org/tns.xsd"
+      xmlns:table="table"
+      navigatedTo="onNavigatedTo">
+  <Page.actionBar>
+    <ActionBar title="{{ isAdd ? 'Add Expense : 'Edit Expense' }}">
+      <NavigationButton icon="res://ic_arrow_back" link="#back" />
+      <ActionBar.actionItems>
+        <ActionItem text="Done" ios.position="right" />
+      </ActionBar.actionItems>
+    </ActionBar>
+  </Page.actionBar>
+  <GridLayout>
+    <ScrollView>
+      <StackLayout>
+        <table:Table>
+          <TextField text="{{ item.Title }}" hint="Title" />
+          <TextField text="{{ item.Location  }}" hint="Location" />
+          <TextField text="{{ item.Cost  }}" hint="Cost" keyboardType="number" />
+          <TextView text="{{ item.Notes }}" hint="Notes" />
+        </table:Table>
+
+        <Button text="Delete Expense" tap="{{ delete }}" visibility="{{ canDelete | visibilityConverter }}" cssClass="delete-button" />
+      </StackLayout>
+    </ScrollView>
+
+    <ActivityIndicator busy="{{ isLoading }}" />
+  </GridLayout>
+</Page>

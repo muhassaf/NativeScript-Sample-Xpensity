@@ -2,6 +2,7 @@
 import { EventData } from "data/observable";
 import specialPropertiesModule = require("ui/builder/special-properties");
 import { Visibility } from "ui/enums";
+import { ListView, ItemEventData } from "ui/list-view";
 
 import serviceModule = require("./shared/service");
 import viewsModule = require("views");
@@ -9,9 +10,22 @@ import navigationModule = require("navigation");
 
 var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 specialPropertiesModule.registerSpecialProperty("link", (instance, propertyValue) => {
-    instance.on("tap", (args: EventData) => {
-        navigationModule.navigateById(propertyValue, (<any>instance).linkContext);
-    });
+    if (instance instanceof ListView) {
+        var listView = <ListView>instance;
+        listView.on("itemTap", (args: ItemEventData) => {
+            navigationModule.navigateById(propertyValue, {
+                item: args.view.bindingContext,
+                context: (<any>instance).linkContext
+            });
+        });
+    }
+    else {
+        instance.on("tap", (args: EventData) => {
+            navigationModule.navigateById(propertyValue, {
+                context: (<any>instance).linkContext
+            });
+        });
+    }
 });
 
 applicationModule.cssFile = "./app.css";
@@ -39,5 +53,5 @@ applicationModule.resources = {
 //    });
 //}
 
-applicationModule.mainModule = viewsModule.main;
+applicationModule.mainModule = viewsModule.viewReport;
 applicationModule.start();

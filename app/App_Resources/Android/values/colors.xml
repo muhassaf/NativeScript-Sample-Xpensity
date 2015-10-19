@@ -4,5 +4,5 @@
   <color name="ColorPrimaryDark">#000000</color>
   <color name="ColorPrimaryText">#000000</color>
   <color name="ColorMenuText">#007AFF</color>
-  <color name="ColorAccent">#E64A19</color>
+  <color name="ColorAccent">#007AFF</color>
 </resources>

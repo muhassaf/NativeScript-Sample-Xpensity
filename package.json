@@ -1,23 +1,23 @@
 {
-  "nativescript": {
-    "id": "org.nativescript.Xpensity",
-    "tns-ios": {
-      "version": "1.4.0"
-    },
-    "tns-android": {
-      "version": "1.4.0"
-    }
-  },
-  "devDependencies": {
-    "typescript": "1.5.3"
-  },
-  "dependencies": {
-    "grid-view": "file:..\\Plugins\\grid-view",
-    "nativescript-telerik-ui": "0.0.10",
-    "navigation": "file:..\\Plugins\\navigation",
-    "table": "file:..\\Plugins\\table",
-    "tns-core-modules": "1.4.1",
-    "view-model-base": "file:..\\Plugins\\view-model-base",
-    "views": "file:..\\Plugins\\views"
-  }
+	"nativescript": {
+		"id": "org.nativescript.Xpensity",
+		"tns-ios": {
+			"version": "1.4.0"
+		},
+		"tns-android": {
+			"version": "1.4.0"
+		}
+	},
+	"devDependencies": {
+		"typescript": "1.5.3"
+	},
+	"dependencies": {
+		"grid-view": "file:..\\Plugins\\grid-view",
+		"nativescript-telerik-ui": "0.0.10",
+		"navigation": "file:..\\Plugins\\navigation",
+		"table": "file:..\\Plugins\\table",
+		"tns-core-modules": "1.4.1",
+		"view-model-base": "file:..\\Plugins\\view-model-base",
+		"views": "file:..\\Plugins\\views"
+	}
 }

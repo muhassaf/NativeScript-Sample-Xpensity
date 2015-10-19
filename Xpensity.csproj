@@ -199,7 +199,9 @@
     <Content Include="app\App_Resources\Android\values-v21\styles.xml" />
     <Content Include="app\App_Resources\Android\values\colors.xml" />
     <Content Include="app\App_Resources\Android\values\strings.xml" />
-    <Content Include="app\App_Resources\Android\values\styles.xml" />
+    <Content Include="app\App_Resources\Android\values\styles.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="app\App_Resources\iOS\add-white%402x.png" />
     <Content Include="app\App_Resources\iOS\add-white%403x.png" />
     <Content Include="app\App_Resources\iOS\add-white.png" />
@@ -288,6 +290,8 @@
     <Content Include="app\bin\Xpensity.pdb" />
     <Content Include="app\shared\validation-summary\validation-summary.css" />
     <Content Include="app\shared\validation-summary\validation-summary.xml" />
+    <Content Include="app\views\edit-expense\edit-expense.xml" />
+    <Content Include="app\views\edit-report\edit-report.xml" />
     <Content Include="app\views\login\login.xml">
       <SubType>Designer</SubType>
     </Content>
@@ -306,13 +310,20 @@
     <Content Include="app\obj\iOS\Xpensity.csproj.FileListAbsolute.txt" />
     <Content Include="app\obj\iOS\Xpensity.dll" />
     <Content Include="app\obj\iOS\Xpensity.pdb" />
+    <Content Include="app\views\view-report\view-report.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="node_modules\nativescript-telerik-ui\chart\chart-common.js" />
     <Content Include="node_modules\nativescript-telerik-ui\chart\chart-initializers-common.js" />
     <Content Include="node_modules\nativescript-telerik-ui\chart\chart-initializers.android.js" />
     <Content Include="node_modules\nativescript-telerik-ui\chart\chart-initializers.ios.js" />
     <Content Include="node_modules\nativescript-telerik-ui\chart\chart.android.js" />
     <Content Include="node_modules\nativescript-telerik-ui\chart\chart.ios.js" />
-    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\ImageEffects.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\chart\package.json" />
+    <Content Include="node_modules\nativescript-telerik-ui\listview\listview-common.js" />
+    <Content Include="node_modules\nativescript-telerik-ui\listview\listview.android.js" />
+    <Content Include="node_modules\nativescript-telerik-ui\listview\listview.ios.js" />
+    <Content Include="node_modules\nativescript-telerik-ui\package.json" />
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TelerikUI.h" />
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKAlert.h" />
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKAlertAction.h" />
@@ -320,6 +331,10 @@
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKAlertContentView.h" />
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKAlertStyle.h" />
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKAlertView.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKAutoCompleteSuggestionCell.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKAutoCompleteTextView.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKAutoCompleteToken.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKAutoCompleteTokenView.h" />
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKBalloonShape.h" />
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKCalendar.h" />
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKCalendarCell.h" />
@@ -366,6 +381,7 @@
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartAxis.h" />
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartAxisLabelStyle.h" />
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartAxisMajorTickStyle.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartAxisRender.h" />
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartAxisStyle.h" />
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartAxisTickStyle.h" />
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartAxisTitleStyle.h" />
@@ -382,6 +398,7 @@
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartBubbleVisualPoint.h" />
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartCandlestickBar.h" />
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartCandlestickSeries.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartCategory.h" />
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartCategoryAxis.h" />
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartChaikinOscillator.h" />
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartColumnSeries.h" />
@@ -391,6 +408,7 @@
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartData.h" />
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartDataPoint.h" />
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartDateTimeAxis.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartDateTimeCategoryAxis.h" />
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartDetrendedPriceOscillator.h" />
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartDonutSeries.h" />
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartEaseOfMovementIndicator.h" />
@@ -411,6 +429,7 @@
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartLegendStyle.h" />
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartLegendView.h" />
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartLineSeries.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartLogarithmicAxis.h" />
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartMACDIndicator.h" />
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartMarketFacilitationIndex.h" />
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartMedianPriceIndicator.h" />
@@ -434,6 +453,10 @@
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartPointLabelStyle.h" />
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartPositiveVolumeIndexIndicator.h" />
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartPriceVolumeTrendIndicator.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartRangeBarSeries.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartRangeColumnSeries.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartRangeDataPoint.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartRangeVisualPoint.h" />
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartRapidAdaptiveVarianceIndicator.h" />
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartRateOfChangeIndicator.h" />
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKChartRelativeMomentumIndex.h" />
@@ -472,25 +495,36 @@
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKCheckShape.h" />
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKCheckView.h" />
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKCollectionViewCell.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKCoreLayout.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKCoreLayoutItem.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKCoreStackLayout.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKCoreStackLayoutView.h" />
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKDataForm.h" />
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKDataFormDatePickerEditor.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKDataFormDecimalEditor.h" />
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKDataFormEditor.h" />
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKDataFormEditorStyle.h" />
-    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKDataFormEntity.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKDataFormEmailEditor.h" />
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKDataFormEntityDataSource.h" />
-    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKDataFormEntityProperty.h" />
-    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKDataFormHeaderView.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKDataFormGroupTitleStyle.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKDataFormInlineEditor.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKDataFormNamePhoneEditor.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKDataFormNumberEditor.h" />
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKDataFormOptionsEditor.h" />
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKDataFormOptionsViewController.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKDataFormPasswordEditor.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKDataFormPhoneEditor.h" />
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKDataFormPickerViewEditor.h" />
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKDataFormSegmentedEditor.h" />
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKDataFormSliderEditor.h" />
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKDataFormStepperEditor.h" />
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKDataFormSwitchEditor.h" />
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKDataFormTextFieldEditor.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKDataFormTimePickerEditor.h" />
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKDataFormValidator.h" />
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKDataFormViewController.h" />
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKDataSource.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKDataSourceAutoCompleteSettings.h" />
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKDataSourceCalendarSettings.h" />
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKDataSourceChartSettings.h" />
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKDataSourceCollectionViewSettings.h" />
@@ -504,12 +538,31 @@
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKDateRange.h" />
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKDefinitions.h" />
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKDrawing.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKEntity.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKEntityProperty.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKEntityPropertyGroup.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKEntityPropertyGroupEditorsView.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKEntityPropertyGroupTitleView.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKEntityPropertyGroupTitleViewIndicator.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKEntityPropertyGroupView.h" />
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKFill.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKGauge.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKGaugeIndicator.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKGaugeLabels.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKGaugeLinearScale.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKGaugeNeedle.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKGaugeRadialScale.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKGaugeScale.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKGaugeSegment.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKGaugeTicks.h" />
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKGradientFill.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKGridLayout.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKGridLayoutCellDefinition.h" />
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKImageFill.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKLabel.h" />
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKLayer.h" />
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKLayout.h" />
-    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKLayoutItem.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKLinearGauge.h" />
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKLinearGradientFill.h" />
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKListView.h" />
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKListViewCell.h" />
@@ -526,6 +579,7 @@
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKListViewStaggeredLayout.h" />
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKMutableArray.h" />
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKPredefinedShape.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKRadialGauge.h" />
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKRadialGradientFill.h" />
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKRange.h" />
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKShape.h" />
@@ -543,13 +597,19 @@
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKSideDrawerView.h" />
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKSolidFill.h" />
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKStackLayout.h" />
-    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKStackLayoutView.h" />
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKStroke.h" />
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKStyleID.h" />
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKStyleNode.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKSuggestionListView.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKTextField.h" />
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKTheme.h" />
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKView.h" />
     <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Headers\TKViewTransition.h" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Info.plist" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Modules\module.modulemap" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\TelerikUI" />
+    <Content Include="node_modules\nativescript-telerik-ui\README.md" />
+    <Content Include="node_modules\nativescript-telerik-ui\sidedrawer\package.json" />
     <Content Include="node_modules\nativescript-telerik-ui\sidedrawer\sidedrawer-common.js" />
     <Content Include="node_modules\nativescript-telerik-ui\sidedrawer\sidedrawer.android.js" />
     <Content Include="node_modules\nativescript-telerik-ui\sidedrawer\sidedrawer.ios.js" />
@@ -772,19 +832,29 @@
   <ItemGroup>
     <TypeScriptCompile Include="app\app.ts" />
     <TypeScriptCompile Include="app\shared\constants.ts" />
+    <TypeScriptCompile Include="app\shared\edit-view-model-base.ts" />
+    <TypeScriptCompile Include="app\shared\notifications.ts" />
     <TypeScriptCompile Include="app\shared\service.ts" />
     <TypeScriptCompile Include="app\shared\validation-rules.ts" />
+    <TypeScriptCompile Include="app\views\edit-expense\edit-expense-view-model.ts" />
+    <TypeScriptCompile Include="app\views\edit-expense\edit-expense.ts" />
+    <TypeScriptCompile Include="app\views\edit-report\edit-report-view-model.ts" />
+    <TypeScriptCompile Include="app\views\edit-report\edit-report.ts" />
     <TypeScriptCompile Include="app\views\login\login-view-model.ts" />
     <TypeScriptCompile Include="app\views\login\login.ts" />
     <TypeScriptCompile Include="app\views\main\main-view-model.ts" />
     <TypeScriptCompile Include="app\views\main\main.ts" />
+    <TypeScriptCompile Include="app\views\main\notifications-view-model.ts" />
     <TypeScriptCompile Include="app\views\main\reports-view-model.ts" />
+    <TypeScriptCompile Include="app\views\main\settings-view-model.ts" />
     <TypeScriptCompile Include="app\views\password-recovery\password-recovery-view-model.ts" />
     <TypeScriptCompile Include="app\views\password-recovery\password-recovery.ts" />
     <TypeScriptCompile Include="app\views\sign-up\sign-up-view-model.ts" />
     <TypeScriptCompile Include="app\views\sign-up\sign-up.ts" />
     <TypeScriptCompile Include="app\resources\resources.android.ts" />
     <TypeScriptCompile Include="app\resources\resources.ios.ts" />
+    <TypeScriptCompile Include="app\views\view-report\view-report-view-model.ts" />
+    <TypeScriptCompile Include="app\views\view-report\view-report.ts" />
     <TypeScriptCompile Include="node_modules\grid-view\grid-view.d.ts" />
     <TypeScriptCompile Include="node_modules\grid-view\grid-view.ts" />
     <TypeScriptCompile Include="node_modules\navigation\navigation.ts" />
@@ -981,19 +1051,6 @@
     <Content Include="node_modules\tns-core-modules\xml\package.json" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="node_modules\nativescript-telerik-ui\chart\package.json" />
-    <Content Include="node_modules\nativescript-telerik-ui\LICENSE.rtf" />
-    <Content Include="node_modules\nativescript-telerik-ui\package.json" />
-    <Content Include="node_modules\nativescript-telerik-ui\platforms\Android\Chart-2015.2.910-trial-release.aar" />
-    <Content Include="node_modules\nativescript-telerik-ui\platforms\Android\Common-2015.2.910-trial-release.aar" />
-    <Content Include="node_modules\nativescript-telerik-ui\platforms\Android\Primitives-2015.2.910-trial-release.aar" />
-    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Info.plist" />
-    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\Modules\module.modulemap" />
-    <Content Include="node_modules\nativescript-telerik-ui\platforms\iOS\TelerikUI.framework\TelerikUI" />
-    <Content Include="node_modules\nativescript-telerik-ui\README.md" />
-    <Content Include="node_modules\nativescript-telerik-ui\sidedrawer\package.json" />
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="app\obj\Android\TempPE\" />
     <Folder Include="app\obj\Debug\TempPE\" />
     <Folder Include="app\obj\iOS\TempPE\" />
@@ -1014,5 +1071,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="node_modules\grid-view\package.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="node_modules\nativescript-telerik-ui\LICENSE.md" />
+    <Content Include="node_modules\nativescript-telerik-ui\listview\package.json" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\Android\Chart-2015.3.1015-dev-release.aar" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\Android\Common-2015.3.1015-dev-release.aar" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\Android\Data-2015.3.1015-dev-release.aar" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\Android\List-2015.3.1015-dev-release.aar" />
+    <Content Include="node_modules\nativescript-telerik-ui\platforms\Android\Primitives-2015.3.1015-dev-release.aar" />
   </ItemGroup>
 </Project>

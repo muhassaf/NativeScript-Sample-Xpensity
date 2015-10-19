@@ -2,9 +2,20 @@
 
 .primary-button {
     margin: 30 16 16 16;
-    height: 36;
     color: #FFFFFF;
     background-color: #007AFF;
+}
+
+.secondary-button {
+    margin: 30 16 16 16;
+    color: #007AFF;
+    background-color: #FFFFFF;
+}
+
+.delete-button {
+    margin: 30 16 16 16;
+    color: #FF0000;
+    background-color: #FFFFFF;
 }
 
 .text-button {
@@ -21,11 +32,11 @@
 }
 
 .header {
-    margin: 16 16 0 16;
+    margin: 16;
 }
 
 .tile {
-    margin: 8;
+    margin: 0 8 8 8;
     padding: 8;
 }
 
@@ -33,7 +44,7 @@
 }
 
 .reports-grid {
-    padding: 8;
+    padding: 0 8 8 8;
 }
 
 
@@ -41,4 +52,33 @@
 }
 
 .item-content {
+}
+
+.block {
+    padding: 8 16 8 16;
+    margin-bottom: 8;
+    height: 38;
+    vertical-align: center;
+}
+
+.label {
+    margin: 8 16 8 16;
+    color: #000000;
+}
+
+.switch {
+    margin: 8 16 8 16;
+}
+
+.repeater-item {
+    padding: 8 16 8 16;
+    margin-top: -1;
+}
+
+.root {
+    padding: 16;
+}
+
+.item-container {
+    margin: 8 16 8 11;
 }

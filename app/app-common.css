@@ -46,16 +46,84 @@ TextView {
     height: 100;
 }
 
+.report-chart {
+    width: 200;
+    height: 200;
+}
+
 .item-header {
     font-size: 16;
     color: #000000;
 }
 
 .item-content {
-    font-size: 10;
+    font-size: 11;
     color: #828282;
 }
 
 .status-icon {
     horizontal-align: right;
+}
+
+.block {
+    background-color: #FFFFFF;
+    color: #007AFF;
+    border-color: #DEDDDD;
+    border-width: 1;
+    font-size: 14;
+}
+
+.repeater-item {
+    background-color: #FFFFFF;
+    border-width: 1;
+    border-color: #DEDDDD;
+}
+
+.message {
+    color: #000000;
+}
+
+.date {
+    color: #DEDDDD;
+}
+
+.title {
+    font-size: 24;
+    color: #000000;
+}
+
+.details-label {
+    font-size: 13;
+    color: #828282;
+}
+
+.bold-label {
+    font-size: 21;
+    font-weight: bold;
+    color: #000000;
+}
+
+.item-bold-label {
+    font-size: 17;
+    font-weight: bold;
+    color: #000000;
+    vertical-align: center;
+}
+
+.item-label {
+    font-size: 17;
+    color: #000000;
+}
+
+.item-details-label {
+    font-size: 12;
+    color: #828282;
+}
+
+.list-view {
+    background-color: #FFFFFF;
+}
+
+.category {
+    width: 5;
 }

@@ -6,9 +6,8 @@ import constantsModule = require("./constants");
 
 var everliveModule = require("../lib/everlive");
 
-export var ServiceRequestType = "ServiceRequest";
-export var FeedbackItemType = "FeedbackItem";
-export var MaintenanceTypeType = "MaintenanceType";
+export var ReportTypeName = "Report";
+export var ExpenseTypeName = "Expense";
 
 class Service {
     private _everlive: any;
@@ -19,6 +18,9 @@ class Service {
 
     public login(username: string, password: string): Promise<any> {
         return this._everlive.authentication.login(username, password)
+    }
+
+    public logout() {
     }
 
     public signUp(username: string, password: string, displayName: string, email: string) {
@@ -50,7 +52,7 @@ class Service {
         });
     }
 
-    uploadImage(imageSource: ImageSource): Promise<any> {
+    public uploadImage(imageSource: ImageSource): Promise<any> {
         return new Promise<any>((resolve, reject) => {
             var file = {
                 "Filename": "Picture.jpg",
@@ -82,8 +84,28 @@ class Service {
         });
     }
 
-    public updateServiceRequest(serviceRequest: any): Promise<any> {
-        return this.updateItem(ServiceRequestType, serviceRequest);
+    createReport(report: any): Promise<any> {
+        return this.createItem(ReportTypeName, report);
+    }
+
+    updateReport(report: any): Promise<any> {
+        return this.updateItem(ReportTypeName, report);
+    }
+
+    deleteReport(report: any): Promise<any> {
+        return this.deleteItem(ReportTypeName, report);
+    }
+
+    createExpense(expense: any): Promise<any> {
+        return this.createItem(ExpenseTypeName, expense);
+    }
+
+    updateExpense(expense: any): Promise<any> {
+        return this.updateItem(ExpenseTypeName, expense);
+    }
+
+    deleteExpense(expense: any): Promise<any> {
+        return this.deleteItem(ExpenseTypeName, expense);
     }
 
     private createItem(typeName: string, item: any): Promise<any> {
@@ -92,6 +114,10 @@ class Service {
 
     private updateItem(typeName: string, item: any): Promise<any> {
         return this._everlive.data(typeName).updateSingle(item);
+    }
+
+    private deleteItem(typeName: string, item: any): Promise<any> {
+        return this._everlive.data(typeName).destroySingle({ Id: item.Id });
     }
 }
 

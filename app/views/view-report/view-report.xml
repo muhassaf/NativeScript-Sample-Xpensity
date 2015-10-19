@@ -1,0 +1,60 @@
+﻿<Page xmlns="http://www.nativescript.org/tns.xsd"
+      xmlns:g="components/grid-view/grid-view"
+      xmlns:chart="nativescript-telerik-ui/chart"
+      navigatedTo="onNavigatedTo" >
+  <Page.actionBar >
+    <ActionBar title="{{ status | statusConverter }}">
+      <NavigationButton icon="res://ic_arrow_back" link="#back" />
+      <ActionBar.actionItems>
+        <ActionItem icon="res://ic_submit" ios.position="right" />
+        <ActionItem icon="res://ic_edit" ios.position="right" link="editReport" linkContext="{{ report }}" />
+      </ActionBar.actionItems>
+    </ActionBar>
+  </Page.actionBar>
+  <GridLayout>
+    <GridLayout rows="auto, *, auto">
+      <GridLayout rows="auto, auto, auto, auto" columns="*, auto" cssClass="root">
+        <Label text="{{ report.Title }}" textWrap="true" cssClass="title" />
+        <Label col="1" text="{{ totalCost | formatCurrency }}" cssClass="bold-label" />
+        <Label row="1" colSpan="2" text="{{ report.BusinessPurpose }}" cssClass="details-label" />
+        <Label row="2" colSpan="2" text="{{ report.Date | formatDate }}" cssClass="details-label" />
+
+        <chart:RadPieChart row="3" colSpan="2" cssClass="report-chart" >
+          <chart:PieChart.series>
+            <chart:PieSeries items="{{ report.Data }}" valueProperty="Amount">
+            </chart:PieSeries>
+          </chart:PieChart.series>
+        </chart:RadPieChart>
+      </GridLayout>
+
+      <ListView row="1" items="{{ expenses }}" link="editExpense" linkContext="{{ report }}" cssClass="list-view">
+        <ListView.itemTemplate>
+          <GridLayout columns="auto, *" cssClass="item">
+            <GridLayout backgroundColor="blue" cssClass="category" />
+            <GridLayout col="1" rows="auto, auto, auto" columns="*, auto" cssClass="item-container">
+              <Label text="{{ Title }}" cssClass="item-label" />
+              <Label row="1" text="{{ Date | formatDate }}" cssClass="item-details-label" />
+              <Label row="2" text="{{ Location }}" cssClass="item-details-label" />
+              <Label col="1" rowSpan="3" text="{{ Cost | formatCurrency }}" cssClass="item-bold-label" />
+            </GridLayout>
+          </GridLayout>
+        </ListView.itemTemplate>
+      </ListView>
+
+      <ios>
+        <GridLayout row="2" columns="auto, *" link="editExpense" linkContext="{{ report }}" visibility="{{ canAddExpense | visibilityConverter }}" cssClass="imageButtonContainer" >
+          <Image src="res://add-white" stretch="none" cssClass="imageButtonIcon" />
+          <Label col="1" text="Add expense" cssClass="imageButtonText" />
+        </GridLayout>
+      </ios>
+    </GridLayout>
+
+    <android>
+      <AbsoluteLayout cssClass="fab-container" link="editExpense" linkContext="{{ report }}" visibility="{{ canAddExpense | visibilityConverter }}" >
+        <Image src="res://fab" tap="{{ addExpense }}" stretch="none" cssClass="fab" />
+      </AbsoluteLayout>
+    </android>
+
+    <ActivityIndicator busy="{{ isLoading }}" />
+  </GridLayout>
+</Page>

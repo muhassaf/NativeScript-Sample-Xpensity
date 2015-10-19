@@ -1,13 +1,27 @@
 var applicationModule = require("application");
 var specialPropertiesModule = require("ui/builder/special-properties");
 var enums_1 = require("ui/enums");
+var list_view_1 = require("ui/list-view");
 var viewsModule = require("views");
 var navigationModule = require("navigation");
 var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 specialPropertiesModule.registerSpecialProperty("link", function (instance, propertyValue) {
-    instance.on("tap", function (args) {
-        navigationModule.navigateById(propertyValue, instance.linkContext);
-    });
+    if (instance instanceof list_view_1.ListView) {
+        var listView = instance;
+        listView.on("itemTap", function (args) {
+            navigationModule.navigateById(propertyValue, {
+                item: args.view.bindingContext,
+                context: instance.linkContext
+            });
+        });
+    }
+    else {
+        instance.on("tap", function (args) {
+            navigationModule.navigateById(propertyValue, {
+                context: instance.linkContext
+            });
+        });
+    }
 });
 applicationModule.cssFile = "./app.css";
 applicationModule.resources = {
@@ -28,6 +42,6 @@ applicationModule.resources = {
 //        navigationModule.replace(view);
 //    });
 //}
-applicationModule.mainModule = viewsModule.main;
+applicationModule.mainModule = viewsModule.viewReport;
 applicationModule.start();
 //# sourceMappingURL=app.js.map

@@ -71,6 +71,14 @@ export class ReportsViewModel extends ViewModelBase {
                     ]
                 }
             }];
+
+        this.set("Data", [
+            { Brand: "Audi", Amount: 10 },
+            { Brand: "Mercedes", Amount: 76 },
+            { Brand: "Fiat", Amount: 60 },
+            { Brand: "BMW", Amount: 24 },
+            { Brand: "Crysler", Amount: 40 }
+        ]);
     }
 
     get reports(): any[] {

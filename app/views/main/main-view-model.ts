@@ -3,17 +3,30 @@
 import { ViewModelBase } from "view-model-base";
 
 import { ReportsViewModel } from "./reports-view-model";
-
-//import notificationsViewModelModule = require("./notifications-view-model");
-//import settingsViewModelModule = require("./settings-view-model");
+import { NotificationsViewModel } from "./notifications-view-model";
+import { SettingsViewModel } from "./settings-view-model";
 
 export class MainViewModel extends ViewModelBase {
+    private _selectedTab: number;
     private _reportsViewModel: ReportsViewModel;
-    //private _notificationsViewModel: notificationsViewModelModule.NotificationsViewModel;
-    //private _settingsViewModel: settingsViewModelModule.SettingsViewModel;
+    private _notificationsViewModel: NotificationsViewModel;
+    private _settingsViewModel: SettingsViewModel;
 
     constructor() {
         super();
+
+        this._selectedTab = 0;
+    }
+
+    public get selectedTab(): number {
+        return this._selectedTab;
+    }
+
+    public set selectedTab(value: number) {
+        if (this._selectedTab !== value) {
+            this._selectedTab = value;
+            this.notifyPropertyChange("selectedTab", value);
+        }
     }
 
     public get reportsViewModel(): ReportsViewModel {
@@ -24,28 +37,33 @@ export class MainViewModel extends ViewModelBase {
         return this._reportsViewModel;
     }
 
-    //get notificationsViewModel(): notificationsViewModelModule.NotificationsViewModel {
-    //    if (!this._notificationsViewModel) {
-    //        this._notificationsViewModel = new notificationsViewModelModule.NotificationsViewModel();
-    //    }
+    public get notificationsViewModel(): NotificationsViewModel {
+        if (!this._notificationsViewModel) {
+            this._notificationsViewModel = new NotificationsViewModel();
+        }
 
-    //    return this._notificationsViewModel;
-    //}
+        return this._notificationsViewModel;
+    }
 
-    //get settingsViewModel(): settingsViewModelModule.SettingsViewModel {
-    //    if (!this._settingsViewModel) {
-    //        this._settingsViewModel = new settingsViewModelModule.SettingsViewModel();
-    //    }
+    public get settingsViewModel(): SettingsViewModel {
+        if (!this._settingsViewModel) {
+            this._settingsViewModel = new SettingsViewModel();
+        }
 
-    //    return this._settingsViewModel;
-    //}
+        return this._settingsViewModel;
+    }
 
     public refresh() {
         if (this._reportsViewModel) {
             this._reportsViewModel.refresh();
         }
 
-    //    this.notificationsViewModel.refresh();
-    //    this.settingsViewModel.refresh();
+        if (this._notificationsViewModel) {
+            this.notificationsViewModel.refresh();
+        }
+
+        if (this._settingsViewModel) {
+            this._settingsViewModel.refresh();
+        }
     }
 }

@@ -1,36 +1,38 @@
 <Page xmlns="http://www.nativescript.org/tns.xsd"
       xmlns:g="grid-view"
       xmlns:chart="nativescript-telerik-ui/chart"
-      navigatedTo="onNavigatedTo" 
+      navigatedTo="onNavigatedTo"
       android:actionBarHidden="true" >
-  <TabView id="TabView">
+  <TabView id="TabView" selectedColor="#007AFF" selectedIndex="{{ selectedTab }}">
     <TabView.items>
       <TabViewItem id="ReportsTabItem" ios:title="My reports" iconSource="res://ic_reports" >
         <TabViewItem.view>
           <GridLayout rows="auto, *" bindingContext="{{ reportsViewModel }}" >
             <Label text="MY REPORTS" cssClass="header" visibility="{{ androidVisibility }}" />
-            
+
             <ScrollView row="1" >
               <g:GridView items="{{ reports }}" gridColumns="2" cssClass="reports-grid" >
                 <g:GridView.itemTemplate>
-                    <StackLayout orientation="vertical" cssClass="tile">
-                      <Image src="res://ic_approved" stretch="none" cssClass="status-icon" />
-                      <chart:PieChart cssClass="categories-chart">
-                        <chart:PieChart.series>
-                          <chart:PieSeries items="{{ report.Data }}" valueProperty="Amount">
-                          </chart:PieSeries>
-                        </chart:PieChart.series>
-                      </chart:PieChart>
-                      <Label text="{{ report.Title }}" cssClass="item-header" />
-                      <Label text="{{ report.Date | formatDate }}" cssClass="item-content" />
-                    </StackLayout>
+                  <StackLayout orientation="vertical" link="viewReport" cssClass="tile">
+                    <Image src="res://ic_approved" stretch="none" cssClass="status-icon" />
+                    <chart:RadPieChart cssClass="categories-chart">
+                      <chart:PieChart.series>
+                        <chart:PieSeries items="{{ report.Data }}" valueProperty="Amount">
+                        </chart:PieSeries>
+                      </chart:PieChart.series>
+                    </chart:RadPieChart>
+                    <Label text="{{ report.Title }}" cssClass="item-header" />
+                    <Label text="{{ report.Date | formatDate }}" cssClass="item-content" />
+                  </StackLayout>
                 </g:GridView.itemTemplate>
               </g:GridView>
             </ScrollView>
 
-            <AbsoluteLayout rowSpan="2" cssClass="fab-container" ios:visibility="hidden">
-              <Image src="res://fab" tap="{{ addReport }}" stretch="none" cssClass="fab" />
-            </AbsoluteLayout>
+            <android>
+              <AbsoluteLayout rowSpan="2" cssClass="fab-container" >
+                <Image src="res://fab" tap="{{ addReport }}" stretch="none" cssClass="fab" />
+              </AbsoluteLayout>
+            </android>
 
             <ActivityIndicator rowSpan="2" busy="{{ isLoading }}" />
           </GridLayout>
@@ -39,42 +41,43 @@
       <TabViewItem iconSource="res://ic_notifications" ios:title="Notifications" >
         <TabViewItem.view>
           <GridLayout rows="auto, auto, *" bindingContext="{{ notificationsViewModel }}">
-            <Label text="NOTIFICATIONS" cssClass="header" />
+            <android>
+              <Label text="NOTIFICATIONS" cssClass="header" />
+            </android>
 
-            <Border row="1" cssClass="blockContainer">
-              <StackLayout orientation="horizontal">
-                <Label text="{{ reportsForApproval }}" cssClass="blockLabel" />
-                <Label margin="16 0 16 0" text="Reports waiting for approval" cssClass="blockLabel" />
-              </StackLayout>
-            </Border>
+            <Label row="1"  text="{{ reportsForApproval + ' REPORTS WAITING FOR APPROVAL' }}" cssClass="block" />
+            <ScrollView row="2" >
+              <Repeater items="{{ notifications }}" >
+                <Repeater.itemTemplate>
+                  <GridLayout columns="*, auto" cssClass="repeater-item">
+                    <Label text="{{ Message }}" textWrap="true" cssClass="message" />
+                    <Label col="1" text="{{ Date | formatDate }}" cssClass="date" />
+                  </GridLayout>
+                </Repeater.itemTemplate>
+              </Repeater>
+            </ScrollView>
 
-            <ActivityIndicator rowSpan="3" busy="{{ isLoading }}" />
+
+            <ActivityIndicator rowSpan="2" busy="{{ isLoading }}" />
           </GridLayout>
         </TabViewItem.view>
       </TabViewItem >
       <TabViewItem iconSource="res://ic_settings" ios:title="Settings" >
         <TabViewItem.view>
           <GridLayout rows="auto, *" bindingContext="{{ settingsViewModel }}">
-            <Label text="SETTINGS" cssClass="header" />
+            <android>
+              <Label text="SETTINGS" cssClass="header" />
+            </android>
 
             <ScrollView row="1">
-              <StackLayout>
-                <Border cssClass="blockContainer">
-                  <Label text="{{ name }}" cssClass="blockLabel" />
-                </Border>
+              <GridLayout rows="auto, auto, auto, auto" columns="*, auto">
+                <Label colSpan="2"  text="{{ name }}" cssClass="block" />
 
-                <GridLayout columns="*, auto">
-                  <Label text="Offline Mode" />
-                  <Switch col="1" checked="{{ offlineMode }}"/>
-                </GridLayout>
+                <Label row="1" text="Offline Mode" cssClass="label" />
+                <Switch row="1" col="1" checked="{{ offlineMode }}" cssClass="switch"/>
 
-                <!--<GridLayout columns="*, auto">
-                  <Label text="Notifications" />
-                  <Switch col="1" checked="{{ notifications }}"/>
-                </GridLayout>-->
-
-                <Button text="Logout" tap="logoutButtonTap" cssClass="secondaryButton" />
-              </StackLayout>
+                <Button row="2" colSpan="2" text="Log Out" tap="{{ logout }}" cssClass="secondary-button" />
+              </GridLayout>
             </ScrollView>
 
             <ActivityIndicator rowSpan="2" busy="{{ isLoading }}" />
