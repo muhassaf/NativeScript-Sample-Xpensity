@@ -298,7 +298,16 @@
     <Content Include="app\views\main\main.xml">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="app\views\notifications\notifications.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="app\views\password-recovery\password-recovery.xml" />
+    <Content Include="app\views\reports\reports.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="app\views\settings\settings.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="app\views\sign-up\sign-up.xml" />
     <Content Include="app\lib\everlive.js" />
     <Content Include="app\obj\Android\Xpensity.csproj.FileListAbsolute.txt" />
@@ -310,9 +319,21 @@
     <Content Include="app\obj\iOS\Xpensity.csproj.FileListAbsolute.txt" />
     <Content Include="app\obj\iOS\Xpensity.dll" />
     <Content Include="app\obj\iOS\Xpensity.pdb" />
+    <Content Include="app\views\test\test.xml" />
     <Content Include="app\views\view-report\view-report.xml">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="node_modules\custom-control\custom-control-common.js" />
+    <Content Include="node_modules\custom-control\custom-control.android.js" />
+    <Content Include="node_modules\custom-control\custom-control.ios.js" />
+    <Content Include="node_modules\date-picker\date-picker-popup.css" />
+    <Content Include="node_modules\date-picker\date-picker-popup.xml" />
+    <Content Include="node_modules\date-picker\date-picker.android.xml" />
+    <Content Include="node_modules\date-picker\date-picker.ios.xml" />
+    <Content Include="node_modules\drop-down-list\drop-down-list-popup.css" />
+    <Content Include="node_modules\drop-down-list\drop-down-list-popup.xml" />
+    <Content Include="node_modules\drop-down-list\drop-down-list.android.xml" />
+    <Content Include="node_modules\drop-down-list\drop-down-list.ios.xml" />
     <Content Include="node_modules\nativescript-telerik-ui\chart\chart-common.js" />
     <Content Include="node_modules\nativescript-telerik-ui\chart\chart-initializers-common.js" />
     <Content Include="node_modules\nativescript-telerik-ui\chart\chart-initializers.android.js" />
@@ -844,17 +865,28 @@
     <TypeScriptCompile Include="app\views\login\login.ts" />
     <TypeScriptCompile Include="app\views\main\main-view-model.ts" />
     <TypeScriptCompile Include="app\views\main\main.ts" />
-    <TypeScriptCompile Include="app\views\main\notifications-view-model.ts" />
-    <TypeScriptCompile Include="app\views\main\reports-view-model.ts" />
-    <TypeScriptCompile Include="app\views\main\settings-view-model.ts" />
+    <TypeScriptCompile Include="app\views\notifications\notifications-view-model.ts" />
+    <TypeScriptCompile Include="app\views\reports\reports-view-model.ts" />
+    <TypeScriptCompile Include="app\views\settings\settings-view-model.ts" />
     <TypeScriptCompile Include="app\views\password-recovery\password-recovery-view-model.ts" />
     <TypeScriptCompile Include="app\views\password-recovery\password-recovery.ts" />
     <TypeScriptCompile Include="app\views\sign-up\sign-up-view-model.ts" />
     <TypeScriptCompile Include="app\views\sign-up\sign-up.ts" />
     <TypeScriptCompile Include="app\resources\resources.android.ts" />
     <TypeScriptCompile Include="app\resources\resources.ios.ts" />
+    <TypeScriptCompile Include="app\views\test\test.ts" />
     <TypeScriptCompile Include="app\views\view-report\view-report-view-model.ts" />
     <TypeScriptCompile Include="app\views\view-report\view-report.ts" />
+    <TypeScriptCompile Include="node_modules\custom-control\custom-control-common.ts" />
+    <TypeScriptCompile Include="node_modules\custom-control\custom-control.android.ts" />
+    <TypeScriptCompile Include="node_modules\custom-control\custom-control.d.ts" />
+    <TypeScriptCompile Include="node_modules\custom-control\custom-control.ios.ts" />
+    <TypeScriptCompile Include="node_modules\date-picker\date-picker-popup.ts" />
+    <TypeScriptCompile Include="node_modules\date-picker\date-picker.d.ts" />
+    <TypeScriptCompile Include="node_modules\date-picker\date-picker.ts" />
+    <TypeScriptCompile Include="node_modules\drop-down-list\drop-down-list-popup.ts" />
+    <TypeScriptCompile Include="node_modules\drop-down-list\drop-down-list.d.ts" />
+    <TypeScriptCompile Include="node_modules\drop-down-list\drop-down-list.ts" />
     <TypeScriptCompile Include="node_modules\grid-view\grid-view.d.ts" />
     <TypeScriptCompile Include="node_modules\grid-view\grid-view.ts" />
     <TypeScriptCompile Include="node_modules\navigation\navigation.ts" />
@@ -962,8 +994,7 @@
     <TypeScriptCompile Include="node_modules\tns-core-modules\xml\xml.d.ts" />
     <TypeScriptCompile Include="node_modules\view-model-base\view-model-base.ts" />
     <TypeScriptCompile Include="node_modules\view-model-base\view-model-base.d.ts" />
-    <TypeScriptCompile Include="node_modules\views\views.d.ts" />
-    <TypeScriptCompile Include="node_modules\views\views.ts" />
+    <TypeScriptCompile Include="app\shared\views.ts" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="app\obj\Android\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
@@ -1064,9 +1095,6 @@
     <Content Include="node_modules\navigation\package.json" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="node_modules\views\package.json" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="node_modules\table\package.json" />
   </ItemGroup>
   <ItemGroup>
@@ -1080,5 +1108,15 @@
     <Content Include="node_modules\nativescript-telerik-ui\platforms\Android\Data-2015.3.1015-dev-release.aar" />
     <Content Include="node_modules\nativescript-telerik-ui\platforms\Android\List-2015.3.1015-dev-release.aar" />
     <Content Include="node_modules\nativescript-telerik-ui\platforms\Android\Primitives-2015.3.1015-dev-release.aar" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="node_modules\date-picker\package.json" />
+    <Content Include="node_modules\drop-down-list\package.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="node_modules\custom-control\custom-control-common.js.map" />
+    <Content Include="node_modules\custom-control\custom-control.android.js.map" />
+    <Content Include="node_modules\custom-control\custom-control.ios.js.map" />
+    <Content Include="node_modules\custom-control\package.json" />
   </ItemGroup>
 </Project>

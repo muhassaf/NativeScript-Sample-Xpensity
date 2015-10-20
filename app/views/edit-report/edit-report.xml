@@ -2,10 +2,10 @@
       xmlns:table="table" 
       navigatedTo="onNavigatedTo">
   <Page.actionBar>
-    <ActionBar title="{{ isAdd ? 'Add Report : 'Edit Report' }}">
+    <ActionBar title="{{ isAdd ? 'Add Report' : 'Edit Report' }}">
       <NavigationButton icon="res://ic_arrow_back" link="#back" />
       <ActionBar.actionItems>
-        <ActionItem text="Done" ios.position="right" />
+        <ActionItem text="Done" ios.position="right" tap="{{ delete }}" />
       </ActionBar.actionItems>
     </ActionBar>
   </Page.actionBar>

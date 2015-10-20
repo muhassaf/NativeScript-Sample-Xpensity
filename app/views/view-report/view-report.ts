@@ -5,7 +5,7 @@ import { ViewReportViewModel } from "./view-report-view-model";
 
 export function onNavigatedTo(args: EventData) {
     var page = <Page>args.object;
-    var viewModel = page.navigationContext ? <ViewReportViewModel>page.navigationContext : new ViewReportViewModel({
+    var viewModel = page.navigationContext ? <ViewReportViewModel>page.navigationContext.context : new ViewReportViewModel({
         Title: "Boston Trip",
         BusinessPurpose: "Client visit",
         Date: new Date(),

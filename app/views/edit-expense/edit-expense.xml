@@ -1,8 +1,9 @@
 <Page xmlns="http://www.nativescript.org/tns.xsd"
       xmlns:table="table"
+      xmlns:dp="date-picker"
       navigatedTo="onNavigatedTo">
   <Page.actionBar>
-    <ActionBar title="{{ isAdd ? 'Add Expense : 'Edit Expense' }}">
+    <ActionBar title="{{ isAdd ? 'Add Expense' : 'Edit Expense' }}">
       <NavigationButton icon="res://ic_arrow_back" link="#back" />
       <ActionBar.actionItems>
         <ActionItem text="Done" ios.position="right" />
@@ -16,6 +17,7 @@
           <TextField text="{{ item.Title }}" hint="Title" />
           <TextField text="{{ item.Location  }}" hint="Location" />
           <TextField text="{{ item.Cost  }}" hint="Cost" keyboardType="number" />
+          <dp:DatePicker header="Date" selectedDate="{{ item.Date }}" />
           <TextView text="{{ item.Notes }}" hint="Notes" />
         </table:Table>
 

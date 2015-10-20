@@ -127,3 +127,8 @@ TextView {
 .category {
     width: 5;
 }
+
+.separator {
+    height: 2;
+    background-color: #828282;
+}

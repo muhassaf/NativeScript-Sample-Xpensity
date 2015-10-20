@@ -50,8 +50,8 @@
     </GridLayout>
 
     <android>
-      <AbsoluteLayout cssClass="fab-container" link="editExpense" linkContext="{{ report }}" visibility="{{ canAddExpense | visibilityConverter }}" >
-        <Image src="res://fab" tap="{{ addExpense }}" stretch="none" cssClass="fab" />
+      <AbsoluteLayout cssClass="fab-container" visibility="{{ canAddExpense | visibilityConverter }}" >
+        <Image src="res://fab" link="editExpense" linkContext="{{ report }}" stretch="none" cssClass="fab" />
       </AbsoluteLayout>
     </android>
 

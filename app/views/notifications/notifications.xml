@@ -1,0 +1,24 @@
+<TabViewItem iconSource="res://ic_notifications" ios:title="Notifications" >
+  <TabViewItem.view>
+    <GridLayout rows="auto, auto, *" bindingContext="{{ notificationsViewModel }}">
+      <android>
+        <Label text="NOTIFICATIONS" cssClass="header" />
+      </android>
+
+      <Label row="1"  text="{{ reportsForApproval + ' REPORTS WAITING FOR APPROVAL' }}" cssClass="block" />
+      <ScrollView row="2" >
+        <Repeater items="{{ notifications }}" >
+          <Repeater.itemTemplate>
+            <GridLayout columns="*, auto" cssClass="repeater-item">
+              <Label text="{{ Message }}" textWrap="true" cssClass="message" />
+              <Label col="1" text="{{ Date | formatDate }}" cssClass="date" />
+            </GridLayout>
+          </Repeater.itemTemplate>
+        </Repeater>
+      </ScrollView>
+
+
+      <ActivityIndicator rowSpan="2" busy="{{ isLoading }}" />
+    </GridLayout>
+  </TabViewItem.view>
+</TabViewItem >

@@ -3,7 +3,7 @@ import { service } from "../../shared/service";
 import { ViewReportViewModel } from "../view-report/view-report-view-model";
 import validationRulesModule = require("../../shared/validation-rules");
 import navigationModule = require("navigation");
-import viewsModule = require("views");
+import viewsModule = require("../../shared/views");
 
 export class EditExpenseViewModel extends EditViewModelBase {
     private _report: any;

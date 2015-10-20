@@ -1,0 +1,22 @@
+<TabViewItem iconSource="res://ic_settings" ios:title="Settings" >
+  <TabViewItem.view>
+    <GridLayout rows="auto, *" bindingContext="{{ settingsViewModel }}">
+      <android>
+        <Label text="SETTINGS" cssClass="header" />
+      </android>
+
+      <ScrollView row="1">
+        <GridLayout rows="auto, auto, auto, auto" columns="*, auto">
+          <Label colSpan="2"  text="{{ name }}" cssClass="block" />
+
+          <Label row="1" text="Offline Mode" cssClass="label" />
+          <Switch row="1" col="1" checked="{{ offlineMode }}" cssClass="switch"/>
+
+          <Button row="2" colSpan="2" text="Log Out" tap="{{ logout }}" cssClass="secondary-button" />
+        </GridLayout>
+      </ScrollView>
+
+      <ActivityIndicator rowSpan="2" busy="{{ isLoading }}" />
+    </GridLayout>
+  </TabViewItem.view>
+</TabViewItem >

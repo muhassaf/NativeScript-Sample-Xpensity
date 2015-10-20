@@ -5,7 +5,7 @@ import { Visibility } from "ui/enums";
 import { ListView, ItemEventData } from "ui/list-view";
 
 import serviceModule = require("./shared/service");
-import viewsModule = require("views");
+import viewsModule = require("./shared/views");
 import navigationModule = require("navigation");
 
 var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -53,5 +53,5 @@ applicationModule.resources = {
 //    });
 //}
 
-applicationModule.mainModule = viewsModule.viewReport;
+applicationModule.mainModule = viewsModule.main;
 applicationModule.start();

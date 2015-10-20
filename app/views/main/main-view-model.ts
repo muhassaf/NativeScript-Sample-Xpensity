@@ -2,9 +2,9 @@
 
 import { ViewModelBase } from "view-model-base";
 
-import { ReportsViewModel } from "./reports-view-model";
-import { NotificationsViewModel } from "./notifications-view-model";
-import { SettingsViewModel } from "./settings-view-model";
+import { ReportsViewModel } from "../reports/reports-view-model";
+import { NotificationsViewModel } from "../notifications/notifications-view-model";
+import { SettingsViewModel } from "../settings/settings-view-model";
 
 export class MainViewModel extends ViewModelBase {
     private _selectedTab: number;

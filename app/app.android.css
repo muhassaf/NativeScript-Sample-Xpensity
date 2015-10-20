@@ -1,5 +1,9 @@
 ﻿@import url("~/app-common.css");
 
+TextView {
+    height: 80;
+}
+
 .primary-button {
     margin: 30 16 16 16;
     color: #FFFFFF;
@@ -81,4 +85,22 @@
 
 .item-container {
     margin: 8 16 8 11;
+}
+
+.picker-header {
+    color: #828282;
+    font-size: 12;
+}
+
+.picker-container {
+    margin-bottom: 8;
+}
+
+.picker-value {
+    font-size: 16;
+    color: #000000;
+}
+
+.picker {
+    margin: 0 5 5 5;
 }
