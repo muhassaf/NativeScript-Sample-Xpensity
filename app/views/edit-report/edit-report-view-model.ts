@@ -1,4 +1,4 @@
-﻿import { EditViewModelBase } from "../../shared/edit-view-model-base";
+﻿import { EditViewModelBase } from "edit-view-model-base";
 import { service } from "../../shared/service";
 import { ViewReportViewModel } from "../view-report/view-report-view-model";
 import validationRulesModule = require("../../shared/validation-rules");

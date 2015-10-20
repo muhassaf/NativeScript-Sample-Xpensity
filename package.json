@@ -15,9 +15,11 @@
     "custom-control": "file:..\\Plugins\\custom-control",
     "date-picker": "file:..\\Plugins\\date-picker",
     "drop-down-list": "file:..\\Plugins\\drop-down-list",
+    "edit-view-model-base": "file:..\\Plugins\\edit-view-model-base",
     "grid-view": "file:..\\Plugins\\grid-view",
     "nativescript-telerik-ui": "0.0.10",
     "navigation": "file:..\\Plugins\\navigation",
+    "notifications": "file:..\\Plugins\\notifications",
     "table": "file:..\\Plugins\\table",
     "tns-core-modules": "1.4.1",
     "view-model-base": "file:..\\Plugins\\view-model-base"

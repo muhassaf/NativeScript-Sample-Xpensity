@@ -853,8 +853,6 @@
   <ItemGroup>
     <TypeScriptCompile Include="app\app.ts" />
     <TypeScriptCompile Include="app\shared\constants.ts" />
-    <TypeScriptCompile Include="app\shared\edit-view-model-base.ts" />
-    <TypeScriptCompile Include="app\shared\notifications.ts" />
     <TypeScriptCompile Include="app\shared\service.ts" />
     <TypeScriptCompile Include="app\shared\validation-rules.ts" />
     <TypeScriptCompile Include="app\views\edit-expense\edit-expense-view-model.ts" />
@@ -887,10 +885,14 @@
     <TypeScriptCompile Include="node_modules\drop-down-list\drop-down-list-popup.ts" />
     <TypeScriptCompile Include="node_modules\drop-down-list\drop-down-list.d.ts" />
     <TypeScriptCompile Include="node_modules\drop-down-list\drop-down-list.ts" />
+    <TypeScriptCompile Include="node_modules\edit-view-model-base\edit-view-model-base.ts" />
+    <TypeScriptCompile Include="node_modules\edit-view-model-base\edit-view-model-base.d.ts" />
     <TypeScriptCompile Include="node_modules\grid-view\grid-view.d.ts" />
     <TypeScriptCompile Include="node_modules\grid-view\grid-view.ts" />
     <TypeScriptCompile Include="node_modules\navigation\navigation.ts" />
     <TypeScriptCompile Include="node_modules\navigation\navigation.d.ts" />
+    <TypeScriptCompile Include="node_modules\notifications\notifications.d.ts" />
+    <TypeScriptCompile Include="node_modules\notifications\notifications.ts" />
     <TypeScriptCompile Include="node_modules\table\table-common.ts" />
     <TypeScriptCompile Include="node_modules\table\table.android.ts" />
     <TypeScriptCompile Include="node_modules\table\table.d.ts" />
@@ -1118,5 +1120,8 @@
     <Content Include="node_modules\custom-control\custom-control.android.js.map" />
     <Content Include="node_modules\custom-control\custom-control.ios.js.map" />
     <Content Include="node_modules\custom-control\package.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="node_modules\notifications\package.json" />
   </ItemGroup>
 </Project>
