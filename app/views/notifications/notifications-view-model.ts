@@ -1,44 +1,27 @@
 ﻿import { ViewModelBase } from "view-model-base";
+import applicationSettingsModule = require("application-settings");
+
+var NOTIFICATIONS = "notifications";
 
 export class NotificationsViewModel extends ViewModelBase {
-    private _reportsForApproval: number;
     private _notifications: any[];
 
     constructor() {
         super();
-
-        this._reportsForApproval = 0;
-        this._notifications = [{
-            Message: "Boston trip report has been approved",
-            Date: new Date()
-        }, {
-                Message: "Boston trip report has been approved",
-                Date: new Date()
-            }];
-    }
-
-    public get reportsForApproval(): number {
-        return this._reportsForApproval;
-    }
-
-    public set reportsForApproval(value: number) {
-        if (this._reportsForApproval !== value) {
-            this._reportsForApproval = value;
-            this.notifyPropertyChange("reportsForApproval", value);
-        }
     }
 
     public get notifications(): any[] {
         return this._notifications;
     }
 
+    public set notifications(value: any[]) {
+        if (this._notifications !== value) {
+            this._notifications = value;
+            this.notifyPropertyChange("notifications", value);
+        }
+    }
+
     refresh() {
-        //this.beginLoading();
-        //serviceModule.service.getReportsForApproval().then(reportsForApproval => {
-        //    this.reportsForApproval = reportsForApproval;
-        //    this.endLoading();
-        //}, error => {
-        //        this.endLoading();
-        //    });
+        this.notifications = JSON.parse(applicationSettingsModule.getString(NOTIFICATIONS, "[]"));
     }
 }

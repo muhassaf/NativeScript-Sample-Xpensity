@@ -1,100 +1,33 @@
 ﻿import observableModule = require("data/observable");
+import { DataSource, DataSourceOptions } from "data-source";
 
 import { ViewModelBase } from "view-model-base";
 import { ViewReportViewModel } from "../view-report/view-report-view-model";
+import { everlive, ReportTypeName } from "../../shared/service";
 
 export class ReportsViewModel extends ViewModelBase {
-    private _reports: any[];
+    private _reports: DataSource;
 
     constructor() {
         super();
 
-        this._reports = [new ViewReportViewModel(
-            {
-                Title: "Item 1",
-                Date: new Date(),
-                Data: [
-                    { Brand: "Audi", Amount: 10 },
-                    { Brand: "Mercedes", Amount: 76 },
-                    { Brand: "Fiat", Amount: 60 },
-                    { Brand: "BMW", Amount: 24 },
-                    { Brand: "Crysler", Amount: 40 }
-                ]
+        this._reports = new DataSource(everlive, new DataSourceOptions(ReportTypeName, undefined, (reports: any[]) => {
+            var result = [];
+            for (var i = 0; i < reports.length; i++) {
+                var viewModel = new ViewReportViewModel(reports[i])
+                viewModel.refresh();
+                result.push(viewModel);
             }
-        ), new ViewReportViewModel(
-            {
-                Title: "Item 1",
-                Date: new Date(),
-                Data: [
-                    { Brand: "Audi", Amount: 10 },
-                    { Brand: "Mercedes", Amount: 76 },
-                    { Brand: "Fiat", Amount: 60 },
-                    { Brand: "BMW", Amount: 24 },
-                    { Brand: "Crysler", Amount: 40 }
-                ]
-            }
-        ), new ViewReportViewModel(
-            {
-                Title: "Item 1",
-                Date: new Date(),
-                Data: [
-                    { Brand: "Audi", Amount: 10 },
-                    { Brand: "Mercedes", Amount: 76 },
-                    { Brand: "Fiat", Amount: 60 },
-                    { Brand: "BMW", Amount: 24 },
-                    { Brand: "Crysler", Amount: 40 }
-                ]
-            }
-        ), new ViewReportViewModel(
-            {
-                Title: "Item 1",
-                Date: new Date(),
-                Data: [
-                    { Brand: "Audi", Amount: 10 },
-                    { Brand: "Mercedes", Amount: 76 },
-                    { Brand: "Fiat", Amount: 60 },
-                    { Brand: "BMW", Amount: 24 },
-                    { Brand: "Crysler", Amount: 40 }
-                ]
-            }
-        ), new ViewReportViewModel(
-            {
-                Title: "Item 1",
-                Date: new Date(),
-                Data: [
-                    { Brand: "Audi", Amount: 10 },
-                    { Brand: "Mercedes", Amount: 76 },
-                    { Brand: "Fiat", Amount: 60 },
-                    { Brand: "BMW", Amount: 24 },
-                    { Brand: "Crysler", Amount: 40 }
-                ]
-            }
-        )];
+
+            return result;
+        }));
     }
 
-    get reports(): any[] {
+    get reports(): DataSource {
         return this._reports;
     }
 
-    //set reports(value: Array<viewReportViewModelModule.ViewReportViewModel>) {
-    //    if (this._reports !== value) {
-    //        this._reports = value;
-    //        this.notifyPropertyChanged("reports", value);
-    //    }
-    //}
-
     refresh() {
-        //this.beginLoading();
-        //serviceModule.service.getReports().then((data: any[]) => {
-        //    var reports = new Array<viewReportViewModelModule.ViewReportViewModel>();
-        //    for (var i = 0; i < data.length; i++) {
-        //        reports.push(new viewReportViewModelModule.ViewReportViewModel(data[i]));
-        //    }
-
-        //    this.reports = reports;
-        //    this.endLoading();
-        //},(error: any) => {
-        //        this.endLoading();
-        //    });
+        this.execute(this._reports.reload());
     }
 }

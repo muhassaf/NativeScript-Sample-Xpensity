@@ -11,7 +11,8 @@ export class LoginViewModel extends ViewModelBase {
     constructor() {
         super();
 
-        this.clear();
+        this._username = "kamen.velikov@telerik.com";
+        this._password = "123";
     }
 
     public get username(): string {
@@ -40,7 +41,7 @@ export class LoginViewModel extends ViewModelBase {
         if (this.validate()) {
             this.execute(service.login(this.username, this.password))
                 .then((success) => {
-                    navigationModule.home();
+                    navigationModule.main();
                 }, (error) => {
                     this.showValidationSummary(error.message);
                 });

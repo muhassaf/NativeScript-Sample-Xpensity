@@ -16,6 +16,9 @@ export class MainViewModel extends ViewModelBase {
         super();
 
         this._selectedTab = 0;
+        this._reportsViewModel = new ReportsViewModel();
+        this._notificationsViewModel = new NotificationsViewModel();
+        this._settingsViewModel = new SettingsViewModel();
     }
 
     public get selectedTab(): number {
@@ -30,40 +33,20 @@ export class MainViewModel extends ViewModelBase {
     }
 
     public get reportsViewModel(): ReportsViewModel {
-        if (!this._reportsViewModel) {
-            this._reportsViewModel = new ReportsViewModel();
-        }
-
         return this._reportsViewModel;
     }
 
     public get notificationsViewModel(): NotificationsViewModel {
-        if (!this._notificationsViewModel) {
-            this._notificationsViewModel = new NotificationsViewModel();
-        }
-
         return this._notificationsViewModel;
     }
 
     public get settingsViewModel(): SettingsViewModel {
-        if (!this._settingsViewModel) {
-            this._settingsViewModel = new SettingsViewModel();
-        }
-
         return this._settingsViewModel;
     }
 
     public refresh() {
-        if (this._reportsViewModel) {
-            this._reportsViewModel.refresh();
-        }
-
-        if (this._notificationsViewModel) {
-            this.notificationsViewModel.refresh();
-        }
-
-        if (this._settingsViewModel) {
-            this._settingsViewModel.refresh();
-        }
+        this._reportsViewModel.refresh();
+        this._notificationsViewModel.refresh();
+        this._settingsViewModel.refresh();
     }
 }

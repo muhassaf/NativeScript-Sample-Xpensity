@@ -3,11 +3,11 @@
       xmlns:chart="nativescript-telerik-ui/chart"
       navigatedTo="onNavigatedTo" >
   <Page.actionBar >
-    <ActionBar title="{{ status | statusConverter }}">
+    <ActionBar title="{{ report.Status | reportStatusConverter }}">
       <NavigationButton icon="res://ic_arrow_back" link="#back" />
       <ActionBar.actionItems>
-        <ActionItem icon="res://ic_submit" ios.position="right" />
-        <ActionItem icon="res://ic_edit" ios.position="right" link="editReport" linkContext="{{ report }}" />
+        <ActionItem icon="res://ic_submit" ios.position="right" tap="onSubmitTap" visibility="{{ report.Status | editReportVisibilityConverter }}" />
+        <ActionItem icon="res://ic_edit" ios.position="right" link="editReport" linkContext="{{ report }}" visibility="{{ report.Status | editReportVisibilityConverter }}" />
       </ActionBar.actionItems>
     </ActionBar>
   </Page.actionBar>
@@ -21,7 +21,7 @@
 
         <chart:RadPieChart row="3" colSpan="2" cssClass="report-chart" >
           <chart:PieChart.series>
-            <chart:PieSeries items="{{ report.Data }}" valueProperty="Amount">
+            <chart:PieSeries items="{{ expensesByCategory }}" valueProperty="Percent">
             </chart:PieSeries>
           </chart:PieChart.series>
         </chart:RadPieChart>
@@ -42,7 +42,7 @@
       </ListView>
 
       <ios>
-        <GridLayout row="2" columns="auto, *" link="editExpense" linkContext="{{ report }}" visibility="{{ canAddExpense | visibilityConverter }}" cssClass="imageButtonContainer" >
+        <GridLayout row="2" columns="auto, *" link="editExpense" linkContext="{{ report }}" visibility="{{ report.Status | editReportVisibilityConverter }}" cssClass="imageButtonContainer" >
           <Image src="res://add-white" stretch="none" cssClass="imageButtonIcon" />
           <Label col="1" text="Add expense" cssClass="imageButtonText" />
         </GridLayout>
@@ -50,7 +50,7 @@
     </GridLayout>
 
     <android>
-      <AbsoluteLayout cssClass="fab-container" visibility="{{ canAddExpense | visibilityConverter }}" >
+      <AbsoluteLayout cssClass="fab-container" visibility="{{ report.Status | editReportVisibilityConverter }}" >
         <Image src="res://fab" link="editExpense" linkContext="{{ report }}" stretch="none" cssClass="fab" />
       </AbsoluteLayout>
     </android>

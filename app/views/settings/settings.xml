@@ -7,12 +7,15 @@
 
       <ScrollView row="1">
         <GridLayout rows="auto, auto, auto, auto" columns="*, auto">
-          <Label colSpan="2"  text="{{ name }}" cssClass="block" />
+          <Label colSpan="2"  text="{{ name }}" link="editProfile" cssClass="block" />
 
           <Label row="1" text="Offline Mode" cssClass="label" />
           <Switch row="1" col="1" checked="{{ offlineMode }}" cssClass="switch"/>
 
-          <Button row="2" colSpan="2" text="Log Out" tap="{{ logout }}" cssClass="secondary-button" />
+          <Label row="2" text="Notifications" cssClass="label" />
+          <Switch row="2" col="1" checked="{{ notifications }}" cssClass="switch"/>
+
+          <Button row="3" colSpan="2" text="Log Out" tap="{{ logout }}" cssClass="secondary-button" />
         </GridLayout>
       </ScrollView>
 

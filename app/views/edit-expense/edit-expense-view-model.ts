@@ -4,37 +4,37 @@ import { ViewReportViewModel } from "../view-report/view-report-view-model";
 import validationRulesModule = require("../../shared/validation-rules");
 import navigationModule = require("navigation");
 import viewsModule = require("../../shared/views");
+import constantsModule = require("../../shared/constants");
+
+import { everlive, CategoryTypeName } from "../../shared/service";
+
+import { DataSource, DataSourceOptions } from "data-source";
 
 export class EditExpenseViewModel extends EditViewModelBase {
     private _report: any;
-    private _category: any;
+    private _categories: DataSource;
 
     constructor(report: any, expense?: any) {
         this._report = report;
+
         super(expense);
+
+        this._categories = new DataSource(everlive, new DataSourceOptions(CategoryTypeName));
         this.refresh();
     }
 
+    public get categories() {
+        return this._categories;
+    }
+
     public refresh() {
-        //this.loadCategory();
-    }
-
-    public get category(): any {
-        return this._category;
-    }
-
-    public set category(value: any) {
-        if (this._category !== value) {
-            this._category = value;
-            this.item.Category = this._category.Id;
-            this.notifyPropertyChange("category", value);
-        }
+        this.execute(this._categories.reload());
     }
 
     protected createItem(): any {
         var item = super.createItem();
         item.Date = new Date();
-        //item.Category = constantsModule.defaultExpenseCategoryId;
+        item.Category = constantsModule.defaultExpenseCategoryId;
         item.Report = this._report.Id;
 
         return item;
@@ -65,16 +65,6 @@ export class EditExpenseViewModel extends EditViewModelBase {
             return false;
         }
 
-        return super.validate();
+        return true;
     }
-
-    //private loadCategory() {
-    //    this.beginLoading();
-    //    serviceModule.service.getExpenseCategory(this.item.Category).then((category) => {
-    //        this.category = category;
-    //        this.endLoading();
-    //    },(error) => {
-    //            this.endLoading();
-    //        });
-    //}
 }

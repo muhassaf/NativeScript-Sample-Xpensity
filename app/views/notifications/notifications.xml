@@ -5,8 +5,7 @@
         <Label text="NOTIFICATIONS" cssClass="header" />
       </android>
 
-      <Label row="1"  text="{{ reportsForApproval + ' REPORTS WAITING FOR APPROVAL' }}" cssClass="block" />
-      <ScrollView row="2" >
+      <ScrollView row="1" >
         <Repeater items="{{ notifications }}" >
           <Repeater.itemTemplate>
             <GridLayout columns="*, auto" cssClass="repeater-item">

@@ -1,12 +1,12 @@
 ﻿import { EventData } from "data/observable";
 import { Page } from "ui/page";
 
-import { EditReportViewModel } from "./edit-report-view-model";
+import { EditProfileViewModel } from "./edit-profile-view-model";
 
-var viewModel: EditReportViewModel;
+var viewModel: EditProfileViewModel;
 export function onNavigatedTo(args: EventData) {
     var page = <Page>args.object;
-    viewModel = page.navigationContext ? new EditReportViewModel(page.navigationContext.context) : new EditReportViewModel();
+    viewModel = new EditProfileViewModel();
     page.bindingContext = viewModel;
 } 
 

@@ -4,13 +4,13 @@
       <Label text="MY REPORTS" cssClass="header" visibility="{{ androidVisibility }}" />
 
       <ScrollView row="1" >
-        <g:GridView items="{{ reports }}" gridColumns="2" cssClass="reports-grid" >
+        <g:GridView gridColumns="2" items="{{ reports }}" cssClass="reports-grid" >
           <g:GridView.itemTemplate>
             <StackLayout orientation="vertical" link="viewReport" linkContext="{{ $value }}" cssClass="tile">
-              <Image src="res://ic_approved" stretch="none" cssClass="status-icon" />
+              <Label text="{{ report.Status | reportStatusConverter }}" cssClass="status-label" />
               <chart:RadPieChart cssClass="categories-chart">
                 <chart:PieChart.series>
-                  <chart:PieSeries items="{{ report.Data }}" valueProperty="Amount">
+                  <chart:PieSeries items="{{ expensesByCategory}}" valueProperty="Percent">
                   </chart:PieSeries>
                 </chart:PieChart.series>
               </chart:RadPieChart>

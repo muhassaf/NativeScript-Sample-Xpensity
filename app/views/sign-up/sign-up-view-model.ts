@@ -58,7 +58,7 @@ export class SignUpViewModel extends ViewModelBase {
         if (this.validate()) {
             this.execute(service.signUp(this.email, this.password, this.displayName, this.email))
                 .then((success) => {
-                    navigationModule.home();
+                    navigationModule.main();
                 }, (error) => {
                     this.showValidationSummary(error.message);
                 });

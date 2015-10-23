@@ -1,15 +1,10 @@
 <Page xmlns="http://www.nativescript.org/tns.xsd"
-      xmlns:table="table"
-      navigatedTo="onNavigatedTo">
-  <Page.actionBar>
-    <ActionBar title="{{ isAdd ? 'Add' : 'Edit' }}">
-      <ActionBar.actionItems>
-        <ActionItem text="Test" ios.position="right" tap="{{ test }}" />
-      </ActionBar.actionItems>
-    </ActionBar>
-  </Page.actionBar>
-  <GridLayout rows="auto, auto">
-    <Label text="{{ isAdd ? 'Add' : 'Edit' }}" />
-    <Button row="1" text="Test" tap="{{ test }}" />
-  </GridLayout>
+      navigatedTo="onNavigatedTo" >
+  <ListView row="2" items="{{ items }}" itemTap="onItemTap" >
+    <ListView.itemTemplate>
+      <GridLayout cssClass="{{ isSelected ? 'item-container-selected' : 'item-container' }}">
+        <Label text="{{ value }}" />
+      </GridLayout>
+    </ListView.itemTemplate>
+  </ListView>
 </Page>

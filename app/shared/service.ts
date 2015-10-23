@@ -4,16 +4,23 @@ import typesModule = require("utils/types");
 
 import constantsModule = require("./constants");
 
-var everliveModule = require("../lib/everlive");
+var everliveModule = require("everlive");
 
 export var ReportTypeName = "Report";
 export var ExpenseTypeName = "Expense";
+export var CategoryTypeName = "ExpenseCategory";
 
 class Service {
     private _everlive: any;
 
     constructor() {
         this._everlive = everlive;
+    }
+
+    public switchOfflineMode(offlineMode: boolean) {
+    }
+
+    public switchNotifications(notification: boolean) {
     }
 
     public login(username: string, password: string): Promise<any> {
@@ -84,27 +91,35 @@ class Service {
         });
     }
 
-    createReport(report: any): Promise<any> {
+    public updateUser(user: any): Promise<any> {
+        return this._everlive.Users.updateSingle(user);
+    }
+
+    public changePassword(username: string, password: string, newPassword: string) {
+        return this._everlive.Users.changePassword(username, password, newPassword, true);
+    }
+
+    public createReport(report: any): Promise<any> {
         return this.createItem(ReportTypeName, report);
     }
 
-    updateReport(report: any): Promise<any> {
+    public updateReport(report: any): Promise<any> {
         return this.updateItem(ReportTypeName, report);
     }
 
-    deleteReport(report: any): Promise<any> {
+    public deleteReport(report: any): Promise<any> {
         return this.deleteItem(ReportTypeName, report);
     }
 
-    createExpense(expense: any): Promise<any> {
+    public createExpense(expense: any): Promise<any> {
         return this.createItem(ExpenseTypeName, expense);
     }
 
-    updateExpense(expense: any): Promise<any> {
+    public updateExpense(expense: any): Promise<any> {
         return this.updateItem(ExpenseTypeName, expense);
     }
 
-    deleteExpense(expense: any): Promise<any> {
+    public deleteExpense(expense: any): Promise<any> {
         return this.deleteItem(ExpenseTypeName, expense);
     }
 

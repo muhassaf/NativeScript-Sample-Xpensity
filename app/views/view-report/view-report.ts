@@ -3,21 +3,15 @@ import { Page } from "ui/page";
 
 import { ViewReportViewModel } from "./view-report-view-model";
 
+var viewModel: ViewReportViewModel;
 export function onNavigatedTo(args: EventData) {
     var page = <Page>args.object;
-    var viewModel = page.navigationContext ? <ViewReportViewModel>page.navigationContext.context : new ViewReportViewModel({
-        Title: "Boston Trip",
-        BusinessPurpose: "Client visit",
-        Date: new Date(),
-        Data: [
-            { Brand: "Audi", Amount: 10 },
-            { Brand: "Mercedes", Amount: 76 },
-            { Brand: "Fiat", Amount: 60 },
-            { Brand: "BMW", Amount: 24 },
-            { Brand: "Crysler", Amount: 40 }
-        ]
-    });
-
+    viewModel = <ViewReportViewModel>page.navigationContext.context;
+    page.bindingContext = null;
     page.bindingContext = viewModel;
     viewModel.refresh();
 } 
+
+export function onSubmitTap() {
+    viewModel.submit();
+}

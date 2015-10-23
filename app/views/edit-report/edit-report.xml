@@ -5,7 +5,7 @@
     <ActionBar title="{{ isAdd ? 'Add Report' : 'Edit Report' }}">
       <NavigationButton icon="res://ic_arrow_back" link="#back" />
       <ActionBar.actionItems>
-        <ActionItem text="Done" ios.position="right" tap="{{ delete }}" />
+        <ActionItem text="Done" ios.position="right" tap="onDoneTap" />
       </ActionBar.actionItems>
     </ActionBar>
   </Page.actionBar>

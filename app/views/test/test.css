@@ -1,0 +1,12 @@
+﻿.item-container {
+    padding: 16;
+}
+
+.item-container-selected {
+    background-color: #FDEFCA;
+    padding: 16;
+}
+
+.clear-button {
+    background-color: #FDEFCA;
+}

@@ -291,6 +291,7 @@
     <Content Include="app\shared\validation-summary\validation-summary.css" />
     <Content Include="app\shared\validation-summary\validation-summary.xml" />
     <Content Include="app\views\edit-expense\edit-expense.xml" />
+    <Content Include="app\views\edit-profile\edit-profile.xml" />
     <Content Include="app\views\edit-report\edit-report.xml" />
     <Content Include="app\views\login\login.xml">
       <SubType>Designer</SubType>
@@ -309,7 +310,6 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="app\views\sign-up\sign-up.xml" />
-    <Content Include="app\lib\everlive.js" />
     <Content Include="app\obj\Android\Xpensity.csproj.FileListAbsolute.txt" />
     <Content Include="app\obj\Android\Xpensity.dll" />
     <Content Include="app\obj\Android\Xpensity.pdb" />
@@ -319,6 +319,7 @@
     <Content Include="app\obj\iOS\Xpensity.csproj.FileListAbsolute.txt" />
     <Content Include="app\obj\iOS\Xpensity.dll" />
     <Content Include="app\obj\iOS\Xpensity.pdb" />
+    <Content Include="app\views\test\test.css" />
     <Content Include="app\views\test\test.xml" />
     <Content Include="app\views\view-report\view-report.xml">
       <SubType>Designer</SubType>
@@ -857,6 +858,8 @@
     <TypeScriptCompile Include="app\shared\validation-rules.ts" />
     <TypeScriptCompile Include="app\views\edit-expense\edit-expense-view-model.ts" />
     <TypeScriptCompile Include="app\views\edit-expense\edit-expense.ts" />
+    <TypeScriptCompile Include="app\views\edit-profile\edit-profile.ts" />
+    <TypeScriptCompile Include="app\views\edit-profile\edit-profile-view-model.ts" />
     <TypeScriptCompile Include="app\views\edit-report\edit-report-view-model.ts" />
     <TypeScriptCompile Include="app\views\edit-report\edit-report.ts" />
     <TypeScriptCompile Include="app\views\login\login-view-model.ts" />
@@ -879,6 +882,8 @@
     <TypeScriptCompile Include="node_modules\custom-control\custom-control.android.ts" />
     <TypeScriptCompile Include="node_modules\custom-control\custom-control.d.ts" />
     <TypeScriptCompile Include="node_modules\custom-control\custom-control.ios.ts" />
+    <TypeScriptCompile Include="node_modules\data-source\data-source.d.ts" />
+    <TypeScriptCompile Include="node_modules\data-source\data-source.ts" />
     <TypeScriptCompile Include="node_modules\date-picker\date-picker-popup.ts" />
     <TypeScriptCompile Include="node_modules\date-picker\date-picker.d.ts" />
     <TypeScriptCompile Include="node_modules\date-picker\date-picker.ts" />
@@ -1123,5 +1128,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="node_modules\notifications\package.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="node_modules\data-source\package.json" />
   </ItemGroup>
 </Project>

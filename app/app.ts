@@ -7,6 +7,7 @@ import { ListView, ItemEventData } from "ui/list-view";
 import serviceModule = require("./shared/service");
 import viewsModule = require("./shared/views");
 import navigationModule = require("navigation");
+import { reportStatus } from "./shared/constants";
 
 var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 specialPropertiesModule.registerSpecialProperty("link", (instance, propertyValue) => {
@@ -42,16 +43,46 @@ applicationModule.resources = {
         var result = visible ? Visibility.visible : Visibility.collapse;
 
         return result;
-    }
+    },
 
+    reportStatusConverter: function (status: number) {
+        switch (status) {
+            case reportStatus.approved:
+                return "Approved";
+
+            case reportStatus.rejected:
+                return "Rejected";
+
+            case reportStatus.inProgress:
+                return "In Progress";
+
+            case reportStatus.returned:
+                return "Returned";
+
+            case reportStatus.submitted:
+                return "Submitted";
+
+            default:
+                return "";
+        }
+    },
+
+    editReportVisibilityConverter: function (status: number) {
+        if (status === reportStatus.inProgress ||
+            status === reportStatus.returned) {
+            return Visibility.visible;
+        }
+
+        return Visibility.collapse;
+    }
 }
 
-//applicationModule.onLaunch = function (context: any) {
-//    serviceModule.service.isLoggedIn().then((isLoggedIn) => {
-//        var view = isLoggedIn ? viewsModule.home : viewsModule.login;
-//        navigationModule.replace(view);
-//    });
-//}
+applicationModule.onLaunch = function (context: any) {
+    serviceModule.service.isLoggedIn().then((isLoggedIn) => {
+        var view = isLoggedIn ? viewsModule.main : viewsModule.login;
+        navigationModule.replace(view);
+    });
+}
 
-applicationModule.mainModule = viewsModule.main;
+applicationModule.mainModule = viewsModule.test;
 applicationModule.start();

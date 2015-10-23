@@ -1,22 +1,26 @@
 <Page xmlns="http://www.nativescript.org/tns.xsd"
       xmlns:table="table"
       xmlns:dp="date-picker"
+      xmlns:ddl="drop-down-list"
+      xmlns:vs="shared/validation-summary"
       navigatedTo="onNavigatedTo">
   <Page.actionBar>
     <ActionBar title="{{ isAdd ? 'Add Expense' : 'Edit Expense' }}">
       <NavigationButton icon="res://ic_arrow_back" link="#back" />
       <ActionBar.actionItems>
-        <ActionItem text="Done" ios.position="right" />
+        <ActionItem text="Done" ios.position="right" tap="onDoneTap" />
       </ActionBar.actionItems>
     </ActionBar>
   </Page.actionBar>
-  <GridLayout>
-    <ScrollView>
+  <GridLayout rows="auto, *">
+    <vs:validation-summary />
+    <ScrollView row="1">
       <StackLayout>
         <table:Table>
           <TextField text="{{ item.Title }}" hint="Title" />
           <TextField text="{{ item.Location  }}" hint="Location" />
-          <TextField text="{{ item.Cost  }}" hint="Cost" keyboardType="number" />
+          <TextField text="{{ item.Cost }}" hint="Cost" keyboardType="number" />
+          <ddl:DropDownList header="Category" items="{{ categories }}" displayName="Title" valueName="Id" selectedValue="{{ item.Category }}" />
           <dp:DatePicker header="Date" selectedDate="{{ item.Date }}" />
           <TextView text="{{ item.Notes }}" hint="Notes" />
         </table:Table>
@@ -25,6 +29,6 @@
       </StackLayout>
     </ScrollView>
 
-    <ActivityIndicator busy="{{ isLoading }}" />
+    <ActivityIndicator rowSpan="2" busy="{{ isLoading }}" />
   </GridLayout>
 </Page>
