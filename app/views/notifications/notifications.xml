@@ -2,7 +2,10 @@
   <TabViewItem.view>
     <GridLayout rows="auto, auto, *" bindingContext="{{ notificationsViewModel }}">
       <android>
-        <Label text="NOTIFICATIONS" cssClass="header" />
+        <GridLayout columns="*, auto" cssClass="header">
+          <Label text="NOTIFICATIONS" />
+          <Image col="1" src="res://ic_clear_all" stretch="none" tap="{{ clear }}" cssClass="clear-icon" />
+        </GridLayout>>
       </android>
 
       <ScrollView row="1" >
@@ -15,7 +18,6 @@
           </Repeater.itemTemplate>
         </Repeater>
       </ScrollView>
-
 
       <ActivityIndicator rowSpan="2" busy="{{ isLoading }}" />
     </GridLayout>

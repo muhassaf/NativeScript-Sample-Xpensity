@@ -1,10 +1,4 @@
 <Page xmlns="http://www.nativescript.org/tns.xsd"
       navigatedTo="onNavigatedTo" >
-  <ListView row="2" items="{{ items }}" itemTap="onItemTap" >
-    <ListView.itemTemplate>
-      <GridLayout cssClass="{{ isSelected ? 'item-container-selected' : 'item-container' }}">
-        <Label text="{{ value }}" />
-      </GridLayout>
-    </ListView.itemTemplate>
-  </ListView>
+  <Button tap="onTap" />
 </Page>

@@ -2,7 +2,6 @@ var applicationModule = require("application");
 var specialPropertiesModule = require("ui/builder/special-properties");
 var enums_1 = require("ui/enums");
 var list_view_1 = require("ui/list-view");
-var serviceModule = require("./shared/service");
 var viewsModule = require("./shared/views");
 var navigationModule = require("navigation");
 var constants_1 = require("./shared/constants");
@@ -62,6 +61,7 @@ applicationModule.resources = {
     }
 };
 applicationModule.onLaunch = function (context) {
+    var serviceModule = require("./shared/service");
     serviceModule.service.isLoggedIn().then(function (isLoggedIn) {
         var view = isLoggedIn ? viewsModule.main : viewsModule.login;
         navigationModule.replace(view);

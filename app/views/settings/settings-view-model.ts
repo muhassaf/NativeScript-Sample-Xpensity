@@ -6,17 +6,13 @@ import applicationSettingsModule = require("application-settings");
 
 var OFFLINE_MODE = "offlineMode";
 var NOTIFICATIONS = "notifications";
-
 export class SettingsViewModel extends ViewModelBase {
     private _name: string;
-    private _offlineMode: boolean;
-    private _notifications: boolean;
 
     constructor() {
         super();
 
-        this._offlineMode = applicationSettingsModule.getBoolean(OFFLINE_MODE, false);
-        this._notifications = applicationSettingsModule.getBoolean(NOTIFICATIONS, true);
+        this.notifications = applicationSettingsModule.getBoolean(NOTIFICATIONS, true);
     }
 
     public get name(): string {
@@ -31,26 +27,30 @@ export class SettingsViewModel extends ViewModelBase {
     }
 
     public get offlineMode(): boolean {
-        return this._offlineMode;
+        return applicationSettingsModule.getBoolean(OFFLINE_MODE, false);
     }
 
     public set offlineMode(value: boolean) {
-        if (this._offlineMode !== value) {
-            this._offlineMode = value;
-            
-            this.notifyPropertyChange("offlineMode", value);
-        }
+        applicationSettingsModule.setBoolean(OFFLINE_MODE, value);
+        service.switchOfflineMode(value);
+        this.notifyPropertyChange("offlineMode", value);
     }
 
     public get notifications(): boolean {
-        return this._notifications;
+        return applicationSettingsModule.getBoolean(NOTIFICATIONS, true);
     }
 
     public set notifications(value: boolean) {
-        if (this._notifications !== value) {
-            this._notifications = value;
-            this.notifyPropertyChange("notifications", value);
-        }
+        this.execute(service.switchNotifications(value)).then(() => {
+            this.setNotifications(value);
+        }, (error) => {
+            this.setNotifications(!value);
+        });
+    }
+
+    private setNotifications(value: boolean) {
+        applicationSettingsModule.setBoolean(NOTIFICATIONS, value);
+        this.notifyPropertyChange("notifications", value);
     }
 
     public logout() {
@@ -64,14 +64,4 @@ export class SettingsViewModel extends ViewModelBase {
                 this.name = user.DisplayName;
             });
     }
-}
-
-function switchOfflineMode(offlineMode: boolean) {
-    applicationSettingsModule.setBoolean(OFFLINE_MODE, offlineMode);
-    service.switchOfflineMode(offlineMode);
-}
-
-function switchNotifications(notifications: boolean) {
-    applicationSettingsModule.setBoolean(NOTIFICATIONS, notifications);
-    service.switchNotifications(notifications);
 }

@@ -2,6 +2,9 @@
 import { Page } from "ui/page";
 import { ItemEventData } from "ui/list-view";
 
+var everliveModule = require("everlive");
+
+var pushPlugin = require('nativescript-push-notifications');
 
 class ViewModel extends Observable {
     private _selectedItem: Observable;
@@ -12,7 +15,7 @@ class ViewModel extends Observable {
 
         var item1 = new Observable();
         item1.set("value", "Item 1");
-        
+
         var item2 = new Observable();
         item2.set("value", "Item 2");
 
@@ -37,12 +40,40 @@ class ViewModel extends Observable {
 }
 
 var viewModel: ViewModel;
-export function onNavigatedTo(args: EventData) {
-    var page = <Page>args.object;
-    viewModel = new ViewModel();
-    page.bindingContext = viewModel;
-} 
+var everlive = new everliveModule("hYxsMOYMwpLgdV7z");
 
-export function onItemTap(args: ItemEventData) {
-    viewModel.selectItem(args.view.bindingContext);
+export function onNavigatedTo(args: EventData) {
+    
+}
+
+export function onTap(args: ItemEventData) {
+    console.log("EVERLIVE");
+    console.log("EVERLIVE" + everlive);
+    console.log("EVERLIVE" + everlive);
+
+    console.log("REGISTER");
+    everlive.push.register({
+        android: {
+            projectNumber: "948882044382"
+        },
+        notificationCallbackAndroid: function (data) {
+            console.log("DATA");
+            console.log("DATA");
+            console.log("DATA");
+            console.log("DATA");
+            console.log("DATA" + JSON.stringify(data));
+        }
+    }, function (success) {
+        console.log("SUCCESS");
+        console.log("SUCCESS");
+        console.log("SUCCESS");
+        console.log("SUCCESS");
+    }, function (error) {
+        console.log("FAIL");
+        console.log("FAIL");
+        console.log("FAIL");
+        console.log("FAIL" + error.message);
+    });
+
+    console.log("REGISTERED");
 }

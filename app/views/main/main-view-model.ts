@@ -5,6 +5,7 @@ import { ViewModelBase } from "view-model-base";
 import { ReportsViewModel } from "../reports/reports-view-model";
 import { NotificationsViewModel } from "../notifications/notifications-view-model";
 import { SettingsViewModel } from "../settings/settings-view-model";
+import { service } from "../../shared/service";
 
 export class MainViewModel extends ViewModelBase {
     private _selectedTab: number;

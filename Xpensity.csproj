@@ -319,6 +319,7 @@
     <Content Include="app\obj\iOS\Xpensity.csproj.FileListAbsolute.txt" />
     <Content Include="app\obj\iOS\Xpensity.dll" />
     <Content Include="app\obj\iOS\Xpensity.pdb" />
+    <Content Include="app\views\test\everlive.js" />
     <Content Include="app\views\test\test.css" />
     <Content Include="app\views\test\test.xml" />
     <Content Include="app\views\view-report\view-report.xml">

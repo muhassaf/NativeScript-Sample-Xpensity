@@ -3,28 +3,51 @@ import locationModule = require("location");
 import typesModule = require("utils/types");
 
 import constantsModule = require("./constants");
+import applicationSettingsModule = require("application-settings");
+import { Observable, EventData } from "data/observable";
 
 var everliveModule = require("everlive");
 
 export var ReportTypeName = "Report";
 export var ExpenseTypeName = "Expense";
 export var CategoryTypeName = "ExpenseCategory";
+export var NotificationMessageEvent = "notificationMessage";
 
-class Service {
-    private _everlive: any;
+export interface NotificationEventData extends EventData {
+    message: string;
+}
 
-    constructor() {
-        this._everlive = everlive;
-    }
-
+class Service extends Observable {
     public switchOfflineMode(offlineMode: boolean) {
     }
 
-    public switchNotifications(notification: boolean) {
+    public switchNotifications(notifications: boolean): Promise<any> {
+        if (notifications) {
+            return new Promise<any>((resolve, reject) => {
+                everlive.push.register({
+                    android: {
+                        projectNumber: constantsModule.projectNumber
+                    },
+
+                    notificationCallbackAndroid: (data) => {
+                        this.notify<NotificationEventData>({
+                            object: this,
+                            eventName: NotificationMessageEvent,
+                            message: data
+                        })
+                    }
+                }, resolve, reject);
+            });
+        }
+        else {
+            return new Promise<any>((resolve, reject) => {
+                everlive.push.unregister(resolve, reject);
+            });
+        }
     }
 
     public login(username: string, password: string): Promise<any> {
-        return this._everlive.authentication.login(username, password)
+        return everlive.authentication.login(username, password)
     }
 
     public logout() {
@@ -32,7 +55,7 @@ class Service {
 
     public signUp(username: string, password: string, displayName: string, email: string) {
         return new Promise<any>((resolve, reject) => {
-            this._everlive.Users.register(username, password, {
+            everlive.Users.register(username, password, {
                 DisplayName: displayName,
                 Email: email
             }).then((result) => {
@@ -44,7 +67,7 @@ class Service {
 
     public recoverPassword(usernameOrEmail: string) {
         return new Promise<any>((resolve, reject) => {
-            this._everlive.Users.resetPassword({ Username: usernameOrEmail })
+            everlive.Users.resetPassword({ Username: usernameOrEmail })
                 .then((result) => {
                     resolve(result);
                 }, reject);
@@ -53,7 +76,7 @@ class Service {
 
     public getUrlFromFileId(fileId: any): Promise<string> {
         return new Promise<string>((resolve, reject) => {
-            this._everlive.Files.getDownloadUrlById(fileId).then(url => {
+            everlive.Files.getDownloadUrlById(fileId).then(url => {
                 resolve(url);
             }, reject);
         });
@@ -67,7 +90,7 @@ class Service {
                 "base64": imageSource.toBase64String("JPEG", 100)
             };
 
-            this._everlive.Files.create(file,
+            everlive.Files.create(file,
                 function (data) {
                     resolve(data.result.Id);
                 }, reject);
@@ -84,7 +107,7 @@ class Service {
 
     public getCurrentUser(): Promise<any> {
         return new Promise<any>((resolve, reject) => {
-            this._everlive.Users.currentUser()
+            everlive.Users.currentUser()
                 .then((data) => {
                     resolve(data.result);
                 }, reject);
@@ -92,11 +115,11 @@ class Service {
     }
 
     public updateUser(user: any): Promise<any> {
-        return this._everlive.Users.updateSingle(user);
+        return everlive.Users.updateSingle(user);
     }
 
     public changePassword(username: string, password: string, newPassword: string) {
-        return this._everlive.Users.changePassword(username, password, newPassword, true);
+        return everlive.Users.changePassword(username, password, newPassword, true);
     }
 
     public createReport(report: any): Promise<any> {
@@ -124,15 +147,15 @@ class Service {
     }
 
     private createItem(typeName: string, item: any): Promise<any> {
-        return this._everlive.data(typeName).create(item);
+        return everlive.data(typeName).create(item);
     }
 
     private updateItem(typeName: string, item: any): Promise<any> {
-        return this._everlive.data(typeName).updateSingle(item);
+        return everlive.data(typeName).updateSingle(item);
     }
 
     private deleteItem(typeName: string, item: any): Promise<any> {
-        return this._everlive.data(typeName).destroySingle({ Id: item.Id });
+        return everlive.data(typeName).destroySingle({ Id: item.Id });
     }
 }
 

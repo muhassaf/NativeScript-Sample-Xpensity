@@ -4,7 +4,6 @@ import specialPropertiesModule = require("ui/builder/special-properties");
 import { Visibility } from "ui/enums";
 import { ListView, ItemEventData } from "ui/list-view";
 
-import serviceModule = require("./shared/service");
 import viewsModule = require("./shared/views");
 import navigationModule = require("navigation");
 import { reportStatus } from "./shared/constants";
@@ -78,6 +77,7 @@ applicationModule.resources = {
 }
 
 applicationModule.onLaunch = function (context: any) {
+    var serviceModule = require("./shared/service");
     serviceModule.service.isLoggedIn().then((isLoggedIn) => {
         var view = isLoggedIn ? viewsModule.main : viewsModule.login;
         navigationModule.replace(view);

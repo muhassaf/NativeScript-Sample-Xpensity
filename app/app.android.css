@@ -104,3 +104,8 @@ TextView {
 .picker {
     margin: 0 5 5 5;
 }
+
+.clear-icon {
+    vertical-align: center;
+    padding: 8;
+}
