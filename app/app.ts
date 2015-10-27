@@ -73,6 +73,22 @@ applicationModule.resources = {
         }
 
         return Visibility.collapse;
+    }, 
+
+    titleConverter: function (tab: number) {
+        switch (tab) {
+            case 0:
+                return "My Reports";
+
+            case 1:
+                return "Notifications";
+
+            case 2:
+                return "Settings";
+
+            default:
+                return "";
+        }
     }
 }
 

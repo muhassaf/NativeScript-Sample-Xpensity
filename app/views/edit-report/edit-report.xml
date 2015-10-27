@@ -1,6 +1,7 @@
 <Page xmlns="http://www.nativescript.org/tns.xsd"
-      xmlns:table="table" 
-      navigatedTo="onNavigatedTo">
+      xmlns:table="table"
+      xmlns:vs="shared/validation-summary"
+      navigatingTo="onNavigatingTo">
   <Page.actionBar>
     <ActionBar title="{{ isAdd ? 'Add Report' : 'Edit Report' }}">
       <NavigationButton icon="res://ic_arrow_back" link="#back" />
@@ -9,8 +10,9 @@
       </ActionBar.actionItems>
     </ActionBar>
   </Page.actionBar>
-  <GridLayout>
-    <ScrollView>
+  <GridLayout rows="auto, *">
+    <vs:validation-summary />
+    <ScrollView row="1">
       <StackLayout>
         <table:Table>
           <TextField text="{{ item.Title }}" hint="Title" />

@@ -2,7 +2,7 @@
 import { Page } from "ui/page";
 import { PasswordRecoveryViewModel } from "./password-recovery-view-model";
 
-export function onNavigatedTo(args: EventData) {
+export function onNavigatingTo(args: EventData) {
     var page = <Page>args.object;
     page.bindingContext = new PasswordRecoveryViewModel();
 }

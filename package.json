@@ -1,30 +1,30 @@
 {
-  "nativescript": {
-    "id": "org.nativescript.Xpensity",
-    "tns-ios": {
-      "version": "1.4.0"
-    },
-    "tns-android": {
-      "version": "1.4.0"
-    }
-  },
-  "devDependencies": {
-    "typescript": "1.5.3"
-  },
-  "dependencies": {
-    "custom-control": "file:..\\Plugins\\custom-control",
-    "data-source": "file:..\\Plugins\\data-source",
-    "date-picker": "file:..\\Plugins\\date-picker",
-    "drop-down-list": "file:..\\Plugins\\drop-down-list",
-    "edit-view-model-base": "file:..\\Plugins\\edit-view-model-base",
-    "everlive": "file:..\\Plugins\\everlive",
-    "grid-view": "file:..\\Plugins\\grid-view",
-    "nativescript-push-notifications": "0.0.10",
-    "nativescript-telerik-ui": "0.0.10",
-    "navigation": "file:..\\Plugins\\navigation",
-    "notifications": "file:..\\Plugins\\notifications",
-    "table": "file:..\\Plugins\\table",
-    "tns-core-modules": "1.4.1",
-    "view-model-base": "file:..\\Plugins\\view-model-base"
-  }
+	"nativescript": {
+		"id": "org.nativescript.Xpensity",
+		"tns-ios": {
+			"version": "1.4.1"
+		},
+		"tns-android": {
+			"version": "1.4.0"
+		}
+	},
+	"devDependencies": {
+		"typescript": "1.5.3"
+	},
+	"dependencies": {
+		"custom-control": "file:..\\Plugins\\custom-control",
+		"data-source": "file:..\\Plugins\\data-source",
+		"date-picker": "file:..\\Plugins\\date-picker",
+		"drop-down-list": "file:..\\Plugins\\drop-down-list",
+		"edit-view-model-base": "file:..\\Plugins\\edit-view-model-base",
+		"everlive": "file:..\\Plugins\\everlive",
+		"grid-view": "file:..\\Plugins\\grid-view",
+		"nativescript-push-notifications": "0.0.10",
+		"nativescript-telerik-ui": "0.0.10",
+		"navigation": "file:..\\Plugins\\navigation",
+		"notifications": "file:..\\Plugins\\notifications",
+		"table": "file:..\\Plugins\\table",
+		"tns-core-modules": "1.4.1",
+		"view-model-base": "file:..\\Plugins\\view-model-base"
+	}
 }

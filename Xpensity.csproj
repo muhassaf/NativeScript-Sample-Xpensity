@@ -286,6 +286,9 @@
     <Content Include="app\App_Resources\iOS\ic_submit%403x.png" />
     <Content Include="app\App_Resources\iOS\ic_submit.png" />
     <Content Include="app\App_Resources\iOS\iTunesArtwork%402x.png" />
+    <Content Include="app\App_Resources\iOS\profile_picture%403x.png" />
+    <Content Include="app\App_Resources\iOS\profile_picture%402x.png" />
+    <Content Include="app\App_Resources\iOS\profile_picture.png" />
     <Content Include="app\bin\Xpensity.dll" />
     <Content Include="app\bin\Xpensity.pdb" />
     <Content Include="app\shared\validation-summary\validation-summary.css" />

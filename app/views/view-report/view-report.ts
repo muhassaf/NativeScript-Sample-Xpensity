@@ -4,7 +4,7 @@ import { Page } from "ui/page";
 import { ViewReportViewModel } from "./view-report-view-model";
 
 var viewModel: ViewReportViewModel;
-export function onNavigatedTo(args: EventData) {
+export function onNavigatingTo(args: EventData) {
     var page = <Page>args.object;
     viewModel = <ViewReportViewModel>page.navigationContext.context;
     page.bindingContext = null;

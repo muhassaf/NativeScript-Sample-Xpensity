@@ -1,9 +1,9 @@
 ﻿<Page xmlns="http://www.nativescript.org/tns.xsd"
       xmlns:table="table"
       xmlns:vs="shared/validation-summary"
-      navigatedTo="onNavigatedTo">
+      navigatingTo="onNavigatingTo">
   <Page.actionBar>
-    <ActionBar>
+    <ActionBar title="Xpensity">
       <ActionBar.actionItems>
         <ActionItem text="Sign Up" ios.position="right" link="signUp" />
       </ActionBar.actionItems>

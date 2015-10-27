@@ -1,8 +1,10 @@
 <TabViewItem xmlns:g="grid-view" xmlns:chart="nativescript-telerik-ui/chart" id="ReportsTabItem" ios:title="My reports" iconSource="res://ic_reports" >
   <TabViewItem.view>
     <GridLayout rows="auto, *" bindingContext="{{ reportsViewModel }}" >
-      <Label text="MY REPORTS" cssClass="header" visibility="{{ androidVisibility }}" />
-
+      <android>
+        <Label text="MY REPORTS" cssClass="header" visibility="{{ androidVisibility }}" />
+      </android>
+      
       <ScrollView row="1" >
         <g:GridView gridColumns="2" items="{{ reports }}" cssClass="reports-grid" >
           <g:GridView.itemTemplate>

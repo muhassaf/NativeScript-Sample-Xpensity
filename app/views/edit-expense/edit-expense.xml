@@ -3,7 +3,7 @@
       xmlns:dp="date-picker"
       xmlns:ddl="drop-down-list"
       xmlns:vs="shared/validation-summary"
-      navigatedTo="onNavigatedTo">
+      navigatingTo="onNavigatingTo">
   <Page.actionBar>
     <ActionBar title="{{ isAdd ? 'Add Expense' : 'Edit Expense' }}">
       <NavigationButton icon="res://ic_arrow_back" link="#back" />

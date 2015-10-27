@@ -1,7 +1,7 @@
 ﻿<Page xmlns="http://www.nativescript.org/tns.xsd"
       xmlns:g="components/grid-view/grid-view"
       xmlns:chart="nativescript-telerik-ui/chart"
-      navigatedTo="onNavigatedTo" >
+      navigatingTo="onNavigatingTo" >
   <Page.actionBar >
     <ActionBar title="{{ report.Status | reportStatusConverter }}">
       <NavigationButton icon="res://ic_arrow_back" link="#back" />
@@ -42,9 +42,9 @@
       </ListView>
 
       <ios>
-        <GridLayout row="2" columns="auto, *" link="editExpense" linkContext="{{ report }}" visibility="{{ report.Status | editReportVisibilityConverter }}" cssClass="imageButtonContainer" >
-          <Image src="res://add-white" stretch="none" cssClass="imageButtonIcon" />
-          <Label col="1" text="Add expense" cssClass="imageButtonText" />
+        <GridLayout row="2" columns="auto, *" link="editExpense" linkContext="{{ report }}" visibility="{{ report.Status | editReportVisibilityConverter }}" cssClass="image-button" >
+          <Image src="res://ic_add" stretch="none" cssClass="button-icon" />
+          <Label col="1" text="Add expense" cssClass="button-text" />
         </GridLayout>
       </ios>
     </GridLayout>

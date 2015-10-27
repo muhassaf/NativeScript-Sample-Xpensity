@@ -8,7 +8,7 @@
         </GridLayout>>
       </android>
 
-      <ScrollView row="1" >
+      <ScrollView row="1" cssClass="repeater-container">
         <Repeater items="{{ notifications }}" >
           <Repeater.itemTemplate>
             <GridLayout columns="*, auto" cssClass="repeater-item">

@@ -4,7 +4,7 @@ import { Page } from "ui/page";
 import { EditProfileViewModel } from "./edit-profile-view-model";
 
 var viewModel: EditProfileViewModel;
-export function onNavigatedTo(args: EventData) {
+export function onNavigatingTo(args: EventData) {
     var page = <Page>args.object;
     viewModel = new EditProfileViewModel();
     page.bindingContext = viewModel;

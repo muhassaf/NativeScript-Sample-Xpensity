@@ -58,6 +58,18 @@ applicationModule.resources = {
             return enums_1.Visibility.visible;
         }
         return enums_1.Visibility.collapse;
+    },
+    titleConverter: function (tab) {
+        switch (tab) {
+            case 0:
+                return "My Reports";
+            case 1:
+                return "Notifications";
+            case 2:
+                return "Settings";
+            default:
+                return "";
+        }
     }
 };
 applicationModule.onLaunch = function (context) {

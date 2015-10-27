@@ -2,8 +2,17 @@
       xmlns:r="views/reports"
       xmlns:n="views/notifications"
       xmlns:s="views/settings"
-      navigatedTo="onNavigatedTo"
+      navigatingTo="onNavigatingTo"
       android:actionBarHidden="true" >
+  <ios>
+    <Page.actionBar>
+      <ActionBar title="{{ selectedTab | titleConverter }}">
+        <ActionBar.actionItems>
+          <ActionItem icon="res://ic_add" ios.position="right" link="editReport" />
+        </ActionBar.actionItems>
+      </ActionBar>
+    </Page.actionBar>
+  </ios>
   <TabView id="TabView" selectedColor="#007AFF" selectedIndex="{{ selectedTab }}">
     <TabView.items>
       <r:reports />

@@ -30,6 +30,19 @@ export class NotificationsViewModel extends ViewModelBase {
     public refresh() {
         this._notifications.length = 0;
         this._notifications.push(this.deserialize());
+        this._notifications.push([{
+            Message: "Message 1",
+            Date: new Date()
+        }, {
+                Message: "Message 2",
+                Date: new Date()
+            }, {
+                Message: "Message 3",
+                Date: new Date()
+            }, {
+                Message: "Message 4",
+                Date: new Date()
+            }]);
     }
 
     public clear() {
@@ -61,6 +74,6 @@ export class NotificationsViewModel extends ViewModelBase {
             items.push(item);
         });
 
-        applicationSettingsModule.setString(NOTIFICATION_MESSAGES, JSON.stringify(items)); 
+        applicationSettingsModule.setString(NOTIFICATION_MESSAGES, JSON.stringify(items));
     }
 }
