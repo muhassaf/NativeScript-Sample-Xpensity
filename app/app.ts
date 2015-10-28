@@ -8,6 +8,8 @@ import viewsModule = require("./shared/views");
 import navigationModule = require("navigation");
 import { reportStatus } from "./shared/constants";
 
+import { PaletteEntry, Palette } from "nativescript-telerik-ui/chart"
+
 var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 specialPropertiesModule.registerSpecialProperty("link", (instance, propertyValue) => {
     if (instance instanceof ListView) {
@@ -78,7 +80,7 @@ applicationModule.resources = {
     titleConverter: function (tab: number) {
         switch (tab) {
             case 0:
-                return "My Reports";
+                return "Reports";
 
             case 1:
                 return "Notifications";
@@ -89,6 +91,20 @@ applicationModule.resources = {
             default:
                 return "";
         }
+    }, 
+
+    paletteConverter: function (expensesByCategory: any[]) {
+        var palette = new Palette();
+        var paletteEntries: PaletteEntry[] = [];
+        expensesByCategory.forEach((item: any) => {
+            var entry = new PaletteEntry();
+            entry.fillColor = item.Category.Color;
+            paletteEntries.push(entry);
+        });
+
+        palette.entries = paletteEntries;
+        
+        return [ palette ];
     }
 }
 

@@ -18,6 +18,8 @@ export interface NotificationEventData extends EventData {
 }
 
 class Service extends Observable {
+    private _categories: any[];
+
     public switchOfflineMode(offlineMode: boolean) {
     }
 
@@ -144,6 +146,10 @@ class Service extends Observable {
 
     public deleteExpense(expense: any): Promise<any> {
         return this.deleteItem(ExpenseTypeName, expense);
+    }
+
+    private getItems(typeName: string, filter: any): Promise<any[]> {
+        return everlive.data(typeName).get(filter);
     }
 
     private createItem(typeName: string, item: any): Promise<any> {

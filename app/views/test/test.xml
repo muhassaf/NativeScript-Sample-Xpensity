@@ -1,4 +1,9 @@
 <Page xmlns="http://www.nativescript.org/tns.xsd"
-      navigatedTo="onNavigatedTo" >
-  <Button tap="onTap" />
+      xmlns:chart="nativescript-telerik-ui/chart"
+      navigatingTo="onNavigatingTo" >
+  <chart:RadPieChart id="pieChart" palettes="{{ pieSource | paletteConverter }}" width="300" height="300">
+    <chart:RadPieChart.series>
+      <chart:PieSeries items="{{ pieSource }}" valueProperty="Amount" />
+    </chart:RadPieChart.series>
+  </chart:RadPieChart>
 </Page>

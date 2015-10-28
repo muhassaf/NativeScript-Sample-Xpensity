@@ -19,7 +19,7 @@
         <Label row="1" colSpan="2" text="{{ report.BusinessPurpose }}" cssClass="details-label" />
         <Label row="2" colSpan="2" text="{{ report.Date | formatDate }}" cssClass="details-label" />
 
-        <chart:RadPieChart row="3" colSpan="2" cssClass="report-chart" >
+        <chart:RadPieChart row="3" colSpan="2" palettes="{{ expensesByCategory | paletteConverter }}" cssClass="report-chart" >
           <chart:PieChart.series>
             <chart:PieSeries items="{{ expensesByCategory }}" valueProperty="Percent">
             </chart:PieSeries>
@@ -30,7 +30,7 @@
       <ListView row="1" items="{{ expenses }}" link="editExpense" linkContext="{{ report }}" cssClass="list-view">
         <ListView.itemTemplate>
           <GridLayout columns="auto, *" cssClass="item">
-            <GridLayout backgroundColor="blue" cssClass="category" />
+            <GridLayout backgroundColor="{{ ExpenseCategory.Color }}" cssClass="category" />
             <GridLayout col="1" rows="auto, auto, auto" columns="*, auto" cssClass="item-container">
               <Label text="{{ Title }}" cssClass="item-label" />
               <Label row="1" text="{{ Date | formatDate }}" cssClass="item-details-label" />

@@ -5,6 +5,7 @@ var list_view_1 = require("ui/list-view");
 var viewsModule = require("./shared/views");
 var navigationModule = require("navigation");
 var constants_1 = require("./shared/constants");
+var chart_1 = require("nativescript-telerik-ui/chart");
 var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 specialPropertiesModule.registerSpecialProperty("link", function (instance, propertyValue) {
     if (instance instanceof list_view_1.ListView) {
@@ -62,7 +63,7 @@ applicationModule.resources = {
     titleConverter: function (tab) {
         switch (tab) {
             case 0:
-                return "My Reports";
+                return "Reports";
             case 1:
                 return "Notifications";
             case 2:
@@ -70,6 +71,17 @@ applicationModule.resources = {
             default:
                 return "";
         }
+    },
+    paletteConverter: function (expensesByCategory) {
+        var palette = new chart_1.Palette();
+        var paletteEntries = [];
+        expensesByCategory.forEach(function (item) {
+            var entry = new chart_1.PaletteEntry();
+            entry.fillColor = item.Category.Color;
+            paletteEntries.push(entry);
+        });
+        palette.entries = paletteEntries;
+        return [palette];
     }
 };
 applicationModule.onLaunch = function (context) {

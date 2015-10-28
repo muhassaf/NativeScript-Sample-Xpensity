@@ -898,6 +898,7 @@
     <TypeScriptCompile Include="node_modules\edit-view-model-base\edit-view-model-base.d.ts" />
     <TypeScriptCompile Include="node_modules\grid-view\grid-view.d.ts" />
     <TypeScriptCompile Include="node_modules\grid-view\grid-view.ts" />
+    <TypeScriptCompile Include="node_modules\nativescript-telerik-ui\chart\chart.d.ts" />
     <TypeScriptCompile Include="node_modules\navigation\navigation.ts" />
     <TypeScriptCompile Include="node_modules\navigation\navigation.d.ts" />
     <TypeScriptCompile Include="node_modules\notifications\notifications.d.ts" />

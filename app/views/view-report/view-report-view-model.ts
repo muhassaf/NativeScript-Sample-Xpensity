@@ -5,24 +5,36 @@ import { DataSource, DataSourceOptions, FilterDescriptor, Operators } from "data
 import { service, ExpenseTypeName, everlive } from "../../shared/service";
 import notificationsModule = require("notifications");
 import navigationModule = require("navigation");
+import { reportStatus } from "../../shared/constants";
 
 export class ViewReportViewModel extends ViewModelBase {
     private _report: any;
     private _totalCost: number;
     private _expenses: DataSource;
     private _expensesByCategory: any[];
+    private _categories: Map<any, any>;
 
     constructor(report: any) {
         super();
 
         this._report = report;
         this._totalCost = 2;
-        this._expenses = new DataSource(everlive, new DataSourceOptions(ExpenseTypeName));
+        this._expenses = new DataSource(everlive, new DataSourceOptions(ExpenseTypeName, {
+            Category: {
+                TargetTypeName: "ExpenseCategory", 
+                ReturnAs: "ExpenseCategory"
+            }
+        }));
         this._expenses.addFilterDescriptor(new FilterDescriptor("Report", Operators.equals, this._report.Id));
         this._expenses.on("loaded", (args: EventData) => {
             this.totalCost = this._expenses.sum("Cost");
+
             var expensesByCategory = [];
-            this._expenses.groupBy("Category").forEach((group, index, groupDescriptors) => {
+            this._expenses.groupBy("ExpenseCategory", (category) => {
+                console.log("CATEGORY " + JSON.stringify(category));
+                return category.Id
+            }).forEach((group, index, groupDescriptors) => {
+                console.log("GROUP " + JSON.stringify(group));
                 var cost = sum(group.items, "Cost");
                 expensesByCategory.push({
                     Category: group.header,
@@ -30,6 +42,7 @@ export class ViewReportViewModel extends ViewModelBase {
                 });
             });
 
+            console.log("EXPENSES BY CATEGORY: " + expensesByCategory.length);
             this.expensesByCategory = expensesByCategory;
         });
     }
@@ -70,7 +83,7 @@ export class ViewReportViewModel extends ViewModelBase {
                 if (value) {
                     this.execute(service.updateReport({
                         Id: this._report.Id,
-                        Status: 1
+                        Status: reportStatus.submitted
                     })).then(() => {
                         navigationModule.goBack();
                     })
