@@ -323,6 +323,8 @@
     <Content Include="app\obj\iOS\Xpensity.dll" />
     <Content Include="app\obj\iOS\Xpensity.pdb" />
     <Content Include="app\views\test\everlive.js" />
+    <Content Include="app\views\test\test2.xml" />
+    <Content Include="app\views\test\test1.xml" />
     <Content Include="app\views\test\test.css" />
     <Content Include="app\views\test\test.xml" />
     <Content Include="app\views\view-report\view-report.xml">
@@ -879,6 +881,8 @@
     <TypeScriptCompile Include="app\views\sign-up\sign-up.ts" />
     <TypeScriptCompile Include="app\resources\resources.android.ts" />
     <TypeScriptCompile Include="app\resources\resources.ios.ts" />
+    <TypeScriptCompile Include="app\views\test\test2.ts" />
+    <TypeScriptCompile Include="app\views\test\test1.ts" />
     <TypeScriptCompile Include="app\views\test\test.ts" />
     <TypeScriptCompile Include="app\views\view-report\view-report-view-model.ts" />
     <TypeScriptCompile Include="app\views\view-report\view-report.ts" />

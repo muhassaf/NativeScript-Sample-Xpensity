@@ -1,0 +1,8 @@
+<Page xmlns="http://www.nativescript.org/tns.xsd"
+      xmlns:chart="nativescript-telerik-ui/chart"
+      navigatingTo="onNavigatingTo" >
+  <GridLayout rows="auto, auto, auto">
+    <Label text="Hello" visibility="{{ isVisible | visibilityConverter }}" />
+    <Button row="1" tap="{{ toggle }}" />
+  </GridLayout>
+</Page>

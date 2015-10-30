@@ -31,10 +31,8 @@ export class ViewReportViewModel extends ViewModelBase {
 
             var expensesByCategory = [];
             this._expenses.groupBy("ExpenseCategory", (category) => {
-                console.log("CATEGORY " + JSON.stringify(category));
                 return category.Id
             }).forEach((group, index, groupDescriptors) => {
-                console.log("GROUP " + JSON.stringify(group));
                 var cost = sum(group.items, "Cost");
                 expensesByCategory.push({
                     Category: group.header,
@@ -42,7 +40,6 @@ export class ViewReportViewModel extends ViewModelBase {
                 });
             });
 
-            console.log("EXPENSES BY CATEGORY: " + expensesByCategory.length);
             this.expensesByCategory = expensesByCategory;
         });
     }

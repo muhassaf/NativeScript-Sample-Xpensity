@@ -27,6 +27,20 @@ class Service extends Observable {
         if (notifications) {
             return new Promise<any>((resolve, reject) => {
                 everlive.push.register({
+                    iOS: {
+                        badge: true,
+                        sound: true,
+                        alert: true
+                    },
+
+                    notificationCallbackIOS: (data) => {
+                        this.notify<NotificationEventData>({
+                            object: this,
+                            eventName: NotificationMessageEvent,
+                            message: data.alert
+                        })
+                    },
+
                     android: {
                         projectNumber: constantsModule.projectNumber
                     },

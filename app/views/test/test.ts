@@ -1,6 +1,8 @@
 ﻿import { EventData, Observable } from "data/observable";
 import { Page } from "ui/page";
 import { ItemEventData } from "ui/list-view";
+import navigationModule = require("navigation");
+import { service } from "../../shared/service";
 
 class ViewModel extends Observable {
     constructor() {
@@ -14,6 +16,22 @@ class ViewModel extends Observable {
                 { Brand: "BMW", Amount: 24 },
                 { Brand: "Crysler", Amount: 40 }
             ]);
+
+        service.getCurrentUser().then((user) => {
+            this.set("text", user.DisplayName);
+        });
+
+        setTimeout(() => {
+            this.set("text", "Kamen Velikov");
+        }, 1000);
+
+
+        this.set("isVisible", false);
+        this.set("text", "Ala bala");
+    }
+
+    public toggle() {
+        this.set("isVisible", !this.get("isVisible"));
     }
 }
 

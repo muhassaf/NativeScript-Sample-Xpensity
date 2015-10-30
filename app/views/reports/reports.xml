@@ -15,9 +15,6 @@
                   <chart:PieSeries items="{{ expensesByCategory}}" valueProperty="Percent">
                   </chart:PieSeries>
                 </chart:RadPieChart.series>
-                <chart:RadPieChart.palettes>
-                  <chart:Palette entries="{{ expensesByCategory | paletteConverter }}" />
-                </chart:RadPieChart.palettes>
               </chart:RadPieChart>
               <Label text="{{ report.Title }}" cssClass="item-header" />
               <Label text="{{ report.Date | formatDate }}" cssClass="item-content" />

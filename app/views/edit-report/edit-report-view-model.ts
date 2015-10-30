@@ -3,6 +3,7 @@ import { service } from "../../shared/service";
 import { ViewReportViewModel } from "../view-report/view-report-view-model";
 import validationRulesModule = require("../../shared/validation-rules");
 import navigationModule = require("navigation");
+import { reportStatus } from "../../shared/constants";
 
 import viewsModule = require("../../shared/views");
 
@@ -36,8 +37,7 @@ export class EditReportViewModel extends EditViewModelBase {
 
     protected onItemAdded(item: any) {
         super.onItemAdded(item);
-
-        navigationModule.navigate(viewsModule.viewReport, new ViewReportViewModel(item))
+        navigationModule.navigate(viewsModule.viewReport, { context: new ViewReportViewModel(item) });
     }
 
     protected onItemDeleted(item: any) {
@@ -47,7 +47,7 @@ export class EditReportViewModel extends EditViewModelBase {
 
     protected createItem(): any {
         var item = super.createItem();
-        item.Status = 0;
+        item.Status = reportStatus.inProgress;
         item.Date = new Date();
 
         return item;

@@ -24,6 +24,6 @@
       </StackLayout>
     </ScrollView>
 
-    <ActivityIndicator busy="{{ isLoading }}" />
+    <ActivityIndicator rowSpan="2" busy="{{ isLoading }}" />
   </GridLayout>
 </Page>

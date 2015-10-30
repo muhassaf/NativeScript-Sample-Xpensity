@@ -4,7 +4,6 @@
     <item name="toolbarStyle">@style/NativeScriptToolbarStyle</item>
     <item name="android:colorPrimary">@color/ColorPrimary</item>
     <item name="android:colorPrimaryDark">@color/ColorPrimaryDark</item>
-    <item name="android:colorControlHighlight">@color/ColorAccent</item>
     <item name="android:colorControlActivated">@color/ColorAccent</item>
     <item name="android:textColorPrimary">@color/ColorPrimaryText</item>
     <item name="android:actionMenuTextColor">@color/ColorMenuText</item>

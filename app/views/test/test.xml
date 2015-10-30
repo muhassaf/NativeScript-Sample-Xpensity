@@ -1,9 +1,15 @@
 <Page xmlns="http://www.nativescript.org/tns.xsd"
       xmlns:chart="nativescript-telerik-ui/chart"
       navigatingTo="onNavigatingTo" >
-  <chart:RadPieChart id="pieChart" palettes="{{ pieSource | paletteConverter }}" width="300" height="300">
-    <chart:RadPieChart.series>
-      <chart:PieSeries items="{{ pieSource }}" valueProperty="Amount" />
-    </chart:RadPieChart.series>
-  </chart:RadPieChart>
+  <StackLayout >
+    <!--<chart:RadPieChart id="pieChart" palettes="{{ pieSource | paletteConverter }}" width="300" height="300">
+      <chart:RadPieChart.series>
+        <chart:PieSeries items="{{ pieSource }}" valueProperty="Amount" />
+      </chart:RadPieChart.series>
+    </chart:RadPieChart>-->
+    <Label text="{{ text }}" />
+    <Label text="{{ isVisible }}" />
+    <Label text="{{ isVisible }}" visibility="{{ isVisible | visibilityConverter }}" />
+    <Button text="toggle" tap="{{ toggle }}" />
+  </StackLayout>
 </Page>
