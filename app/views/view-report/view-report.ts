@@ -1,5 +1,6 @@
 ﻿import { EventData } from "data/observable";
 import { Page } from "ui/page";
+import { ItemEventData } from "ui/list-view";
 
 import { ViewReportViewModel } from "./view-report-view-model";
 
@@ -14,4 +15,8 @@ export function onNavigatingTo(args: EventData) {
 
 export function onSubmitTap() {
     viewModel.submit();
+}
+
+export function onItemTap(args: ItemEventData) {
+    viewModel.itemTap(args.view.bindingContext);
 }

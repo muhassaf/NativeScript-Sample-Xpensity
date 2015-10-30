@@ -83,6 +83,7 @@ export class EditProfileViewModel extends ViewModelBase {
                 Id: this._userId,
                 DisplayName: this._displayName
             })).then(() => {
+                service.currentUser.DisplayName = this._displayName;
                 if (!typesModule.isNullOrUndefined(this.oldPassword) || !typesModule.isNullOrUndefined(this.newPassword)) {
                     this.execute(service.changePassword(this._email, this._oldPassword, this._newPassword))
                         .then(() => {
@@ -99,11 +100,9 @@ export class EditProfileViewModel extends ViewModelBase {
     }
 
     public refresh() {
-        this.execute(service.getCurrentUser()).then((user) => {
-            this._userId = user.Id;
-            this.displayName = user.DisplayName;
-            this.email = user.Email;
-        });
+        this._userId = service.currentUser.Id;
+        this.displayName = service.currentUser.DisplayName;
+        this.email = service.currentUser.Email;
     }
 
     protected validateOverride(): boolean {

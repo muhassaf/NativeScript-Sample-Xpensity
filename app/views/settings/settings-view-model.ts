@@ -54,14 +54,14 @@ export class SettingsViewModel extends ViewModelBase {
     }
 
     public logout() {
-        service.logout();
-        navigationModule.login();
+        this.execute(service.logout()).then(() => {
+            navigationModule.login();
+        });
     }
 
     public refresh() {
-        this.execute(service.getCurrentUser())
-            .then((user) => {
-                this.name = user.DisplayName;
-            });
+        if (service.currentUser) {
+            this.name = service.currentUser.DisplayName;
+        }
     }
 }

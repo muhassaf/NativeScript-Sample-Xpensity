@@ -327,6 +327,7 @@
     <Content Include="app\views\test\test1.xml" />
     <Content Include="app\views\test\test.css" />
     <Content Include="app\views\test\test.xml" />
+    <Content Include="app\views\view-expense\view-expense.xml" />
     <Content Include="app\views\view-report\view-report.xml">
       <SubType>Designer</SubType>
     </Content>
@@ -884,6 +885,8 @@
     <TypeScriptCompile Include="app\views\test\test2.ts" />
     <TypeScriptCompile Include="app\views\test\test1.ts" />
     <TypeScriptCompile Include="app\views\test\test.ts" />
+    <TypeScriptCompile Include="app\views\view-expense\view-expense-view-model.ts" />
+    <TypeScriptCompile Include="app\views\view-expense\view-expense.ts" />
     <TypeScriptCompile Include="app\views\view-report\view-report-view-model.ts" />
     <TypeScriptCompile Include="app\views\view-report\view-report.ts" />
     <TypeScriptCompile Include="node_modules\custom-control\custom-control-common.ts" />

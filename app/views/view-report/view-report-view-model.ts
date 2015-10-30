@@ -6,6 +6,7 @@ import { service, ExpenseTypeName, everlive } from "../../shared/service";
 import notificationsModule = require("notifications");
 import navigationModule = require("navigation");
 import { reportStatus } from "../../shared/constants";
+import viewsModule = require("../../shared/views");
 
 export class ViewReportViewModel extends ViewModelBase {
     private _report: any;
@@ -90,6 +91,21 @@ export class ViewReportViewModel extends ViewModelBase {
 
     public refresh() {
         this.expenses.reload();
+    }
+
+    public itemTap(item: any) {
+        var view = (this._report.Status === reportStatus.inProgress || this._report.Status === reportStatus.returned) ?
+            viewsModule.editExpense : viewsModule.viewExpense;
+
+        console.log("NAVIGATE ITEM");
+        console.log("NAVIGATE ITEM");
+        console.log("NAVIGATE ITEM");
+        console.log("NAVIGATE ITEM");
+        console.log("NAVIGATE ITEM: " + view);
+        navigationModule.navigate(view, {
+            item: item,
+            context: this._report
+        });
     }
 }
 

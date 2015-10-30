@@ -27,7 +27,7 @@
         </chart:RadPieChart>
       </GridLayout>
 
-      <ListView row="1" items="{{ expenses }}" link="editExpense" linkContext="{{ report }}" cssClass="list-view">
+      <ListView row="1" items="{{ expenses }}" itemTap="onItemTap" cssClass="list-view">
         <ListView.itemTemplate>
           <GridLayout columns="auto, *" cssClass="item">
             <GridLayout backgroundColor="{{ ExpenseCategory.Color }}" cssClass="category" />

@@ -40,7 +40,7 @@ export class LoginViewModel extends ViewModelBase {
     public login() {
         if (this.validate()) {
             this.execute(service.login(this.username, this.password))
-                .then((success) => {
+                .then(() => {
                     navigationModule.main();
                 }, (error) => {
                     this.showValidationSummary(error.message);

@@ -17,10 +17,6 @@ class ViewModel extends Observable {
                 { Brand: "Crysler", Amount: 40 }
             ]);
 
-        service.getCurrentUser().then((user) => {
-            this.set("text", user.DisplayName);
-        });
-
         setTimeout(() => {
             this.set("text", "Kamen Velikov");
         }, 1000);

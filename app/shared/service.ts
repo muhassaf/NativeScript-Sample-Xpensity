@@ -19,6 +19,11 @@ export interface NotificationEventData extends EventData {
 
 class Service extends Observable {
     private _categories: any[];
+    private _currentUser: any;
+
+    public get currentUser(): any {
+        return this._currentUser;
+    }
 
     public switchOfflineMode(offlineMode: boolean) {
     }
@@ -63,10 +68,21 @@ class Service extends Observable {
     }
 
     public login(username: string, password: string): Promise<any> {
-        return everlive.authentication.login(username, password)
+        return new Promise<any>((resolve, reject) => {
+            everlive.authentication.login(username, password).then(() => {
+                this.getCurrentUser()
+                    .then(resolve, reject);
+            }, reject);
+        });
     }
 
-    public logout() {
+    public logout(): Promise<any> {
+        return new Promise<any>((resolve, reject) => {
+            everlive.authentication.logout().then(() => {
+                this.switchNotifications(false)
+                    .then(resolve, reject);
+            }, reject);
+        });
     }
 
     public signUp(username: string, password: string, displayName: string, email: string) {
@@ -115,17 +131,9 @@ class Service extends Observable {
 
     public isLoggedIn(): Promise<boolean> {
         return new Promise<any>((resolve, reject) => {
-            this.getCurrentUser().then((user) => {
-                resolve(!typesModule.isNullOrUndefined(user));
-            }, reject);
-        });
-    }
-
-    public getCurrentUser(): Promise<any> {
-        return new Promise<any>((resolve, reject) => {
-            everlive.Users.currentUser()
+            this.getCurrentUser()
                 .then((data) => {
-                    resolve(data.result);
+                    resolve(!typesModule.isNullOrUndefined(data));
                 }, reject);
         });
     }
@@ -160,6 +168,16 @@ class Service extends Observable {
 
     public deleteExpense(expense: any): Promise<any> {
         return this.deleteItem(ExpenseTypeName, expense);
+    }
+
+    private getCurrentUser(): Promise<any> {
+        return new Promise<any>((resolve, reject) => {
+            everlive.Users.currentUser()
+                .then((data) => {
+                    this._currentUser = data.result;
+                    resolve(this.currentUser);
+                }, reject);
+        });
     }
 
     private getItems(typeName: string, filter: any): Promise<any[]> {
