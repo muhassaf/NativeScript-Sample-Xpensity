@@ -8,6 +8,7 @@
     <ActionBar title="{{ isAdd ? 'Add Expense' : 'Edit Expense' }}">
       <NavigationButton icon="res://ic_arrow_back" link="#back" />
       <ActionBar.actionItems>
+        <ActionItem icon="res://ic_photo" ios.position="right" tap="onTakePhotoTap" />
         <ActionItem text="Done" ios.position="right" tap="onDoneTap" />
       </ActionBar.actionItems>
     </ActionBar>
@@ -24,6 +25,9 @@
           <dp:DatePicker header="Date" selectedDate="{{ item.Date }}" />
           <TextView text="{{ item.Notes }}" hint="Notes" />
         </table:Table>
+
+        <Image visibility="{{ picture | visibilityConverter }}" row="9" src="{{ picture }}" cssClass="image" />
+        <Button visibility="{{ picture | visibilityConverter }}" row="10" text="Remove" tap="{{ removePicture }}" cssClass="remove-button" />
 
         <Button text="Delete Expense" tap="{{ delete }}" visibility="{{ canDelete | visibilityConverter }}" cssClass="delete-button" />
       </StackLayout>

@@ -13,3 +13,7 @@ export function onNavigatingTo(args: NavigatedData) {
 export function onDoneTap(args: EventData) {
     viewModel.save();
 }
+
+export function onTakePhotoTap(args: EventData) {
+    viewModel.takePicture();
+}

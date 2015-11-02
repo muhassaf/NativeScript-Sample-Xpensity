@@ -140,3 +140,18 @@ ActivityIndicator {
 .root {
     padding: 16;
 }
+
+.remove-button {
+    horizontal-align: left;
+    background-color: transparent;
+    color: #FF4350;
+}
+
+.image {
+    margin: 16 16 0 16;
+}
+
+
+.header-image { 
+    margin-bottom: 16;
+}

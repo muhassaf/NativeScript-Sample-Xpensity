@@ -16,7 +16,7 @@
       <GridLayout rows="auto, auto, auto, auto" columns="*, auto" cssClass="root">
         <Label text="{{ report.Title }}" textWrap="true" cssClass="title" />
         <Label col="1" text="{{ totalCost | formatCurrency }}" cssClass="bold-label" />
-        <Label row="1" colSpan="2" text="{{ report.BusinessPurpose }}" cssClass="details-label" />
+        <Label row="1" colSpan="2" text="{{ report.BusinessPurpose }}" visibility="{{ report.BusinessPurpose | visibilityConverter }}" cssClass="details-label" />
         <Label row="2" colSpan="2" text="{{ report.Date | formatDate }}" cssClass="details-label" />
 
         <chart:RadPieChart row="3" colSpan="2" palettes="{{ expensesByCategory | paletteConverter }}" cssClass="report-chart" >
@@ -34,7 +34,7 @@
             <GridLayout col="1" rows="auto, auto, auto" columns="*, auto" cssClass="item-container">
               <Label text="{{ Title }}" cssClass="item-label" />
               <Label row="1" text="{{ Date | formatDate }}" cssClass="item-details-label" />
-              <Label row="2" text="{{ Location }}" cssClass="item-details-label" />
+              <Label row="2" text="{{ Location }}" visibility="{{ Location | visibilityConverter }}" cssClass="item-details-label" />
               <Label col="1" rowSpan="3" text="{{ Cost | formatCurrency }}" cssClass="item-bold-label" />
             </GridLayout>
           </GridLayout>
