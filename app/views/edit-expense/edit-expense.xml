@@ -8,7 +8,6 @@
     <ActionBar title="{{ isAdd ? 'Add Expense' : 'Edit Expense' }}">
       <NavigationButton icon="res://ic_arrow_back" link="#back" />
       <ActionBar.actionItems>
-        <ActionItem icon="res://ic_photo" ios.position="right" tap="onTakePhotoTap" />
         <ActionItem text="Done" ios.position="right" tap="onDoneTap" />
       </ActionBar.actionItems>
     </ActionBar>
@@ -16,21 +15,29 @@
   <GridLayout rows="auto, *">
     <vs:validation-summary />
     <ScrollView row="1">
-      <StackLayout>
+      <GridLayout rows="auto, auto, auto, auto, auto, auto">
         <table:Table>
           <TextField text="{{ item.Title }}" hint="Title" />
           <TextField text="{{ item.Location  }}" hint="Location" />
           <TextField text="{{ item.Cost }}" hint="Cost" keyboardType="number" />
           <ddl:DropDownList header="Category" items="{{ categories }}" displayName="Title" valueName="Id" selectedValue="{{ item.Category }}" />
           <dp:DatePicker header="Date" selectedDate="{{ item.Date }}" />
+        </table:Table>
+
+        <GridLayout row="1" columns="auto, *" tap="{{ takePicture }}" visibility="{{ picture | reverseVisibilityConverter }}" cssClass="image-button" >
+          <Image src="res://ic_photo" stretch="none" cssClass="image-button-icon" />
+          <Label col="1" text="TAKE PHOTO" cssClass="image-button-text" />
+        </GridLayout>
+
+        <table:Table row="2">
           <TextView text="{{ item.Notes }}" hint="Notes" />
         </table:Table>
 
-        <Image visibility="{{ picture | visibilityConverter }}" row="9" src="{{ picture }}" cssClass="image" />
-        <Button visibility="{{ picture | visibilityConverter }}" row="10" text="Remove" tap="{{ removePicture }}" cssClass="remove-button" />
+        <Image row="3" visibility="{{ picture | visibilityConverter }}" src="{{ picture }}" cssClass="image" />
+        <Button row="4" visibility="{{ picture | visibilityConverter }}" text="Remove" tap="{{ removePicture }}" cssClass="remove-button" />
 
-        <Button text="Delete Expense" tap="{{ delete }}" visibility="{{ canDelete | visibilityConverter }}" cssClass="delete-button" />
-      </StackLayout>
+        <Button row="5" text="Delete Expense" tap="{{ delete }}" visibility="{{ canDelete | visibilityConverter }}" cssClass="delete-button" />
+      </GridLayout>
     </ScrollView>
 
     <ActivityIndicator rowSpan="2" busy="{{ isLoading }}" />

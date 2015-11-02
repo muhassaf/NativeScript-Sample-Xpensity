@@ -338,7 +338,6 @@
     <Content Include="node_modules\date-picker\date-picker-popup.xml" />
     <Content Include="node_modules\date-picker\date-picker.android.xml" />
     <Content Include="node_modules\date-picker\date-picker.ios.xml" />
-    <Content Include="node_modules\drop-down-list\drop-down-list-popup.css" />
     <Content Include="node_modules\drop-down-list\drop-down-list-popup.xml" />
     <Content Include="node_modules\drop-down-list\drop-down-list.android.xml" />
     <Content Include="node_modules\drop-down-list\drop-down-list.ios.xml" />

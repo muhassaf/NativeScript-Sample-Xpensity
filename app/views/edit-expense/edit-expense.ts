@@ -6,7 +6,8 @@ import { EditExpenseViewModel } from "./edit-expense-view-model";
 var viewModel: EditExpenseViewModel;
 export function onNavigatingTo(args: NavigatedData) {
     var page = <Page>args.object;
-    viewModel = new EditExpenseViewModel(page.navigationContext.context, page.navigationContext.item);
+    viewModel = page.navigationContext ? new EditExpenseViewModel(page.navigationContext.context, page.navigationContext.item) :
+        new EditExpenseViewModel({ Id: "234" });
     page.bindingContext = viewModel;
 } 
 
@@ -14,6 +15,6 @@ export function onDoneTap(args: EventData) {
     viewModel.save();
 }
 
-export function onTakePhotoTap(args: EventData) {
+export function onTakePictureTap(args: EventData) {
     viewModel.takePicture();
 }

@@ -53,6 +53,10 @@ applicationModule.resources = {
         var result = visible ? enums_1.Visibility.visible : enums_1.Visibility.collapse;
         return result;
     },
+    reverseVisibilityConverter: function (visible) {
+        var result = !visible ? enums_1.Visibility.visible : enums_1.Visibility.collapse;
+        return result;
+    },
     reportStatusConverter: function (status) {
         switch (status) {
             case constants_1.reportStatus.approved:

@@ -105,3 +105,18 @@ TextView {
 .reports-grid {
     padding: 0 8 8 8;
 }
+
+.image-button {
+    padding: 8 16 8 16;
+    margin: 8 0 0 0;
+    color: #007AFF;
+}
+
+.image-button-icon {
+    margin-right: 8;
+}
+
+.image-button-value {
+    vertical-align: center;
+    font-size: 17;
+}

@@ -155,3 +155,18 @@ ActivityIndicator {
 .header-image { 
     margin-bottom: 16;
 }
+
+.item-container {
+    color: #000000;
+    padding: 16;
+}
+
+.item-container-selected {
+    background-color: #007AFF;
+    color: #FFFFFF;
+    padding: 16;
+}
+
+.clear-button {
+    background-color: #FDEFCA;
+}

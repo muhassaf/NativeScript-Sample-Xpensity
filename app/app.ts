@@ -66,6 +66,12 @@ applicationModule.resources = {
         return result;
     },
 
+    reverseVisibilityConverter: function (visible: boolean) {
+        var result = !visible ? Visibility.visible : Visibility.collapse;
+
+        return result;
+    },
+
     reportStatusConverter: function (status: number) {
         switch (status) {
             case reportStatus.approved:

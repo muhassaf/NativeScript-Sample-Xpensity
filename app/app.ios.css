@@ -80,11 +80,11 @@ RadPieChart {
     color: #007AFF
 }
 
-.button-icon {
+.image-button-icon {
     margin-right: 4;
 }
 
-.button-value {
+.image-button-value {
     vertical-align: center;
     font-size: 17;
 }
