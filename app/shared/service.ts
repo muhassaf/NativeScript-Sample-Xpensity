@@ -1,6 +1,8 @@
 ﻿import { ImageSource } from "image-source";
 import locationModule = require("location");
 import typesModule = require("utils/types");
+import navigationModule = require("navigation");
+import connectivityModule = require("connectivity");
 
 import constantsModule = require("./constants");
 import applicationSettingsModule = require("application-settings");
@@ -26,6 +28,27 @@ class Service extends Observable {
     }
 
     public switchOfflineMode(offlineMode: boolean) {
+        if (offlineMode) {
+            connectivityModule.startMonitoring(function onConnectionTypeChanged(newConnectionType) {
+                switch (newConnectionType) {
+                    case connectivityModule.connectionType.none:
+                        everlive.offline();
+
+                        break;
+                    case connectivityModule.connectionType.wifi:
+                    case connectivityModule.connectionType.mobile:
+                        everlive.online();
+                        everlive.sync();
+
+                        break;
+                }
+            });
+        }
+        else {
+            connectivityModule.stopMonitoring();
+            everlive.offlineStorage.purgeAll();
+            everlive.online();
+        }
     }
 
     public switchNotifications(notifications: boolean): Promise<any> {
@@ -203,18 +226,18 @@ export var everlive = new everliveModule({
     authentication: {
         persist: true,
         onAuthenticationRequired: function () {
-            //navigation.login();
+            navigationModule.login();
         }
-    },
-    //offlineStorage: {
-    //    storage: {
-    //        provider: everliveModule.Constants.StorageProvider.LocalStorage
-    //    },
+    }, 
+    offline: {
+        storage: {
+            provider: everliveModule.Constants.StorageProvider.LocalStorage
+        },
+        encryption: {
+            provider: everliveModule.Constants.EncryptionProvider.Default
+        },
 
-    //    encryption: {
-    //        provider: everliveModule.Constants.EncryptionProvider.Default
-    //    }
-    //}
+    }
 });
 
 export var service = new Service();

@@ -13,6 +13,7 @@ export class SettingsViewModel extends ViewModelBase {
         super();
 
         this.notifications = applicationSettingsModule.getBoolean(NOTIFICATIONS, true);
+        this.offlineMode = applicationSettingsModule.getBoolean(OFFLINE_MODE, true);
     }
 
     public get name(): string {
