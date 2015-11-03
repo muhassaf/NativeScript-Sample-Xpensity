@@ -35,12 +35,9 @@ TextView {
 }
 
 .fab {
-    margin: 0 16 28 0;
-}
-
-.fab-container {
     vertical-align: bottom;
     horizontal-align: right;
+    margin: 0 16 28 0;
 }
 
 .header {

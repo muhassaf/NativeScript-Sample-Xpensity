@@ -4,7 +4,7 @@
       <android>
         <Label text="REPORTS" cssClass="header" visibility="{{ androidVisibility }}" />
       </android>
-      
+
       <ScrollView row="1" >
         <g:GridView gridColumns="2" items="{{ reports }}" cssClass="reports-grid" >
           <g:GridView.itemTemplate>
@@ -24,9 +24,7 @@
       </ScrollView>
 
       <android>
-        <AbsoluteLayout rowSpan="2" cssClass="fab-container" >
-          <Image src="res://fab" link="editReport" stretch="none" cssClass="fab" />
-        </AbsoluteLayout>
+        <Image rowSpan="2" src="res://fab" link="editReport" stretch="none" cssClass="fab" />
       </android>
 
       <ActivityIndicator rowSpan="2" busy="{{ isLoading }}" />

@@ -50,9 +50,7 @@
     </GridLayout>
 
     <android>
-      <AbsoluteLayout cssClass="fab-container" visibility="{{ report.Status | editReportVisibilityConverter }}" >
-        <Image src="res://fab" link="editExpense" linkContext="{{ report }}" stretch="none" cssClass="fab" />
-      </AbsoluteLayout>
+      <Image src="res://fab" link="editExpense" linkContext="{{ report }}" stretch="none" visibility="{{ report.Status | editReportVisibilityConverter }}" cssClass="fab" />
     </android>
 
     <ActivityIndicator busy="{{ isLoading }}" />
