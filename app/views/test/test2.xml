@@ -1,4 +1,4 @@
-<Page xmlns="http://www.nativescript.org/tns.xsd"
+<Page xmlns="http://schemas.nativescript.org/tns.xsd"
       navigatingTo="onNavigatingTo" >
   <GridLayout rows="auto, auto, auto">
     <Label text="Hello" visibility="{{ isVisible | visibilityConverter }}" />
