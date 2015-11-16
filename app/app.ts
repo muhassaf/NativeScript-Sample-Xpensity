@@ -12,42 +12,22 @@ import { PaletteEntry, Palette } from "nativescript-telerik-ui/chart"
 
 var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 specialPropertiesModule.registerSpecialProperty("link", (instance, propertyValue) => {
-    console.log("LINK");
-    console.log("LINK");
-    console.log("LINK");
-    console.log("LINK: " + propertyValue);
     if (instance instanceof ListView) {
-        console.log("LIST VIEW");
         var listView = <ListView>instance;
         listView.on("itemTap", (args: ItemEventData) => {
-            console.log("TAP");
-            console.log("TAP");
-            console.log("TAP");
-            console.log("TAP");
-            console.log("TAP");
-            console.log("TAP");
-            console.log("TAP: " + propertyValue);
             navigationModule.navigateById(propertyValue, {
                 item: args.view.bindingContext,
                 context: (<any>instance).linkContext
             });
         });
-
-        console.log("LIST VIEW DONE");
-
     }
     else {
-        console.log("VIEW");
         instance.on("tap", (args: EventData) => {
             navigationModule.navigateById(propertyValue, {
                 context: (<any>instance).linkContext
             });
         });
-
-        console.log("VIEW DONE");
     }
-
-    console.log("LINK: DONE");
 });
 
 applicationModule.cssFile = "./app.css";
@@ -101,7 +81,7 @@ applicationModule.resources = {
         }
 
         return Visibility.collapse;
-    }, 
+    },
 
     titleConverter: function (tab: number) {
         switch (tab) {
@@ -117,7 +97,7 @@ applicationModule.resources = {
             default:
                 return "";
         }
-    }, 
+    },
 
     paletteConverter: function (expensesByCategory: any[]) {
         var palette = new Palette();
@@ -129,8 +109,8 @@ applicationModule.resources = {
         });
 
         palette.entries = paletteEntries;
-        
-        return [ palette ];
+
+        return [palette];
     }
 }
 
@@ -142,5 +122,5 @@ applicationModule.onLaunch = function (context: any) {
     });
 }
 
-applicationModule.mainModule = viewsModule.main;
+applicationModule.mainModule = viewsModule.editExpense;
 applicationModule.start();

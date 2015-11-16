@@ -14,17 +14,21 @@ import { DataSource, DataSourceOptions } from "data-source";
 export class EditExpenseViewModel extends EditViewModelBase {
     private _report: any;
     private _categories: DataSource;
+    private _category: any;
     private _picture: any;
     private _isUrl: boolean;
 
     constructor(report: any, expense?: any) {
         this._report = report;
 
-        super(expense);
+        super(expense, constantsModule.expenseProperties);
 
-        this._categories = new DataSource(everlive, new DataSourceOptions(CategoryTypeName));
+        var options = new DataSourceOptions();
+        options.typeName = CategoryTypeName;
+        this._categories = new DataSource(everlive, options);
         this._isUrl = false;
         this._picture = null;
+        this._category = expense ? expense.ExpenseCategory.Id : constantsModule.defaultExpenseCategoryId;
         this.refresh();
     }
 
@@ -41,6 +45,17 @@ export class EditExpenseViewModel extends EditViewModelBase {
 
     public get categories() {
         return this._categories;
+    }
+
+    public get category(): any {
+        return this._category;
+    }
+
+    public set category(value: any) {
+        if (this._category !== value) {
+            this._category = value;
+            this.notifyPropertyChange("category", value);
+        }
     }
 
     public refresh() {
@@ -68,7 +83,6 @@ export class EditExpenseViewModel extends EditViewModelBase {
     protected createItem(): any {
         var item = super.createItem();
         item.Date = new Date();
-        item.Category = constantsModule.defaultExpenseCategoryId;
         item.Report = this._report.Id;
 
         return item;
@@ -104,6 +118,7 @@ export class EditExpenseViewModel extends EditViewModelBase {
 
     protected onSaving(item: any): Promise<boolean> {
         return new Promise<boolean>((resolve, reject) => {
+            item.Category = this._category;
             if (this._picture) {
                 if (!this._isUrl) {
                     service.uploadImage(this._picture).then(id => {

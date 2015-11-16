@@ -45,7 +45,7 @@ export class SettingsViewModel extends ViewModelBase {
         this.execute(service.switchNotifications(value)).then(() => {
             this.setNotifications(value);
         }, (error) => {
-            this.setNotifications(!value);
+            this.setNotifications(false);
         });
     }
 

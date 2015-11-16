@@ -7,6 +7,7 @@ import notificationsModule = require("notifications");
 import navigationModule = require("navigation");
 import { reportStatus } from "../../shared/constants";
 import viewsModule = require("../../shared/views");
+import constantsModule = require("../../shared/constants");
 
 export class ViewReportViewModel extends ViewModelBase {
     private _report: any;
@@ -20,16 +21,19 @@ export class ViewReportViewModel extends ViewModelBase {
 
         this._report = report;
         this._totalCost = 2;
-        this._expenses = new DataSource(everlive, new DataSourceOptions(ExpenseTypeName, {
+        var options = new DataSourceOptions();
+        options.typeName = ExpenseTypeName;
+        options.expand = {
             Category: {
-                TargetTypeName: "ExpenseCategory", 
+                TargetTypeName: "ExpenseCategory",
                 ReturnAs: "ExpenseCategory"
             }
-        }));
+        };
+
+        this._expenses = new DataSource(everlive, options);
         this._expenses.addFilterDescriptor(new FilterDescriptor("Report", Operators.equals, this._report.Id));
         this._expenses.on("loaded", (args: EventData) => {
             this.totalCost = this._expenses.sum("Cost");
-
             var expensesByCategory = [];
             this._expenses.groupBy("ExpenseCategory", (category) => {
                 return category.Id
@@ -97,11 +101,6 @@ export class ViewReportViewModel extends ViewModelBase {
         var view = (this._report.Status === reportStatus.inProgress || this._report.Status === reportStatus.returned) ?
             viewsModule.editExpense : viewsModule.viewExpense;
 
-        console.log("NAVIGATE ITEM");
-        console.log("NAVIGATE ITEM");
-        console.log("NAVIGATE ITEM");
-        console.log("NAVIGATE ITEM");
-        console.log("NAVIGATE ITEM: " + view);
         navigationModule.navigate(view, {
             item: item,
             context: this._report

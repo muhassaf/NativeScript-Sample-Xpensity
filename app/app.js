@@ -8,38 +8,22 @@ var constants_1 = require("./shared/constants");
 var chart_1 = require("nativescript-telerik-ui/chart");
 var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 specialPropertiesModule.registerSpecialProperty("link", function (instance, propertyValue) {
-    console.log("LINK");
-    console.log("LINK");
-    console.log("LINK");
-    console.log("LINK: " + propertyValue);
     if (instance instanceof list_view_1.ListView) {
-        console.log("LIST VIEW");
         var listView = instance;
         listView.on("itemTap", function (args) {
-            console.log("TAP");
-            console.log("TAP");
-            console.log("TAP");
-            console.log("TAP");
-            console.log("TAP");
-            console.log("TAP");
-            console.log("TAP: " + propertyValue);
             navigationModule.navigateById(propertyValue, {
                 item: args.view.bindingContext,
                 context: instance.linkContext
             });
         });
-        console.log("LIST VIEW DONE");
     }
     else {
-        console.log("VIEW");
         instance.on("tap", function (args) {
             navigationModule.navigateById(propertyValue, {
                 context: instance.linkContext
             });
         });
-        console.log("VIEW DONE");
     }
-    console.log("LINK: DONE");
 });
 applicationModule.cssFile = "./app.css";
 applicationModule.resources = {
@@ -111,6 +95,6 @@ applicationModule.onLaunch = function (context) {
         navigationModule.replace(view);
     });
 };
-applicationModule.mainModule = viewsModule.main;
+applicationModule.mainModule = viewsModule.editExpense;
 applicationModule.start();
 //# sourceMappingURL=app.js.map

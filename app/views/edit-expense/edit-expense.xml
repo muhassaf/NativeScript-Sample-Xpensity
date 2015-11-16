@@ -20,7 +20,7 @@
           <TextField text="{{ item.Title }}" hint="Title" />
           <TextField text="{{ item.Location  }}" hint="Location" />
           <TextField text="{{ item.Cost }}" hint="Cost" keyboardType="number" />
-          <ddl:DropDownList header="Category" items="{{ categories }}" displayName="Title" valueName="Id" selectedValue="{{ item.Category }}" />
+          <ddl:DropDownList header="Category" items="{{ categories }}" displayName="Title" valueName="Id" selectedValue="{{ category }}" />
           <dp:DatePicker header="Date" selectedDate="{{ item.Date }}" />
         </table:Table>
 

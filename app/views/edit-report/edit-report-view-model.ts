@@ -6,11 +6,12 @@ import navigationModule = require("navigation");
 import { reportStatus } from "../../shared/constants";
 
 import viewsModule = require("../../shared/views");
+import constantsModule = require("../../shared/constants");
 
 
 export class EditReportViewModel extends EditViewModelBase {
     constructor(report?: any) {
-        super(report);
+        super(report, constantsModule.reportProperties);
     }
 
     protected addItem(item: any): Promise<any> {

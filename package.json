@@ -20,7 +20,7 @@
 		"everlive": "file:..\\Plugins\\everlive",
 		"grid-view": "file:..\\Plugins\\grid-view",
 		"nativescript-push-notifications": "0.0.10",
-		"nativescript-telerik-ui": "0.0.10",
+		"nativescript-telerik-ui": "^0.1.1",
 		"navigation": "file:..\\Plugins\\navigation",
 		"notifications": "file:..\\Plugins\\notifications",
 		"table": "file:..\\Plugins\\table",

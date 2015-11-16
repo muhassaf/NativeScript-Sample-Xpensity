@@ -21,6 +21,7 @@ export interface NotificationEventData extends EventData {
 
 class Service extends Observable {
     private _categories: any[];
+    private _categoriesMap: Map<any, any>;
     private _currentUser: any;
 
     public get currentUser(): any {
@@ -193,6 +194,24 @@ class Service extends Observable {
         return this.deleteItem(ExpenseTypeName, expense);
     }
 
+    public loadCategories(): Promise<any> {
+        return new Promise<any>((resolve, reject) => {
+            this.getItems(CategoryTypeName, null).then((data) => {
+                this._categories = data;
+                this._categoriesMap = new Map<any, any>();
+                this._categories.forEach((item) => {
+                    this._categoriesMap.set(item.Id, item);
+                });
+
+                resolve();
+            }, reject);
+        });
+    }
+
+    public getCategory(categoryId: any): any {
+        return this._categoriesMap[categoryId];
+    }
+
     private getCurrentUser(): Promise<any> {
         return new Promise<any>((resolve, reject) => {
             everlive.Users.currentUser()
@@ -204,7 +223,13 @@ class Service extends Observable {
     }
 
     private getItems(typeName: string, filter: any): Promise<any[]> {
-        return everlive.data(typeName).get(filter);
+        return new Promise<any>((resolve, reject) => {
+            return everlive.data(typeName)
+                .get(filter)
+                .then((data) => {
+                    resolve(data.result);
+                }, reject)
+        });
     }
 
     private createItem(typeName: string, item: any): Promise<any> {

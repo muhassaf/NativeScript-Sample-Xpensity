@@ -31,7 +31,7 @@
         <ListView.itemTemplate>
           <GridLayout columns="auto, *" cssClass="item">
             <GridLayout backgroundColor="{{ ExpenseCategory.Color }}" cssClass="category" />
-            <GridLayout col="1" rows="auto, auto, auto" columns="*, auto" cssClass="item-container">
+            <GridLayout col="1" rows="auto, auto, auto" columns="*, auto" cssClass="expense-details-container">
               <Label text="{{ Title }}" cssClass="item-label" />
               <Label row="1" text="{{ Date | formatDate }}" cssClass="item-details-label" />
               <Label row="2" text="{{ Location }}" visibility="{{ Location | visibilityConverter }}" cssClass="item-details-label" />
