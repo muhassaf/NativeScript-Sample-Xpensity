@@ -70,10 +70,11 @@ export class EditExpenseViewModel extends EditViewModelBase {
     }
 
     public takePicture() {
-        cameraModule.takePicture().then((picture) => {
-            this.picture = picture;
-            this._isUrl = false;
-        });
+        cameraModule.takePicture({ width: 320, height: 230, keepAspectRatio: true })
+            .then((picture) => {
+                this.picture = picture;
+                this._isUrl = false;
+            });
     }
 
     public removePicture() {
@@ -107,7 +108,7 @@ export class EditExpenseViewModel extends EditViewModelBase {
             return false;
         }
 
-        if (isNaN(this.item.Cost)) {
+        if (isNaN(this.item.Cost) || !this.item.Cost) {
             this.setErrorMessage("Please enter cost.");
 
             return false;

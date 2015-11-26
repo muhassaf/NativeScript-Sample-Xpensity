@@ -10,6 +10,9 @@ export class LoginViewModel extends ViewModelBase {
 
     constructor() {
         super();
+
+        this._username = "kamen.velikov@telerik.com"
+        this._password = "123";
     }
 
     public get username(): string {
@@ -47,7 +50,7 @@ export class LoginViewModel extends ViewModelBase {
 
     protected validateOverride(): boolean {
         if (!validationRulesModule.isRequiredValid(this.username)) {
-            this.setErrorMessage("Please enter username.");
+            this.setErrorMessage("Please enter email.");
 
             return false;
         }

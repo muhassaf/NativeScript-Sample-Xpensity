@@ -304,6 +304,8 @@
     <Content Include="app\obj\iOS\Xpensity.csproj.FileListAbsolute.txt" />
     <Content Include="app\obj\iOS\Xpensity.dll" />
     <Content Include="app\obj\iOS\Xpensity.pdb" />
+    <Content Include="app\shared\table-item\table-item.ios.xml" />
+    <Content Include="app\shared\table-item\table-item.android.xml" />
     <Content Include="app\shared\validation-summary\validation-summary.css" />
     <Content Include="app\shared\validation-summary\validation-summary.xml" />
     <Content Include="app\views\edit-expense\edit-expense.xml" />
@@ -317,11 +319,6 @@
     <Content Include="app\views\reports\reports.xml" />
     <Content Include="app\views\settings\settings.xml" />
     <Content Include="app\views\sign-up\sign-up.xml" />
-    <Content Include="app\views\test\everlive.js" />
-    <Content Include="app\views\test\test.css" />
-    <Content Include="app\views\test\test.xml" />
-    <Content Include="app\views\test\test1.xml" />
-    <Content Include="app\views\test\test2.xml" />
     <Content Include="app\views\view-expense\view-expense.xml" />
     <Content Include="app\views\view-report\view-report.xml" />
     <Content Include="node_modules\data-source\data-source.js" />
@@ -560,9 +557,6 @@
     <TypeScriptCompile Include="app\views\settings\settings-view-model.ts" />
     <TypeScriptCompile Include="app\views\sign-up\sign-up-view-model.ts" />
     <TypeScriptCompile Include="app\views\sign-up\sign-up.ts" />
-    <TypeScriptCompile Include="app\views\test\test.ts" />
-    <TypeScriptCompile Include="app\views\test\test1.ts" />
-    <TypeScriptCompile Include="app\views\test\test2.ts" />
     <TypeScriptCompile Include="app\views\view-expense\view-expense-view-model.ts" />
     <TypeScriptCompile Include="app\views\view-expense\view-expense.ts" />
     <TypeScriptCompile Include="app\views\view-report\view-report-view-model.ts" />
@@ -681,8 +675,6 @@
     <Content Include="app\package.json" />
     <Content Include="app\README.md" />
     <Content Include="app\tsconfig.json" />
-    <Content Include="app\views\test.rar" />
-    <Content Include="app\views\test\test.zip" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="app\obj\Android\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />

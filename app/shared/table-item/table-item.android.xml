@@ -1,0 +1,4 @@
+﻿<GridLayout rows="auto, auto">
+  <Label text="Cost" class="table-item-header" />
+  <TextField row="1" text="{{ item.Cost }}" keyboardType="number" />
+</GridLayout>

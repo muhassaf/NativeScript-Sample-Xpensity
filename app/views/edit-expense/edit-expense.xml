@@ -1,5 +1,6 @@
 <Page xmlns="http://www.nativescript.org/tns.xsd"
       xmlns:table="table"
+      xmlns:tableItem="shared/table-item"
       xmlns:dp="date-picker"
       xmlns:ddl="drop-down-list"
       xmlns:vs="shared/validation-summary"
@@ -19,14 +20,14 @@
         <table:Table>
           <TextField text="{{ item.Title }}" hint="Title" />
           <TextField text="{{ item.Location  }}" hint="Location" />
-          <TextField text="{{ item.Cost }}" hint="Cost" keyboardType="number" />
+          <tableItem:table-item />
           <ddl:DropDownList header="Category" items="{{ categories }}" displayName="Title" valueName="Id" selectedValue="{{ category }}" />
           <dp:DatePicker header="Date" selectedDate="{{ item.Date }}" />
         </table:Table>
 
         <GridLayout row="1" columns="auto, *" tap="{{ takePicture }}" visibility="{{ picture | reverseVisibilityConverter }}" cssClass="image-button" >
           <Image src="res://ic_photo" stretch="none" cssClass="image-button-icon" />
-          <Label col="1" text="TAKE PHOTO" cssClass="image-button-text" />
+          <Label col="1" text="Take Photo" cssClass="image-button-text" />
         </GridLayout>
 
         <table:Table row="2">

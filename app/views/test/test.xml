@@ -1,7 +1,0 @@
-<Page xmlns="http://www.nativescript.org/tns.xsd"
-      xmlns:chart="nativescript-telerik-ui/chart"
-      navigatingTo="onNavigatingTo" >
-  <StackLayout>
-    <Button text="Test 2" tap="{{ navigate }}" />
-  </StackLayout>
-</Page>

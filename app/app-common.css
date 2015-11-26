@@ -153,6 +153,11 @@ ActivityIndicator {
     margin: 16 16 0 16;
 }
 
+.image-button-text {
+    vertical-align: center;
+    font-size: 17;
+}
+
 
 .header-image { 
     margin-bottom: 16;
