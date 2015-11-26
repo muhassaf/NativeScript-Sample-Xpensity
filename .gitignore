@@ -13,6 +13,6 @@ lib/
 Tmp/
 Design/
 
-!Plugins
+!Plugins/
 *.docx
 /.vs/config
