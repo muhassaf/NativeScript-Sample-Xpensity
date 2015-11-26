@@ -3,7 +3,6 @@ obj
 *.user-settings.xml
 
 *.map
-*.js
 *.DS_Store
 *.d.ts
 node_modules/
@@ -13,6 +12,5 @@ lib/
 Tmp/
 Design/
 
-!Plugins/
 *.docx
 /.vs/config
