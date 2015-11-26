@@ -1,5 +1,9 @@
 ﻿.validation-summary {
-    background-color: #FF4350;
-    color: #FFFFFF;
+    background-color: #FCC285;
+    color: #252E43;
     padding: 16;
+}
+
+.validation-summary-close {
+    vertical-align: center;
 }

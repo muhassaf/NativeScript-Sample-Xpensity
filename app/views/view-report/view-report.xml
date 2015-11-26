@@ -20,10 +20,10 @@
         <Label row="2" colSpan="2" text="{{ report.Date | formatDate }}" cssClass="details-label" />
 
         <chart:RadPieChart row="3" colSpan="2" palettes="{{ expensesByCategory | paletteConverter }}" cssClass="report-chart" >
-          <chart:PieChart.series>
+          <chart:RadPieChart.series>
             <chart:PieSeries items="{{ expensesByCategory }}" valueProperty="Percent">
             </chart:PieSeries>
-          </chart:PieChart.series>
+          </chart:RadPieChart.series>
         </chart:RadPieChart>
       </GridLayout>
 

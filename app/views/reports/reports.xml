@@ -1,4 +1,9 @@
-<TabViewItem xmlns:g="grid-view" xmlns:chart="nativescript-telerik-ui/chart" id="ReportsTabItem" ios:title="My reports" iconSource="res://ic_reports" >
+<TabViewItem 
+  xmlns:g="grid-view" 
+  xmlns:chart="nativescript-telerik-ui/chart" 
+  android:iconSource="{{ selectedTab === 0 ? 'res://ic_reports_1' : 'res://ic_reports' }}" 
+  ios:iconSource="res://ic_reports" 
+  ios:title="My reports" >
   <TabViewItem.view>
     <GridLayout rows="auto, *" bindingContext="{{ reportsViewModel }}" >
       <android>

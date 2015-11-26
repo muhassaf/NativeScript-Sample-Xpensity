@@ -4,6 +4,20 @@ RadPieChart {
     background-color: transparent;
 }
 
+Table {
+    margin-top: 10;
+    padding: 12 16 12 16;
+    background-color: #FFFFFF;
+    border-color: #E0E0E0;
+    border-width: 1;
+}
+
+.table-separator {
+    height: 1;
+    background-color: #E0E0E0;
+    margin: 10 -16 10 0;
+}
+
 .text-button {
     margin: 8 0 0 16;
 }

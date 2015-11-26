@@ -2,7 +2,12 @@
       xmlns:chart="nativescript-telerik-ui/chart"
       navigatingTo="onNavigatingTo" >
   <GridLayout rows="auto, auto, auto">
-    <Label text="Hello" visibility="{{ isVisible | visibilityConverter }}" />
-    <Button row="1" tap="{{ toggle }}" />
+    <Label text="{{ text }}" />
+    <chart:RadPieChart id="pieChart" width="300" height="300">
+      <chart:RadPieChart.series>
+        <chart:PieSeries items="{{ pieSource }}" valueProperty="Amount">
+        </chart:PieSeries>
+      </chart:RadPieChart.series>
+    </chart:RadPieChart>
   </GridLayout>
 </Page>

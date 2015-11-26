@@ -29,66 +29,71 @@ class Service extends Observable {
     }
 
     public switchOfflineMode(offlineMode: boolean) {
-        if (offlineMode) {
-            connectivityModule.startMonitoring(function onConnectionTypeChanged(newConnectionType) {
-                switch (newConnectionType) {
-                    case connectivityModule.connectionType.none:
-                        everlive.offline();
+        return null;
+        //if (offlineMode) {
+        //    connectivityModule.startMonitoring(function onConnectionTypeChanged(newConnectionType) {
+        //        switch (newConnectionType) {
+        //            case connectivityModule.connectionType.none:
+        //                everlive.offline();
 
-                        break;
-                    case connectivityModule.connectionType.wifi:
-                    case connectivityModule.connectionType.mobile:
-                        everlive.online();
-                        everlive.sync();
+        //                break;
+        //            case connectivityModule.connectionType.wifi:
+        //            case connectivityModule.connectionType.mobile:
+        //                everlive.online();
+        //                everlive.sync();
 
-                        break;
-                }
-            });
-        }
-        else {
-            connectivityModule.stopMonitoring();
-            everlive.offlineStorage.purgeAll();
-            everlive.online();
-        }
+        //                break;
+        //        }
+        //    });
+        //}
+        //else {
+        //    connectivityModule.stopMonitoring();
+        //    everlive.offlineStorage.purgeAll();
+        //    everlive.online();
+        //}
     }
 
     public switchNotifications(notifications: boolean): Promise<any> {
-        if (notifications) {
-            return new Promise<any>((resolve, reject) => {
-                everlive.push.register({
-                    iOS: {
-                        badge: true,
-                        sound: true,
-                        alert: true
-                    },
+        return new Promise<any>((resolve, reject) => {
+            resolve();
+        });
 
-                    notificationCallbackIOS: (data) => {
-                        this.notify<NotificationEventData>({
-                            object: this,
-                            eventName: NotificationMessageEvent,
-                            message: data.alert
-                        })
-                    },
+        //if (notifications) {
+        //    return new Promise<any>((resolve, reject) => {
+        //        everlive.push.register({
+        //            iOS: {
+        //                badge: true,
+        //                sound: true,
+        //                alert: true
+        //            },
 
-                    android: {
-                        projectNumber: constantsModule.projectNumber
-                    },
+        //            notificationCallbackIOS: (data) => {
+        //                this.notify<NotificationEventData>({
+        //                    object: this,
+        //                    eventName: NotificationMessageEvent,
+        //                    message: data.alert
+        //                })
+        //            },
 
-                    notificationCallbackAndroid: (data) => {
-                        this.notify<NotificationEventData>({
-                            object: this,
-                            eventName: NotificationMessageEvent,
-                            message: data
-                        })
-                    }
-                }, resolve, reject);
-            });
-        }
-        else {
-            return new Promise<any>((resolve, reject) => {
-                everlive.push.unregister(resolve, reject);
-            });
-        }
+        //            android: {
+        //                projectNumber: constantsModule.projectNumber
+        //            },
+
+        //            notificationCallbackAndroid: (data) => {
+        //                this.notify<NotificationEventData>({
+        //                    object: this,
+        //                    eventName: NotificationMessageEvent,
+        //                    message: data
+        //                })
+        //            }
+        //        }, resolve, reject);
+        //    });
+        //}
+        //else {
+        //    return new Promise<any>((resolve, reject) => {
+        //        everlive.push.unregister(resolve, reject);
+        //    });
+        //}
     }
 
     public login(username: string, password: string): Promise<any> {
@@ -102,10 +107,11 @@ class Service extends Observable {
 
     public logout(): Promise<any> {
         return new Promise<any>((resolve, reject) => {
-            everlive.authentication.logout().then(() => {
-                this.switchNotifications(false)
-                    .then(resolve, reject);
-            }, reject);
+            everlive.authentication.logout()
+                .then(() => {
+                    this.switchNotifications(false)
+                        .then(resolve, reject);
+                }, reject);
         });
     }
 
@@ -254,15 +260,15 @@ export var everlive = new everliveModule({
             navigationModule.login();
         }
     }, 
-    offline: {
-        storage: {
-            provider: everliveModule.Constants.StorageProvider.LocalStorage
-        },
-        encryption: {
-            provider: everliveModule.Constants.EncryptionProvider.Default
-        },
+    //offline: {
+    //    storage: {
+    //        provider: everliveModule.Constants.StorageProvider.LocalStorage
+    //    },
+    //    encryption: {
+    //        provider: everliveModule.Constants.EncryptionProvider.Default
+    //    },
 
-    }
+    //}
 });
 
 export var service = new Service();

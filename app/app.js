@@ -5,7 +5,7 @@ var list_view_1 = require("ui/list-view");
 var viewsModule = require("./shared/views");
 var navigationModule = require("navigation");
 var constants_1 = require("./shared/constants");
-var chart_1 = require("nativescript-telerik-ui/chart");
+var chartModule = require("nativescript-telerik-ui/chart");
 var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 specialPropertiesModule.registerSpecialProperty("link", function (instance, propertyValue) {
     if (instance instanceof list_view_1.ListView) {
@@ -34,12 +34,13 @@ applicationModule.resources = {
         return "$" + (Math.round(currency * 100) / 100).toFixed(2);
     },
     visibilityConverter: function (visible) {
-        var result = visible ? enums_1.Visibility.visible : enums_1.Visibility.collapse;
-        return result;
+        return visible ? enums_1.Visibility.visible : enums_1.Visibility.collapse;
     },
     reverseVisibilityConverter: function (visible) {
-        var result = !visible ? enums_1.Visibility.visible : enums_1.Visibility.collapse;
-        return result;
+        return !visible ? enums_1.Visibility.visible : enums_1.Visibility.collapse;
+    },
+    tabVisibilityConverter: function (tabIndex, index) {
+        return tabIndex === index ? enums_1.Visibility.visible : enums_1.Visibility.collapse;
     },
     reportStatusConverter: function (status) {
         switch (status) {
@@ -77,10 +78,10 @@ applicationModule.resources = {
         }
     },
     paletteConverter: function (expensesByCategory) {
-        var palette = new chart_1.Palette();
+        var palette = new chartModule.Palette();
         var paletteEntries = [];
         expensesByCategory.forEach(function (item) {
-            var entry = new chart_1.PaletteEntry();
+            var entry = new chartModule.PaletteEntry();
             entry.fillColor = item.Category.Color;
             paletteEntries.push(entry);
         });
@@ -95,6 +96,6 @@ applicationModule.onLaunch = function (context) {
         navigationModule.replace(view);
     });
 };
-applicationModule.mainModule = viewsModule.editExpense;
+applicationModule.mainModule = viewsModule.initial;
 applicationModule.start();
 //# sourceMappingURL=app.js.map

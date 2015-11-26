@@ -8,7 +8,7 @@ import viewsModule = require("./shared/views");
 import navigationModule = require("navigation");
 import { reportStatus } from "./shared/constants";
 
-import { PaletteEntry, Palette } from "nativescript-telerik-ui/chart"
+var chartModule = require("nativescript-telerik-ui/chart");
 
 var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 specialPropertiesModule.registerSpecialProperty("link", (instance, propertyValue) => {
@@ -41,16 +41,17 @@ applicationModule.resources = {
     },
 
     visibilityConverter: function (visible: boolean) {
-        var result = visible ? Visibility.visible : Visibility.collapse;
-
-        return result;
+        return visible ? Visibility.visible : Visibility.collapse;
     },
 
     reverseVisibilityConverter: function (visible: boolean) {
-        var result = !visible ? Visibility.visible : Visibility.collapse;
-
-        return result;
+        return  !visible ? Visibility.visible : Visibility.collapse;
     },
+
+    tabVisibilityConverter: function (tabIndex: number, index: number) {
+        return tabIndex === index ? Visibility.visible : Visibility.collapse;
+    },
+
 
     reportStatusConverter: function (status: number) {
         switch (status) {
@@ -99,11 +100,11 @@ applicationModule.resources = {
         }
     },
 
-    paletteConverter: function (expensesByCategory: any[]) {
-        var palette = new Palette();
-        var paletteEntries: PaletteEntry[] = [];
+    paletteConverter: function (expensesByCategory: any[]): any[] {
+        var palette = new chartModule.Palette();
+        var paletteEntries = [];
         expensesByCategory.forEach((item: any) => {
-            var entry = new PaletteEntry();
+            var entry = new chartModule.PaletteEntry();
             entry.fillColor = item.Category.Color;
             paletteEntries.push(entry);
         });
@@ -122,5 +123,5 @@ applicationModule.onLaunch = function (context: any) {
     });
 }
 
-applicationModule.mainModule = viewsModule.editExpense;
+applicationModule.mainModule = viewsModule.initial;
 applicationModule.start();

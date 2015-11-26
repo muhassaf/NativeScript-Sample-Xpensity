@@ -1,5 +1,3 @@
-@import url("~/tns_modules/table/table.css");
-
 Page {
     background-color: #EEEEEE;
 }
@@ -11,6 +9,10 @@ TextView {
 ActivityIndicator {
     width: 50;
     height: 50;
+}
+
+.date-picker {
+    vertical-align: center;
 }
 
 .text-button {

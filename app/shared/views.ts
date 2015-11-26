@@ -1,4 +1,5 @@
-﻿export var login = "views/login/login";
+﻿export var initial = "views/initial/initial";
+export var login = "views/login/login";
 export var signUp = "views/sign-up/sign-up";
 export var passwordRecovery = "views/password-recovery/password-recovery";
 export var main = "views/main/main";

@@ -3,23 +3,45 @@ import { Page } from "ui/page";
 import { ItemEventData } from "ui/list-view";
 import navigationModule = require("navigation");
 
-class ViewModel extends Observable {
+export class ViewModel1 extends Observable {
+    private _data: any[];
+
     constructor() {
         super();
 
-        this.set("isVisible", true);
+        this.set("pieSource",
+            [
+                { Brand: "Audi", Amount: 10 },
+                { Brand: "Mercedes", Amount: 76 },
+                { Brand: "Fiat", Amount: 60 },
+                { Brand: "BMW", Amount: 24 },
+                { Brand: "Crysler", Amount: 40 }
+            ]);
+
     }
 
-    public toggle() {
-        this.set("isVisible", !this.get("isVisible"));
+    public get text(): string {
+        return "Test MS";
     }
 
-    public tap() {
-        navigationModule.navigate("views/test/test2");
+    public refresh() {
+        setTimeout(() => {
+            this.set("pieSource",
+                [
+                    { Brand: "Audi", Amount: 10 },
+                    { Brand: "Mercedes", Amount: 76 },
+                    { Brand: "Fiat", Amount: 60 },
+                    { Brand: "BMW", Amount: 24 },
+                    { Brand: "Crysler", Amount: 40 }
+                ])
+        }, 200);
     }
+
 }
 
 export function onNavigatingTo(args: EventData) {
     var page = <Page>args.object;
-    page.bindingContext = new ViewModel();
+    var viewModel = page.navigationContext;
+    page.bindingContext = viewModel;
+    viewModel.refresh();
 }

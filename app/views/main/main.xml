@@ -8,7 +8,8 @@
     <Page.actionBar>
       <ActionBar title="{{ selectedTab | titleConverter }}">
         <ActionBar.actionItems>
-          <ActionItem icon="res://ic_add" ios.position="right" link="editReport" />
+          <ActionItem icon="res://ic_add" ios.position="right" link="editReport" visibility="{{ selectedTab | tabVisibilityConverter(0) }}" />
+          <ActionItem icon="res://ic_clear_all" ios.position="right" tap="{{ clearNotifications }}" visibility="{{ selectedTab | tabVisibilityConverter(1) }}" />
         </ActionBar.actionItems>
       </ActionBar>
     </Page.actionBar>

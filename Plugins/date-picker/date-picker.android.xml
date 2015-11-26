@@ -1,0 +1,8 @@
+<GridLayout rows="auto, auto" cssClass="picker">
+  <GridLayout rows="auto, auto" columns="*, auto" tap="{{ onDatePickerTap }}" cssClass="picker-container">
+    <Label text="{{ header }}" cssClass="picker-header" />
+    <Label row="1" text="{{ selectedDate | formatDate }}" cssClass="picker-value" />
+    <Image src="res://ic_arrow_drop_down" col="1" rowspan="2" cssClass="picker-icon" />
+  </GridLayout>
+  <GridLayout row="1" cssClass="separator" />
+</GridLayout>

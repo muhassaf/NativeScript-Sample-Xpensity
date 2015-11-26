@@ -19,7 +19,7 @@ export class MainViewModel extends ViewModelBase {
         this._selectedTab = 0;
         this._reportsViewModel = new ReportsViewModel();
         this._notificationsViewModel = new NotificationsViewModel();
-        this._settingsViewModel = new SettingsViewModel();
+        this._settingsViewModel = new SettingsViewModel(this);
     }
 
     public get selectedTab(): number {
@@ -43,6 +43,10 @@ export class MainViewModel extends ViewModelBase {
 
     public get settingsViewModel(): SettingsViewModel {
         return this._settingsViewModel;
+    }
+
+    public clearNotification() {
+        this._notificationsViewModel.clear();
     }
 
     public refresh() {

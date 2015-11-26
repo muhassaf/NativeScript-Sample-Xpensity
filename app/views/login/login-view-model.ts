@@ -10,9 +10,6 @@ export class LoginViewModel extends ViewModelBase {
 
     constructor() {
         super();
-
-        this._username = "kamen.velikov@telerik.com";
-        this._password = "123";
     }
 
     public get username(): string {

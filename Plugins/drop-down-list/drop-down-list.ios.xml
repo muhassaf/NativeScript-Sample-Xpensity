@@ -1,0 +1,5 @@
+<GridLayout tap="{{ onDropDownListTap }}" columns="auto, *, auto" cssClass="picker-inner-container" >
+  <Label text="{{ header }}" cssClass="picker-header" />
+  <Label col="1" text="{{ displayText }}" cssClass="picker-value" />
+  <Image col="2" src="res://ic_arrow-right" cssClass="picker-icon" />
+</GridLayout>

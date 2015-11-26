@@ -121,10 +121,14 @@ export class EditExpenseViewModel extends EditViewModelBase {
             item.Category = this._category;
             if (this._picture) {
                 if (!this._isUrl) {
-                    service.uploadImage(this._picture).then(id => {
-                        item.Picture = id;
-                        resolve(false);
-                    }, reject);
+                    service.uploadImage(this._picture)
+                        .then(id => {
+                            item.Picture = id;
+                            resolve(false);
+                        }, reject);
+                }
+                else {
+                    resolve(false);
                 }
             }
             else {

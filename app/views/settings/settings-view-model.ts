@@ -3,14 +3,18 @@
 import { service } from "../../shared/service";
 import navigationModule = require("navigation");
 import applicationSettingsModule = require("application-settings");
+import { MainViewModel } from "../main/main-view-model";
 
 var OFFLINE_MODE = "offlineMode";
 var NOTIFICATIONS = "notifications";
 export class SettingsViewModel extends ViewModelBase {
+    private _owner: MainViewModel;
     private _name: string;
 
-    constructor() {
+    constructor(owner: MainViewModel) {
         super();
+
+        this._owner = owner;
 
         this.notifications = applicationSettingsModule.getBoolean(NOTIFICATIONS, true);
         this.offlineMode = applicationSettingsModule.getBoolean(OFFLINE_MODE, true);
@@ -55,9 +59,11 @@ export class SettingsViewModel extends ViewModelBase {
     }
 
     public logout() {
-        this.execute(service.logout()).then(() => {
-            navigationModule.login();
-        });
+        this.execute(service.logout())
+            .then(() => {
+                navigationModule.login();
+                this._owner.selectedTab = 0;
+            });
     }
 
     public refresh() {
