@@ -1,13 +1,10 @@
 bin
 obj
-*.user-settings.xml
 
 *.map
 *.DS_Store
-*.d.ts
 node_modules/
 
-platforms/
 lib/
 Tmp/
 Design/
