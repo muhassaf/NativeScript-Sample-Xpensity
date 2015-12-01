@@ -1,0 +1,6 @@
+{
+	"name": "sample-Xpensity",
+	"main": "app.js",
+	"version": "1.0.0",
+	"description": "NativeScript sample application"
+}
