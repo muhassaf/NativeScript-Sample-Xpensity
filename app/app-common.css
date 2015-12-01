@@ -40,7 +40,7 @@ ActivityIndicator {
     background-color: #FFFFFF;
     border-color: #DEDDDD;
     border-width: 1;
-    margin: 0 8 8 8;
+    margin: 0 8 16 8;
     padding: 8;
 }
 
