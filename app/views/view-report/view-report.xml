@@ -21,7 +21,13 @@
 
         <chart:RadPieChart row="3" colSpan="2" palettes="{{ expensesByCategory | paletteConverter }}" cssClass="report-chart" >
           <chart:RadPieChart.series>
-            <chart:PieSeries items="{{ expensesByCategory }}" valueProperty="Percent">
+            <chart:PieSeries 
+              selectionMode="DataPoint" 
+              showLabels="true"
+              outerRadiusFactor="0.8" 
+              selectionRadius="1.1" 
+              items="{{ expensesByCategory }}" 
+              valueProperty="Percent">
             </chart:PieSeries>
           </chart:RadPieChart.series>
         </chart:RadPieChart>
@@ -43,8 +49,8 @@
 
       <ios>
         <GridLayout row="2" columns="auto, *" link="editExpense" linkContext="{{ report }}" visibility="{{ report.Status | editReportVisibilityConverter }}" cssClass="image-button" >
-          <Image src="res://ic_add" stretch="none" cssClass="button-icon" />
-          <Label col="1" text="Add expense" cssClass="button-text" />
+          <Image src="res://ic_add" stretch="none" cssClass="image-button-icon" />
+          <Label col="1" text="Add expense" cssClass="image-button-text" />
         </GridLayout>
       </ios>
     </GridLayout>

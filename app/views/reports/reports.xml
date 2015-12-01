@@ -1,8 +1,8 @@
-<TabViewItem 
-  xmlns:g="grid-view" 
-  xmlns:chart="nativescript-telerik-ui/chart" 
-  android:iconSource="{{ selectedTab === 0 ? 'res://ic_reports_1' : 'res://ic_reports' }}" 
-  ios:iconSource="res://ic_reports" 
+<TabViewItem
+  xmlns:g="grid-view"
+  xmlns:chart="nativescript-telerik-ui/chart"
+  android:iconSource="{{ selectedTab === 0 ? 'res://ic_reports_1' : 'res://ic_reports' }}"
+  ios:iconSource="res://ic_reports"
   ios:title="My reports" >
   <TabViewItem.view>
     <GridLayout rows="auto, *" bindingContext="{{ reportsViewModel }}" >
@@ -17,7 +17,7 @@
               <Label text="{{ report.Status | reportStatusConverter }}" cssClass="status-label" />
               <chart:RadPieChart palettes="{{ expensesByCategory | paletteConverter }}" cssClass="categories-chart">
                 <chart:RadPieChart.series>
-                  <chart:PieSeries items="{{ expensesByCategory}}" valueProperty="Percent">
+                  <chart:PieSeries selectionMode="None" ios.rotationEnabled="false" items="{{ expensesByCategory}}" valueProperty="Percent">
                   </chart:PieSeries>
                 </chart:RadPieChart.series>
               </chart:RadPieChart>

@@ -13,7 +13,7 @@
       <StackLayout>
         <Image src="res://profile_picture" stretch="fill" cssClass="profile-picture" />
         <table:Table>
-          <TextField text="{{ name }}" hint="name" />
+          <TextField text="{{ displayName }}" hint="name" />
           <TextField text="{{ email }}" keyboardType="email" autocorrect="false" autocapitalizationType="none" hint="email" />
           <TextField text="{{ password }}" secure="true" hint="password" />
           <TextField text="{{ confirmPassword }}" secure="true" hint="confirm password" />

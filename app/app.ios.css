@@ -4,6 +4,11 @@ RadPieChart {
     background-color: transparent;
 }
 
+TextView {
+    font-size: 16;
+    margin: -3 -6;
+}
+
 Table {
     margin-top: 10;
     padding: 12 16 12 16;
