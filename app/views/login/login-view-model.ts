@@ -44,6 +44,12 @@ export class LoginViewModel extends ViewModelBase {
                 });
         }
     }
+    
+    public loginWithTestAccount() {
+        this.username = "test@nativescript.org";
+        this.password = "test";
+        this.login();
+    }
 
     protected validateOverride(): boolean {
         if (!validationRulesModule.isRequiredValid(this.username)) {
