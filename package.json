@@ -9,7 +9,8 @@
     }
   },
   "devDependencies": {
-    "typescript": "1.5.3"
+    "nativescript-dev-typescript": "^0.2.2",
+    "typescript": "^1.7.3"
   },
   "dependencies": {
     "custom-control": "file:Plugins\\custom-control",
@@ -24,7 +25,7 @@
     "notifications": "file:Plugins\\notifications",
     "sample-xpensity-app-options": "file:app_options",
     "table": "file:Plugins\\table",
-    "tns-core-modules": "file:..\\cross\\node_modules\\tns-core-modules",
+    "tns-core-modules": "^1.5.0",
     "view-model-base": "file:Plugins\\view-model-base"
   }
 }
