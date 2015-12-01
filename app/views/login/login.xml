@@ -1,4 +1,4 @@
-﻿<Page xmlns="http://www.nativescript.org/tns.xsd"
+<Page xmlns="http://www.nativescript.org/tns.xsd"
       xmlns:table="table"
       xmlns:vs="shared/validation-summary"
       navigatingTo="onNavigatingTo">
@@ -9,7 +9,7 @@
       </ActionBar.actionItems>
     </ActionBar>
   </Page.actionBar>
-  <GridLayout rows="auto, *">
+  <GridLayout rows="auto, *, auto">
     <vs:validation-summary />
     <ScrollView row="1">
       <StackLayout>
@@ -19,10 +19,10 @@
         </table:Table>
         <Button text="Forgotten password?" link="passwordRecovery" cssClass="text-button" />
         <Button text="Login" tap="{{ login }}" cssClass="primary-button" />
-        <Button text="Use Test Account" tap="{{ loginWithTestAccount }}" cssClass="primary-button" />
       </StackLayout>
     </ScrollView>
+    <Button text="Use Test Account" tap="{{ loginWithTestAccount }}" cssClass="primary-button" row="2" />
 
-    <ActivityIndicator rowspan="2" busy="{{ isLoading }}" />
+    <ActivityIndicator rowspan="3" busy="{{ isLoading }}" />
   </GridLayout>
 </Page>
