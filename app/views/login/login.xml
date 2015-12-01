@@ -19,6 +19,7 @@
         </table:Table>
         <Button text="Forgotten password?" link="passwordRecovery" cssClass="text-button" />
         <Button text="Login" tap="{{ login }}" cssClass="primary-button" />
+        <Button text="Use Test Account" tap="{{ loginWithTestAccount }}" cssClass="primary-button" />
       </StackLayout>
     </ScrollView>
 
