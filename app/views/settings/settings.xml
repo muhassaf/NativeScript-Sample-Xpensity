@@ -13,7 +13,8 @@
         <GridLayout rows="auto, auto, auto" >
           <Label colSpan="2"  text="{{ name }}" link="editProfile" cssClass="block" />
 
-          <!--<table:Table row="1">
+          <!--
+          <table:Table row="1">
             <GridLayout columns="*, auto">
               <Label text="Offline Mode" cssClass="label" />
               <Switch col="1" checked="{{ offlineMode }}" cssClass="switch"/>
@@ -22,7 +23,8 @@
               <Label text="Notifications" cssClass="label" />
               <Switch col="1" checked="{{ notifications }}" cssClass="switch"/>
             </GridLayout>
-          </table:Table>-->
+          </table:Table>
+            -->
 
           <Button row="2" colSpan="2" text="Log Out" tap="{{ logout }}" cssClass="secondary-button" />
         </GridLayout>

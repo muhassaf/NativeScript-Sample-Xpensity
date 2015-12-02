@@ -29,7 +29,6 @@ class Service extends Observable {
     }
 
     public switchOfflineMode(offlineMode: boolean) {
-        return null;
         //if (offlineMode) {
         //    connectivityModule.startMonitoring(function onConnectionTypeChanged(newConnectionType) {
         //        switch (newConnectionType) {
@@ -51,13 +50,11 @@ class Service extends Observable {
         //    everlive.offlineStorage.purgeAll();
         //    everlive.online();
         //}
+
+        return null;
     }
 
     public switchNotifications(notifications: boolean): Promise<any> {
-        return new Promise<any>((resolve, reject) => {
-            resolve();
-        });
-
         //if (notifications) {
         //    return new Promise<any>((resolve, reject) => {
         //        everlive.push.register({
@@ -94,6 +91,10 @@ class Service extends Observable {
         //        everlive.push.unregister(resolve, reject);
         //    });
         //}
+
+        return new Promise<any>((resolve, reject) => {
+            resolve();
+        });
     }
 
     public login(username: string, password: string): Promise<any> {

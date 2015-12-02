@@ -68,12 +68,12 @@ Table {
 }
 
 .label {
-    margin: 8 16 8 16;
+    margin: 8 0 8 0;
     color: #000000;
 }
 
 .switch {
-    margin: 8 16 8 16;
+    margin: 8 0 8 0;
 }
 
 .expense-details-container {

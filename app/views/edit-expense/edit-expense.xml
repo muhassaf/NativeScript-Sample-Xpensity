@@ -1,6 +1,6 @@
 <Page xmlns="http://www.nativescript.org/tns.xsd"
       xmlns:table="table"
-      xmlns:tableItem="shared/table-item"
+      xmlns:tableItem="views/shared/table-item"
       xmlns:dp="date-picker"
       xmlns:ddl="drop-down-list"
       xmlns:vs="views/shared/validation-summary"
