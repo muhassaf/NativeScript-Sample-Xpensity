@@ -26,6 +26,7 @@
     "sample-xpensity-app-options": "file:app_options",
     "table": "file:Plugins\\table",
     "tns-core-modules": "^1.5.0",
+    "validation-rules": "file:plugins\\validation-rules",
     "view-model-base": "file:Plugins\\view-model-base"
   }
 }
