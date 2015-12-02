@@ -2,7 +2,7 @@
       xmlns:table="table"
       xmlns:dp="date-picker"
       xmlns:ddl="drop-down-list"
-      xmlns:vs="shared/validation-summary"
+      xmlns:vs="views/shared/validation-summary"
       navigatingTo="onNavigatingTo">
   <Page.actionBar>
     <ActionBar title="Expense">

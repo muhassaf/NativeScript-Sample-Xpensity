@@ -8,4 +8,3 @@ export var editReport = "views/edit-report/edit-report";
 export var editExpense = "views/edit-expense/edit-expense";
 export var editProfile = "views/edit-profile/edit-profile";
 export var viewExpense = "views/view-expense/view-expense";
-export var test = "views/test/test";

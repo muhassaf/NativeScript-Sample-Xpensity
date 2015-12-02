@@ -1,6 +1,6 @@
 ﻿import { ViewModelBase } from "view-model-base";
 
-import { service } from "../../shared/service";
+import { service } from "../../data/service";
 import navigationModule = require("navigation");
 import applicationSettingsModule = require("application-settings");
 import { MainViewModel } from "../main/main-view-model";

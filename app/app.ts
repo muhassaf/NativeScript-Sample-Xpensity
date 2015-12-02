@@ -7,6 +7,7 @@ import { ListView, ItemEventData } from "ui/list-view";
 import viewsModule = require("./shared/views");
 import navigationModule = require("navigation");
 import { reportStatus } from "./shared/constants";
+import colorModule = require("color");
 
 var chartModule = require("nativescript-telerik-ui/chart");
 
@@ -116,7 +117,7 @@ applicationModule.resources = {
 }
 
 applicationModule.onLaunch = function (context: any) {
-    var serviceModule = require("./shared/service");
+    var serviceModule = require("./data/service");
     serviceModule.service.isLoggedIn().then((isLoggedIn) => {
         var view = isLoggedIn ? viewsModule.main : viewsModule.login;
         navigationModule.replace(view);

@@ -10,6 +10,7 @@ export function onNavigatingTo(args: EventData) {
     viewModel = <ViewReportViewModel>page.navigationContext.context;
     page.bindingContext = null;
     page.bindingContext = viewModel;
+
     viewModel.refresh();
 } 
 

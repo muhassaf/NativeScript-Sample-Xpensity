@@ -1,6 +1,6 @@
 <Page xmlns="http://www.nativescript.org/tns.xsd"
       xmlns:table="table"
-      xmlns:vs="shared/validation-summary"
+      xmlns:vs="views/shared/validation-summary"
       navigatingTo="onNavigatingTo">
   <Page.actionBar>
     <ActionBar title="{{ isAdd ? 'Add Report' : 'Edit Report' }}">

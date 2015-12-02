@@ -12,3 +12,6 @@ Design/
 *.docx
 /.vs/config
 /platforms
+*.csproj
+hooks
+tsconfig.json

@@ -31,4 +31,4 @@
       <ActivityIndicator rowSpan="2" busy="{{ isLoading }}" />
     </GridLayout>
   </TabViewItem.view>
-</TabViewItem >
+</TabViewItem>

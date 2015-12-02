@@ -4,7 +4,7 @@ import typesModule = require("utils/types");
 import navigationModule = require("navigation");
 import connectivityModule = require("connectivity");
 
-import constantsModule = require("./constants");
+import constantsModule = require("../shared/constants");
 import applicationSettingsModule = require("application-settings");
 import { Observable, EventData } from "data/observable";
 

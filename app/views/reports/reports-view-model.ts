@@ -3,7 +3,7 @@ import { DataSource, DataSourceOptions } from "data-source";
 
 import { ViewModelBase } from "view-model-base";
 import { ViewReportViewModel } from "../view-report/view-report-view-model";
-import { everlive, ReportTypeName } from "../../shared/service";
+import { everlive, ReportTypeName } from "../../data/service";
 import constantsModule = require("../../shared/constants");
 
 export class ReportsViewModel extends ViewModelBase {

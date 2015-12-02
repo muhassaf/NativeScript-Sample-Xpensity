@@ -1,8 +1,8 @@
 ﻿import { ViewModelBase } from "view-model-base";
-import { service } from "../../shared/service";
+import { service } from "../../data/service";
 
 import navigationModule = require("navigation");
-import validationRulesModule = require("../../shared/validation-rules");
+import validationRulesModule = require("validation-rules");
 
 export class SignUpViewModel extends ViewModelBase {
     private _displayName: string;

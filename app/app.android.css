@@ -113,13 +113,14 @@ Table {
 }
 
 .image-button {
-    padding: 8 16 8 16;
+    padding: 8 16 0 16;
     margin: 8 0 0 5;
     color: #007AFF;
 }
 
 .image-button-icon {
-    margin-right: 8;
+    margin-right: 16;
+    vertical-align: center;
 }
 
 .image-button-text {

@@ -1,5 +1,5 @@
 ﻿import { ViewModelBase } from "view-model-base";
-import { service } from "../../shared/service";
+import { service } from "../../data/service";
 
 export class ViewExpenseViewModel extends ViewModelBase {
     private _expense: any;

@@ -1,5 +1,5 @@
-<TabViewItem 
-  android:iconSource="{{ selectedTab === 1 ? 'res://ic_notifications_1' : 'res://ic_notifications' }}" 
+<TabViewItem
+  android:iconSource="{{ selectedTab === 1 ? 'res://ic_notifications_1' : 'res://ic_notifications' }}"
   ios:iconSource="res://ic_notifications" 
   ios:title="Notifications" >
   <TabViewItem.view>
@@ -25,4 +25,4 @@
       <ActivityIndicator rowSpan="2" busy="{{ isLoading }}" />
     </GridLayout>
   </TabViewItem.view>
-</TabViewItem >
+</TabViewItem>

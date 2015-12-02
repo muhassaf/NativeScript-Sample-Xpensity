@@ -21,13 +21,17 @@
 
         <chart:RadPieChart row="3" colSpan="2" palettes="{{ expensesByCategory | paletteConverter }}" cssClass="report-chart" >
           <chart:RadPieChart.series>
-            <chart:PieSeries 
-              selectionMode="DataPoint" 
+            <chart:PieSeries
+              selectionMode="DataPoint"
               showLabels="true"
-              outerRadiusFactor="0.8" 
-              selectionRadius="1.1" 
-              items="{{ expensesByCategory }}" 
+              outerRadiusFactor="0.9"
+              selectionRadius="1.1"
+              items="{{ expensesByCategory }}"
               valueProperty="Percent">
+              <chart:PieSeries.labelStyle>
+                <chart:PointLabelStyle strokeColor="transparent">
+                </chart:PointLabelStyle>
+              </chart:PieSeries.labelStyle>
             </chart:PieSeries>
           </chart:RadPieChart.series>
         </chart:RadPieChart>

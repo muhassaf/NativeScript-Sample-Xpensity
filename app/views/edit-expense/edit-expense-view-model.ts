@@ -1,13 +1,13 @@
 ﻿import { EditViewModelBase } from "edit-view-model-base";
-import { service } from "../../shared/service";
+import { service } from "../../data/service";
 import { ViewReportViewModel } from "../view-report/view-report-view-model";
-import validationRulesModule = require("../../shared/validation-rules");
+import validationRulesModule = require("validation-rules");
 import navigationModule = require("navigation");
 import viewsModule = require("../../shared/views");
 import constantsModule = require("../../shared/constants");
 import cameraModule = require("camera");
 
-import { everlive, CategoryTypeName } from "../../shared/service";
+import { everlive, CategoryTypeName } from "../../data/service";
 
 import { DataSource, DataSourceOptions } from "data-source";
 

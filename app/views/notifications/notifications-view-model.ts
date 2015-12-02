@@ -1,4 +1,4 @@
-﻿import { service, NotificationEventData, NotificationMessageEvent } from "../../shared/service";
+﻿import { service, NotificationEventData, NotificationMessageEvent } from "../../data/service";
 import { ObservableArray } from "data/observable-array";
 import { ViewModelBase } from "view-model-base";
 import applicationSettingsModule = require("application-settings");

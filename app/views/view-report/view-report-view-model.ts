@@ -2,7 +2,7 @@
 import { EventData } from "data/observable";
 import { DataSource, DataSourceOptions, FilterDescriptor, Operators } from "data-source";
 
-import { service, ExpenseTypeName, everlive } from "../../shared/service";
+import { service, ExpenseTypeName, everlive } from "../../data/service";
 import notificationsModule = require("notifications");
 import navigationModule = require("navigation");
 import { reportStatus } from "../../shared/constants";
