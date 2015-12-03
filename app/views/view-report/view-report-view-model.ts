@@ -94,7 +94,7 @@ export class ViewReportViewModel extends ViewModelBase {
     }
 
     public refresh() {
-        this.expenses.reload();
+        this.execute(this.expenses.reload());
     }
 
     public itemTap(item: any) {

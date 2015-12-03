@@ -6,7 +6,7 @@
     <ActionBar title="{{ report.Status | reportStatusConverter }}">
       <NavigationButton icon="res://ic_arrow_back" link="#back" />
       <ActionBar.actionItems>
-        <ActionItem icon="res://ic_submit" ios.position="right" tap="onSubmitTap" visibility="{{ report.Status | editReportVisibilityConverter }}" />
+        <ActionItem icon="res://ic_submit" ios.position="right" tap="{{ submit }}" visibility="{{ report.Status | editReportVisibilityConverter }}" />
         <ActionItem icon="res://ic_edit" ios.position="right" link="editReport" linkContext="{{ report }}" visibility="{{ report.Status | editReportVisibilityConverter }}" />
       </ActionBar.actionItems>
     </ActionBar>
@@ -24,7 +24,7 @@
             <chart:PieSeries
               selectionMode="DataPoint"
               outerRadiusFactor="0.9"
-              selectionRadius="1.1"
+              selectionRadius="1"
               items="{{ expensesByCategory }}"
               valueProperty="Percent">
               <chart:PieSeries.labelStyle>
