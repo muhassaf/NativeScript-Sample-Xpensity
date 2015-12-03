@@ -1,7 +1,6 @@
 <TabViewItem
       xmlns:table="table"
-      android:iconSource="{{ selectedTab === 2 ? 'res://ic_settings_1' : 'res://ic_settings' }}"
-      ios:iconSource="res://ic_settings"
+      iconSource="{{ selectedTab === 2 ? 'res://ic_settings_1' : 'res://ic_settings' }}"
       ios:title="Settings" >
   <TabViewItem.view>
     <GridLayout rows="auto, *" bindingContext="{{ settingsViewModel }}">
