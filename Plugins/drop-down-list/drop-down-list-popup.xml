@@ -1,5 +1,5 @@
 <Page xmlns="http://www.nativescript.org/tns.xsd"
-     navigatedTo="onNavigatedTo" >
+     navigatingTo="onNavigatingTo" >
   <Page.actionBar>
     <ActionBar>
       <ActionBar.titleView>
@@ -11,10 +11,8 @@
       </ActionBar.actionItems>
     </ActionBar>
   </Page.actionBar>
-  <GridLayout rows="auto, auto, *">
-    <Button text="{{ clearButtonText }}" tap="{{ clear }}" visibility="{{ showClearButton | visibilityConverter }}" cssClass="clear-button" />
-    <GridLayout row="1" visibility="{{ showClearButton | visibilityConverter }}" cssClass="separator" />
-    <ListView row="2" items="{{ items }}" itemTap="onItemTap" >
+  <GridLayout rows="auto, *">
+    <ListView row="1" items="{{ items }}" itemTap="onItemTap" >
       <ListView.itemTemplate>
         <GridLayout cssClass="{{ isSelected ? 'item-container-selected' : 'item-container' }}"> 
           <Label text="{{ value }}" />
@@ -22,6 +20,6 @@
       </ListView.itemTemplate>
     </ListView>
 
-    <ActivityIndicator rowSpan="3" busy="{{ isLoading }}" />
+    <ActivityIndicator rowSpan="2" busy="{{ isLoading }}" />
   </GridLayout>
 </Page>

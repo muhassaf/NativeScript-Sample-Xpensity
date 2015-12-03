@@ -85,6 +85,7 @@ var DropDownList = (function (_super) {
         set: function (value) {
             if (this._showClearButton !== value) {
                 this._showClearButton = value;
+                this.refresh();
                 this.notifyPropertyChange("showClearButton", value);
             }
         },
@@ -179,7 +180,7 @@ var DropDownListViewModel = (function (_super) {
         this._showClearButton = showClearButton;
         this._clearButtonText = clearButtonText;
         this._selectItemCallback = selectItemCallback;
-        this.items = this.createListItems(items, selectedItem, displayName);
+        this._items = this.createListItems(items, selectedItem, displayName);
     }
     Object.defineProperty(DropDownListViewModel.prototype, "showClearButton", {
         get: function () {
@@ -231,15 +232,20 @@ var DropDownListViewModel = (function (_super) {
         this.selectItem(null);
     };
     DropDownListViewModel.prototype.done = function () {
-        this._selectItemCallback(this._selectedItem.data);
+        this._selectItemCallback(this._selectedItem ? this._selectedItem.data : null);
         navigationModule.goBack();
     };
     DropDownListViewModel.prototype.createListItems = function (items, selectedItem, displayName) {
+        var listItems = new Array();
+        if (this._showClearButton) {
+            var clear = new ListItem(null, this._clearButtonText, true);
+            this._selectedItem = clear;
+            listItems.push(clear);
+        }
         if (items) {
-            var listItems = new Array();
             for (var i = 0; i < items.length; i++) {
                 var item = getItem(items, i);
-                var listItem = new ListItem(item, displayName);
+                var listItem = new ListItem(item, getValue(item, displayName));
                 if (!typesModule.isNullOrUndefined(selectedItem) && item === selectedItem) {
                     this.selectItem(listItem);
                 }
@@ -253,11 +259,11 @@ var DropDownListViewModel = (function (_super) {
 exports.DropDownListViewModel = DropDownListViewModel;
 var ListItem = (function (_super) {
     __extends(ListItem, _super);
-    function ListItem(data, display) {
+    function ListItem(data, value, isSelected) {
         _super.call(this);
         this._data = data;
-        this._value = getValue(data, display);
-        this.isSelected = false;
+        this._value = value;
+        this.isSelected = isSelected;
     }
     Object.defineProperty(ListItem.prototype, "isSelected", {
         get: function () {

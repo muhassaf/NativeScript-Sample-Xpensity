@@ -1,10 +1,10 @@
 var viewModel;
-function onNavigatedTo(args) {
+function onNavigatingTo(args) {
     var page = args.object;
     viewModel = page.navigationContext;
     page.bindingContext = viewModel;
 }
-exports.onNavigatedTo = onNavigatedTo;
+exports.onNavigatingTo = onNavigatingTo;
 function onItemTap(args) {
     viewModel.selectItem(args.view.bindingContext);
 }
