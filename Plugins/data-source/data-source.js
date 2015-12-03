@@ -205,7 +205,6 @@ exports.FilterDescriptorBase = FilterDescriptorBase;
 var FilterDescriptor = (function (_super) {
     __extends(FilterDescriptor, _super);
     function FilterDescriptor(property, operator, value) {
-        if (value === void 0) { value = undefined; }
         _super.call(this);
         this._property = property;
         this._operator = operator;
@@ -264,8 +263,10 @@ exports.SortDescriptorBase = SortDescriptorBase;
 var SortDescriptor = (function (_super) {
     __extends(SortDescriptor, _super);
     function SortDescriptor(property, direction) {
-        if (direction === void 0) { direction = SortDirection.ascending; }
         _super.call(this);
+        if (!direction) {
+            direction = SortDirection.ascending;
+        }
         this._property = property;
         this._direction = direction;
     }

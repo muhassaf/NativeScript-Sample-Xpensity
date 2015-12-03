@@ -150,18 +150,11 @@ var DropDownList = (function (_super) {
         dropDownList.refresh();
     };
     DropDownList.prototype.refresh = function () {
-        console.log("REFRESH");
-        console.log("REFRESH");
-        console.log("REFRESH");
-        console.log("REFRESH");
         var displayText;
         var selectedValue = this.selectedValue;
-        console.log("SELECTED VALUE: " + selectedValue);
         if (this.items && !typesModule.isNullOrUndefined(selectedValue)) {
             this._selectedItem = getSelectedItem(this.items, selectedValue, this._valueName);
             displayText = getValue(this._selectedItem, this.displayName);
-            console.log("VALUE: " + selectedValue);
-            console.log("TEXT: " + displayText);
         }
         this.displayText = typesModule.isNullOrUndefined(displayText) ? this._hint : displayText;
     };

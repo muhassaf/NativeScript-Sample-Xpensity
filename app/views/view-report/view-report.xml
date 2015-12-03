@@ -23,7 +23,6 @@
           <chart:RadPieChart.series>
             <chart:PieSeries
               selectionMode="DataPoint"
-              showLabels="true"
               outerRadiusFactor="0.9"
               selectionRadius="1.1"
               items="{{ expensesByCategory }}"
