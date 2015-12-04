@@ -9,13 +9,19 @@ Xpensity is a real life enterprise line of business application showing you how 
 ## Running the sample
 
 1. Make sure you have the [NativeScript Command Line Interface](https://www.npmjs.com/package/nativescript) installed as well as all the prerequisites for the NativeScript development, described in the [installation guide](https://docs.nativescript.org/setup/quick-setup#the-nativescript-cli).
-2. Run the project.
+2. Clone the repo:
+
+    ```
+    git clone https://github.com/NativeScript/sample-Xpensity.git
+    cd sample-Xpensity
+    ```
+3. Run the project:
 
     `tns run ios|android [--emulator]`
 
     The `--emulator` keyword instructs the CLI to load the iOS simulator or an android emulator depending on the platform you want.
-3. Use the test account to use the app with predefined data or create your own. 
+4. Use the test account to use the app with predefined data or create your own.
 
-    *Username*:test@nativescript.org
+    *Username*: test@nativescript.org
     
-    *Password*:test
+    *Password*: test
