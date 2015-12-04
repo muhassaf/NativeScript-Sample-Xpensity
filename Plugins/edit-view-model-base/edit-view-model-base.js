@@ -14,7 +14,7 @@ var EditViewModelBase = (function (_super) {
         if (item) {
             this._isAdd = false;
             this._originalItem = item;
-            this.item = clone(item, this._properties);
+            this.item = view_model_base_1.clone(item, this._properties);
         }
         else {
             this._isAdd = true;
@@ -115,7 +115,7 @@ var EditViewModelBase = (function (_super) {
     EditViewModelBase.prototype.update = function () {
         var _this = this;
         this.updateItem(this.item).then(function (data) {
-            copy(_this.item, _this._originalItem, _this._properties);
+            view_model_base_1.copy(_this.item, _this._originalItem, _this._properties);
             _this.endLoading();
             navigationModule.goBack();
         }, function (error) {
@@ -125,16 +125,4 @@ var EditViewModelBase = (function (_super) {
     return EditViewModelBase;
 })(view_model_base_1.ViewModelBase);
 exports.EditViewModelBase = EditViewModelBase;
-function clone(item, properties) {
-    var clone = {};
-    copy(item, clone, properties);
-    return clone;
-}
-function copy(fromItem, toItem, properties) {
-    properties.forEach(function (prop) {
-        if (fromItem.hasOwnProperty(prop)) {
-            toItem[prop] = fromItem[prop];
-        }
-    });
-}
 //# sourceMappingURL=edit-view-model-base.js.map

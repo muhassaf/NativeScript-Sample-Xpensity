@@ -1,5 +1,5 @@
 ﻿import { ViewModelBase } from "view-model-base";
-import { EventData } from "data/observable";
+import { EventData, Observable } from "data/observable";
 import { DataSource, DataSourceOptions, FilterDescriptor, Operators } from "data-source";
 
 import { service, ExpenseTypeName, everlive } from "../../data/service";
@@ -20,7 +20,7 @@ export class ViewReportViewModel extends ViewModelBase {
         super();
 
         this._report = report;
-        this._totalCost = 2;
+
         var options = new DataSourceOptions();
         options.typeName = ExpenseTypeName;
         options.expand = {

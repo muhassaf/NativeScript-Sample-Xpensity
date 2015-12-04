@@ -30,7 +30,7 @@ export class PasswordRecoveryViewModel extends ViewModelBase {
     }
 
     protected validateOverride(): boolean {
-        if (!validationRulesModule.isRequiredValid(this.usernameOrEmail)) {
+        if (!validationRulesModule.isRequiredValid(this._usernameOrEmail)) {
             this.setErrorMessage("Please enter email.");
 
             return false;

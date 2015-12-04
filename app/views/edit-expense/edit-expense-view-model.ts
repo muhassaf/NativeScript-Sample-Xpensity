@@ -108,8 +108,14 @@ export class EditExpenseViewModel extends EditViewModelBase {
             return false;
         }
 
-        if (isNaN(this.item.Cost) || !this.item.Cost) {
+        if (isNaN(this.item.Cost) || !validationRulesModule.isRequiredValid(this.item.Cost)) {
             this.setErrorMessage("Please enter cost.");
+
+            return false;
+        }
+
+        if (this.item.Cost <= 0) {
+            this.setErrorMessage("The cost must be greater than 0.");
 
             return false;
         }

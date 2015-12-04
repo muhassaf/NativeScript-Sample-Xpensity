@@ -108,4 +108,22 @@ var ViewModelBase = (function (_super) {
     return ViewModelBase;
 })(observable_1.Observable);
 exports.ViewModelBase = ViewModelBase;
+function clone(item, properties) {
+    var clone = {};
+    copy(item, clone, properties);
+    return clone;
+}
+exports.clone = clone;
+function copy(fromItem, toItem, properties) {
+    properties.forEach(function (prop) {
+        if (fromItem.hasOwnProperty(prop)) {
+            toItem[prop] = fromItem[prop];
+        }
+    });
+}
+exports.copy = copy;
+function toObservable(item, properties) {
+    return new observable_1.Observable(clone(item, properties));
+}
+exports.toObservable = toObservable;
 //# sourceMappingURL=view-model-base.js.map

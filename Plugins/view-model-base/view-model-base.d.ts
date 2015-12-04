@@ -15,4 +15,10 @@
         public validate(): boolean;
         public clear();
     }
+
+    export function clone(item: any, properties: string[]): any;
+      
+    export function copy(fromItem: any, toItem: any, properties: string[]);
+
+    export function toObservable(item: any, properties: string[]);
 } 
