@@ -25,3 +25,4 @@ Xpensity is a real life enterprise line of business application showing you how 
     *Username*: test@nativescript.org
     
     *Password*: test
+![](https://ga-beacon.appspot.com/UA-111455-24/nativescript/sample-Xpensity?pixel) 
