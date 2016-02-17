@@ -1,0 +1,35 @@
+<TabViewItem
+      xmlns:table="table"
+      iconSource="{{ selectedTab === 2 ? 'res://ic_settings_1' : 'res://ic_settings' }}"
+      ios:title="Settings" >
+  <TabViewItem.view>
+    <GridLayout rows="auto, *" bindingContext="{{ settingsViewModel }}">
+      <android>
+        <Label text="SETTINGS" cssClass="header" />
+      </android>
+
+      <ScrollView row="1">
+        <GridLayout rows="auto, auto, auto" >
+          <Label colSpan="2"  text="{{ name }}" link="editProfile" cssClass="block" />
+
+          <!--
+          <table:Table row="1">
+            <GridLayout columns="*, auto">
+              <Label text="Offline Mode" cssClass="label" />
+              <Switch col="1" checked="{{ offlineMode }}" cssClass="switch"/>
+            </GridLayout>
+            <GridLayout columns="*, auto">
+              <Label text="Notifications" cssClass="label" />
+              <Switch col="1" checked="{{ notifications }}" cssClass="switch"/>
+            </GridLayout>
+          </table:Table>
+            -->
+
+          <Button row="2" colSpan="2" text="Log Out" tap="{{ logout }}" cssClass="secondary-button" />
+        </GridLayout>
+      </ScrollView>
+
+      <ActivityIndicator rowSpan="2" busy="{{ isLoading }}" />
+    </GridLayout>
+  </TabViewItem.view>
+</TabViewItem>

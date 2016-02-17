@@ -1,0 +1,27 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd"
+      xmlns:table="table"
+      xmlns:dp="date-picker"
+      xmlns:ddl="drop-down-list"
+      xmlns:vs="views/shared/validation-summary"
+      navigatingTo="onNavigatingTo">
+  <Page.actionBar>
+    <ActionBar title="Expense">
+      <NavigationButton icon="res://ic_arrow_back" link="#back" />
+    </ActionBar>
+  </Page.actionBar>
+  <GridLayout>
+    <ScrollView row="1">
+      <GridLayout rows="auto, auto, auto, auto, auto" columns="*, auto" cssClass="root">
+        <Image row="0" colSpan="2" src="{{ pictureUrl }}" visibility="{{ pictureUrl | visibilityConverter }}" cssClass="header-image" />
+        <Label row="1" text="{{ expense.Title }}" textWrap="true" cssClass="title" />
+        <Label row="1" col="1" text="{{ expense.Cost | formatCurrency }}" cssClass="bold-label" />
+        <Label row="2" colSpan="2" text="{{ expense.Date | formatDate }}" cssClass="details-label" />
+        <Label row="3" colSpan="2" text="{{ expense.ExpenseCategory.Title }}" cssClass="details-label" />
+        <Label row="4" colSpan="2" text="{{ expense.CostCenter }}" cssClass="details-label" />
+        <Label row="5" colSpan="2" text="{{ expense.Notes }}" textWrap="True" cssClass="details-label" />
+      </GridLayout>
+    </ScrollView>
+
+    <ActivityIndicator busy="{{ isLoading }}" />
+  </GridLayout>
+</Page>

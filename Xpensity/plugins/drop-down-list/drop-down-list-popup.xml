@@ -1,0 +1,25 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd"
+     navigatingTo="onNavigatingTo" >
+  <Page.actionBar>
+    <ActionBar>
+      <ActionBar.titleView>
+        <GridLayout></GridLayout>
+      </ActionBar.titleView>
+      <NavigationButton icon="res://ic_arrow_back" link="#back" />
+      <ActionBar.actionItems>
+        <ActionItem text="Done" tap="onDoneTap" ios.position="right" />
+      </ActionBar.actionItems>
+    </ActionBar>
+  </Page.actionBar>
+  <GridLayout rows="auto, *">
+    <ListView row="1" items="{{ items }}" itemTap="onItemTap" >
+      <ListView.itemTemplate>
+        <GridLayout cssClass="{{ isSelected ? 'item-container-selected' : 'item-container' }}"> 
+          <Label text="{{ value }}" />
+        </GridLayout>
+      </ListView.itemTemplate>
+    </ListView>
+
+    <ActivityIndicator rowSpan="2" busy="{{ isLoading }}" />
+  </GridLayout>
+</Page>

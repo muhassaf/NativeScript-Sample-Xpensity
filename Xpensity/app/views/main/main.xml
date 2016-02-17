@@ -1,0 +1,24 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd"
+      xmlns:r="views/reports"
+      xmlns:n="views/notifications"
+      xmlns:s="views/settings"
+      navigatingTo="onNavigatingTo"
+      android:actionBarHidden="true" >
+  <ios>
+    <Page.actionBar>
+      <ActionBar title="{{ selectedTab | titleConverter }}">
+        <ActionBar.actionItems>
+          <ActionItem icon="res://ic_add" ios.position="right" link="editReport" visibility="{{ selectedTab | tabVisibilityConverter(0) }}" />
+          <ActionItem icon="res://ic_clear_all" ios.position="right" tap="{{ clearNotifications }}" visibility="{{ selectedTab | tabVisibilityConverter(1) }}" />
+        </ActionBar.actionItems>
+      </ActionBar>
+    </Page.actionBar>
+  </ios>
+  <TabView id="TabView" selectedColor="#007AFF" selectedIndex="{{ selectedTab }}">
+    <TabView.items>
+      <r:reports />
+      <n:notifications />
+      <s:settings />
+    </TabView.items>
+  </TabView>
+</Page>

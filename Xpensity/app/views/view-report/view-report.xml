@@ -1,0 +1,67 @@
+﻿<Page xmlns="http://schemas.nativescript.org/tns.xsd"
+      xmlns:g="components/grid-view/grid-view"
+      xmlns:chart="nativescript-telerik-ui/chart"
+      navigatingTo="onNavigatingTo" >
+  <Page.actionBar >
+    <ActionBar title="{{ report.Status | reportStatusConverter }}">
+      <NavigationButton icon="res://ic_arrow_back" link="#back" />
+      <ActionBar.actionItems>
+        <ActionItem icon="res://ic_submit" ios.position="right" tap="{{ submit }}" visibility="{{ report.Status | editReportVisibilityConverter }}" />
+        <ActionItem icon="res://ic_edit" ios.position="right" link="editReport" linkContext="{{ report }}" visibility="{{ report.Status | editReportVisibilityConverter }}" />
+      </ActionBar.actionItems>
+    </ActionBar>
+  </Page.actionBar>
+  <GridLayout>
+    <GridLayout rows="auto, *, auto">
+      <GridLayout rows="auto, auto, auto, auto" columns="*, auto" cssClass="root">
+        <Label text="{{ report.Title }}" textWrap="true" cssClass="title" />
+        <Label col="1" text="{{ totalCost | formatCurrency }}" cssClass="bold-label" />
+        <Label row="1" colSpan="2" text="{{ report.BusinessPurpose }}" visibility="{{ report.BusinessPurpose | visibilityConverter }}" cssClass="details-label" />
+        <Label row="2" colSpan="2" text="{{ report.Date | formatDate }}" cssClass="details-label" />
+
+        <chart:RadPieChart row="3" colSpan="2" palettes="{{ expensesByCategory | paletteConverter }}" cssClass="report-chart" >
+          <chart:RadPieChart.series>
+            <chart:PieSeries
+              selectionMode="DataPoint"
+              outerRadiusFactor="0.9"
+              selectionRadius="1"
+              items="{{ expensesByCategory }}"
+              valueProperty="Percent">
+              <chart:PieSeries.labelStyle>
+                <chart:PointLabelStyle strokeColor="transparent">
+                </chart:PointLabelStyle>
+              </chart:PieSeries.labelStyle>
+            </chart:PieSeries>
+          </chart:RadPieChart.series>
+        </chart:RadPieChart>
+      </GridLayout>
+
+      <ListView row="1" items="{{ expenses }}" itemTap="onItemTap" cssClass="list-view">
+        <ListView.itemTemplate>
+          <GridLayout columns="auto, *" cssClass="item">
+            <GridLayout backgroundColor="{{ ExpenseCategory.Color }}" cssClass="category" />
+            <GridLayout col="1" rows="auto, auto, auto" columns="*, auto" cssClass="expense-details-container">
+              <Label text="{{ Title }}" cssClass="item-label" />
+              <Label row="1" text="{{ Date | formatDate }}" cssClass="item-details-label" />
+              <Label row="2" text="{{ Location }}" visibility="{{ Location | visibilityConverter }}" cssClass="item-details-label" />
+              <Label col="1" rowSpan="3" text="{{ Cost | formatCurrency }}" cssClass="item-bold-label" />
+            </GridLayout>
+          </GridLayout>
+        </ListView.itemTemplate>
+      </ListView>
+
+      <ios>
+        <GridLayout row="2" columns="auto, *" link="editExpense" linkContext="{{ report }}" visibility="{{ report.Status | editReportVisibilityConverter }}" cssClass="image-button" >
+          <Image src="res://ic_add" stretch="none" cssClass="image-button-icon" />
+          <Label col="1" text="Add expense" cssClass="image-button-text" />
+        </GridLayout>
+      </ios>
+    </GridLayout>
+
+    <android>
+      <Image src="res://fab" link="editExpense" linkContext="{{ report }}" stretch="none" visibility="{{ report.Status | editReportVisibilityConverter }}" cssClass="fab" />
+    </android>
+
+    <ActivityIndicator busy="{{ isLoading }}" />
+  </GridLayout>
+</Page>

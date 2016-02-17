@@ -1,0 +1,28 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd"
+      xmlns:table="table"
+      xmlns:vs="views/shared/validation-summary"
+      navigatingTo="onNavigatingTo">
+  <Page.actionBar>
+    <ActionBar title="Xpensity">
+      <ActionBar.actionItems>
+        <ActionItem text="Sign Up" ios.position="right" link="signUp" />
+      </ActionBar.actionItems>
+    </ActionBar>
+  </Page.actionBar>
+  <GridLayout rows="auto, *, auto">
+    <vs:validation-summary />
+    <ScrollView row="1">
+      <StackLayout>
+        <table:Table cssClass="table-margin">
+          <TextField text="{{ username }}" autocorrect="false" autocapitalizationType="none" hint="email" keyboardType="email" />
+          <TextField text="{{ password }}" secure="true" hint="password" />
+        </table:Table>
+        <Button text="Forgotten password?" link="passwordRecovery" cssClass="text-button" />
+        <Button text="Login" tap="{{ login }}" cssClass="primary-button" />
+      </StackLayout>
+    </ScrollView>
+    <Button text="Use Test Account" tap="{{ loginWithTestAccount }}" cssClass="primary-button" row="2" />
+
+    <ActivityIndicator rowspan="3" busy="{{ isLoading }}" />
+  </GridLayout>
+</Page>

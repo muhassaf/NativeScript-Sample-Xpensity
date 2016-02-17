@@ -1,0 +1,37 @@
+<TabViewItem
+  xmlns:g="grid-view"
+  xmlns:chart="nativescript-telerik-ui/chart"
+  iconSource="{{ selectedTab === 0 ? 'res://ic_reports_1' : 'res://ic_reports' }}"
+  ios:title="My reports" >
+  <TabViewItem.view>
+    <GridLayout rows="auto, *" bindingContext="{{ reportsViewModel }}" >
+      <android>
+        <Label text="REPORTS" cssClass="header" visibility="{{ androidVisibility }}" />
+      </android>
+
+      <ScrollView row="1" >
+        <g:GridView gridColumns="2" items="{{ reports }}" cssClass="reports-grid" >
+          <g:GridView.itemTemplate>
+            <StackLayout orientation="vertical" link="viewReport" linkContext="{{ $value }}" cssClass="tile">
+              <Label text="{{ report.Status | reportStatusConverter }}" cssClass="status-label" />
+              <chart:RadPieChart palettes="{{ expensesByCategory | paletteConverter }}" cssClass="categories-chart">
+                <chart:RadPieChart.series>
+                  <chart:PieSeries selectionMode="None" ios.rotationEnabled="false" items="{{ expensesByCategory}}" valueProperty="Percent">
+                  </chart:PieSeries>
+                </chart:RadPieChart.series>
+              </chart:RadPieChart>
+              <Label text="{{ report.Title }}" cssClass="item-header" />
+              <Label text="{{ report.Date | formatDate }}" cssClass="item-content" />
+            </StackLayout>
+          </g:GridView.itemTemplate>
+        </g:GridView>
+      </ScrollView>
+
+      <android>
+        <Image rowSpan="2" src="res://fab" link="editReport" stretch="none" cssClass="fab" />
+      </android>
+
+      <ActivityIndicator rowSpan="2" busy="{{ isLoading }}" />
+    </GridLayout>
+  </TabViewItem.view>
+</TabViewItem>

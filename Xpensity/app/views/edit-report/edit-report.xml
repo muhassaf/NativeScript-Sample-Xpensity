@@ -1,0 +1,29 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd"
+      xmlns:table="table"
+      xmlns:vs="views/shared/validation-summary"
+      navigatingTo="onNavigatingTo">
+  <Page.actionBar>
+    <ActionBar title="{{ isAdd ? 'Add Report' : 'Edit Report' }}">
+      <NavigationButton icon="res://ic_arrow_back" link="#back" />
+      <ActionBar.actionItems>
+        <ActionItem text="Done" ios.position="right" tap="onDoneTap" />
+      </ActionBar.actionItems>
+    </ActionBar>
+  </Page.actionBar>
+  <GridLayout rows="auto, *">
+    <vs:validation-summary />
+    <ScrollView row="1">
+      <StackLayout>
+        <table:Table>
+          <TextField text="{{ item.Title }}" hint="Title" />
+          <TextField text="{{ item.BusinessPurpose  }}" hint="Business Purpose" />
+          <TextField text="{{ item.CostCenter }}" hint="Cost Center" />
+        </table:Table>
+
+        <Button text="Delete Report" tap="{{ delete }}" visibility="{{ canDelete | visibilityConverter }}" cssClass="delete-button" />
+      </StackLayout>
+    </ScrollView>
+
+    <ActivityIndicator rowSpan="2" busy="{{ isLoading }}" />
+  </GridLayout>
+</Page>

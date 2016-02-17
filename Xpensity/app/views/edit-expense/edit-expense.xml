@@ -1,0 +1,46 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd"
+      xmlns:table="table"
+      xmlns:tableItem="views/shared/table-item"
+      xmlns:dp="date-picker"
+      xmlns:ddl="drop-down-list"
+      xmlns:vs="views/shared/validation-summary"
+      navigatingTo="onNavigatingTo">
+  <Page.actionBar>
+    <ActionBar title="{{ isAdd ? 'Add Expense' : 'Edit Expense' }}">
+      <NavigationButton icon="res://ic_arrow_back" link="#back" />
+      <ActionBar.actionItems>
+        <ActionItem text="Done" ios.position="right" tap="onDoneTap" />
+      </ActionBar.actionItems>
+    </ActionBar>
+  </Page.actionBar>
+  <GridLayout rows="auto, *">
+    <vs:validation-summary />
+    <ScrollView row="1">
+      <GridLayout rows="auto, auto, auto, auto, auto, auto">
+        <table:Table>
+          <TextField text="{{ item.Title }}" hint="Title" />
+          <TextField text="{{ item.Location  }}" hint="Location" />
+          <tableItem:table-item />
+          <ddl:DropDownList header="Category" items="{{ categories }}" displayName="Title" valueName="Id" selectedValue="{{ category }}" />
+          <dp:DatePicker header="Date" selectedDate="{{ item.Date }}" />
+        </table:Table>
+
+        <GridLayout row="1" columns="auto, *" tap="{{ takePicture }}" visibility="{{ picture | reverseVisibilityConverter }}" cssClass="image-button" >
+          <Image src="res://ic_photo" stretch="none" cssClass="image-button-icon" />
+          <Label col="1" text="Take Photo" cssClass="image-button-text" />
+        </GridLayout>
+
+        <table:Table row="2">
+          <TextView text="{{ item.Notes }}" hint="Notes" />
+        </table:Table>
+
+        <Image row="3" visibility="{{ picture | visibilityConverter }}" src="{{ picture }}" cssClass="image" />
+        <Button row="4" visibility="{{ picture | visibilityConverter }}" text="Remove" tap="{{ removePicture }}" cssClass="remove-button" />
+
+        <Button row="5" text="Delete Expense" tap="{{ delete }}" visibility="{{ canDelete | visibilityConverter }}" cssClass="delete-button" />
+      </GridLayout>
+    </ScrollView>
+
+    <ActivityIndicator rowSpan="2" busy="{{ isLoading }}" />
+  </GridLayout>
+</Page>
