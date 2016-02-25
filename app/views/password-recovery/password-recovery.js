@@ -1,6 +1,8 @@
+"use strict";
 var password_recovery_view_model_1 = require("./password-recovery-view-model");
 function onNavigatingTo(args) {
     var page = args.object;
     page.bindingContext = new password_recovery_view_model_1.PasswordRecoveryViewModel();
 }
 exports.onNavigatingTo = onNavigatingTo;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicGFzc3dvcmQtcmVjb3ZlcnkuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyJwYXNzd29yZC1yZWNvdmVyeS50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiO0FBRUEsNkNBQTBDLGdDQUFnQyxDQUFDLENBQUE7QUFFM0Usd0JBQStCLElBQWU7SUFDMUMsSUFBSSxJQUFJLEdBQVMsSUFBSSxDQUFDLE1BQU0sQ0FBQztJQUM3QixJQUFJLENBQUMsY0FBYyxHQUFHLElBQUksd0RBQXlCLEVBQUUsQ0FBQztBQUMxRCxDQUFDO0FBSGUsc0JBQWMsaUJBRzdCLENBQUEifQ==
