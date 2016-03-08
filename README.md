@@ -1,6 +1,6 @@
 # Xpensity sample app
 
-Xpensity is a real life enterprise line of business application showing you how to deal with data and how to visualize the data in a rich and engaging way.
+Xpensity is a real life enterprise line of business application showing you how to deal with data and how to visualize the data in a rich and engaging way. This app is using charts and other components from the paid UI for NativeScript suite.
 
 ![Expensity app overview screen](https://www.nativescript.org/images/default-source/default-album/expensity-overview.png)
 ![Expensity app report details](https://www.nativescript.org/images/default-source/default-album/expensity-report-details.png)
