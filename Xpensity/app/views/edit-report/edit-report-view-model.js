@@ -1,4 +1,3 @@
-"use strict";
 var edit_view_model_base_1 = require("edit-view-model-base");
 var service_1 = require("../../data/service");
 var view_report_view_model_1 = require("../view-report/view-report-view-model");
@@ -43,6 +42,6 @@ var EditReportViewModel = (function (_super) {
         return item;
     };
     return EditReportViewModel;
-}(edit_view_model_base_1.EditViewModelBase));
+})(edit_view_model_base_1.EditViewModelBase);
 exports.EditReportViewModel = EditReportViewModel;
 //# sourceMappingURL=edit-report-view-model.js.map

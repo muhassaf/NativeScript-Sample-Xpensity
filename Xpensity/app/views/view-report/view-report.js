@@ -1,4 +1,3 @@
-"use strict";
 var view_report_view_model_1 = require("./view-report-view-model");
 var viewModel;
 function onNavigatingTo(args) {

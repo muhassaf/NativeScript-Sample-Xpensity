@@ -1,4 +1,3 @@
-"use strict";
 exports.initial = "views/initial/initial";
 exports.login = "views/login/login";
 exports.signUp = "views/sign-up/sign-up";

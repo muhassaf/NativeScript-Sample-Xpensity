@@ -1,4 +1,3 @@
-"use strict";
 var typesModule = require("utils/types");
 var navigationModule = require("navigation");
 var constantsModule = require("../shared/constants");
@@ -216,7 +215,7 @@ var Service = (function (_super) {
         return exports.everlive.data(typeName).destroySingle({ Id: item.Id });
     };
     return Service;
-}(observable_1.Observable));
+})(observable_1.Observable);
 exports.everlive = new everliveModule({
     apiKey: constantsModule.everliveKey,
     scheme: "https",

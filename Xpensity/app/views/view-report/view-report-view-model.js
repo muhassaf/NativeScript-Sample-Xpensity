@@ -1,4 +1,3 @@
-"use strict";
 var view_model_base_1 = require("view-model-base");
 var data_source_1 = require("data-source");
 var service_1 = require("../../data/service");
@@ -103,7 +102,7 @@ var ViewReportViewModel = (function (_super) {
         });
     };
     return ViewReportViewModel;
-}(view_model_base_1.ViewModelBase));
+})(view_model_base_1.ViewModelBase);
 exports.ViewReportViewModel = ViewReportViewModel;
 function getPercent(totalCost, cost) {
     return (cost / totalCost) * 100;

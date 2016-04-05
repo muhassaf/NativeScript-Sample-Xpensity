@@ -1,4 +1,3 @@
-"use strict";
 function createFieldExpression(properties) {
     var expression = {};
     properties.forEach(function (prop) {

@@ -1,4 +1,3 @@
-"use strict";
 var applicationModule = require("application");
 var specialPropertiesModule = require("ui/builder/special-properties");
 var enums_1 = require("ui/enums");

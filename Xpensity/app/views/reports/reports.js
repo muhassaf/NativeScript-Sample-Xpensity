@@ -1,4 +1,3 @@
-"use strict";
 function onTap() {
     alert("Tap");
 }

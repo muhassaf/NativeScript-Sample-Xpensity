@@ -1,4 +1,3 @@
-"use strict";
 var view_model_base_1 = require("view-model-base");
 var service_1 = require("../../data/service");
 var validationRulesModule = require("validation-rules");
@@ -124,6 +123,6 @@ var EditProfileViewModel = (function (_super) {
         return true;
     };
     return EditProfileViewModel;
-}(view_model_base_1.ViewModelBase));
+})(view_model_base_1.ViewModelBase);
 exports.EditProfileViewModel = EditProfileViewModel;
 //# sourceMappingURL=edit-profile-view-model.js.map

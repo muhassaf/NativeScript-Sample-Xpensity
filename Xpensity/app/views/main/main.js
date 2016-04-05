@@ -1,4 +1,3 @@
-"use strict";
 var main_view_model_1 = require("./main-view-model");
 var viewModel = new main_view_model_1.MainViewModel();
 function onNavigatingTo(args) {
