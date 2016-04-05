@@ -16,3 +16,6 @@ Design/
 hooks
 tsconfig.json
 *.sln
+.ab
+*.apk
+*.ipa
