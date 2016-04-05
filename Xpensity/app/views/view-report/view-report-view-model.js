@@ -1,8 +1,4 @@
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
+"use strict";
 var view_model_base_1 = require("view-model-base");
 var data_source_1 = require("data-source");
 var service_1 = require("../../data/service");
@@ -107,7 +103,7 @@ var ViewReportViewModel = (function (_super) {
         });
     };
     return ViewReportViewModel;
-})(view_model_base_1.ViewModelBase);
+}(view_model_base_1.ViewModelBase));
 exports.ViewReportViewModel = ViewReportViewModel;
 function getPercent(totalCost, cost) {
     return (cost / totalCost) * 100;
@@ -122,3 +118,4 @@ function sum(items, property) {
     });
     return sum;
 }
+//# sourceMappingURL=view-report-view-model.js.map

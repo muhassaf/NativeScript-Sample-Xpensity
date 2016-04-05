@@ -1,3 +1,4 @@
+"use strict";
 var edit_expense_view_model_1 = require("./edit-expense-view-model");
 var viewModel;
 function onNavigatingTo(args) {
@@ -17,3 +18,4 @@ function onTakePictureTap(args) {
     viewModel.takePicture();
 }
 exports.onTakePictureTap = onTakePictureTap;
+//# sourceMappingURL=edit-expense.js.map

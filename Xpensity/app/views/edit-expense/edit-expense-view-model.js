@@ -1,8 +1,4 @@
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
+"use strict";
 var edit_view_model_base_1 = require("edit-view-model-base");
 var service_1 = require("../../data/service");
 var validationRulesModule = require("validation-rules");
@@ -131,5 +127,6 @@ var EditExpenseViewModel = (function (_super) {
         });
     };
     return EditExpenseViewModel;
-})(edit_view_model_base_1.EditViewModelBase);
+}(edit_view_model_base_1.EditViewModelBase));
 exports.EditExpenseViewModel = EditExpenseViewModel;
+//# sourceMappingURL=edit-expense-view-model.js.map

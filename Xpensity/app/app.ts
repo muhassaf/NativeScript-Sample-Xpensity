@@ -10,6 +10,7 @@ import { reportStatus } from "./shared/constants";
 import colorModule = require("color");
 
 var chartModule = require("nativescript-telerik-ui/chart");
+var listViewModule = require("nativescript-telerik-ui/listview");
 
 var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 specialPropertiesModule.registerSpecialProperty("link", (instance, propertyValue) => {
@@ -22,6 +23,14 @@ specialPropertiesModule.registerSpecialProperty("link", (instance, propertyValue
             });
         });
     }
+    else if (instance instanceof listViewModule.RadListView) {
+        instance.on("itemSelected", (args: any) => {
+            navigationModule.navigateById(propertyValue, {
+                item: (<any>instance).getSelectedItems()[0],
+                context: (<any>instance).linkContext
+            });
+        })
+    }
     else {
         instance.on("tap", (args: EventData) => {
             navigationModule.navigateById(propertyValue, {
@@ -33,28 +42,28 @@ specialPropertiesModule.registerSpecialProperty("link", (instance, propertyValue
 
 applicationModule.cssFile = "./app.css";
 applicationModule.resources = {
-    formatDate: function (date: Date): string {
+    formatDate: function(date: Date): string {
         return (date.getDate()) + " " + months[date.getMonth()] + ", " + date.getFullYear();
     },
 
-    formatCurrency: function (currency: number) {
+    formatCurrency: function(currency: number) {
         return "$" + (Math.round(currency * 100) / 100).toFixed(2);
     },
 
-    visibilityConverter: function (visible: boolean) {
+    visibilityConverter: function(visible: boolean) {
         return visible ? Visibility.visible : Visibility.collapse;
     },
 
-    reverseVisibilityConverter: function (visible: boolean) {
-        return  !visible ? Visibility.visible : Visibility.collapse;
+    reverseVisibilityConverter: function(visible: boolean) {
+        return !visible ? Visibility.visible : Visibility.collapse;
     },
 
-    tabVisibilityConverter: function (tabIndex: number, index: number) {
+    tabVisibilityConverter: function(tabIndex: number, index: number) {
         return tabIndex === index ? Visibility.visible : Visibility.collapse;
     },
 
 
-    reportStatusConverter: function (status: number) {
+    reportStatusConverter: function(status: number) {
         switch (status) {
             case reportStatus.approved:
                 return "Approved";
@@ -76,7 +85,7 @@ applicationModule.resources = {
         }
     },
 
-    editReportVisibilityConverter: function (status: number) {
+    editReportVisibilityConverter: function(status: number) {
         if (status === reportStatus.inProgress ||
             status === reportStatus.returned) {
             return Visibility.visible;
@@ -85,7 +94,7 @@ applicationModule.resources = {
         return Visibility.collapse;
     },
 
-    titleConverter: function (tab: number) {
+    titleConverter: function(tab: number) {
         switch (tab) {
             case 0:
                 return "Reports";
@@ -101,7 +110,7 @@ applicationModule.resources = {
         }
     },
 
-    paletteConverter: function (expensesByCategory: any[]): any[] {
+    paletteConverter: function(expensesByCategory: any[]): any[] {
         var palette = new chartModule.Palette();
         var paletteEntries = [];
         expensesByCategory.forEach((item: any) => {
@@ -116,7 +125,7 @@ applicationModule.resources = {
     }
 }
 
-applicationModule.onLaunch = function (context: any) {
+applicationModule.onLaunch = function(context: any) {
     var serviceModule = require("./data/service");
     serviceModule.service.isLoggedIn().then((isLoggedIn) => {
         var view = isLoggedIn ? viewsModule.main : viewsModule.login;

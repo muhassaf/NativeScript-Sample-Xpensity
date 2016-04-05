@@ -1,8 +1,4 @@
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
+"use strict";
 var typesModule = require("utils/types");
 var navigationModule = require("navigation");
 var constantsModule = require("../shared/constants");
@@ -220,7 +216,7 @@ var Service = (function (_super) {
         return exports.everlive.data(typeName).destroySingle({ Id: item.Id });
     };
     return Service;
-})(observable_1.Observable);
+}(observable_1.Observable));
 exports.everlive = new everliveModule({
     apiKey: constantsModule.everliveKey,
     scheme: "https",
@@ -232,3 +228,4 @@ exports.everlive = new everliveModule({
     },
 });
 exports.service = new Service();
+//# sourceMappingURL=service.js.map

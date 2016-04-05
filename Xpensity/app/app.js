@@ -1,3 +1,4 @@
+"use strict";
 var applicationModule = require("application");
 var specialPropertiesModule = require("ui/builder/special-properties");
 var enums_1 = require("ui/enums");
@@ -6,6 +7,7 @@ var viewsModule = require("./shared/views");
 var navigationModule = require("navigation");
 var constants_1 = require("./shared/constants");
 var chartModule = require("nativescript-telerik-ui/chart");
+var listViewModule = require("nativescript-telerik-ui/listview");
 var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 specialPropertiesModule.registerSpecialProperty("link", function (instance, propertyValue) {
     if (instance instanceof list_view_1.ListView) {
@@ -13,6 +15,14 @@ specialPropertiesModule.registerSpecialProperty("link", function (instance, prop
         listView.on("itemTap", function (args) {
             navigationModule.navigateById(propertyValue, {
                 item: args.view.bindingContext,
+                context: instance.linkContext
+            });
+        });
+    }
+    else if (instance instanceof listViewModule.RadListView) {
+        instance.on("itemSelected", function (args) {
+            navigationModule.navigateById(propertyValue, {
+                item: instance.getSelectedItems()[0],
                 context: instance.linkContext
             });
         });
@@ -98,3 +108,4 @@ applicationModule.onLaunch = function (context) {
 };
 applicationModule.mainModule = viewsModule.initial;
 applicationModule.start();
+//# sourceMappingURL=app.js.map

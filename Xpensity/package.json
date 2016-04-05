@@ -1,32 +1,32 @@
 {
-	"nativescript": {
-		"id": "org.nativescript.Xpensity",
-		"tns-android": {
-			"version": "1.5.1"
-		},
-		"tns-ios": {
-			"version": "1.5.2"
-		}
-	},
-	"devDependencies": {
-		"nativescript-dev-typescript": "^0.2.2",
-		"typescript": "^1.7.5"
-	},
-	"dependencies": {
-		"custom-control": "file:plugins\\custom-control",
-		"data-source": "file:plugins\\data-source",
-		"date-picker": "file:plugins\\date-picker",
-		"drop-down-list": "file:plugins\\drop-down-list",
-		"edit-view-model-base": "file:plugins\\edit-view-model-base",
-		"everlive": "file:plugins\\everlive",
-		"grid-view": "file:plugins\\grid-view",
-		"nativescript-telerik-ui": "^0.1.1",
-		"navigation": "file:plugins\\navigation",
-		"notifications": "file:plugins\\notifications",
-		"table": "file:plugins\\table",
-		"tns-core-modules": "1.5.1",
-		"validation-rules": "file:plugins\\validation-rules",
-		"view-model-base": "file:plugins\\view-model-base",
-		"sample-xpensity-app-options": "file:plugins\\app_options"
-	}
+  "nativescript": {
+    "id": "org.nativescript.Xpensity",
+    "tns-android": {
+      "version": "1.7.1"
+    },
+    "tns-ios": {
+      "version": "1.7.0"
+    }
+  },
+  "devDependencies": {
+    "nativescript-dev-typescript": "^0.3.1",
+    "typescript": "^1.8.2"
+  },
+  "dependencies": {
+    "custom-control": "file:plugins\\custom-control",
+    "data-source": "file:plugins\\data-source",
+    "date-picker": "file:plugins\\date-picker",
+    "drop-down-list": "file:plugins\\drop-down-list",
+    "edit-view-model-base": "file:plugins\\edit-view-model-base",
+    "everlive": "file:plugins\\everlive",
+    "grid-view": "file:plugins\\grid-view",
+    "nativescript-telerik-ui": "^0.2.4",
+    "navigation": "file:plugins\\navigation",
+    "notifications": "file:plugins\\notifications",
+    "table": "file:plugins\\table",
+    "tns-core-modules": "1.7.1",
+    "validation-rules": "file:plugins\\validation-rules",
+    "view-model-base": "file:plugins\\view-model-base",
+    "sample-xpensity-app-options": "file:plugins\\app_options"
+  }
 }

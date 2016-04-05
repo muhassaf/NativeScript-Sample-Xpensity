@@ -1,3 +1,4 @@
+"use strict";
 function createFieldExpression(properties) {
     var expression = {};
     properties.forEach(function (prop) {
@@ -20,3 +21,4 @@ exports.expenseProperties = ["Id", "Date", "Location", "Cost", "Notes", "Title",
 exports.reportProperties = ["Id", "BusinessPurpose", "Title", "Status", "Date", "CostCenter"];
 exports.expenseFieldExpression = createFieldExpression(exports.expenseProperties);
 exports.reportFieldExpression = createFieldExpression(exports.reportProperties);
+//# sourceMappingURL=constants.js.map

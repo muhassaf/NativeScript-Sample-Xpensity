@@ -1,8 +1,4 @@
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
+"use strict";
 var service_1 = require("../../data/service");
 var observable_array_1 = require("data/observable-array");
 var view_model_base_1 = require("view-model-base");
@@ -60,5 +56,6 @@ var NotificationsViewModel = (function (_super) {
         applicationSettingsModule.setString(NOTIFICATION_MESSAGES, JSON.stringify(items));
     };
     return NotificationsViewModel;
-})(view_model_base_1.ViewModelBase);
+}(view_model_base_1.ViewModelBase));
 exports.NotificationsViewModel = NotificationsViewModel;
+//# sourceMappingURL=notifications-view-model.js.map

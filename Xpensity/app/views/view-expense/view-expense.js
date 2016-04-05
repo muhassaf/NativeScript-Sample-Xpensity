@@ -1,3 +1,4 @@
+"use strict";
 var view_expense_view_model_1 = require("./view-expense-view-model");
 var viewModel;
 function onNavigatingTo(args) {
@@ -6,3 +7,4 @@ function onNavigatingTo(args) {
     page.bindingContext = viewModel;
 }
 exports.onNavigatingTo = onNavigatingTo;
+//# sourceMappingURL=view-expense.js.map

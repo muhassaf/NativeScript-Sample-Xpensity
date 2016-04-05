@@ -8,7 +8,7 @@ var viewModel: ViewReportViewModel;
 export function onNavigatingTo(args: NavigatedData) {
     if (!args.isBackNavigation) {
         var page = <Page>args.object;
-        viewModel = new ViewReportViewModel(page.navigationContext.context.report);
+        viewModel = new ViewReportViewModel(page.navigationContext.item.report);
         page.bindingContext = viewModel;
     }
 

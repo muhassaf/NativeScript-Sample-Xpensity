@@ -1,8 +1,4 @@
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
+"use strict";
 var data_source_1 = require("data-source");
 var view_model_base_1 = require("view-model-base");
 var view_report_view_model_1 = require("../view-report/view-report-view-model");
@@ -36,5 +32,6 @@ var ReportsViewModel = (function (_super) {
         this.execute(this._reports.reload());
     };
     return ReportsViewModel;
-})(view_model_base_1.ViewModelBase);
+}(view_model_base_1.ViewModelBase));
 exports.ReportsViewModel = ReportsViewModel;
+//# sourceMappingURL=reports-view-model.js.map
