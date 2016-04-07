@@ -1,6 +1,6 @@
 <TabViewItem
-  xmlns:lv="nativescript-telerik-ui/listview"
-  xmlns:chart="nativescript-telerik-ui/chart"
+  xmlns:lv="nativescript-telerik-ui-pro/listview"
+  xmlns:chart="nativescript-telerik-ui-pro/chart"
   iconSource="{{ selectedTab === 0 ? 'res://ic_reports_1' : 'res://ic_reports' }}"
   ios:title="My reports" >
   <TabViewItem.view>

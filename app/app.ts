@@ -9,8 +9,8 @@ import navigationModule = require("navigation");
 import { reportStatus } from "./shared/constants";
 import colorModule = require("color");
 
-var chartModule = require("nativescript-telerik-ui/chart");
-var listViewModule = require("nativescript-telerik-ui/listview");
+var chartModule = require("nativescript-telerik-ui-pro/chart");
+var listViewModule = require("nativescript-telerik-ui-pro/listview");
 
 var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 specialPropertiesModule.registerSpecialProperty("link", (instance, propertyValue) => {
