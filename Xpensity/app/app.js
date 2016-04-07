@@ -5,8 +5,8 @@ var list_view_1 = require("ui/list-view");
 var viewsModule = require("./shared/views");
 var navigationModule = require("navigation");
 var constants_1 = require("./shared/constants");
-var chartModule = require("nativescript-telerik-ui/chart");
-var listViewModule = require("nativescript-telerik-ui/listview");
+var chartModule = require("nativescript-telerik-ui-pro/chart");
+var listViewModule = require("nativescript-telerik-ui-pro/listview");
 var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 specialPropertiesModule.registerSpecialProperty("link", function (instance, propertyValue) {
     if (instance instanceof list_view_1.ListView) {

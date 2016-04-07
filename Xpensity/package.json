@@ -20,13 +20,13 @@
 		"edit-view-model-base": "file:plugins\\edit-view-model-base",
 		"everlive": "file:plugins\\everlive",
 		"grid-view": "file:plugins\\grid-view",
-		"nativescript-telerik-ui": "^0.2.4",
+		"nativescript-telerik-ui-pro": "^1.0.1",
 		"navigation": "file:plugins\\navigation",
 		"notifications": "file:plugins\\notifications",
+		"sample-xpensity-app-options": "file:plugins\\app_options",
 		"table": "file:plugins\\table",
 		"tns-core-modules": "1.7.1",
 		"validation-rules": "file:plugins\\validation-rules",
-		"view-model-base": "file:plugins\\view-model-base",
-		"sample-xpensity-app-options": "file:plugins\\app_options"
+		"view-model-base": "file:plugins\\view-model-base"
 	}
 }
