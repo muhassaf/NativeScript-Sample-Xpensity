@@ -1,8 +1,3 @@
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var view_model_base_1 = require("view-model-base");
 var reports_view_model_1 = require("../reports/reports-view-model");
 var notifications_view_model_1 = require("../notifications/notifications-view-model");
@@ -61,3 +56,4 @@ var MainViewModel = (function (_super) {
     return MainViewModel;
 })(view_model_base_1.ViewModelBase);
 exports.MainViewModel = MainViewModel;
+//# sourceMappingURL=main-view-model.js.map

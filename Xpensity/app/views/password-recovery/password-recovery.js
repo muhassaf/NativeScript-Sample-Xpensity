@@ -4,3 +4,4 @@ function onNavigatingTo(args) {
     page.bindingContext = new password_recovery_view_model_1.PasswordRecoveryViewModel();
 }
 exports.onNavigatingTo = onNavigatingTo;
+//# sourceMappingURL=password-recovery.js.map

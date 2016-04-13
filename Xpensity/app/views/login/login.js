@@ -4,3 +4,4 @@ function onNavigatingTo(args) {
     page.bindingContext = new login_view_model_1.LoginViewModel();
 }
 exports.onNavigatingTo = onNavigatingTo;
+//# sourceMappingURL=login.js.map

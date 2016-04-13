@@ -6,3 +6,4 @@ function onNavigatingTo(args) {
     viewModel.refresh();
 }
 exports.onNavigatingTo = onNavigatingTo;
+//# sourceMappingURL=main.js.map

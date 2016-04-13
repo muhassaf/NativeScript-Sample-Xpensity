@@ -1,29 +1,29 @@
 {
-  "ProjectName": "sample-Xpensity",
-  "ProjectGuid": "6c7f9508-7820-4a8a-b9e2-40418913af04",
-  "projectVersion": 1,
-  "AppIdentifier": "com.telerik.sampleXpensity",
-  "DisplayName": "sample-Xpensity",
-  "Author": "Telerik",
-  "Description": "Xpensity is a real life enterprise line of business application showing you how to deal with data and how to visualize the data in a rich and engaging way. ",
-  "BundleVersion": "1.0",
-  "AndroidVersionCode": "1",
-  "iOSDeviceFamily": [
-    "1",
-    "2"
-  ],
-  "iOSBackgroundMode": [],
-  "ProjectTypeGuids": "{F0A65104-D4F4-4012-B799-F612D75820F6}",
-  "AndroidPermissions": [
-    "android.permission.ACCESS_NETWORK_STATE",
-    "android.permission.INTERNET"
-  ],
-  "DeviceOrientations": [
-    "Portrait",
-    "Landscape"
-  ],
-  "AndroidHardwareAcceleration": "false",
-  "iOSStatusBarStyle": "Default",
-  "FrameworkVersion": "1.5.2",
-  "Framework": "NativeScript"
+	"ProjectName": "sample-Xpensity",
+	"ProjectGuid": "6c7f9508-7820-4a8a-b9e2-40418913af04",
+	"projectVersion": 1,
+	"AppIdentifier": "com.telerik.sampleXpensity",
+	"DisplayName": "sample-Xpensity",
+	"Author": "Telerik",
+	"Description": "Xpensity is a real life enterprise line of business application showing you how to deal with data and how to visualize the data in a rich and engaging way. ",
+	"BundleVersion": "1.0",
+	"AndroidVersionCode": "1",
+	"iOSDeviceFamily": [
+		"1",
+		"2"
+	],
+	"iOSBackgroundMode": [],
+	"ProjectTypeGuids": "{F0A65104-D4F4-4012-B799-F612D75820F6}",
+	"AndroidPermissions": [
+		"android.permission.ACCESS_NETWORK_STATE",
+		"android.permission.INTERNET"
+	],
+	"DeviceOrientations": [
+		"Portrait",
+		"Landscape"
+	],
+	"AndroidHardwareAcceleration": "false",
+	"iOSStatusBarStyle": "Default",
+	"FrameworkVersion": "1.7.1",
+	"Framework": "NativeScript"
 }

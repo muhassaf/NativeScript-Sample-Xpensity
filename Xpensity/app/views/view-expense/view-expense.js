@@ -6,3 +6,4 @@ function onNavigatingTo(args) {
     page.bindingContext = viewModel;
 }
 exports.onNavigatingTo = onNavigatingTo;
+//# sourceMappingURL=view-expense.js.map

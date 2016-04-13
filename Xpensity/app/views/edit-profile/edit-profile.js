@@ -10,3 +10,4 @@ function onDoneTap(args) {
     viewModel.save();
 }
 exports.onDoneTap = onDoneTap;
+//# sourceMappingURL=edit-profile.js.map

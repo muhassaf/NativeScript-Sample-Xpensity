@@ -17,3 +17,4 @@ function onTakePictureTap(args) {
     viewModel.takePicture();
 }
 exports.onTakePictureTap = onTakePictureTap;
+//# sourceMappingURL=edit-expense.js.map

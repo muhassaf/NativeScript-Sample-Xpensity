@@ -4,3 +4,4 @@ function onNavigatingTo(args) {
     page.bindingContext = new sign_up_view_model_1.SignUpViewModel();
 }
 exports.onNavigatingTo = onNavigatingTo;
+//# sourceMappingURL=sign-up.js.map

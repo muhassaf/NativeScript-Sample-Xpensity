@@ -1,8 +1,3 @@
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var view_model_base_1 = require("view-model-base");
 var navigationModule = require("navigation");
 var validationRulesModule = require("validation-rules");
@@ -71,3 +66,4 @@ var LoginViewModel = (function (_super) {
     return LoginViewModel;
 })(view_model_base_1.ViewModelBase);
 exports.LoginViewModel = LoginViewModel;
+//# sourceMappingURL=login-view-model.js.map
