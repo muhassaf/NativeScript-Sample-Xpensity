@@ -9,8 +9,8 @@ var data_source_1 = require("data-source");
 var EditExpenseViewModel = (function (_super) {
     __extends(EditExpenseViewModel, _super);
     function EditExpenseViewModel(report, expense) {
-        this._report = report;
         _super.call(this, expense, constantsModule.expenseProperties);
+        this._report = report;
         var options = new data_source_1.DataSourceOptions();
         options.typeName = service_2.CategoryTypeName;
         this._categories = new data_source_1.DataSource(service_2.everlive, options);

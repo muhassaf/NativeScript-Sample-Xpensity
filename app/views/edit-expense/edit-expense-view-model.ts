@@ -19,9 +19,9 @@ export class EditExpenseViewModel extends EditViewModelBase {
     private _isUrl: boolean;
 
     constructor(report: any, expense?: any) {
-        this._report = report;
-
         super(expense, constantsModule.expenseProperties);
+
+        this._report = report;
 
         var options = new DataSourceOptions();
         options.typeName = CategoryTypeName;
