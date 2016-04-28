@@ -7,10 +7,10 @@
     return expression;
 }
 
-export var everliveKey = "hYxsMOYMwpLgdV7z";
+export var everliveKey = "jmzz4ixhsckrltg2";
 export var googleApiKey = "AIzaSyAExpwSeeR-UCAauro5jf71gqnFPjpkLuE";
 export var projectNumber = "948882044382";
-export var defaultExpenseCategoryId = "82f88dd0-ee4c-11e4-bf80-a57b3cc4e475";
+export var defaultExpenseCategoryId = "9e6364c0-0c80-11e6-8df5-c3842d4e315d";
 export var reportStatus = {
     inProgress: 0,
     submitted: 1,
