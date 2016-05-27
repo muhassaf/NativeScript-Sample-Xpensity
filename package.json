@@ -30,7 +30,7 @@
 		"notifications": "file:plugins\\notifications",
 		"sample-xpensity-app-options": "file:plugins\\app_options",
 		"table": "file:plugins\\table",
-		"tns-core-modules": "1.7.1",
+		"tns-core-modules": "2.0.1",
 		"validation-rules": "file:plugins\\validation-rules",
 		"view-model-base": "file:plugins\\view-model-base"
 	}
