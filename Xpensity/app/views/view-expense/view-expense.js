@@ -1,3 +1,4 @@
+"use strict";
 var view_expense_view_model_1 = require("./view-expense-view-model");
 var viewModel;
 function onNavigatingTo(args) {

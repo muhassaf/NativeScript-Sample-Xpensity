@@ -1,3 +1,4 @@
+"use strict";
 var sign_up_view_model_1 = require("./sign-up-view-model");
 function onNavigatingTo(args) {
     var page = args.object;
