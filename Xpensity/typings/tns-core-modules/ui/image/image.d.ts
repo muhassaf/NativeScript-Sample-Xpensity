@@ -44,25 +44,12 @@ declare module "ui/image" {
          * Gets or sets the image stretch mode.
          */
         stretch: string;
-    }
-
-    /**
-     * Provides common options for creating an image.
-     */
-    export interface Options extends view.Options {
+        
         /**
-         * Gets or sets the image source of the image.
+         * Gets or sets the loading strategy for images on the local file system:
+         * - **sync** *(default)* - blocks the UI if necessary to display immediately, good for small icons.
+         * - **async** - will try to load in the background, may appear with short delay, good for large images.
          */
-        imageSource: imageSource.ImageSource;
-
-        /**
-         * Gets or sets the URL of the image.
-         */
-        src: string;
-
-        /**
-         * Gets or sets the image stretch mode. Possible values are contained in the [Stretch enumeration](../enums/Stretch/README.md).
-         */
-        stretch: string;
+        loadMode: string; // "sync" | "async";
     }
 }
