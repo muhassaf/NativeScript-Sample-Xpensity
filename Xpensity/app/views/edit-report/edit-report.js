@@ -1,3 +1,4 @@
+"use strict";
 var edit_report_view_model_1 = require("./edit-report-view-model");
 var viewModel;
 function onNavigatingTo(args) {

@@ -1,3 +1,4 @@
+"use strict";
 var view_model_base_1 = require("view-model-base");
 var service_1 = require("../../data/service");
 var ViewExpenseViewModel = (function (_super) {
@@ -37,6 +38,6 @@ var ViewExpenseViewModel = (function (_super) {
         }
     };
     return ViewExpenseViewModel;
-})(view_model_base_1.ViewModelBase);
+}(view_model_base_1.ViewModelBase));
 exports.ViewExpenseViewModel = ViewExpenseViewModel;
 //# sourceMappingURL=view-expense-view-model.js.map

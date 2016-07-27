@@ -1,3 +1,4 @@
+"use strict";
 var view_model_base_1 = require("view-model-base");
 var reports_view_model_1 = require("../reports/reports-view-model");
 var notifications_view_model_1 = require("../notifications/notifications-view-model");
@@ -54,6 +55,6 @@ var MainViewModel = (function (_super) {
         this._settingsViewModel.refresh();
     };
     return MainViewModel;
-})(view_model_base_1.ViewModelBase);
+}(view_model_base_1.ViewModelBase));
 exports.MainViewModel = MainViewModel;
 //# sourceMappingURL=main-view-model.js.map

@@ -1,3 +1,4 @@
+"use strict";
 var edit_profile_view_model_1 = require("./edit-profile-view-model");
 var viewModel;
 function onNavigatingTo(args) {

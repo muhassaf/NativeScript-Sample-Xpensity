@@ -1,3 +1,4 @@
+"use strict";
 var edit_view_model_base_1 = require("edit-view-model-base");
 var service_1 = require("../../data/service");
 var validationRulesModule = require("validation-rules");
@@ -126,6 +127,6 @@ var EditExpenseViewModel = (function (_super) {
         });
     };
     return EditExpenseViewModel;
-})(edit_view_model_base_1.EditViewModelBase);
+}(edit_view_model_base_1.EditViewModelBase));
 exports.EditExpenseViewModel = EditExpenseViewModel;
 //# sourceMappingURL=edit-expense-view-model.js.map

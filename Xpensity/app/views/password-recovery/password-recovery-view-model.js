@@ -1,3 +1,4 @@
+"use strict";
 var view_model_base_1 = require("view-model-base");
 var service_1 = require("../../data/service");
 var navigationModule = require("navigation");
@@ -39,6 +40,6 @@ var PasswordRecoveryViewModel = (function (_super) {
         return true;
     };
     return PasswordRecoveryViewModel;
-})(view_model_base_1.ViewModelBase);
+}(view_model_base_1.ViewModelBase));
 exports.PasswordRecoveryViewModel = PasswordRecoveryViewModel;
 //# sourceMappingURL=password-recovery-view-model.js.map
