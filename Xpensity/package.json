@@ -2,10 +2,10 @@
 	"nativescript": {
 		"id": "org.nativescript.Xpensity",
 		"tns-android": {
-			"version": "2.1.1"
+			"version": "2.2.0"
 		},
 		"tns-ios": {
-			"version": "2.1.1"
+			"version": "2.2.1"
 		}
 	},
 	"devDependencies": {
@@ -30,7 +30,7 @@
 		"notifications": "file:plugins\\notifications",
 		"sample-xpensity-app-options": "file:plugins\\app_options",
 		"table": "file:plugins\\table",
-		"tns-core-modules": "2.1.0",
+		"tns-core-modules": "2.2.1",
 		"validation-rules": "file:plugins\\validation-rules",
 		"view-model-base": "file:plugins\\view-model-base"
 	}
