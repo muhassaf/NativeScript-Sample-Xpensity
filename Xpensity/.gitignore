@@ -18,3 +18,5 @@ hooks
 .ab
 *.apk
 *.ipa
+node_modules
+**/*.abreferences.d.ts
